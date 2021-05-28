@@ -1,3 +1,1 @@
-export function initialize() {
-    console.log('Initialized');
-}
+export {initialize} from './initialize';
