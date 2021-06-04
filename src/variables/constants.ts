@@ -1,3 +1,5 @@
+import {EnvironmentTypes, EnvironmentUrls} from '../types';
+
 export const environmentTypes: EnvironmentTypes = {
     production: 'production',
     staging: 'staging',

@@ -1,3 +1,4 @@
+import {Environment} from '../types';
 import {environment} from '../variables';
 
 /**

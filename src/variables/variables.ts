@@ -1,3 +1,4 @@
+import {Environment, Auth} from '../types';
 import {environmentTypes, environmentUrls, environmentPath} from './constants';
 
 export const environment: Environment = {
@@ -6,3 +7,9 @@ export const environment: Environment = {
     path: environmentPath
 };
 
+export const auth: Auth = {
+    shopIdentifier: '',
+    publicOrderId: '',
+    csrfToken: '',
+    jwtToken: ''
+};

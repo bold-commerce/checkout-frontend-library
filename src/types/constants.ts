@@ -1,10 +1,10 @@
-interface EnvironmentTypes {
+export interface EnvironmentTypes {
     readonly production: string,
     readonly staging: string,
     readonly local: string
 }
 
-interface EnvironmentUrls {
+export interface EnvironmentUrls {
     readonly production: string,
     readonly staging: string
 }
