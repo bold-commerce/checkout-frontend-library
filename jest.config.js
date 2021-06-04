@@ -9,4 +9,17 @@ module.exports = {
     'transform': {
         '^.+\\.(ts|tsx)$': 'ts-jest'
     },
+    'coverageThreshold': {
+        'global': {
+            'branches': 100,
+            'functions': 100,
+            'lines': 100
+        }
+    },
+    'collectCoverageFrom': [
+        '**/*.{js,jsx,ts,tsx}',
+        '!**/node_modules/**',
+        '!**/lib/**',
+        '!**/tests/**'
+    ]
 };

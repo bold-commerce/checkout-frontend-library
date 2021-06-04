@@ -6,8 +6,11 @@
   "scripts": {
     "build": "tsc",
     "test": "jest",
+    "cover-test": "jest --coverage --colors",
     "lint": "eslint .",
-    "tsc": "tsc"
+    "tsc": "tsc",
+    "lint-ci": "yarn lint",
+    "test-ci": "yarn cover-test --ci --bail --verbose"
   },
   "dependencies": {},
   "peerDependencies": {},
