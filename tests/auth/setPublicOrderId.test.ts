@@ -1,5 +1,5 @@
-import {auth} from '../../src/variables';
-import {setPublicOrderId} from '../../src'; 
+import {auth} from '@src/variables';
+import {setPublicOrderId} from '@src'; 
 
 describe('set public order id', () => {
     beforeEach(() => {

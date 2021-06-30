@@ -1,5 +1,5 @@
-import {getPublicOrderId} from '../../src';
-import {auth} from '../../src/variables';
+import {getPublicOrderId} from '@src';
+import {auth} from '@src/variables';
 
 describe('get public order id', () => {
     test('get default -- empty', () => {

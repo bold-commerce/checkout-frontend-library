@@ -1,5 +1,5 @@
-import {getCsrfToken} from '../../src';
-import {auth} from '../../src/variables';
+import {getCsrfToken} from '@src';
+import {auth} from '@src/variables';
 
 describe('getCsrfToken', () => {
     test('get default - empty', () => {
