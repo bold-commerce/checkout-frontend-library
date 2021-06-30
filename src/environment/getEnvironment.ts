@@ -1,4 +1,4 @@
-import {Environment} from '../types';
+import {IEnvironment} from '../types';
 import {environment} from '../variables';
 
 /**
@@ -6,6 +6,6 @@ import {environment} from '../variables';
  * This function get the basic environment variables
  * defined to call Checkout APIs.
  */
-export function getEnvironment(): Environment {
+export function getEnvironment(): IEnvironment {
     return {...environment};
 }
