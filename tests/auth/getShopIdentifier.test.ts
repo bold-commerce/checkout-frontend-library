@@ -1,5 +1,5 @@
-import {getShopIdentifier} from '../../src';
-import {auth} from '../../src/variables';
+import {getShopIdentifier} from '@src';
+import {auth} from '@src/variables';
 
 describe('get shop identifier', () => {
     test('get default - empty', () => {

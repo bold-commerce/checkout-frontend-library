@@ -1,5 +1,5 @@
-import {setEnvironment} from '../../src';
-import {environment, environmentTypes, environmentPath, environmentUrls} from '../../src/variables';
+import {setEnvironment} from '@src';
+import {environment, environmentTypes, environmentPath, environmentUrls} from '@src/variables';
 
 describe('setEnvironment', () => {
 

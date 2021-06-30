@@ -10,3 +10,5 @@ export interface IAuth {
     csrfToken: string
     jwtToken: string
 }
+
+

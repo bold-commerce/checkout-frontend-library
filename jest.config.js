@@ -1,6 +1,7 @@
 module.exports = {
     'roots': [
-        'tests'
+        '<rootDir>/src/',
+        '<rootDir>/tests/'
     ],
     'testMatch': [
         '**/__tests__/**/*.+(ts|tsx|js)',
@@ -15,6 +16,10 @@ module.exports = {
             'functions': 100,
             'lines': 100
         }
+    },
+    'moduleNameMapper': {
+        '@src/(.*)': '<rootDir>/src/$1',
+        '@src': '<rootDir>/src'
     },
     'collectCoverageFrom': [
         '**/*.{js,jsx,ts,tsx}',
