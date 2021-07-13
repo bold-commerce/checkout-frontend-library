@@ -6,6 +6,6 @@ import {environment} from '../variables';
  * This function get the basic environment variables
  * defined to call Checkout APIs.
  */
-export function getEnvironment(): IEnvironment {
+export function getEnvironment(): Required<IEnvironment> {
     return {...environment};
 }

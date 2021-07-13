@@ -1,5 +1,6 @@
 import {IApiResponse, IApiReturnObject, IFetchCallback} from '../types';
 import {FetchError} from './fetchError';
+import {baseReturnObject} from '@src/variables';
 
 /**
  * # FetchAPI
@@ -23,11 +24,8 @@ export async function callFetch(url: RequestInfo, options: RequestInit = {}): Pr
 }
 
 export function fetchAPI(url: string, options: RequestInit = {}, callback?: IFetchCallback): Promise<IApiReturnObject> { 
-    const returnObject: IApiReturnObject = {
-        success: false,
-        error: null,
-        response: null
-    };
+    const returnObject = {...baseReturnObject};
+
     return callFetch(url, options)
         .then((res) => {
             if (res instanceof FetchError) {
