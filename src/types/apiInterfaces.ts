@@ -1,7 +1,7 @@
 import {IFetchError} from 'src';
 
-export interface IApiResponse {
-    data: ISessionStartApi;
+export interface IApiSuccessResponse {
+    data: undefined | ISessionStartApiResponse | ISetShippingAddressResponse;
 }
 
 export interface IMethods {
@@ -21,13 +21,33 @@ export interface IFetchCallback extends Function {
     (obj: IApiReturnObject): void;
 }
 
-export interface ISessionStartApi {
-    csrf_token: string;
+export interface ISessionStartApiResponse {
+    csrf_token: string | undefined;
+}
+
+export interface ISetShippingAddressResponse {
+    address: IAddress | undefined;
+    application_state: IApplicationState | undefined;
+}
+
+export interface IApiErrorResponse {
+    message: string;
+    type: string; // Todo - Check with PAPI the list of possible types to declare const and types
+    field: string; // Todo - Check with PAPI the list of possible fields to declare const and types
+    severity: string; // Todo - Check with PAPI the list of possible severities to declare const and types
+    sub_type: string; // Todo - Check with PAPI the list of possible sub_types to declare const and types
 }
 
 export interface IApiTypes {
     sessionStart: IApiTypesDetail;
     validateEmail: IApiTypesDetail;
+    setShippingAddress: IApiTypesDetail;
+}
+
+export interface IApiTypeKeys {
+    sessionStart: keyof IApiTypes;
+    validateEmail: keyof IApiTypes;
+    setShippingAddress: keyof IApiTypes;
 }
 
 export interface IApiTypesDetail {
@@ -196,3 +216,13 @@ export interface IAddress {
 export interface ICartParameters {
     key?: string;
 }
+
+export interface ISessionStartRequest {
+    token: string;
+}
+
+export type IApiResponse = IApiErrorResponse | IApiSuccessResponse;
+
+export type ISetShippingAddressRequest = IAddress;
+
+export type IGetApiOptionsBody = Record<string, unknown> | ISessionStartRequest | ISetShippingAddressRequest;

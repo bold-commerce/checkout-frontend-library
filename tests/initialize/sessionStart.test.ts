@@ -18,14 +18,46 @@ describe('testing session start api', () => {
     });
     test('calling sessionStart w/ success = false', async () => {
         const tempReturnObject = {...returnObject};
-        
+
         fetchApiSpy.mockReturnValueOnce(Promise.resolve(tempReturnObject));
-        
+
         const res = await sessionStart();
-        
+
         expect(res).toEqual(tempReturnObject);
     });
-    
+
+    test('fetch successful but response with undefined data', async () => {
+        const tempReturnObject = {...returnObject};
+        tempReturnObject.success = true;
+        tempReturnObject.response = { data: undefined };
+
+        fetchApiSpy.mockReturnValueOnce(Promise.resolve(tempReturnObject));
+
+        const res = await sessionStart();
+
+        const errorContent = (res as IApiReturnObject).error as IFetchError;
+
+        expect(res).toEqual(tempReturnObject);
+        expect(res.success).toBe(false);
+        expect(errorContent.message).toBe('CSRF Token not found in response');
+    });
+
+    test('fetch successful but response with undefined csrf', async () => {
+        const tempReturnObject = {...returnObject};
+        tempReturnObject.success = true;
+        tempReturnObject.response = { data: { csrf_token: undefined }};
+
+        fetchApiSpy.mockReturnValueOnce(Promise.resolve(tempReturnObject));
+
+        const res = await sessionStart();
+
+        const errorContent = (res as IApiReturnObject).error as IFetchError;
+
+        expect(res).toEqual(tempReturnObject);
+        expect(res.success).toBe(false);
+        expect(errorContent.message).toBe('CSRF Token not found in response');
+    });
+
     test('fetch successful but no response', async () => {
         const tempReturnObject = {...returnObject};
         tempReturnObject.success = true;
@@ -39,7 +71,7 @@ describe('testing session start api', () => {
 
         expect(res).toEqual(tempReturnObject);
         expect(res.success).toBe(false);
-        expect(errorContent.message).toBe('CSRF Token not found');
+        expect(errorContent.message).toBe('Data not found in response');
     });
 });
 
