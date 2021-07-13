@@ -21,7 +21,7 @@ describe('multiple getApiOptions tests - success', () => {
             append: jest.fn(() => null)
         });
     });
-            
+
     afterEach(() => {
         jest.restoreAllMocks();
     });
