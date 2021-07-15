@@ -59,38 +59,38 @@ export interface IProvince {
 }
 
 export interface IApplicationState {
-    customer?: Array<ICustomer>;
-    addresses?: IAddressType;
-    lineItems?: Array<ILineItem>;
-    shipping?: IShipping;
-    taxes?: Array<ITax>;
-    discounts?: Array<IDiscount>;
-    payments?: Array<IPayment>;
-    orderTotal?: number;
-    orderMetaData: IOrderMetaData;
+    customer: ICustomer;
+    addresses: IAddressType;
+    line_items: Array<ILineItem>;
+    taxes: Array<ITax>;
+    discounts: Array<IDiscount>;
+    payments: Array<IPayment>;
+    order_meta_data: IOrderMetaData;
+    shipping: IShipping;
+    order_total: number;
 }
 
 export interface IOrderMetaData {
-    cartParameters?: ICartParameters;
-    noteAttributes?: ICartParameters;
+    cart_parameters?: ICartParameters;
+    note_attributes?: ICartParameters;
     notes?: string;
     tags?: Array<string>;
 }
 
 export interface IPayment {
-   gatewayPublicId: string;
-   amount?: number;
-   currency?: string;
-   type?: string;
-   displayString?: string;
-   id?: string;
-   token?: string;
-   retain?: string;
+    gateway_public_id: string;
+    amount?: number;
+    currency?: string;
+    type?: string;
+    display_string?: string;
+    id?: string;
+    token?: string;
+    retain?: string;
 }
 
 export interface IShipping {
-    selectShippingLine?: ISelectShippingLine;
-    availableShippingLines?: Array<IAvailableShippingLine>;
+    select_shipping_line?: ISelectShippingLine;
+    available_shipping_lines?: Array<IAvailableShippingLine>;
     taxes?: Array<ITax>;
     discounts?: Array<IDiscount>;
 }
@@ -106,7 +106,7 @@ export interface ISelectShippingLine {
 }
 
 export interface ILineItem {
-    productData?: IProductData;
+    product_data?: IProductData;
     taxes?: Array<ITax>;
     fees?: Array<IFee>;
     discounts?: Array<IDiscount>;
@@ -156,36 +156,35 @@ export interface IProductData {
 }
 
 export interface IAddressType {
-    billing?: IAddress;
-    shipping?: IAddress;
+    billing: IAddress;
+    shipping: IAddress;
 }
 
 export interface ICustomer {
-    readonly platformId?: string | null;
-    readonly publicId?: string | null;
-    firstName?: string;
-    lastName?: string;
-    emailAddress: string;
-    savedAddresses?: Array<IAddress>;
+    platform_id: string | null;
+    public_id: string | null;
+    first_name: string;
+    last_name: string;
+    email_address: string;
+    saved_addresses: Array<IAddress>;
 }
 
 export interface IAddress {
     id?: string | null;
-    firstName?: string;
-    lastName?: string;
-    addressLine1?: string;
-    addressLine2?: string;
+    first_name?: string;
+    last_name?: string;
+    address_line_1?: string;
+    address_line_2?: string;
     country: string;
     city?: string;
     province?: string;
-    countryCode: string;
-    provinceCode?: string;
-    postalCode?: string;
-    businessName?: string;
-    phoneNumber?: string;
+    country_code: string;
+    province_code?: string;
+    postal_code?: string;
+    business_name?: string;
+    phone_number?: string;
 }
 
 export interface ICartParameters {
-    description?: string;
     key?: string;
 }
