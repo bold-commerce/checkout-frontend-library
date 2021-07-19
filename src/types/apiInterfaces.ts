@@ -1,7 +1,7 @@
 import {IFetchError} from 'src';
 
 export interface IApiSuccessResponse {
-    data: undefined | ISessionStartApiResponse | ISetShippingAddressResponse;
+    data: undefined | ISessionStartApiResponse | ISetShippingAddressResponse | ISetBillingAddressResponse;
 }
 
 export interface IMethods {
@@ -30,6 +30,11 @@ export interface ISetShippingAddressResponse {
     application_state: IApplicationState | undefined;
 }
 
+export interface ISetBillingAddressResponse {
+    address: IAddress | undefined;
+    application_state: IApplicationState | undefined;
+}
+
 export interface IApiErrorResponse {
     message: string;
     type: string; // Todo - Check with PAPI the list of possible types to declare const and types
@@ -42,6 +47,7 @@ export interface IApiTypes {
     sessionStart: IApiTypesDetail;
     validateEmail: IApiTypesDetail;
     setShippingAddress: IApiTypesDetail;
+    setBillingAddress: IApiTypesDetail;
     validateAddress: IApiTypesDetail;
 }
 
@@ -50,6 +56,7 @@ export interface IApiTypeKeys {
     validateEmail: keyof IApiTypes;
     validateAddress: keyof IApiTypes;
     setShippingAddress: keyof IApiTypes;
+    setBillingAddress: keyof IApiTypes;
 }
 
 export interface IValidateAddress {
@@ -232,5 +239,6 @@ export interface ISessionStartRequest {
 export type IApiResponse = IApiErrorResponse | IApiSuccessResponse;
 
 export type ISetShippingAddressRequest = IAddress;
+export type ISetBillingAddressRequest = IAddress;
 
 export type IGetApiOptionsBody = Record<string, unknown> | ISessionStartRequest | ISetShippingAddressRequest;

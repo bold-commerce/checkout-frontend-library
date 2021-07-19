@@ -41,12 +41,18 @@ export const apiTypes: IApiTypes = {
         method: methods.POST,
         useCsrf: true
     },
+    setBillingAddress: {
+        path: '/addresses/billing',
+        method: methods.POST,
+        useCsrf: true
+    },
 };
 
 export const apiTypeKeys: IApiTypeKeys = {
     sessionStart: 'sessionStart',
     validateEmail: 'validateEmail',
     setShippingAddress: 'setShippingAddress',
+    setBillingAddress: 'setBillingAddress',
     validateAddress: 'validateAddress',
 };
 
