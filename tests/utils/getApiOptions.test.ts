@@ -6,14 +6,14 @@ describe('multiple getApiOptions tests - success', () => {
         {
             testName: 'test empty type',
             type: '',
-            body: {},
-            expectedOptions: { method: 'GET', headers: {}, body: JSON.stringify({})},
+            body: {token: ''},
+            expectedOptions: { method: 'GET', headers: {}, body: JSON.stringify({token: ''})},
         },
         {
             testName: 'test sessionStart - success',
             type: 'sessionStart',
-            body: { test: '' },
-            expectedOptions: { method: 'POST', headers: {}, body: JSON.stringify({ test: '' })},
+            body: { token: '' },
+            expectedOptions: { method: 'POST', headers: {}, body: JSON.stringify({token: ''})},
         }];
 
     beforeEach(() => {

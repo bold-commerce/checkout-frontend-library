@@ -1,4 +1,4 @@
-import {IApiTypes, getCsrfToken} from 'src';
+import {IApiTypes, IGetApiOptionsBody, getCsrfToken} from 'src';
 import {apiTypes, methods} from 'src/variables';
 
 /** getApiOptions
@@ -8,8 +8,8 @@ import {apiTypes, methods} from 'src/variables';
  * @param type type of api that needs to be constructed
  * @param body object for body of request
  */
-export function getApiOptions(type: keyof IApiTypes, body: Record<string, unknown> = {}): RequestInit {
-    const { method, useCsrf } = apiTypes[type] ?? {method: methods.GET}; 
+export function getApiOptions(type: keyof IApiTypes, body: IGetApiOptionsBody = {}): RequestInit {
+    const { method, useCsrf } = apiTypes[type] ?? {method: methods.GET};
     const headers = new Headers();
     if(useCsrf) {
         headers.append('X-CSRF-TOKEN', getCsrfToken());

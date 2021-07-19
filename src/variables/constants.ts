@@ -1,4 +1,4 @@
-import {IEnvironmentTypes, IEnvironmentUrls, IApiTypes, IApiReturnObject, IMethods} from 'src';
+import {IEnvironmentTypes, IEnvironmentUrls, IApiTypes, IApiReturnObject, IMethods, IApiTypeKeys} from 'src';
 
 export const environmentTypes: IEnvironmentTypes = {
     production: 'production',
@@ -31,6 +31,17 @@ export const apiTypes: IApiTypes = {
         method: methods.GET,
         useCsrf: true,
     },
+    setShippingAddress: {
+        path: '/addresses/shipping',
+        method: methods.POST,
+        useCsrf: true
+    },
+};
+
+export const apiTypeKeys: IApiTypeKeys = {
+    sessionStart: 'sessionStart',
+    validateEmail: 'validateEmail',
+    setShippingAddress: 'setShippingAddress',
 };
 
 export const baseReturnObject: IApiReturnObject = {
