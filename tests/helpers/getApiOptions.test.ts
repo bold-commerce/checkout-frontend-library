@@ -36,6 +36,14 @@ describe('multiple getApiOptions tests - success', () => {
 
         expect(response).toMatchObject(expectedResult);
     });
+    test('edge case: empty test with no body', () => {
+        const type = 'sessionStart';
+        const expectedResult = { method: 'POST', headers: {}};
+
+        const response = getApiOptions(type as keyof IApiTypes);
+
+        expect(response).toMatchObject(expectedResult);
+    });
 
     apiOptionsDataProvider.forEach(data => {
         test(data.testName, () => {

@@ -26,6 +26,11 @@ export const apiTypes: IApiTypes = {
         method: methods.POST,
         useCsrf: false
     },
+    validateEmail: {
+        path: '/validate_email_address',
+        method: methods.GET,
+        useCsrf: true,
+    },
 };
 
 export const baseReturnObject: IApiReturnObject = {

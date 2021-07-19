@@ -8,7 +8,7 @@ import {apiTypes, methods} from '@src/variables';
  * @param type type of api that needs to be constructed
  * @param body object for body of request
  */
-export function getApiOptions(type: keyof IApiTypes, body: Record<string, unknown>): RequestInit {
+export function getApiOptions(type: keyof IApiTypes, body: Record<string, unknown> = {}): RequestInit {
     const { method, useCsrf } = apiTypes[type] ?? {method: methods.GET}; 
     const headers = new Headers();
     if(useCsrf) {
