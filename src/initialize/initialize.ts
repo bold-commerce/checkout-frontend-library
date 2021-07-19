@@ -1,7 +1,13 @@
-import {IApiReturnObject, IOrderInitialData, IEnvironment} from '../types';
-import * as auth from '../auth';
-import {setEnvironment} from '@src';
-import {sessionStart} from './sessionStart';
+import {
+    IApiReturnObject, 
+    IOrderInitialData, 
+    IEnvironment, 
+    setEnvironment, 
+    sessionStart, 
+    setJwtToken, 
+    setPublicOrderId, 
+    setShopIdentifier
+} from 'src';
 
 /**
  * # Initialize
@@ -14,9 +20,9 @@ import {sessionStart} from './sessionStart';
  * @param shopIdentifier Identification for the shop in which the order is on
  */
 export async function initialize(initData: IOrderInitialData, jwt: string, publicOrderId: string, shopIdentifier: string, environment: IEnvironment): Promise<IApiReturnObject> { 
-    auth.setJwtToken(jwt);
-    auth.setPublicOrderId(publicOrderId);
-    auth.setShopIdentifier(shopIdentifier);
+    setJwtToken(jwt);
+    setPublicOrderId(publicOrderId);
+    setShopIdentifier(shopIdentifier);
     setEnvironment(environment.type, environment.path, environment.url);
     //set initData in environment later
 

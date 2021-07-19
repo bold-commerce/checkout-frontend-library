@@ -1,5 +1,4 @@
-import {fetchAPI, getApiUrl, getApiOptions, getJwtToken, setCsrfToken, IApiReturnObject} from '@src';
-import {FetchError} from '@src/helpers';
+import {fetchAPI, getApiUrl, getApiOptions, getJwtToken, setCsrfToken, IApiReturnObject, FetchError} from 'src';
 
 /** sessionStart
  *

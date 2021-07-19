@@ -1,5 +1,5 @@
-import {IEnvironment} from '../types';
-import {environment} from '../variables';
+import {IEnvironment} from 'src';
+import {environment} from 'src/variables';
 
 /**
  * ## getEnvironment

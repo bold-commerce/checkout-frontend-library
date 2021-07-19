@@ -1,5 +1,5 @@
-import {IAddress} from '@src';
-import {shippingAddress} from '@src/variables';
+import {IAddress} from 'src';
+import {shippingAddress} from 'src/variables';
 
 export function setShippingAddress({
     id,

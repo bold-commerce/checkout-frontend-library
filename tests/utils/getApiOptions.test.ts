@@ -1,5 +1,5 @@
-import {getApiOptions, IApiTypes} from '@src';
-import {apiTypes} from '@src/variables';
+import {getApiOptions, IApiTypes} from 'src';
+import {apiTypes} from 'src/variables';
 
 describe('multiple getApiOptions tests - success', () => {
     const apiOptionsDataProvider = [

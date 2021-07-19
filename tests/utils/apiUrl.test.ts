@@ -1,7 +1,7 @@
-import {getApiUrl, getApiUrlWithParams, IApiTypes} from '@src';
-import * as getShopIdentifier from '@src/auth/getShopIdentifier';
-import * as getPublicOrderId from '@src/auth/getPublicOrderId';
-import * as getEnvironment from '@src/environment/getEnvironment';
+import {getApiUrl, getApiUrlWithParams, IApiTypes} from 'src';
+import * as getShopIdentifier from 'src/auth/getShopIdentifier';
+import * as getPublicOrderId from 'src/auth/getPublicOrderId';
+import * as getEnvironment from 'src/environment/getEnvironment';
 
 describe('getApiUrl', () => {
     const shopId = 'shopId';

@@ -1,4 +1,4 @@
-import {IFetchError} from './errorInterfaces';
+import {IFetchError} from 'src';
 
 export interface IApiResponse {
     data: ISessionStartApi;
@@ -10,6 +10,7 @@ export interface IMethods {
     PUT: string;
     DELETE: string;
 }
+
 export interface IApiReturnObject {
     success: boolean;
     error: null | IFetchError;

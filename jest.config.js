@@ -18,8 +18,8 @@ module.exports = {
         }
     },
     'moduleNameMapper': {
-        '@src/(.*)': '<rootDir>/src/$1',
-        '@src': '<rootDir>/src'
+        'src/(.*)': '<rootDir>/src/$1',
+        'src': '<rootDir>/src'
     },
     'collectCoverageFrom': [
         '**/*.{js,jsx,ts,tsx}',

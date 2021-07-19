@@ -1,7 +1,7 @@
-import {ITax} from '@src';
-import {setTaxes} from '@src/state';
-import {applicationState} from '@src/variables';
-import {taxMock} from '@src/variables/mocks';
+import {ITax} from 'src';
+import {setTaxes} from 'src/state';
+import {applicationState} from 'src/variables';
+import {taxMock} from 'src/variables/mocks';
 
 describe('setTaxes', () => {
     test('Set Taxes to application state', () => {

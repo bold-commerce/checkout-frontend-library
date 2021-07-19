@@ -1,5 +1,5 @@
-import {getJwtToken} from '@src';
-import {auth} from '@src/variables';
+import {getJwtToken} from 'src';
+import {auth} from 'src/variables';
 
 describe('getJwtToken', () => {
     test('get default - empty', () => {

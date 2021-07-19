@@ -1,5 +1,5 @@
-import {setShopIdentifier} from '@src';
-import {auth} from '@src/variables';
+import {setShopIdentifier} from 'src';
+import {auth} from 'src/variables';
 
 describe('setShopIdentifier', () => {
 

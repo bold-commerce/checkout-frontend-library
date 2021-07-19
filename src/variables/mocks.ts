@@ -8,7 +8,7 @@ import {
     ILineItem, IOrderMetaData, IPayment,
     IProductData, ISelectShippingLine, IShipping,
     ITax
-} from '@src';
+} from 'src';
 
 export const shippingAddressMock: IAddress = {
     id: 'Test_id_1',
@@ -47,7 +47,7 @@ export const customerMock: ICustomer = {
     public_id: 'test_public_id',
     first_name: 'John',
     last_name: 'Doe',
-    email_address: 'john.doe@example.com',
+    email_address: 'john.doeexample.com',
     saved_addresses: [{
         id: 'Test_id',
         first_name: 'John',

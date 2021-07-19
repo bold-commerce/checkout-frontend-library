@@ -7,9 +7,12 @@ import {
     ICustomer,
     ILineItem,
     ITax,
-    IDiscount, IPayment, IOrderMetaData, IShipping
-} from '@src';
-import {environmentTypes, environmentUrls, environmentPath} from './constants';
+    IDiscount, 
+    IPayment, 
+    IOrderMetaData, 
+    IShipping
+} from 'src';
+import {environmentTypes, environmentUrls, environmentPath} from 'src/variables';
 
 export const environment: Required<IEnvironment> = {
     type: environmentTypes.production,

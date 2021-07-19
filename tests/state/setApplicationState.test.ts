@@ -1,14 +1,14 @@
-import {setApplicationState} from '@src/state';
-import * as setCustomer from '@src/state/setCustomer';
-import * as setAddresses from '@src/state/setAddresses';
-import * as setLineItems from '@src/state/setLineItems';
-import * as setTaxes from '@src/state/setTaxes';
-import * as setDiscounts from '@src/state/setDiscounts';
-import * as setPayments from '@src/state/setPayments';
-import * as setOrderMetaData from '@src/state/setOrderMetaData';
-import * as setShipping from '@src/state/setShipping';
-import {applicationState} from '@src/variables';
-import {applicationStateMock} from '@src/variables/mocks';
+import {setApplicationState} from 'src/state';
+import * as setCustomer from 'src/state/setCustomer';
+import * as setAddresses from 'src/state/setAddresses';
+import * as setLineItems from 'src/state/setLineItems';
+import * as setTaxes from 'src/state/setTaxes';
+import * as setDiscounts from 'src/state/setDiscounts';
+import * as setPayments from 'src/state/setPayments';
+import * as setOrderMetaData from 'src/state/setOrderMetaData';
+import * as setShipping from 'src/state/setShipping';
+import {applicationState} from 'src/variables';
+import {applicationStateMock} from 'src/variables/mocks';
 
 describe('setApplicationState', () => {
     let setCustomerSpy: jest.SpyInstance;

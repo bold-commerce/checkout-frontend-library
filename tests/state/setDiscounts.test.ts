@@ -1,7 +1,7 @@
-import {IDiscount} from '@src';
-import {setDiscounts} from '@src/state';
-import {applicationState} from '@src/variables';
-import {discountMock} from '@src/variables/mocks';
+import {IDiscount} from 'src';
+import {setDiscounts} from 'src/state';
+import {applicationState} from 'src/variables';
+import {discountMock} from 'src/variables/mocks';
 
 describe('setDiscounts', () => {
     test('Set Discounts to application state', () => {

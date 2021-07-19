@@ -1,7 +1,7 @@
-import {ILineItem} from '@src';
-import {setLineItems} from '@src/state';
-import {applicationState} from '@src/variables';
-import {lineItemMock} from '@src/variables/mocks';
+import {ILineItem} from 'src';
+import {setLineItems} from 'src/state';
+import {applicationState} from 'src/variables';
+import {lineItemMock} from 'src/variables/mocks';
 
 describe('setLineItems', () => {
     test('Set Line Items to application state', () => {

@@ -1,4 +1,4 @@
-import {IEnvironmentTypes, IEnvironmentUrls, IApiTypes, IApiReturnObject, IMethods} from '../types';
+import {IEnvironmentTypes, IEnvironmentUrls, IApiTypes, IApiReturnObject, IMethods} from 'src';
 
 export const environmentTypes: IEnvironmentTypes = {
     production: 'production',
