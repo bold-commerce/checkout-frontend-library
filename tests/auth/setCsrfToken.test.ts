@@ -1,5 +1,5 @@
-import {setCsrfToken} from '@src';
-import {auth} from '@src/variables';
+import {setCsrfToken} from 'src';
+import {auth} from 'src/variables';
 
 describe('setCsrfToken', () => {
 

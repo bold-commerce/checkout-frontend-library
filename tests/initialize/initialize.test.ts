@@ -1,6 +1,6 @@
-import {initialize, IApiReturnObject, IFetchError} from '@src';
+import {initialize, IApiReturnObject, IFetchError} from 'src';
 import fetchMock from 'fetch-mock-jest';
-import {environmentUrls, environmentTypes} from '@src/variables';
+import {environmentUrls, environmentTypes} from 'src/variables';
 
 describe('testing initialize function', () => {
     const url = `${environmentUrls.staging}/checkout/storefront/shopIdentifier/publicOrderId/session/start`;

@@ -1,6 +1,6 @@
-import {setBillingAddress} from '@src/state';
-import {applicationState, billingAddress} from '@src/variables';
-import {billingAddressMock} from '@src/variables/mocks';
+import {setBillingAddress} from 'src/state';
+import {applicationState, billingAddress} from 'src/variables';
+import {billingAddressMock} from 'src/variables/mocks';
 
 describe('setBillingAddress', () => {
     test('Set billing to application state', () => {

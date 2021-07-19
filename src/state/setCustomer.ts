@@ -1,5 +1,5 @@
-import {ICustomer} from '@src';
-import {customer} from '@src/variables';
+import {ICustomer} from 'src';
+import {customer} from 'src/variables';
 
 export function setCustomer({
     platform_id,

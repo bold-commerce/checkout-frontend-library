@@ -1,5 +1,5 @@
-import {IPayment} from '@src';
-import {payments} from '@src/variables';
+import {IPayment} from 'src';
+import {payments} from 'src/variables';
 
 export function setPayments(newPayments: Array<IPayment>): void {
     payments.length = 0;

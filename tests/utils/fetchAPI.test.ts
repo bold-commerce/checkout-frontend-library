@@ -1,5 +1,5 @@
-import {fetchAPI, FetchError} from '@src';
-import {callFetch} from '@src/helpers/fetchAPI';
+import {fetchAPI, FetchError} from 'src';
+import {callFetch} from 'src/utils/fetchAPI';
 import fetchMock from 'fetch-mock-jest';
 
 const url = 'https://example.com/users';

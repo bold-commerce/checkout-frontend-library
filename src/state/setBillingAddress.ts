@@ -1,5 +1,5 @@
-import {IAddress} from '@src';
-import {billingAddress} from '@src/variables';
+import {IAddress} from 'src';
+import {billingAddress} from 'src/variables';
 
 export function setBillingAddress({
     id,

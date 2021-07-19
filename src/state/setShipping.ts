@@ -1,5 +1,5 @@
-import {IShipping} from '@src';
-import {shipping} from '@src/variables';
+import {IShipping} from 'src';
+import {shipping} from 'src/variables';
 
 export function setShipping({
     select_shipping_line,

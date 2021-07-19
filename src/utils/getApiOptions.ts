@@ -1,5 +1,5 @@
-import {IApiTypes, getCsrfToken} from '@src';
-import {apiTypes, methods} from '@src/variables';
+import {IApiTypes, getCsrfToken} from 'src';
+import {apiTypes, methods} from 'src/variables';
 
 /** getApiOptions
  *

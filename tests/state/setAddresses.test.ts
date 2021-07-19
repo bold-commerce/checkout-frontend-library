@@ -1,8 +1,8 @@
-import {setAddresses} from '@src/state';
-import * as setShippingAddress from '@src/state/setShippingAddress';
-import * as setBillingAddress from '@src/state/setBillingAddress';
-import {applicationState, billingAddress, shippingAddress} from '@src/variables';
-import {billingAddressMock, shippingAddressMock} from '@src/variables/mocks';
+import {setAddresses} from 'src/state';
+import * as setShippingAddress from 'src/state/setShippingAddress';
+import * as setBillingAddress from 'src/state/setBillingAddress';
+import {applicationState, billingAddress, shippingAddress} from 'src/variables';
+import {billingAddressMock, shippingAddressMock} from 'src/variables/mocks';
 
 describe('setAddresses', () => {
     let setShippingAddressSpy: jest.SpyInstance;

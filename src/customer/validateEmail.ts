@@ -1,4 +1,4 @@
-import {fetchAPI, getApiOptions, getApiUrlWithParams, IApiReturnObject, IApiTypes} from '@src';
+import {fetchAPI, getApiOptions, getApiUrlWithParams, IApiReturnObject, IApiTypes} from 'src';
 
 /** 
  * # validateEmail

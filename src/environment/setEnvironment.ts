@@ -1,4 +1,4 @@
-import {environment, environmentTypes, environmentUrls, environmentPath} from '../variables';
+import {environment, environmentTypes, environmentUrls, environmentPath} from 'src/variables';
 
 /**
  * ## setEnvironment

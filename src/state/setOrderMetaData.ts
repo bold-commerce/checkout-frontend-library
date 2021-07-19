@@ -1,5 +1,5 @@
-import {IOrderMetaData} from '@src';
-import {order_meta_data} from '@src/variables';
+import {IOrderMetaData} from 'src';
+import {order_meta_data} from 'src/variables';
 
 export function setOrderMetaData({
     cart_parameters,

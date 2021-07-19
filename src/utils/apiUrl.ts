@@ -1,5 +1,5 @@
-import {getEnvironment, getShopIdentifier, getPublicOrderId, IApiTypes, IApiUrlQueryParams} from '@src';
-import {apiTypes} from '@src/variables';
+import {getEnvironment, getShopIdentifier, getPublicOrderId, IApiTypes, IApiUrlQueryParams} from 'src';
+import {apiTypes} from 'src/variables';
 
 /** getApiUrl
  *

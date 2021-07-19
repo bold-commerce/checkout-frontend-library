@@ -1,11 +1,11 @@
-import {IFetchError} from '../types';
+import {IFetchError} from 'src';
 
 export class FetchError implements IFetchError {
-    name = 'FetchError'
-    message
-    status
-    statusText
-    body
+    name = 'FetchError';
+    message: string;
+    status: number;
+    statusText: string | undefined;
+    body: ReadableStream<Uint8Array> | null | undefined;
     constructor(status: number, msg: string, statusText?: string, body?: ReadableStream<Uint8Array> | null) { 
         this.message = msg;
         this.status = status;

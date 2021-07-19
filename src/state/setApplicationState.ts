@@ -1,4 +1,4 @@
-import {IApplicationState} from '@src';
+import {IApplicationState} from 'src';
 import {
     setAddresses,
     setCustomer,
@@ -8,8 +8,8 @@ import {
     setPayments,
     setShipping,
     setTaxes
-} from '@src/state';
-import {applicationState} from '@src/variables';
+} from 'src/state';
+import {applicationState} from 'src/variables';
 
 export function setApplicationState({
     customer,

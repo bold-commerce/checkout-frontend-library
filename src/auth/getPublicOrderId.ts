@@ -1,4 +1,4 @@
-import {auth} from '../variables';
+import {auth} from 'src/variables';
 
 /**
  * ## getPublicOrderId

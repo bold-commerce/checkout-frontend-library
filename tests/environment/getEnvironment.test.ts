@@ -1,5 +1,5 @@
-import {getEnvironment} from '@src';
-import {environment, environmentTypes, environmentPath, environmentUrls} from '@src/variables';
+import {getEnvironment} from 'src';
+import {environment, environmentTypes, environmentPath, environmentUrls} from 'src/variables';
 
 describe('getEnvironment', () => {
     test('get default - production', () => {

@@ -1,7 +1,7 @@
-import {sessionStart, IFetchError, IApiReturnObject} from '@src';
-import * as fetchAPI from '@src/helpers/fetchAPI';
-import * as getApiOptions from '@src/helpers/getApiOptions';
-import {baseReturnObject} from '@src/variables';
+import {sessionStart, IFetchError, IApiReturnObject} from 'src';
+import {baseReturnObject} from 'src/variables';
+import * as fetchAPI from 'src/utils/fetchAPI';
+import * as getApiOptions from 'src/utils/getApiOptions';
 
 describe('testing session start api', () => {
     const returnObject = {...baseReturnObject};
