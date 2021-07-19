@@ -1,9 +1,9 @@
-import {setShippingAddress} from 'src';
+import {getShippingLines} from 'src';
 import * as fetchAPI from 'src/utils/fetchAPI';
 import * as getApiOptions from 'src/utils/getApiOptions';
 import * as apiUrl from 'src/utils/apiUrl';
 import {apiTypeKeys, baseReturnObject, methods} from 'src/variables';
-import {applicationStateMock, shippingAddressMock} from 'src/variables/mocks';
+import {applicationStateMock, shippingLinesMock} from 'src/variables/mocks';
 import * as apiResponse from 'src/utils/apiResponse';
 
 describe('testing set shipping address api', () => {
@@ -26,7 +26,7 @@ describe('testing set shipping address api', () => {
         getApiUrlSpy = jest.spyOn(apiUrl, 'getApiUrl').mockReturnValue(apiUrlMock);
         fetchApiSpy = jest.spyOn(fetchAPI, 'fetchAPI').mockReturnValue(Promise.resolve(returnObject));
         checkApiResponseSpy = jest.spyOn(apiResponse, 'checkApiResponse').mockReturnValue(returnObject);
-        returnObject.response = { data: { address: shippingAddressMock, application_state: applicationStateMock }};
+        returnObject.response = { data: { shipping_lines: shippingLinesMock, application_state: applicationStateMock }};
         returnObject.success = true;
     });
 
@@ -34,37 +34,38 @@ describe('testing set shipping address api', () => {
         jest.restoreAllMocks();
     });
 
-    test('calling setShippingAddress', async () => {
-        const res = await setShippingAddress(shippingAddressMock);
+    test('calling getShippingLines', async () => {
+        const res = await getShippingLines();
 
         expect(getApiOptionsSpy).toHaveBeenCalledTimes(timesWhenCalled);
         expect(getApiUrlSpy).toHaveBeenCalledTimes(timesWhenCalled);
         expect(fetchApiSpy).toHaveBeenCalledTimes(timesWhenCalled);
         expect(checkApiResponseSpy).toHaveBeenCalledTimes(timesWhenCalled);
-        expect(getApiOptionsSpy).toHaveBeenCalledWith(apiTypeKeys.setShippingAddress, shippingAddressMock);
-        expect(getApiUrlSpy).toHaveBeenCalledWith(apiTypeKeys.setShippingAddress);
+        expect(getApiOptionsSpy).toHaveBeenCalledWith(apiTypeKeys.getShippingLines);
+        expect(getApiUrlSpy).toHaveBeenCalledWith(apiTypeKeys.getShippingLines);
         expect(fetchApiSpy).toHaveBeenCalledWith(apiUrlMock, optionsMock);
         expect(checkApiResponseSpy).toHaveBeenCalledWith(returnObject, keysToTest);
         expect(res).toStrictEqual(returnObject);
     });
 
-    test('calling setShippingAddress w/ success = false', async () => {
+    test('calling getShippingLines w/ success = false', async () => {
         const tempReturnObject = {...baseReturnObject};
 
         fetchApiSpy.mockReturnValueOnce(Promise.resolve(tempReturnObject));
-        checkApiResponseSpy.mockReturnValueOnce(tempReturnObject);
+        checkApiResponseSpy = jest.spyOn(apiResponse, 'checkApiResponse').mockReturnValue(tempReturnObject);
 
-        const res = await setShippingAddress(shippingAddressMock);
+        const res = await getShippingLines();
 
         expect(getApiOptionsSpy).toHaveBeenCalledTimes(timesWhenCalled);
         expect(getApiUrlSpy).toHaveBeenCalledTimes(timesWhenCalled);
         expect(fetchApiSpy).toHaveBeenCalledTimes(timesWhenCalled);
         expect(checkApiResponseSpy).toHaveBeenCalledTimes(timesWhenCalled);
-        expect(getApiOptionsSpy).toHaveBeenCalledWith(apiTypeKeys.setShippingAddress, shippingAddressMock);
-        expect(getApiUrlSpy).toHaveBeenCalledWith(apiTypeKeys.setShippingAddress);
+        expect(getApiOptionsSpy).toHaveBeenCalledWith(apiTypeKeys.getShippingLines);
+        expect(getApiUrlSpy).toHaveBeenCalledWith(apiTypeKeys.getShippingLines);
         expect(fetchApiSpy).toHaveBeenCalledWith(apiUrlMock, optionsMock);
         expect(checkApiResponseSpy).toHaveBeenCalledWith(tempReturnObject, keysToTest);
         expect(res).toStrictEqual(tempReturnObject);
     });
+
 });
 

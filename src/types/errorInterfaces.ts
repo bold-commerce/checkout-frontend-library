@@ -2,6 +2,7 @@ export interface IFetchError extends Error {
     status: number;
     statusText: string | undefined;
     body: ReadableStream<Uint8Array> | null | undefined;
+    metaData: Record<string, unknown> | null | undefined;
 }
 
 interface IFetchErrorConstructor extends ErrorConstructor {
@@ -9,7 +10,7 @@ interface IFetchErrorConstructor extends ErrorConstructor {
     (status: number, msg: string, statusText?: string, body?: ReadableStream<Uint8Array> | null): IFetchError;
 }
 
-declare let IFetchError: IFetchErrorConstructor; 
+declare let IFetchError: IFetchErrorConstructor;
 
 export interface IErrorFormat {
     status: number;
@@ -21,4 +22,15 @@ export interface IApiErrors {
     noCsrf: IErrorFormat;
     noAppState: IErrorFormat;
     noResData: IErrorFormat;
+    emptyAppState: IErrorFormat;
+    emptyResData: IErrorFormat;
+    noFieldInResponse: IErrorFormat;
+    emptyFieldInResponse: IErrorFormat;
+    errorsInResponse: IErrorFormat;
+    emptyKeysToCheck: IErrorFormat;
+}
+
+export interface IGeneralApiResponseParsingErrorType {
+    noField: string;
+    emptyField: string;
 }
