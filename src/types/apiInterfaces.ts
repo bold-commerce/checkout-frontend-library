@@ -26,13 +26,20 @@ export interface ISessionStartApi {
 
 export interface IApiTypes {
     sessionStart: IApiTypesDetail;
+    validateEmail: IApiTypesDetail;
 }
 
-export interface IApiTypesDetail{
+export interface IApiTypesDetail {
     path: string;
     method: string;
     useCsrf: boolean;
 }
+
+export interface IValidateEmail {
+    email_address: string
+}
+
+export type IApiUrlQueryParams = IValidateEmail;
 
 export interface IOrderInitialData {
     shopName?:           string;

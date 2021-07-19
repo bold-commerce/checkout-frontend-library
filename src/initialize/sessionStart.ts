@@ -8,7 +8,6 @@ import {FetchError} from '@src/helpers';
 export async function sessionStart(): Promise<IApiReturnObject> {
     const type = 'sessionStart';
     const options = getApiOptions(type, {'token': getJwtToken()});
-
     const url = getApiUrl(type);
     const fetchRes = await fetchAPI(url, options);
 

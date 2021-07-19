@@ -1,4 +1,4 @@
-import {getApiUrl, IApiTypes} from '@src';
+import {getApiUrl, getApiUrlWithParams, IApiTypes} from '@src';
 import * as getShopIdentifier from '@src/auth/getShopIdentifier';
 import * as getPublicOrderId from '@src/auth/getPublicOrderId';
 import * as getEnvironment from '@src/environment/getEnvironment';
@@ -6,7 +6,7 @@ import * as getEnvironment from '@src/environment/getEnvironment';
 describe('getApiUrl', () => {
     const shopId = 'shopId';
     const publicOrderId = 'publicOrderId';
-    const env = { type: 'mockedEnvType', url: 'mockerEnvUrl', path: 'mockedEnvPath'};
+    const env = { type: 'mockedEnvType', url: 'https://mockerEnvUrl.com', path: 'mockedEnvPath'};
 
     beforeEach(() => {
         const shopIdSpy = jest.spyOn(getShopIdentifier, 'getShopIdentifier');
@@ -41,6 +41,28 @@ describe('getApiUrl', () => {
                 const result = getApiUrl(data.type as keyof IApiTypes);
 
                 expect(result).toBe(data.expectedUrl);
+            });
+        });
+    });
+
+    describe('Multiple getApiUrlWithParams succeed', () => {
+        const apiUrlWithParamsDataProvider = [
+            {
+                testName: 'Test validate Email endpoint succeed',
+                type: 'validateEmail',
+                params: {email_address: 'testEmail@hotmail.com'},
+                expectedUrl: `${env.url}/${env.path}/storefront/${shopId}/${publicOrderId}/validate_email_address`,
+            },
+        ];
+        jest.restoreAllMocks();
+        apiUrlWithParamsDataProvider.forEach(data => {
+            test(data.testName, () => {
+                const result = getApiUrlWithParams(data.type as keyof IApiTypes, data.params);
+    
+                const expectedUrl = new URL(data.expectedUrl);
+                expectedUrl.search = new URLSearchParams(data.params).toString();
+
+                expect(result).toBe(expectedUrl.toString());
             });
         });
     });
