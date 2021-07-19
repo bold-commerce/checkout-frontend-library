@@ -3,15 +3,15 @@ import {callFetch} from 'src/utils/fetchAPI';
 import fetchMock from 'fetch-mock-jest';
 
 const url = 'https://example.com/users';
-const options = { 
+const options = {
     method: 'GET'
 };
 
 describe('test fetchAPI functionality', () => {
-    
-    beforeEach(() => { 
+
+    beforeEach(() => {
         fetchMock.mockReset();
-        fetchMock 
+        fetchMock
             .get(url, {})
             .post(url, {});
     });
@@ -22,7 +22,7 @@ describe('test fetchAPI functionality', () => {
 
             const result = await callFetch(url);
 
-            expect(result).toEqual({}); 
+            expect(result).toEqual({});
             expect(fetchMock).toHaveBeenCalledTimes(1);
         });
 
@@ -31,9 +31,9 @@ describe('test fetchAPI functionality', () => {
                 .getOnce(url, {}, { response: undefined, overwriteRoutes: true });
 
             const result = await callFetch(url, options);
-            
+
             expect(result).toBeInstanceOf(FetchError);
-            expect((result as FetchError).status).toBe(999); 
+            expect((result as FetchError).status).toBe(999);
             expect((result as FetchError).message).toContain('TypeError');
         });
 
@@ -45,7 +45,7 @@ describe('test fetchAPI functionality', () => {
             const result = await callFetch(url, options);
 
             expect(result).toBeInstanceOf(FetchError);
-            expect((result as FetchError).status).toBe(999); 
+            expect((result as FetchError).status).toBe(999);
             expect((result as FetchError).message).toContain('Test exception');
             expect(fetchMock).toHaveBeenCalledWith(url, options);
 
@@ -87,7 +87,7 @@ describe('test fetchAPI functionality', () => {
             expect(result.response).toBe(null);
         });
 
-        test('failed fetchAPI call: return contains 404 error', async () => { 
+        test('failed fetchAPI call: return contains 404 error', async () => {
             fetchMock
                 .getOnce(url, 404, { overwriteRoutes: true });
 

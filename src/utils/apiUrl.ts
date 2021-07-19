@@ -12,7 +12,7 @@ export function getApiUrl(type: keyof IApiTypes): string {
     const shopId = getShopIdentifier();
     const publicOrderId = getPublicOrderId();
     const { path } = apiTypes[type] ?? {path: ''};
-    
+
     return `${env.url}/${env.path}/storefront/${shopId}/${publicOrderId}${path}`;
 }
 

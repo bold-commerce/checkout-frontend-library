@@ -42,25 +42,33 @@ export interface IApiTypes {
     sessionStart: IApiTypesDetail;
     validateEmail: IApiTypesDetail;
     setShippingAddress: IApiTypesDetail;
+    validateAddress: IApiTypesDetail;
 }
 
 export interface IApiTypeKeys {
     sessionStart: keyof IApiTypes;
     validateEmail: keyof IApiTypes;
+    validateAddress: keyof IApiTypes;
     setShippingAddress: keyof IApiTypes;
 }
 
-export interface IApiTypesDetail {
-    path: string;
-    method: string;
-    useCsrf: boolean;
+export interface IValidateAddress {
+    postal_code: string;
+    province: string;
+    country_code: string;
 }
 
 export interface IValidateEmail {
     email_address: string
 }
 
-export type IApiUrlQueryParams = IValidateEmail;
+export type IApiUrlQueryParams = IValidateEmail | IValidateAddress;
+
+export interface IApiTypesDetail {
+    path: string;
+    method: string;
+    useCsrf: boolean;
+}
 
 export interface IOrderInitialData {
     shopName?:           string;
