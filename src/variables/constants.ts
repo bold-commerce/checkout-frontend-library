@@ -26,10 +26,10 @@ export const apiTypes: IApiTypes = {
         method: methods.POST,
         useCsrf: false
     },
-    validateAddress: {
-        path: '/validate_address',
-        method: methods.GET,
-        useCsrf: true
+    addGuestCustomer: {
+        path: '/customer/guest',
+        method: methods.POST,
+        useCsrf: true,
     },
     validateEmail: {
         path: '/validate_email_address',
@@ -46,10 +46,16 @@ export const apiTypes: IApiTypes = {
         method: methods.POST,
         useCsrf: true
     },
+    validateAddress: {
+        path: '/validate_address',
+        method: methods.GET,
+        useCsrf: true
+    },
 };
 
 export const apiTypeKeys: IApiTypeKeys = {
     sessionStart: 'sessionStart',
+    addGuestCustomer: 'addGuestCustomer',
     validateEmail: 'validateEmail',
     setShippingAddress: 'setShippingAddress',
     setBillingAddress: 'setBillingAddress',
