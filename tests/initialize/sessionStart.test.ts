@@ -1,5 +1,5 @@
 import {sessionStart, IFetchError, IApiReturnObject} from 'src';
-import {baseReturnObject} from 'src/variables';
+import {baseReturnObject, apiErrors} from 'src/variables';
 import * as fetchAPI from 'src/utils/fetchAPI';
 import * as getApiOptions from 'src/utils/getApiOptions';
 
@@ -8,6 +8,7 @@ describe('testing session start api', () => {
     const fetchMockRes = { data: { csrf_token: 'testCSRF' }};
     returnObject.response = fetchMockRes;
     returnObject.success = true;
+    const { message } = apiErrors.noCsrf;
     jest.spyOn(getApiOptions, 'getApiOptions').mockReturnValue({});
     const fetchApiSpy = jest.spyOn(fetchAPI, 'fetchAPI').mockReturnValue(Promise.resolve(returnObject));
 
@@ -39,7 +40,7 @@ describe('testing session start api', () => {
 
         expect(res).toEqual(tempReturnObject);
         expect(res.success).toBe(false);
-        expect(errorContent.message).toBe('CSRF Token not found in response');
+        expect(errorContent.message).toBe(message);
     });
 
     test('fetch successful but response with undefined csrf', async () => {
@@ -55,13 +56,14 @@ describe('testing session start api', () => {
 
         expect(res).toEqual(tempReturnObject);
         expect(res.success).toBe(false);
-        expect(errorContent.message).toBe('CSRF Token not found in response');
+        expect(errorContent.message).toBe(message);
     });
 
     test('fetch successful but no response', async () => {
         const tempReturnObject = {...returnObject};
         tempReturnObject.success = true;
         tempReturnObject.response = null;
+        const { message } = apiErrors['noCsrf'];
 
         fetchApiSpy.mockReturnValueOnce(Promise.resolve(tempReturnObject));
 
@@ -71,7 +73,7 @@ describe('testing session start api', () => {
 
         expect(res).toEqual(tempReturnObject);
         expect(res.success).toBe(false);
-        expect(errorContent.message).toBe('Data not found in response');
+        expect(errorContent.message).toBe(message);
     });
 });
 

@@ -3,7 +3,7 @@ import * as fetchAPI from 'src/utils/fetchAPI';
 import * as getApiOptions from 'src/utils/getApiOptions';
 import * as apiUrl from 'src/utils/apiUrl';
 import * as setApplicationState from 'src/state/setApplicationState';
-import {apiTypeKeys, baseReturnObject, methods} from 'src/variables';
+import {apiTypeKeys, baseReturnObject, methods, apiErrors} from 'src/variables';
 import {applicationStateMock, shippingAddressMock} from 'src/variables/mocks';
 
 describe('testing set shipping address api', () => {
@@ -69,6 +69,7 @@ describe('testing set shipping address api', () => {
         const tempReturnObject = {...baseReturnObject};
         tempReturnObject.success = true;
         tempReturnObject.response = { data: undefined };
+        const { message } = apiErrors.noAppState;
 
         fetchApiSpy.mockReturnValueOnce(Promise.resolve(tempReturnObject));
 
@@ -83,13 +84,14 @@ describe('testing set shipping address api', () => {
         expect(getApiUrlSpy).toHaveBeenCalledWith(apiTypeKeys.setShippingAddress);
         expect(fetchApiSpy).toHaveBeenCalledWith(apiUrlMock, optionsMock);
         expect(res).toStrictEqual(tempReturnObject);
-        expect(errorContent.message).toBe('Application state not found in response');
+        expect(errorContent.message).toBe(message);
     });
 
     test('fetch successful but response with undefined application state', async () => {
         const tempReturnObject = {...baseReturnObject};
         tempReturnObject.success = true;
         tempReturnObject.response = { data: { address: undefined, application_state: undefined }};
+        const { message } = apiErrors.noAppState;
 
         fetchApiSpy.mockReturnValueOnce(Promise.resolve(tempReturnObject));
 
@@ -104,13 +106,14 @@ describe('testing set shipping address api', () => {
         expect(getApiUrlSpy).toHaveBeenCalledWith(apiTypeKeys.setShippingAddress);
         expect(fetchApiSpy).toHaveBeenCalledWith(apiUrlMock, optionsMock);
         expect(res).toStrictEqual(tempReturnObject);
-        expect(errorContent.message).toBe('Application state not found in response');
+        expect(errorContent.message).toBe(message);
     });
 
     test('fetch successful but no response', async () => {
         const tempReturnObject = {...baseReturnObject};
         tempReturnObject.success = true;
         tempReturnObject.response = null;
+        const { message } = apiErrors.noResData;
 
         fetchApiSpy.mockReturnValueOnce(Promise.resolve(tempReturnObject));
 
@@ -127,7 +130,7 @@ describe('testing set shipping address api', () => {
         expect(fetchApiSpy).toHaveBeenCalledWith(apiUrlMock, optionsMock);
         expect(res).toStrictEqual(tempReturnObject);
         expect(res.success).toBe(false);
-        expect(errorContent.message).toBe('Data not found in response');
+        expect(errorContent.message).toBe(message);
     });
 });
 

@@ -10,3 +10,15 @@ interface IFetchErrorConstructor extends ErrorConstructor {
 }
 
 declare let IFetchError: IFetchErrorConstructor; 
+
+export interface IErrorFormat {
+    status: number;
+    message: string;
+}
+
+export interface IApiErrors {
+    general: IErrorFormat;
+    noCsrf: IErrorFormat;
+    noAppState: IErrorFormat;
+    noResData: IErrorFormat;
+}
