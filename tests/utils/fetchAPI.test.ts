@@ -1,4 +1,5 @@
 import {fetchAPI, FetchError} from 'src';
+import {apiErrors} from 'src/variables';
 import {callFetch} from 'src/utils/fetchAPI';
 import fetchMock from 'fetch-mock-jest';
 
@@ -29,35 +30,37 @@ describe('test fetchAPI functionality', () => {
         test('callFetch fails: response is undefined', async () => {
             fetchMock
                 .getOnce(url, {}, { response: undefined, overwriteRoutes: true });
+            const { status } = apiErrors.general;
 
             const result = await callFetch(url, options);
 
             expect(result).toBeInstanceOf(FetchError);
-            expect((result as FetchError).status).toBe(999);
+            expect((result as FetchError).status).toBe(status); 
             expect((result as FetchError).message).toContain('TypeError');
         });
 
         test('callFetch fails: handles exception with message', async () => {
             fetchMock
                 .getOnce(url, { throws: 'Test exception was thrown'}, { overwriteRoutes: true });
-
+            const { status } = apiErrors.general;
 
             const result = await callFetch(url, options);
 
             expect(result).toBeInstanceOf(FetchError);
-            expect((result as FetchError).status).toBe(999);
+            expect((result as FetchError).status).toBe(status); 
             expect((result as FetchError).message).toContain('Test exception');
             expect(fetchMock).toHaveBeenCalledWith(url, options);
 
         });
 
         test('callFetch fails: Service is unavailable & response.ok equals false', async () => {
+            const testStatus = 503;
             fetchMock
-                .getOnce(url, 503, { overwriteRoutes: true });
+                .getOnce(url, testStatus, { overwriteRoutes: true });
 
             const result = await callFetch(url, options);
 
-            expect((result as FetchError).status).toBe(503);
+            expect((result as FetchError).status).toBe(testStatus);
             expect(result).toBeInstanceOf(FetchError);
             expect(fetchMock).toHaveBeenCalledTimes(1);
             expect((result as FetchError).message).toContain('status is invalid');

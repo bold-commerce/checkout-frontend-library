@@ -8,7 +8,7 @@ import {
     FetchError,
     IApiResponse
 } from 'src';
-import {apiTypeKeys} from 'src/variables';
+import {apiErrors, apiTypeKeys} from 'src/variables';
 import {setApplicationState} from 'src/state';
 
 /** setShippingAddress
@@ -30,13 +30,13 @@ export async function setShippingAddress(requestBody: ISetShippingAddressRequest
             if (applicationState) {
                 setApplicationState(applicationState);
             } else {
-                const msg = 'Application state not found in response';
-                fetchRes.error = new FetchError(999, msg);
+                const { status, message } = apiErrors.noAppState;
+                fetchRes.error = new FetchError(status, message);
             }
         } else {
             fetchRes.success = false;
-            const msg = 'Data not found in response';
-            fetchRes.error = new FetchError(999, msg);
+            const { status, message } = apiErrors.noResData;
+            fetchRes.error = new FetchError(status, message);
         }
     }
     return fetchRes;

@@ -1,5 +1,5 @@
 import {IApiResponse, IApiReturnObject, IFetchCallback, FetchError} from 'src';
-import {baseReturnObject} from 'src/variables';
+import {baseReturnObject, apiErrors} from 'src/variables';
 
 /**
  * # FetchAPI
@@ -18,7 +18,8 @@ export async function callFetch(url: RequestInfo, options: RequestInit = {}): Pr
         }
         return await response.json(); 
     } catch(e) {
-        return new FetchError(999, `Miscellaneous error thrown - ${e}`); 
+        const { status, message } = apiErrors.general;
+        return new FetchError(status, `${message} - ${e}`); 
     }
 }
 

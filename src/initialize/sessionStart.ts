@@ -9,7 +9,7 @@ import {
     IApiResponse,
     ISessionStartApiResponse
 } from 'src';
-import {apiTypeKeys} from 'src/variables';
+import {apiTypeKeys, apiErrors} from 'src/variables';
 
 /** sessionStart
  *
@@ -24,6 +24,7 @@ export async function sessionStart(): Promise<IApiReturnObject> {
     const response = fetchRes.response as IApiResponse;
 
     if(success) {
+        const { status, message } = apiErrors.noCsrf;
         if (response && 'data' in response) {
             const data = response.data as ISessionStartApiResponse ?? {};
             const csrf_token = data.csrf_token;
@@ -31,13 +32,11 @@ export async function sessionStart(): Promise<IApiReturnObject> {
                 setCsrfToken(csrf_token);
             } else {
                 fetchRes.success = false;
-                const msg = 'CSRF Token not found in response';
-                fetchRes.error = new FetchError(999, msg);
+                fetchRes.error = new FetchError(status, message);
             }
         } else {
             fetchRes.success = false;
-            const msg = 'Data not found in response';
-            fetchRes.error = new FetchError(999, msg);
+            fetchRes.error = new FetchError(status, message);
         }
     }
     return fetchRes;

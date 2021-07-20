@@ -1,4 +1,4 @@
-import {IEnvironmentTypes, IEnvironmentUrls, IApiTypes, IApiReturnObject, IMethods, IApiTypeKeys} from 'src';
+import {IEnvironmentTypes, IEnvironmentUrls, IApiTypes, IApiReturnObject, IMethods, IApiTypeKeys, IApiErrors} from 'src';
 
 export const environmentTypes: IEnvironmentTypes = {
     production: 'production',
@@ -60,4 +60,11 @@ export const baseReturnObject: IApiReturnObject = {
     success: false,
     error: null,
     response: null
+};
+
+export const apiErrors: IApiErrors = {
+    general: {status: 1000, message: 'General error thrown'},
+    noCsrf: {status: 1001, message: 'CSRF Token not found'},
+    noAppState: {status: 1002, message: 'Application state not found in response'},
+    noResData: {status: 1003, message: 'Data not found in response'},
 };
