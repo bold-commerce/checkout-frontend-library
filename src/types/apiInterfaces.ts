@@ -1,7 +1,12 @@
 import {IFetchError} from 'src';
 
 export interface IApiSuccessResponse {
-    data: undefined | ISessionStartApiResponse | ISetShippingAddressResponse | ISetBillingAddressResponse;
+    data:
+        ISessionStartApiResponse |
+        IAddGuestCustomerResponse |
+        ISetShippingAddressResponse |
+        ISetBillingAddressResponse |
+        undefined;
 }
 
 export interface IMethods {
@@ -25,6 +30,11 @@ export interface ISessionStartApiResponse {
     csrf_token: string | undefined;
 }
 
+export interface IAddGuestCustomerResponse {
+    customer: ICustomer | undefined;
+    application_state: IApplicationState | undefined;
+}
+
 export interface ISetShippingAddressResponse {
     address: IAddress | undefined;
     application_state: IApplicationState | undefined;
@@ -45,6 +55,7 @@ export interface IApiErrorResponse {
 
 export interface IApiTypes {
     sessionStart: IApiTypesDetail;
+    addGuestCustomer: IApiTypesDetail;
     validateEmail: IApiTypesDetail;
     setShippingAddress: IApiTypesDetail;
     setBillingAddress: IApiTypesDetail;
@@ -53,6 +64,7 @@ export interface IApiTypes {
 
 export interface IApiTypeKeys {
     sessionStart: keyof IApiTypes;
+    addGuestCustomer: keyof IApiTypes;
     validateEmail: keyof IApiTypes;
     validateAddress: keyof IApiTypes;
     setShippingAddress: keyof IApiTypes;
@@ -236,9 +248,32 @@ export interface ISessionStartRequest {
     token: string;
 }
 
+export interface IAddGuestCustomerRequest {
+    first_name: string;
+    last_name: string;
+    email: string;
+}
+
+export interface IValidateEmailRequest {
+    email_address: string;
+}
+
+export interface IValidateAddressRequest {
+    postal_code: string;
+    province: string;
+    country_code: string;
+}
+
 export type IApiResponse = IApiErrorResponse | IApiSuccessResponse;
 
 export type ISetShippingAddressRequest = IAddress;
 export type ISetBillingAddressRequest = IAddress;
 
-export type IGetApiOptionsBody = Record<string, unknown> | ISessionStartRequest | ISetShippingAddressRequest;
+export type IGetApiOptionsBody =
+    ISessionStartRequest |
+    IAddGuestCustomerRequest |
+    IValidateEmailRequest |
+    ISetShippingAddressRequest |
+    ISetBillingAddressRequest |
+    IValidateAddressRequest |
+    Record<string, unknown>;

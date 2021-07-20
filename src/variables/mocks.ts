@@ -47,7 +47,7 @@ export const customerMock: ICustomer = {
     public_id: 'test_public_id',
     first_name: 'John',
     last_name: 'Doe',
-    email_address: 'john.doeexample.com',
+    email_address: 'john.doe@example.com',
     saved_addresses: [{
         id: 'Test_id',
         first_name: 'John',
