@@ -1,4 +1,4 @@
-import {applicationStateMock, shippingAddressMock, shippingLinesMock} from 'src/variables/mocks';
+import {applicationStateMock, shippingAddressMock, selectShippingLineArrayMock} from 'src/variables/mocks';
 import {checkApiResponse} from 'src/utils/apiResponse';
 import {FetchError} from 'src';
 import * as getErrorFromFieldName from 'src/utils/getErrorFromFieldName';
@@ -198,7 +198,7 @@ function initializeFetchResponseProvider() {
             error: null,
             response: {
                 data: {
-                    shipping_lines: shippingLinesMock,
+                    shipping_lines: selectShippingLineArrayMock,
                     application_state: undefined
                 }
             },
@@ -228,7 +228,7 @@ function initializeFetchResponseProvider() {
                 error: null,
                 response: {
                     data: {
-                        shipping_lines: shippingLinesMock,
+                        shipping_lines: selectShippingLineArrayMock,
                         application_state: applicationStateMock
                     }
                 }

@@ -6,7 +6,7 @@ import {
     IDiscount,
     IFee,
     ILineItem, IOrderMetaData, IPayment,
-    IProductData, ISelectShippingLine, IShipping, IShippingLine,
+    IProductData, IShipping, IShippingLine,
     ITax
 } from 'src';
 
@@ -124,7 +124,7 @@ export const orderMetaDataMock: IOrderMetaData ={
     tags: ['test_tag_1', 'test_tag_2']
 };
 
-export const selectShippingLineMock: ISelectShippingLine = {
+export const selectShippingLineMock: IShippingLine = {
     id: 'test_select_shipping_line_id',
     description: 'Test Description',
     amount: 100
@@ -165,7 +165,7 @@ export const applicationStateMock: IApplicationState = {
     order_total: 10000
 };
 
-export const shippingLinesMock: Array<IShippingLine> = [
+export const selectShippingLineArrayMock: Array<IShippingLine> = [ 
     {
         id: '1',
         description: 'First shipping line Option',

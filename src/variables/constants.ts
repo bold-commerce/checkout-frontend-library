@@ -76,7 +76,13 @@ export const apiTypes: IApiTypes = {
     validateAddress: {
         path: '/validate_address',
         method: methods.GET,
-        useCsrf: true
+        useCsrf: true,
+    },
+    changeShippingLines: {
+        path: '/shipping_lines',
+        method: methods.POST,
+        useCsrf: true,
+        keysToTest: [keysToTestFromResponse.data, keysToTestFromResponse.applicationState]
     },
 };
 
@@ -88,6 +94,7 @@ export const apiTypeKeys: IApiTypeKeys = {
     setBillingAddress: 'setBillingAddress',
     validateAddress: 'validateAddress',
     getShippingLines: 'getShippingLines',
+    changeShippingLines: 'changeShippingLines',
 };
 
 export const baseReturnObject: IApiReturnObject = {
