@@ -6,8 +6,11 @@ export interface IApiSuccessResponse {
         IAddGuestCustomerResponse |
         ISetShippingAddressResponse |
         ISetBillingAddressResponse |
+        IShippingLinesResponse |
         undefined;
 }
+
+export type IApiSuccessResponseDataType = ISessionStartApiResponse | ISetShippingAddressResponse | IShippingLinesResponse;
 
 export interface IMethods {
     GET: string;
@@ -45,6 +48,11 @@ export interface ISetBillingAddressResponse {
     application_state: IApplicationState | undefined;
 }
 
+export interface IShippingLinesResponse {
+    shipping_lines: Array<IShippingLine> | undefined;
+    application_state: IApplicationState | undefined;
+}
+
 export interface IApiErrorResponse {
     message: string;
     type: string; // Todo - Check with PAPI the list of possible types to declare const and types
@@ -57,6 +65,7 @@ export interface IApiTypes {
     sessionStart: IApiTypesDetail;
     addGuestCustomer: IApiTypesDetail;
     validateEmail: IApiTypesDetail;
+    getShippingLines: IApiTypesDetail;
     setShippingAddress: IApiTypesDetail;
     setBillingAddress: IApiTypesDetail;
     validateAddress: IApiTypesDetail;
@@ -68,6 +77,7 @@ export interface IApiTypeKeys {
     validateEmail: keyof IApiTypes;
     validateAddress: keyof IApiTypes;
     setShippingAddress: keyof IApiTypes;
+    getShippingLines: keyof IApiTypes;
     setBillingAddress: keyof IApiTypes;
 }
 
@@ -87,6 +97,7 @@ export interface IApiTypesDetail {
     path: string;
     method: string;
     useCsrf: boolean;
+    keysToTest?: Array<string>;
 }
 
 export interface IOrderInitialData {
@@ -277,3 +288,9 @@ export type IGetApiOptionsBody =
     ISetBillingAddressRequest |
     IValidateAddressRequest |
     Record<string, unknown>;
+
+export interface IShippingLine {
+    id: string;
+    description: string;
+    amount: number;
+}
