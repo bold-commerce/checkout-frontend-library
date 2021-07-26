@@ -6,11 +6,16 @@ export interface IApiSuccessResponse {
         IAddGuestCustomerResponse |
         ISetShippingAddressResponse |
         ISetBillingAddressResponse |
-        IShippingLinesResponse |
+        IGetShippingLinesResponse |
+        IChangeShippingLineResponse |
         undefined;
 }
 
-export type IApiSuccessResponseDataType = ISessionStartApiResponse | ISetShippingAddressResponse | IShippingLinesResponse;
+export type IApiSuccessResponseDataType = 
+    ISessionStartApiResponse | 
+    ISetShippingAddressResponse | 
+    IGetShippingLinesResponse | 
+    IChangeShippingLineResponse;
 
 export interface IMethods {
     GET: string;
@@ -48,8 +53,13 @@ export interface ISetBillingAddressResponse {
     application_state: IApplicationState | undefined;
 }
 
-export interface IShippingLinesResponse {
+export interface IGetShippingLinesResponse {
     shipping_lines: Array<IShippingLine> | undefined;
+    application_state: IApplicationState | undefined;
+}
+
+export interface IChangeShippingLineResponse {
+    selected_shipping: IShippingLine | undefined;
     application_state: IApplicationState | undefined;
 }
 
@@ -69,6 +79,7 @@ export interface IApiTypes {
     setShippingAddress: IApiTypesDetail;
     setBillingAddress: IApiTypesDetail;
     validateAddress: IApiTypesDetail;
+    changeShippingLines: IApiTypesDetail;
 }
 
 export interface IApiTypeKeys {
@@ -79,6 +90,7 @@ export interface IApiTypeKeys {
     setShippingAddress: keyof IApiTypes;
     getShippingLines: keyof IApiTypes;
     setBillingAddress: keyof IApiTypes;
+    changeShippingLines: keyof IApiTypes;
 }
 
 export interface IValidateAddress {
@@ -155,7 +167,7 @@ export interface IPayment {
 }
 
 export interface IShipping {
-    select_shipping_line?: ISelectShippingLine;
+    select_shipping_line?: IShippingLine;
     available_shipping_lines?: Array<IAvailableShippingLine>;
     taxes?: Array<ITax>;
     discounts?: Array<IDiscount>;
@@ -163,12 +175,7 @@ export interface IShipping {
 
 export interface IAvailableShippingLine {
     id?: number;
-}
-
-export interface ISelectShippingLine {
-    id?: string;
-    description?: string;
-    amount?: number;
+    line?: IShippingLine;
 }
 
 export interface ILineItem {
@@ -259,6 +266,10 @@ export interface ISessionStartRequest {
     token: string;
 }
 
+export interface IChangeShippingLineRequest {
+    index: string;
+}
+
 export interface IAddGuestCustomerRequest {
     first_name: string;
     last_name: string;
@@ -287,6 +298,7 @@ export type IGetApiOptionsBody =
     ISetShippingAddressRequest |
     ISetBillingAddressRequest |
     IValidateAddressRequest |
+    IChangeShippingLineRequest |
     Record<string, unknown>;
 
 export interface IShippingLine {
