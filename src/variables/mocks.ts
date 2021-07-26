@@ -71,6 +71,19 @@ export const taxMock: ITax = {
     is_included: true
 };
 
+export const taxesArrayMock: Array<ITax> = [
+    {
+        value: 0,
+        name: 'test_tax_name_included',
+        is_included: true
+    },
+    {
+        value: 12.34,
+        name: 'test_tax_name',
+        is_included: false
+    },
+];
+
 export const discountMock: IDiscount = {
     code: 'test_code',
     text: 'test text',
@@ -165,7 +178,7 @@ export const applicationStateMock: IApplicationState = {
     order_total: 10000
 };
 
-export const selectShippingLineArrayMock: Array<IShippingLine> = [ 
+export const selectShippingLineArrayMock: Array<IShippingLine> = [
     {
         id: '1',
         description: 'First shipping line Option',

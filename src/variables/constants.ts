@@ -84,6 +84,12 @@ export const apiTypes: IApiTypes = {
         useCsrf: true,
         keysToTest: [keysToTestFromResponse.data, keysToTestFromResponse.applicationState]
     },
+    setTaxes: {
+        path: '/taxes',
+        method: methods.POST,
+        useCsrf: true,
+        keysToTest: [keysToTestFromResponse.data, keysToTestFromResponse.applicationState]
+    },
     addDiscount: {
         path: '/discounts',
         method: methods.POST,
@@ -101,6 +107,7 @@ export const apiTypeKeys: IApiTypeKeys = {
     validateAddress: 'validateAddress',
     getShippingLines: 'getShippingLines',
     changeShippingLines: 'changeShippingLines',
+    setTaxes: 'setTaxes',
     addDiscount: 'addDiscount',
 };
 

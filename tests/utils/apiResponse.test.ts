@@ -4,10 +4,10 @@ import {FetchError} from 'src';
 import * as getErrorFromFieldName from 'src/utils/getErrorFromFieldName';
 import * as findKeyInObject from 'src/utils/findKeyInObject';
 import * as setApplicationState from 'src/state/setApplicationState';
-import {apiErrors} from 'src/variables';
+import {apiErrors, keysToTestFromResponse} from 'src/variables';
 
 describe('checkApiResponse', () => {
-    const keyToTest: Array<string> = ['data', 'application_state'];
+    const keyToTest: Array<string> = [keysToTestFromResponse.data, keysToTestFromResponse.applicationState];
 
     let findKeyInObjectSpy: jest.SpyInstance;
     let setApplicationStateSpy: jest.SpyInstance;
@@ -113,7 +113,7 @@ describe('checkApiResponse', () => {
     });
 
     test('Call with undefined data and non existing application_state', () => {
-        const keyToTest: Array<string> = ['data', 'application_state'];
+        const keyToTest: Array<string> = [keysToTestFromResponse.data, keysToTestFromResponse.applicationState];
         const {errorsInResponse, emptyResData, noAppState} = apiErrors;
         getErrorFromFieldNameSpy = jest
             .spyOn(getErrorFromFieldName, 'getErrorFromFieldName')
