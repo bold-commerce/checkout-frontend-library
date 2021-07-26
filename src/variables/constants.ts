@@ -26,11 +26,11 @@ export const keysToTestFromResponse = {
 };
 
 export const environmentPath = 'checkout';
+
 export const generalApiResponseParsingErrorType: IGeneralApiResponseParsingErrorType = {
     noField: 'noField',
     emptyField: 'emptyField',
 };
-
 
 export const methods: IMethods = {
     GET: 'GET',
@@ -84,6 +84,12 @@ export const apiTypes: IApiTypes = {
         useCsrf: true,
         keysToTest: [keysToTestFromResponse.data, keysToTestFromResponse.applicationState]
     },
+    addDiscount: {
+        path: '/discounts',
+        method: methods.POST,
+        useCsrf: true,
+        keysToTest: [keysToTestFromResponse.data, keysToTestFromResponse.applicationState]
+    },
 };
 
 export const apiTypeKeys: IApiTypeKeys = {
@@ -95,6 +101,7 @@ export const apiTypeKeys: IApiTypeKeys = {
     validateAddress: 'validateAddress',
     getShippingLines: 'getShippingLines',
     changeShippingLines: 'changeShippingLines',
+    addDiscount: 'addDiscount',
 };
 
 export const baseReturnObject: IApiReturnObject = {

@@ -8,6 +8,7 @@ export interface IApiSuccessResponse {
         ISetBillingAddressResponse |
         IGetShippingLinesResponse |
         IChangeShippingLineResponse |
+        IAddDiscountResponse |
         undefined;
 }
 
@@ -15,7 +16,8 @@ export type IApiSuccessResponseDataType =
     ISessionStartApiResponse | 
     ISetShippingAddressResponse | 
     IGetShippingLinesResponse | 
-    IChangeShippingLineResponse;
+    IChangeShippingLineResponse |
+    IAddDiscountResponse;
 
 export interface IMethods {
     GET: string;
@@ -40,6 +42,11 @@ export interface ISessionStartApiResponse {
 
 export interface IAddGuestCustomerResponse {
     customer: ICustomer | undefined;
+    application_state: IApplicationState | undefined;
+}
+
+export interface IAddDiscountResponse {
+    discount: IDiscount | undefined;
     application_state: IApplicationState | undefined;
 }
 
@@ -80,6 +87,7 @@ export interface IApiTypes {
     setBillingAddress: IApiTypesDetail;
     validateAddress: IApiTypesDetail;
     changeShippingLines: IApiTypesDetail;
+    addDiscount: IApiTypesDetail;
 }
 
 export interface IApiTypeKeys {
@@ -91,6 +99,7 @@ export interface IApiTypeKeys {
     getShippingLines: keyof IApiTypes;
     setBillingAddress: keyof IApiTypes;
     changeShippingLines: keyof IApiTypes;
+    addDiscount: keyof IApiTypes;
 }
 
 export interface IValidateAddress {
@@ -270,6 +279,10 @@ export interface IChangeShippingLineRequest {
     index: string;
 }
 
+export interface IAddDiscountRequest {
+    code: string;
+}
+
 export interface IAddGuestCustomerRequest {
     first_name: string;
     last_name: string;
@@ -289,6 +302,7 @@ export interface IValidateAddressRequest {
 export type IApiResponse = IApiErrorResponse | IApiSuccessResponse;
 
 export type ISetShippingAddressRequest = IAddress;
+
 export type ISetBillingAddressRequest = IAddress;
 
 export type IGetApiOptionsBody =
@@ -299,6 +313,7 @@ export type IGetApiOptionsBody =
     ISetBillingAddressRequest |
     IValidateAddressRequest |
     IChangeShippingLineRequest |
+    IAddDiscountRequest |
     Record<string, unknown>;
 
 export interface IShippingLine {
