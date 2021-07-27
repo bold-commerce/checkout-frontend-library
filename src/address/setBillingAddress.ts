@@ -6,7 +6,7 @@ import {
     ISetBillingAddressRequest,
     checkApiResponse
 } from 'src';
-import {apiTypeKeys} from 'src/variables';
+import {apiTypeKeys, keysToTestFromResponse} from 'src/variables';
 
 /** setBillingAddress
  *
@@ -17,5 +17,5 @@ export async function setBillingAddress(requestBody: ISetBillingAddressRequest):
     const options = getApiOptions(setBillingAddress, requestBody);
     const url = getApiUrl(setBillingAddress);
     const fetchRes = await fetchAPI(url, options);
-    return checkApiResponse(fetchRes, ['data', 'application_state']);
+    return checkApiResponse(fetchRes, [keysToTestFromResponse.data, keysToTestFromResponse.applicationState]);
 }

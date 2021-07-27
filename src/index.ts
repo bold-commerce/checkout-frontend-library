@@ -6,4 +6,5 @@ export * from './types';
 export * from './customer';
 export * from './address';
 export * from './shipping';
+export * from './taxes';
 export * from './discounts';

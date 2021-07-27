@@ -9,14 +9,16 @@ export interface IApiSuccessResponse {
         IGetShippingLinesResponse |
         IChangeShippingLineResponse |
         IAddDiscountResponse |
+        ISetTaxesResponse |
         undefined;
 }
 
-export type IApiSuccessResponseDataType = 
-    ISessionStartApiResponse | 
-    ISetShippingAddressResponse | 
-    IGetShippingLinesResponse | 
+export type IApiSuccessResponseDataType =
+    ISessionStartApiResponse |
+    ISetShippingAddressResponse |
+    IGetShippingLinesResponse |
     IChangeShippingLineResponse |
+    ISetTaxesResponse |
     IAddDiscountResponse;
 
 export interface IMethods {
@@ -70,6 +72,11 @@ export interface IChangeShippingLineResponse {
     application_state: IApplicationState | undefined;
 }
 
+export interface ISetTaxesResponse {
+    taxes: Array<ITax> | undefined;
+    application_state: IApplicationState | undefined;
+}
+
 export interface IApiErrorResponse {
     message: string;
     type: string; // Todo - Check with PAPI the list of possible types to declare const and types
@@ -87,6 +94,7 @@ export interface IApiTypes {
     setBillingAddress: IApiTypesDetail;
     validateAddress: IApiTypesDetail;
     changeShippingLines: IApiTypesDetail;
+    setTaxes: IApiTypesDetail;
     addDiscount: IApiTypesDetail;
 }
 
@@ -99,6 +107,7 @@ export interface IApiTypeKeys {
     getShippingLines: keyof IApiTypes;
     setBillingAddress: keyof IApiTypes;
     changeShippingLines: keyof IApiTypes;
+    setTaxes: keyof IApiTypes;
     addDiscount: keyof IApiTypes;
 }
 

@@ -6,7 +6,7 @@ import {
     ISetShippingAddressRequest,
     checkApiResponse,
 } from 'src';
-import {apiTypeKeys} from 'src/variables';
+import {apiTypeKeys, keysToTestFromResponse} from 'src/variables';
 
 /** setShippingAddress
  *
@@ -17,5 +17,5 @@ export async function setShippingAddress(requestBody: ISetShippingAddressRequest
     const options = getApiOptions(setShippingAddress, requestBody);
     const url = getApiUrl(setShippingAddress);
     const fetchRes = await fetchAPI(url, options);
-    return checkApiResponse(fetchRes, ['data', 'application_state']);
+    return checkApiResponse(fetchRes, [keysToTestFromResponse.data, keysToTestFromResponse.applicationState]);
 }

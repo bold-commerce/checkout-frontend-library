@@ -2,7 +2,7 @@ import {getShippingLines} from 'src';
 import * as fetchAPI from 'src/utils/fetchAPI';
 import * as getApiOptions from 'src/utils/getApiOptions';
 import * as apiUrl from 'src/utils/apiUrl';
-import {apiTypeKeys, baseReturnObject, methods} from 'src/variables';
+import {apiTypeKeys, baseReturnObject, keysToTestFromResponse, methods} from 'src/variables';
 import {applicationStateMock, selectShippingLineArrayMock} from 'src/variables/mocks';
 import * as apiResponse from 'src/utils/apiResponse';
 
@@ -10,7 +10,7 @@ describe('testing set shipping address api', () => {
     const returnObject = {...baseReturnObject};
     const timesWhenCalled = 1;
     const apiUrlMock = 'https://api.com/checkout/storefront/123/123/addresses/shipping';
-    const keysToTest = ['data', 'application_state'];
+    const keysToTest = [keysToTestFromResponse.data, keysToTestFromResponse.applicationState];
     let optionsMock: RequestInit;
     let getApiOptionsSpy: jest.SpyInstance;
     let getApiUrlSpy: jest.SpyInstance;
