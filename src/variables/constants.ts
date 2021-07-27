@@ -105,6 +105,12 @@ export const apiTypes: IApiTypes = {
         useCsrf: true,
         keysToTest: [...appStateKeysToTest]
     },
+    deleteDiscount: {
+        path: '/discounts',
+        method: methods.DELETE,
+        useCsrf: true,
+        keysToTest: [...appStateKeysToTest]
+    },
 };
 
 export const apiTypeKeys: IApiTypeKeys = {
@@ -119,6 +125,7 @@ export const apiTypeKeys: IApiTypeKeys = {
     changeShippingLines: 'changeShippingLines',
     setTaxes: 'setTaxes',
     addDiscount: 'addDiscount',
+    deleteDiscount: 'deleteDiscount',
 };
 
 export const baseReturnObject: IApiReturnObject = {
