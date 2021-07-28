@@ -65,6 +65,15 @@ export const customerMock: ICustomer = {
     }]
 };
 
+export const emptyCustomerMock: ICustomer = {
+    platform_id: '',
+    public_id: '',
+    first_name: '',
+    last_name: '',
+    email_address: '',
+    saved_addresses: []
+};
+
 export const taxMock: ITax = {
     value: 0,
     name: 'test_tax_name',
