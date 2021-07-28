@@ -11,6 +11,7 @@ export interface IApiSuccessResponse {
         IChangeShippingLineResponse |
         IAddDiscountResponse |
         ISetTaxesResponse |
+        IDeleteDiscountResponse |
         undefined;
 }
 
@@ -20,7 +21,8 @@ export type IApiSuccessResponseDataType =
     IGetShippingLinesResponse |
     IChangeShippingLineResponse |
     ISetTaxesResponse |
-    IAddDiscountResponse;
+    IAddDiscountResponse |
+    IDeleteDiscountResponse;
 
 export interface IMethods {
     GET: string;
@@ -52,6 +54,10 @@ export type IDeleteCustomerResponse = IAddGuestCustomerResponse;
 
 export interface IAddDiscountResponse {
     discount: IDiscount | undefined;
+    application_state: IApplicationState | undefined;
+}
+
+export interface IDeleteDiscountResponse {
     application_state: IApplicationState | undefined;
 }
 
@@ -100,6 +106,7 @@ export interface IApiTypes {
     changeShippingLines: IApiTypesDetail;
     setTaxes: IApiTypesDetail;
     addDiscount: IApiTypesDetail;
+    deleteDiscount: IApiTypesDetail;
 }
 
 export interface IApiTypeKeys {
@@ -114,6 +121,7 @@ export interface IApiTypeKeys {
     changeShippingLines: keyof IApiTypes;
     setTaxes: keyof IApiTypes;
     addDiscount: keyof IApiTypes;
+    deleteDiscount: keyof IApiTypes;
 }
 
 export interface IValidateAddress {
@@ -293,7 +301,7 @@ export interface IChangeShippingLineRequest {
     index: string;
 }
 
-export interface IAddDiscountRequest {
+export interface IDiscountRequest {
     code: string;
 }
 
@@ -327,7 +335,7 @@ export type IGetApiOptionsBody =
     ISetBillingAddressRequest |
     IValidateAddressRequest |
     IChangeShippingLineRequest |
-    IAddDiscountRequest |
+    IDiscountRequest |
     Record<string, unknown>;
 
 export interface IShippingLine {
