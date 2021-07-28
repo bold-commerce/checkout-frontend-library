@@ -25,6 +25,8 @@ export const keysToTestFromResponse = {
     applicationState: 'application_state',
 };
 
+export const appStateKeysToTest = [keysToTestFromResponse.data, keysToTestFromResponse.applicationState];
+
 export const environmentPath = 'checkout';
 
 export const generalApiResponseParsingErrorType: IGeneralApiResponseParsingErrorType = {
@@ -49,6 +51,13 @@ export const apiTypes: IApiTypes = {
         path: '/customer/guest',
         method: methods.POST,
         useCsrf: true,
+        keysToTest: [...appStateKeysToTest]
+    },
+    deleteCustomer: {
+        path: '/customer',
+        method: methods.DELETE,
+        useCsrf: true,
+        keysToTest: [...appStateKeysToTest]
     },
     validateEmail: {
         path: '/validate_email_address',
@@ -59,19 +68,19 @@ export const apiTypes: IApiTypes = {
         path: '/addresses/shipping',
         method: methods.POST,
         useCsrf: true,
-        keysToTest: [keysToTestFromResponse.data, keysToTestFromResponse.applicationState]
+        keysToTest: [...appStateKeysToTest]
     },
     getShippingLines: {
         path: '/shipping_lines',
         method: methods.GET,
         useCsrf: true,
-        keysToTest: [keysToTestFromResponse.data, keysToTestFromResponse.applicationState]
+        keysToTest: [...appStateKeysToTest]
     },
     setBillingAddress: {
         path: '/addresses/billing',
         method: methods.POST,
         useCsrf: true,
-        keysToTest: [keysToTestFromResponse.data, keysToTestFromResponse.applicationState]
+        keysToTest: [...appStateKeysToTest]
     },
     validateAddress: {
         path: '/validate_address',
@@ -82,25 +91,26 @@ export const apiTypes: IApiTypes = {
         path: '/shipping_lines',
         method: methods.POST,
         useCsrf: true,
-        keysToTest: [keysToTestFromResponse.data, keysToTestFromResponse.applicationState]
+        keysToTest: [...appStateKeysToTest]
     },
     setTaxes: {
         path: '/taxes',
         method: methods.POST,
         useCsrf: true,
-        keysToTest: [keysToTestFromResponse.data, keysToTestFromResponse.applicationState]
+        keysToTest: [...appStateKeysToTest]
     },
     addDiscount: {
         path: '/discounts',
         method: methods.POST,
         useCsrf: true,
-        keysToTest: [keysToTestFromResponse.data, keysToTestFromResponse.applicationState]
+        keysToTest: [...appStateKeysToTest]
     },
 };
 
 export const apiTypeKeys: IApiTypeKeys = {
     sessionStart: 'sessionStart',
     addGuestCustomer: 'addGuestCustomer',
+    deleteCustomer: 'deleteCustomer',
     validateEmail: 'validateEmail',
     setShippingAddress: 'setShippingAddress',
     setBillingAddress: 'setBillingAddress',

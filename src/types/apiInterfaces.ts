@@ -4,6 +4,7 @@ export interface IApiSuccessResponse {
     data:
         ISessionStartApiResponse |
         IAddGuestCustomerResponse |
+        IDeleteCustomerResponse |
         ISetShippingAddressResponse |
         ISetBillingAddressResponse |
         IGetShippingLinesResponse |
@@ -47,6 +48,8 @@ export interface IAddGuestCustomerResponse {
     application_state: IApplicationState | undefined;
 }
 
+export type IDeleteCustomerResponse = IAddGuestCustomerResponse;
+
 export interface IAddDiscountResponse {
     discount: IDiscount | undefined;
     application_state: IApplicationState | undefined;
@@ -88,6 +91,7 @@ export interface IApiErrorResponse {
 export interface IApiTypes {
     sessionStart: IApiTypesDetail;
     addGuestCustomer: IApiTypesDetail;
+    deleteCustomer: IApiTypesDetail;
     validateEmail: IApiTypesDetail;
     getShippingLines: IApiTypesDetail;
     setShippingAddress: IApiTypesDetail;
@@ -101,6 +105,7 @@ export interface IApiTypes {
 export interface IApiTypeKeys {
     sessionStart: keyof IApiTypes;
     addGuestCustomer: keyof IApiTypes;
+    deleteCustomer: keyof IApiTypes;
     validateEmail: keyof IApiTypes;
     validateAddress: keyof IApiTypes;
     setShippingAddress: keyof IApiTypes;
