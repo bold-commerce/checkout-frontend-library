@@ -1,7 +1,7 @@
 import {IFetchError} from 'src';
 
 export interface IApiSuccessResponse {
-    data:
+    data?:
         ISessionStartApiResponse |
         IAddGuestCustomerResponse |
         IDeleteCustomerResponse |
@@ -14,6 +14,7 @@ export interface IApiSuccessResponse {
         IDeleteDiscountResponse |
         IGetPaymentIframeUrl |
         undefined;
+    application_state?: IApplicationState | undefined;
 }
 
 export type IApiSuccessResponseDataType =
@@ -113,6 +114,7 @@ export interface IApiTypes {
     addDiscount: IApiTypesDetail;
     getPaymentIframe: IApiTypesDetail;
     deleteDiscount: IApiTypesDetail;
+    processOrder: IApiTypesDetail;
 }
 
 export interface IApiTypeKeys {
@@ -129,6 +131,7 @@ export interface IApiTypeKeys {
     addDiscount: keyof IApiTypes;
     getPaymentIframe: keyof IApiTypes;
     deleteDiscount: keyof IApiTypes;
+    processOrder: keyof IApiTypes;
 }
 
 export interface IValidateAddress {

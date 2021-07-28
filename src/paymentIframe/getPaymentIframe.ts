@@ -1,7 +1,4 @@
-import {
-    getApiUrlWithParams,
-    getJwtToken, IApiResponse, IApiReturnObject, IApiSuccessResponse, IGetPaymentIframeUrl,
-} from 'src';
+import {getApiUrlWithParams, getJwtToken, IApiReturnObject} from 'src';
 import {apiTypeKeys, baseReturnObject} from 'src/variables';
 
 /**

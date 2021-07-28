@@ -9,3 +9,4 @@ export * from './shipping';
 export * from './taxes';
 export * from './discounts';
 export * from './paymentIframe';
+export * from './order';

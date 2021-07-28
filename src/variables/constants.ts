@@ -116,6 +116,12 @@ export const apiTypes: IApiTypes = {
         method: methods.GET,
         useCsrf: false
     },
+    processOrder: {
+        path: '/process_order',
+        method: methods.POST,
+        useCsrf: true,
+        keysToTest: [keysToTestFromResponse.applicationState]
+    },
 };
 
 export const apiTypeKeys: IApiTypeKeys = {
@@ -132,6 +138,7 @@ export const apiTypeKeys: IApiTypeKeys = {
     addDiscount: 'addDiscount',
     deleteDiscount: 'deleteDiscount',
     getPaymentIframe: 'getPaymentIframe',
+    processOrder: 'processOrder',
 };
 
 export const baseReturnObject: IApiReturnObject = {
