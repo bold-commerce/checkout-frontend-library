@@ -8,3 +8,4 @@ export * from './address';
 export * from './shipping';
 export * from './taxes';
 export * from './discounts';
+export * from './paymentIframe';
