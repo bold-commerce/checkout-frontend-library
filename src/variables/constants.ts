@@ -111,6 +111,11 @@ export const apiTypes: IApiTypes = {
         useCsrf: true,
         keysToTest: [...appStateKeysToTest]
     },
+    getPaymentIframe: {
+        path: '/payments/iframe',
+        method: methods.GET,
+        useCsrf: false
+    },
 };
 
 export const apiTypeKeys: IApiTypeKeys = {
@@ -126,6 +131,7 @@ export const apiTypeKeys: IApiTypeKeys = {
     setTaxes: 'setTaxes',
     addDiscount: 'addDiscount',
     deleteDiscount: 'deleteDiscount',
+    getPaymentIframe: 'getPaymentIframe',
 };
 
 export const baseReturnObject: IApiReturnObject = {

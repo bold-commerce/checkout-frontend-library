@@ -12,6 +12,7 @@ export interface IApiSuccessResponse {
         IAddDiscountResponse |
         ISetTaxesResponse |
         IDeleteDiscountResponse |
+        IGetPaymentIframeUrl |
         undefined;
 }
 
@@ -86,6 +87,10 @@ export interface ISetTaxesResponse {
     application_state: IApplicationState | undefined;
 }
 
+export interface IGetPaymentIframeUrl {
+    url: string | undefined;
+}
+
 export interface IApiErrorResponse {
     message: string;
     type: string; // Todo - Check with PAPI the list of possible types to declare const and types
@@ -106,6 +111,7 @@ export interface IApiTypes {
     changeShippingLines: IApiTypesDetail;
     setTaxes: IApiTypesDetail;
     addDiscount: IApiTypesDetail;
+    getPaymentIframe: IApiTypesDetail;
     deleteDiscount: IApiTypesDetail;
 }
 
@@ -121,6 +127,7 @@ export interface IApiTypeKeys {
     changeShippingLines: keyof IApiTypes;
     setTaxes: keyof IApiTypes;
     addDiscount: keyof IApiTypes;
+    getPaymentIframe: keyof IApiTypes;
     deleteDiscount: keyof IApiTypes;
 }
 
@@ -134,7 +141,11 @@ export interface IValidateEmail {
     email_address: string
 }
 
-export type IApiUrlQueryParams = IValidateEmail | IValidateAddress;
+export interface IPaymentFrame {
+    token: string
+}
+
+export type IApiUrlQueryParams = IValidateEmail | IValidateAddress | IPaymentFrame;
 
 export interface IApiTypesDetail {
     path: string;
