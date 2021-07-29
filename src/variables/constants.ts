@@ -122,6 +122,12 @@ export const apiTypes: IApiTypes = {
         useCsrf: true,
         keysToTest: [keysToTestFromResponse.applicationState]
     },
+    getApplicationState: {
+        path: '/refresh',
+        method: methods.GET,
+        useCsrf: true,
+        keysToTest: [...appStateKeysToTest]
+    },
 };
 
 export const apiTypeKeys: IApiTypeKeys = {
@@ -139,6 +145,7 @@ export const apiTypeKeys: IApiTypeKeys = {
     deleteDiscount: 'deleteDiscount',
     getPaymentIframe: 'getPaymentIframe',
     processOrder: 'processOrder',
+    getApplicationState: 'getApplicationState',
 };
 
 export const baseReturnObject: IApiReturnObject = {

@@ -115,6 +115,7 @@ export interface IApiTypes {
     getPaymentIframe: IApiTypesDetail;
     deleteDiscount: IApiTypesDetail;
     processOrder: IApiTypesDetail;
+    getApplicationState: IApiTypesDetail;
 }
 
 export interface IApiTypeKeys {
@@ -132,6 +133,7 @@ export interface IApiTypeKeys {
     getPaymentIframe: keyof IApiTypes;
     deleteDiscount: keyof IApiTypes;
     processOrder: keyof IApiTypes;
+    getApplicationState: keyof IApiTypes;
 }
 
 export interface IValidateAddress {
