@@ -116,6 +116,7 @@ export interface IApiTypes {
     deleteDiscount: IApiTypesDetail;
     processOrder: IApiTypesDetail;
     getApplicationState: IApiTypesDetail;
+    deleteBillingAddress: IApiTypesDetail;
 }
 
 export interface IApiTypeKeys {
@@ -134,6 +135,7 @@ export interface IApiTypeKeys {
     deleteDiscount: keyof IApiTypes;
     processOrder: keyof IApiTypes;
     getApplicationState: keyof IApiTypes;
+    deleteBillingAddress: keyof IApiTypes;
 }
 
 export interface IValidateAddress {
