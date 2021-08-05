@@ -1,13 +1,22 @@
 import {
     IAddress,
     IAddressType,
-    IApplicationState, IAvailableShippingLine,
+    IApplicationState, 
+    IAvailableShippingLine,
     ICustomer,
     IDiscount,
-    IFee,
-    ILineItem, IOrderMetaData, IPayment,
-    IProductData, IShipping, IShippingLine,
-    ITax
+    IFee, 
+    IInitializeOrderResponse,
+    ILineItem, 
+    IOrderMetaData, 
+    IPayment,
+    IProductData, 
+    IShipping, 
+    IShippingLine,
+    ITax, 
+    IOrderInitialData,
+    ICountryInformation,
+    IProvince
 } from 'src';
 
 export const shippingAddressMock: IAddress = {
@@ -198,3 +207,34 @@ export const selectShippingLineArrayMock: Array<IShippingLine> = [
         amount: 1500
     }
 ];
+
+export const provinceMock: IProvince = {
+    iso_code: 'test_iso_code',
+    name: 'test_name',
+    valid_for_shipping: true,
+    valid_for_billing: true,
+};
+
+export const countryInformationMock: ICountryInformation = {
+    iso_code: 'test_iso_code',
+    name: 'test_name',
+    show_province: true,
+    province_label: 'test_province_label',
+    show_postal_code: true,
+    provinces: [provinceMock],
+    valid_for_shipping: true,
+    valid_for_billing: true,
+};
+
+export const orderInitialDataMock: IOrderInitialData = {
+    shop_name: 'test_shop_name',
+    country_information: [countryInformationMock],
+    supported_languages: ['English'],
+};
+
+export const initializeOrderResponseMock: IInitializeOrderResponse = {
+    initial_data: orderInitialDataMock,
+    application_state: applicationStateMock,
+    jwt_token: 'test_jwt_token',
+    public_order_id: 'test_public_order_id',
+};

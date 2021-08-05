@@ -23,6 +23,9 @@ export const environmentUrls: IEnvironmentUrls = {
 export const keysToTestFromResponse = {
     data: 'data',
     applicationState: 'application_state',
+    initial_data: 'initial_data',
+    jwt_token: 'jwt_token',
+    public_order_id: 'public_order_id',
 };
 
 export const appStateKeysToTest = [keysToTestFromResponse.data, keysToTestFromResponse.applicationState];
