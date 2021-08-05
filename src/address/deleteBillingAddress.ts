@@ -5,7 +5,7 @@ import {
     IApiReturnObject,
     checkApiResponse
 } from 'src';
-import {apiTypeKeys, apiTypes, keysToTestFromResponse} from 'src/variables';
+import {apiTypeKeys, apiTypes} from 'src/variables';
 
 /** deleteBillingAddress
  *

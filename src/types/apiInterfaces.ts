@@ -13,6 +13,7 @@ export interface IApiSuccessResponse {
         ISetTaxesResponse |
         IDeleteDiscountResponse |
         IGetPaymentIframeUrl |
+        IInitializeOrderResponse |
         undefined;
     application_state?: IApplicationState | undefined;
 }
@@ -43,6 +44,12 @@ export interface IFetchCallback extends Function {
     (obj: IApiReturnObject): void;
 }
 
+export interface IInitializeOrderResponse {
+    initial_data: IOrderInitialData,
+    application_state: IApplicationState,
+    jwt_token: string,
+    public_order_id: string
+}
 export interface ISessionStartApiResponse {
     csrf_token: string | undefined;
 }
@@ -162,27 +169,27 @@ export interface IApiTypesDetail {
 }
 
 export interface IOrderInitialData {
-    shopName?:           string;
-    countryInformation?: Array<ICountryInformation>;
-    supportedLanguages?: Array<string>;
+    shop_name?:           string;
+    country_information?: Array<ICountryInformation>;
+    supported_languages?: Array<string>;
 }
 
 export interface ICountryInformation {
-    isoCode?:          string;
+    iso_code?:          string;
     name?:             string;
-    showProvince?:     boolean;
-    provinceLabel?:    string;
-    showPostalCode?:   boolean;
+    show_province?:     boolean;
+    province_label?:    string;
+    show_postal_code?:   boolean;
     provinces?:        Array<IProvince>;
-    validForShipping?: boolean;
-    validForBilling?:  boolean;
+    valid_for_shipping?: boolean;
+    valid_for_billing?:  boolean;
 }
 
 export interface IProvince {
-    isoCode?:          string;
+    iso_code?:          string;
     name?:             string;
-    validForShipping?: boolean;
-    validForBilling?:  boolean;
+    valid_for_shipping?: boolean;
+    valid_for_billing?:  boolean;
 }
 
 export interface IApplicationState {

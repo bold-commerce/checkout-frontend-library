@@ -18,7 +18,7 @@ describe('testing session start api', () => {
         expect(res).toEqual(returnObject);
     });
     test('calling sessionStart w/ success = false', async () => {
-        const tempReturnObject = {...returnObject};
+        const tempReturnObject = {...baseReturnObject};
 
         fetchApiSpy.mockReturnValueOnce(Promise.resolve(tempReturnObject));
 
@@ -76,4 +76,3 @@ describe('testing session start api', () => {
         expect(errorContent.message).toBe(message);
     });
 });
-
