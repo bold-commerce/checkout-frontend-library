@@ -1,12 +1,13 @@
 import {
+    IApiErrors,
+    IApiReturnObject,
+    IApiTypes,
+    IApiTypeKeys,
     IEnvironmentTypes,
     IEnvironmentUrls,
-    IApiTypes,
-    IApiReturnObject,
+    IGeneralApiResponseParsingErrorType,
     IMethods,
-    IApiTypeKeys,
-    IApiErrors,
-    IGeneralApiResponseParsingErrorType
+    IPigiActionTypes
 } from 'src';
 
 export const environmentTypes: IEnvironmentTypes = {
@@ -42,6 +43,18 @@ export const methods: IMethods = {
     PUT: 'PUT',
     POST: 'POST',
     DELETE: 'DELETE'
+};
+
+export const pigiActionTypes: IPigiActionTypes = {
+    PIGI_ADD_PAYMENT: 'PIGI_ADD_PAYMENT',
+    PIGI_REFRESH_ORDER: 'PIGI_REFRESH_ORDER',
+    PIGI_UPDATE_LANGUAGE: 'PIGI_UPDATE_LANGUAGE',
+    PIGI_UPDATE_MEDIA_MATCH: 'PIGI_UPDATE_MEDIA_MATCH',
+    PIGI_DISPLAY_ERROR_MESSAGE: 'PIGI_DISPLAY_ERROR_MESSAGE',
+    PIGI_CLEAR_ERROR_MESSAGES: 'PIGI_CLEAR_ERROR_MESSAGES',
+    PIGI_SELECT_PAYMENT_METHOD: 'PIGI_SELECT_PAYMENT_METHOD',
+    PIGI_INITIALIZED: 'PIGI_INITIALIZED',
+    PIGI_UPDATE_HEIGHT: 'PIGI_UPDATE_HEIGHT'
 };
 
 export const apiTypes: IApiTypes = {

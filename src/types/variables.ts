@@ -11,4 +11,8 @@ export interface IAuth {
     jwtToken: string;
 }
 
+export interface IPigi {
+    iFrameId: string;
+}
+
 

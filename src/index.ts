@@ -10,3 +10,4 @@ export * from './taxes';
 export * from './discounts';
 export * from './paymentIframe';
 export * from './order';
+export * from './pigi';

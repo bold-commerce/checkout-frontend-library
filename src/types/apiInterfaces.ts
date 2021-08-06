@@ -34,6 +34,18 @@ export interface IMethods {
     DELETE: string;
 }
 
+export interface IPigiActionTypes {
+    PIGI_ADD_PAYMENT: string;
+    PIGI_REFRESH_ORDER: string;
+    PIGI_UPDATE_LANGUAGE: string;
+    PIGI_UPDATE_MEDIA_MATCH: string;
+    PIGI_DISPLAY_ERROR_MESSAGE: string;
+    PIGI_CLEAR_ERROR_MESSAGES: string;
+    PIGI_SELECT_PAYMENT_METHOD: string;
+    PIGI_INITIALIZED: string;
+    PIGI_UPDATE_HEIGHT: string;
+}
+
 export interface IApiReturnObject {
     success: boolean;
     error: null | IFetchError;
