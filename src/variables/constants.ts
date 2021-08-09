@@ -180,6 +180,7 @@ export const baseReturnObject: IApiReturnObject = {
 export const apiErrors: IApiErrors = {
     general: {status: 1000, message: 'General error thrown'},
     noCsrf: {status: 1001, message: 'CSRF Token not found'},
+    noPigiIframe: {status: 1002, message: 'PIGI iframe not found or empty'},
     /*
      * API RESPONSE - checkApiResponse function ERRORS
      *
