@@ -384,3 +384,13 @@ export interface IShippingLine {
     description: string;
     amount: number;
 }
+
+export interface IPigiActionType {
+    actionType: string;
+    payload?: Record<string, unknown>;
+}
+
+export interface IPigiResponseType {
+    responseType: string;
+    payload: Record<string, unknown>;
+}
