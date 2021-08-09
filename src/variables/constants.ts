@@ -5,8 +5,9 @@ import {
     IApiTypeKeys,
     IEnvironmentTypes,
     IEnvironmentUrls,
-    IGeneralApiResponseParsingErrorType,
     IMethods,
+    IGeneralApiResponseParsingErrorType,
+    IPigiResponseType,
     IPigiActionTypes
 } from 'src';
 
@@ -196,4 +197,12 @@ export const apiErrors: IApiErrors = {
     emptyAppState: {status: 1101, message: 'Application state is empty in response'},
     noResData: {status: 1200, message: 'Data not found in response'},
     emptyResData: {status: 1201, message: 'Data is empty in response'},
+};
+
+export const basePigiResponseType: IPigiResponseType = {
+    responseType: '',
+    payload: {
+        success: false,
+        height: 0
+    }
 };

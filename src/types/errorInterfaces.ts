@@ -20,7 +20,6 @@ export interface IErrorFormat {
 export interface IApiErrors {
     general: IErrorFormat;
     noCsrf: IErrorFormat;
-    noPigiIframe: IErrorFormat;
     noAppState: IErrorFormat;
     noResData: IErrorFormat;
     emptyAppState: IErrorFormat;
@@ -29,6 +28,7 @@ export interface IApiErrors {
     emptyFieldInResponse: IErrorFormat;
     errorsInResponse: IErrorFormat;
     emptyKeysToCheck: IErrorFormat;
+    noPigiIframe: IErrorFormat;
 }
 
 export interface IGeneralApiResponseParsingErrorType {
