@@ -7,9 +7,10 @@ import {
     ICustomer,
     ILineItem,
     ITax,
-    IDiscount, 
-    IPayment, 
-    IOrderMetaData, 
+    IDiscount,
+    IPayment,
+    IPigi,
+    IOrderMetaData,
     IShipping
 } from 'src';
 import {environmentTypes, environmentUrls, environmentPath} from 'src/variables';
@@ -25,6 +26,10 @@ export const auth: IAuth = {
     publicOrderId: '',
     csrfToken: '',
     jwtToken: ''
+};
+
+export const pigi: IPigi = {
+    iFrameId: ''
 };
 
 export const customer: ICustomer =  {

@@ -26,5 +26,6 @@ module.exports = {
         '!**/node_modules/**',
         '!**/lib/**',
         '!**/tests/**'
-    ]
+    ],
+    'testEnvironment': 'jsdom'
 };
