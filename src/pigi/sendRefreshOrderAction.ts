@@ -2,17 +2,14 @@ import {apiErrors, baseReturnObject, pigiActionTypes} from 'src/variables';
 import {getPigiFrameWindow, FetchError, IApiReturnObject, IPigiAction} from 'src';
 
 /**
- * ## sendAddPaymentAction
+ * ## sendRefreshOrderAction
  *
- * This action is to be sent after the customer has entered payment information
- * and the payment is to be added to the order so the order can be processed.
- *
- * This only tokenizes the payment information then puts it onto the order
- * and does not authorize or capture the payment.
+ * This action is to be sent if PIGI was displayed and the order was updated.
+ * Payment gateways will require updated information about the customer or order to add the payment to the order.
  */
-export function sendAddPaymentAction(): IApiReturnObject {
+export function sendRefreshOrderAction(): IApiReturnObject {
     const response = {...baseReturnObject};
-    const action: IPigiAction = { actionType: pigiActionTypes.PIGI_ADD_PAYMENT };
+    const action: IPigiAction = { actionType: pigiActionTypes.PIGI_REFRESH_ORDER };
     const iframeWindow = getPigiFrameWindow();
     if (iframeWindow){
         iframeWindow.postMessage(action, '*');
