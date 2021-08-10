@@ -12,7 +12,6 @@ describe('testing send pigi Clear Error Message Action', () => {
     });
 
     test('calling sendClearErrorMessageAction success', () => {
-        const action: IPigiActionType = { actionType: pigiActionTypes.PIGI_CLEAR_ERROR_MESSAGES };
         const tempReturnObject = {...baseReturnObject};
         tempReturnObject.success = true;
         sendActionSpy.mockReturnValueOnce(tempReturnObject);
