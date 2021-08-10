@@ -1,35 +1,25 @@
-import {FetchError, IPigiActionType, sendAddPaymentAction} from 'src';
-import {apiErrors, baseReturnObject, pigi, pigiActionTypes} from 'src/variables';
-import * as getPigiFrameWindow from 'src/pigi/getPigiFrameWindow';
+import {FetchError, sendAddPaymentAction} from 'src';
+import {apiErrors, baseReturnObject, pigi} from 'src/variables';
+import * as sendAction from 'src/pigi/sendAction';
 
-describe('testing send pigi Add Payment Action', () => {
+describe('testing send PIGI Add Payment Action', () => {
     pigi.iFrameId = 'PIGI';
-    const html_string = '<html><body>test</body></html>';
-    const src = 'data:text/html;charset=utf-8,' + escape(html_string);
     const calledOnce = 1;
-    let getPigiFrameWindowSpy: jest.SpyInstance;
+    let sendActionSpy: jest.SpyInstance;
 
     beforeEach(() => {
         jest.restoreAllMocks();
-        getPigiFrameWindowSpy = jest.spyOn(getPigiFrameWindow, 'getPigiFrameWindow');
+        sendActionSpy = jest.spyOn(sendAction, 'sendAction');
     });
 
     test('calling sendAddPaymentAction success', () => {
-        const action: IPigiActionType = { actionType: pigiActionTypes.PIGI_ADD_PAYMENT };
         const tempReturnObject = {...baseReturnObject};
         tempReturnObject.success = true;
-        const iFrame = document.createElement('iframe');
-        iFrame.setAttribute('id', pigi.iFrameId);
-        iFrame.src = src;
-        document.body.appendChild(iFrame);
-        const postMessageSpy = jest.spyOn(iFrame.contentWindow as Window, 'postMessage');
-        getPigiFrameWindowSpy.mockReturnValueOnce(iFrame.contentWindow);
+        sendActionSpy.mockReturnValueOnce(tempReturnObject);
 
         const res = sendAddPaymentAction();
 
-        expect(getPigiFrameWindowSpy).toHaveBeenCalledTimes(calledOnce);
-        expect(postMessageSpy).toHaveBeenCalledTimes(calledOnce);
-        expect(postMessageSpy).toHaveBeenCalledWith(action, '*');
+        expect(sendActionSpy).toHaveBeenCalledTimes(calledOnce);
         expect(res).not.toBeNull();
         expect(res).toStrictEqual(tempReturnObject);
     });
@@ -38,11 +28,11 @@ describe('testing send pigi Add Payment Action', () => {
         const tempReturnObject = {...baseReturnObject};
         tempReturnObject.success = false;
         tempReturnObject.error = new FetchError(apiErrors.noPigiIframe.status, apiErrors.noPigiIframe.message);
-        getPigiFrameWindowSpy.mockReturnValueOnce(null);
+        sendActionSpy.mockReturnValueOnce(tempReturnObject);
 
         const res = sendAddPaymentAction();
 
-        expect(getPigiFrameWindowSpy).toHaveBeenCalledTimes(calledOnce);
+        expect(sendActionSpy).toHaveBeenCalledTimes(calledOnce);
         expect(res).not.toBeNull();
         expect(res).toStrictEqual(tempReturnObject);
     });

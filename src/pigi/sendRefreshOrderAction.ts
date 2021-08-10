@@ -1,5 +1,5 @@
-import {apiErrors, baseReturnObject, pigiActionTypes} from 'src/variables';
-import {getPigiFrameWindow, FetchError, IApiReturnObject, IPigiActionType} from 'src';
+import {pigiActionTypes} from 'src/variables';
+import {IApiReturnObject, IPigiActionType, sendAction} from 'src';
 
 /**
  * ## sendRefreshOrderAction
@@ -8,14 +8,6 @@ import {getPigiFrameWindow, FetchError, IApiReturnObject, IPigiActionType} from 
  * Payment gateways will require updated information about the customer or order to add the payment to the order.
  */
 export function sendRefreshOrderAction(): IApiReturnObject {
-    const response = {...baseReturnObject};
     const action: IPigiActionType = { actionType: pigiActionTypes.PIGI_REFRESH_ORDER };
-    const iframeWindow = getPigiFrameWindow();
-    if (iframeWindow){
-        iframeWindow.postMessage(action, '*');
-        response.success = true;
-    } else {
-        response.error = new FetchError(apiErrors.noPigiIframe.status, apiErrors.noPigiIframe.message);
-    }
-    return response;
+    return sendAction(action);
 }

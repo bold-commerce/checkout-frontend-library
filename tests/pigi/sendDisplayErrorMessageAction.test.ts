@@ -1,43 +1,26 @@
-import {FetchError, IPigiActionType, sendDisplayErrorMessageAction} from 'src';
-import {apiErrors, baseReturnObject, pigi, pigiActionTypes} from 'src/variables';
-import * as getPigiFrameWindow from 'src/pigi/getPigiFrameWindow';
+import {FetchError, sendDisplayErrorMessageAction} from 'src';
+import {apiErrors, baseReturnObject} from 'src/variables';
+import * as sendAction from 'src/pigi/sendAction';
 
 describe('testing send pigi Display Error Message Action', () => {
-    pigi.iFrameId = 'PIGI';
-    const html_string = '<html><body>test</body></html>';
-    const src = 'data:text/html;charset=utf-8,' + escape(html_string);
-    const calledOnce = 1;
-    let getPigiFrameWindowSpy: jest.SpyInstance;
+    let sendActionSpy: jest.SpyInstance;
     const message = 'message';
     const subType = 'sub_type';
+    const calledOnce = 1;
 
     beforeEach(() => {
         jest.restoreAllMocks();
-        getPigiFrameWindowSpy = jest.spyOn(getPigiFrameWindow, 'getPigiFrameWindow');
+        sendActionSpy = jest.spyOn(sendAction, 'sendAction');
     });
 
     test('calling sendDisplayErrorMessageAction success', () => {
-        const action: IPigiActionType = {
-            actionType: pigiActionTypes.PIGI_DISPLAY_ERROR_MESSAGE,
-            payload: {
-                message: message,
-                sub_type: subType
-            }
-        };
         const tempReturnObject = {...baseReturnObject};
         tempReturnObject.success = true;
-        const iFrame = document.createElement('iframe');
-        iFrame.setAttribute('id', pigi.iFrameId);
-        iFrame.src = src;
-        document.body.appendChild(iFrame);
-        const postMessageSpy = jest.spyOn(iFrame.contentWindow as Window, 'postMessage');
-        getPigiFrameWindowSpy.mockReturnValueOnce(iFrame.contentWindow);
+        sendActionSpy.mockReturnValueOnce(tempReturnObject);
 
         const res = sendDisplayErrorMessageAction(message, subType);
 
-        expect(getPigiFrameWindowSpy).toHaveBeenCalledTimes(calledOnce);
-        expect(postMessageSpy).toHaveBeenCalledTimes(calledOnce);
-        expect(postMessageSpy).toHaveBeenCalledWith(action, '*');
+        expect(sendActionSpy).toHaveBeenCalledTimes(calledOnce);
         expect(res).not.toBeNull();
         expect(res).toStrictEqual(tempReturnObject);
     });
@@ -46,11 +29,11 @@ describe('testing send pigi Display Error Message Action', () => {
         const tempReturnObject = {...baseReturnObject};
         tempReturnObject.success = false;
         tempReturnObject.error = new FetchError(apiErrors.noPigiIframe.status, apiErrors.noPigiIframe.message);
-        getPigiFrameWindowSpy.mockReturnValueOnce(null);
+        sendActionSpy.mockReturnValueOnce(tempReturnObject);
 
         const res = sendDisplayErrorMessageAction(message, subType);
 
-        expect(getPigiFrameWindowSpy).toHaveBeenCalledTimes(calledOnce);
+        expect(sendActionSpy).toHaveBeenCalledTimes(calledOnce);
         expect(res).not.toBeNull();
         expect(res).toStrictEqual(tempReturnObject);
     });

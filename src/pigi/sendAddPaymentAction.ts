@@ -1,5 +1,5 @@
-import {apiErrors, baseReturnObject, pigiActionTypes} from 'src/variables';
-import {getPigiFrameWindow, FetchError, IApiReturnObject, IPigiActionType} from 'src';
+import {pigiActionTypes} from 'src/variables';
+import {IApiReturnObject, IPigiActionType, sendAction} from 'src';
 
 /**
  * ## sendAddPaymentAction
@@ -11,14 +11,6 @@ import {getPigiFrameWindow, FetchError, IApiReturnObject, IPigiActionType} from 
  * and does not authorize or capture the payment.
  */
 export function sendAddPaymentAction(): IApiReturnObject {
-    const response = {...baseReturnObject};
     const action: IPigiActionType = { actionType: pigiActionTypes.PIGI_ADD_PAYMENT };
-    const iframeWindow = getPigiFrameWindow();
-    if (iframeWindow){
-        iframeWindow.postMessage(action, '*');
-        response.success = true;
-    } else {
-        response.error = new FetchError(apiErrors.noPigiIframe.status, apiErrors.noPigiIframe.message);
-    }
-    return response;
+    return sendAction(action);
 }
