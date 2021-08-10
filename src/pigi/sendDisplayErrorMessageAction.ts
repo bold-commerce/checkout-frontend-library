@@ -2,14 +2,19 @@ import {apiErrors, baseReturnObject, pigiActionTypes} from 'src/variables';
 import {getPigiFrameWindow, FetchError, IApiReturnObject, IPigiActionType} from 'src';
 
 /**
- * ## sendRefreshOrderAction
+ * ## sendDisplayErrorMessageAction
  *
- * This action is to be sent if PIGI was displayed and the order was updated.
- * Payment gateways will require updated information about the customer or order to add the payment to the order.
+ * This action is to be sent if PIGI was displayed and we need to disdplay an error message.
  */
-export function sendRefreshOrderAction(): IApiReturnObject {
+export function sendDisplayErrorMessageAction(message: string, subType: string): IApiReturnObject {
     const response = {...baseReturnObject};
-    const action: IPigiActionType = { actionType: pigiActionTypes.PIGI_REFRESH_ORDER };
+    const action: IPigiActionType = {
+        actionType: pigiActionTypes.PIGI_DISPLAY_ERROR_MESSAGE,
+        payload: {
+            message: message,
+            sub_type: subType
+        }
+    };
     const iframeWindow = getPigiFrameWindow();
     if (iframeWindow){
         iframeWindow.postMessage(action, '*');

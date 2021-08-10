@@ -46,10 +46,6 @@ export interface IPigiActionTypes {
     PIGI_UPDATE_HEIGHT: string;
 }
 
-export interface IPigiAction {
-    actionType: string;
-}
-
 export interface IApiReturnObject {
     success: boolean;
     error: null | IFetchError;
