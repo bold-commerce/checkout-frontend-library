@@ -1,8 +1,8 @@
-import {FetchError, IPigiActionType, sendClearErrorMessageAction} from 'src';
-import {apiErrors, baseReturnObject, pigiActionTypes} from 'src/variables';
+import {FetchError, sendClearErrorMessageAction} from 'src';
+import {apiErrors, baseReturnObject} from 'src/variables';
 import * as sendAction from 'src/pigi/sendAction';
 
-describe('testing send pigi Clear Error Message Action', () => {
+describe('testing send PIGI Clear Error Message Action', () => {
     let sendActionSpy: jest.SpyInstance;
     const calledOnce = 1;
 
