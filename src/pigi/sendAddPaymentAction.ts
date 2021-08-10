@@ -1,5 +1,5 @@
 import {apiErrors, baseReturnObject, pigiActionTypes} from 'src/variables';
-import {getPigiFrameWindow, FetchError, IApiReturnObject, IPigiAction} from 'src';
+import {getPigiFrameWindow, FetchError, IApiReturnObject, IPigiActionType} from 'src';
 
 /**
  * ## sendAddPaymentAction
@@ -12,7 +12,7 @@ import {getPigiFrameWindow, FetchError, IApiReturnObject, IPigiAction} from 'src
  */
 export function sendAddPaymentAction(): IApiReturnObject {
     const response = {...baseReturnObject};
-    const action: IPigiAction = { actionType: pigiActionTypes.PIGI_ADD_PAYMENT };
+    const action: IPigiActionType = { actionType: pigiActionTypes.PIGI_ADD_PAYMENT };
     const iframeWindow = getPigiFrameWindow();
     if (iframeWindow){
         iframeWindow.postMessage(action, '*');

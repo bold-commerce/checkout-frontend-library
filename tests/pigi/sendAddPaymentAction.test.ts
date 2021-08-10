@@ -1,4 +1,4 @@
-import {FetchError, IPigiAction, sendAddPaymentAction} from 'src';
+import {FetchError, IPigiActionType, sendAddPaymentAction} from 'src';
 import {apiErrors, baseReturnObject, pigi, pigiActionTypes} from 'src/variables';
 import * as getPigiFrameWindow from 'src/pigi/getPigiFrameWindow';
 
@@ -15,7 +15,7 @@ describe('testing send pigi Add Payment Action', () => {
     });
 
     test('calling sendAddPaymentAction success', () => {
-        const action: IPigiAction = { actionType: pigiActionTypes.PIGI_ADD_PAYMENT };
+        const action: IPigiActionType = { actionType: pigiActionTypes.PIGI_ADD_PAYMENT };
         const tempReturnObject = {...baseReturnObject};
         tempReturnObject.success = true;
         const iFrame = document.createElement('iframe');

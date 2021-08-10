@@ -5,3 +5,4 @@ export * from './getPigiFrameWindow';
 export * from './sendAddPaymentAction';
 export * from './getPigiFrameWindow';
 export * from './sendRefreshOrderAction';
+export * from './sendDisplayErrorMessageAction';
