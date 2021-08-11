@@ -11,6 +11,7 @@ import {apiTypes, methods} from 'src/variables';
 export function getApiOptions(type: keyof IApiTypes, body: IGetApiOptionsBody = {}): RequestInit {
     const { method, useCsrf } = apiTypes[type] ?? {method: methods.GET};
     const headers = new Headers();
+    headers.append('Content-Type', 'application/json');
     if(useCsrf) {
         headers.append('X-CSRF-TOKEN', getCsrfToken());
     }
