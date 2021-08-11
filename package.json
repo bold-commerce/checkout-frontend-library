@@ -10,10 +10,11 @@
     "lint": "eslint .",
     "tsc": "tsc",
     "lint-ci": "yarn lint",
-    "test-ci": "yarn cover-test --ci --bail --verbose"
+    "test-ci": "yarn cover-test --ci --bail --verbose",
+    "lint-staged": "lint-staged",
+    "prepare": "husky install"
   },
   "dependencies": {},
-  "peerDependencies": {},
   "devDependencies": {
     "@types/jest": "^26.0.23",
     "@types/node-fetch": "^2.5.10",
@@ -21,12 +22,17 @@
     "@typescript-eslint/parser": "^4.25.0",
     "eslint": "^7.27.0",
     "fetch-mock-jest": "^1.5.1",
+    "husky": "^7.0.1",
     "jest": "^27.0.1",
+    "lint-staged": "^11.1.2",
     "node-fetch": "^2.6.1",
     "ts-jest": "^27.0.0",
     "typescript": "^4.3.2"
   },
   "files": [
     "lib/**/*"
-  ]
+  ],
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx}": "eslint --fix --max-warnings 0"
+  }
 }
