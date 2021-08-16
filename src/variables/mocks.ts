@@ -1,22 +1,25 @@
 import {
     IAddress,
     IAddressType,
-    IApplicationState, 
+    IApplicationState,
     IAvailableShippingLine,
     ICustomer,
     IDiscount,
-    IFee, 
+    IFee,
     IInitializeOrderResponse,
-    ILineItem, 
-    IOrderMetaData, 
+    ILineItem,
+    IOrderMetaData,
     IPayment,
-    IProductData, 
-    IShipping, 
+    IProductData,
+    IShipping,
     IShippingLine,
-    ITax, 
+    ITax,
     IOrderInitialData,
     ICountryInformation,
-    IProvince
+    IProvince,
+    ICssRule,
+    IMediaRule,
+    ICssStylingPaymentIframeRequest
 } from 'src';
 
 export const shippingAddressMock: IAddress = {
@@ -230,6 +233,20 @@ export const orderInitialDataMock: IOrderInitialData = {
     shop_name: 'test_shop_name',
     country_information: [countryInformationMock],
     supported_languages: ['English'],
+};
+
+export const cssRuleMock: ICssRule = {
+    cssText: '.ToggleField { color:red; }'
+};
+
+export const mediaRuleMock: IMediaRule = {
+    conditionText: 'screen and (max-height: 600px)',
+    cssRules: [cssRuleMock, cssRuleMock]
+};
+
+export const cssStylingPaymentIframeRequestMock: ICssStylingPaymentIframeRequest = {
+    css_rules: [cssRuleMock, cssRuleMock],
+    media_rules: [mediaRuleMock]
 };
 
 export const initializeOrderResponseMock: IInitializeOrderResponse = {
