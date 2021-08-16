@@ -28,6 +28,7 @@ export const keysToTestFromResponse = {
     initial_data: 'initial_data',
     jwt_token: 'jwt_token',
     public_order_id: 'public_order_id',
+    css_rules: 'css_rules',
 };
 
 export const appStateKeysToTest = [keysToTestFromResponse.data, keysToTestFromResponse.applicationState];
@@ -133,6 +134,12 @@ export const apiTypes: IApiTypes = {
         method: methods.GET,
         useCsrf: false
     },
+    cssStylingPaymentIframe: {
+        path: '/payments/styles',
+        method: methods.POST,
+        useCsrf: false,
+        keysToTest: [keysToTestFromResponse.css_rules]
+    },
     processOrder: {
         path: '/process_order',
         method: methods.POST,
@@ -167,6 +174,7 @@ export const apiTypeKeys: IApiTypeKeys = {
     addDiscount: 'addDiscount',
     deleteDiscount: 'deleteDiscount',
     getPaymentIframe: 'getPaymentIframe',
+    cssStylingPaymentIframe: 'cssStylingPaymentIframe',
     processOrder: 'processOrder',
     getApplicationState: 'getApplicationState',
     deleteBillingAddress: 'deleteBillingAddress'

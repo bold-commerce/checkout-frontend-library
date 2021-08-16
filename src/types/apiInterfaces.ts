@@ -16,16 +16,23 @@ export interface IApiSuccessResponse {
         IInitializeOrderResponse |
         undefined;
     application_state?: IApplicationState | undefined;
+    css_rules?: Array<ICssRule>;
+    media_rules?: Array<IMediaRule>;
 }
 
-export type IApiSuccessResponseDataType =
-    ISessionStartApiResponse |
-    ISetShippingAddressResponse |
-    IGetShippingLinesResponse |
-    IChangeShippingLineResponse |
-    ISetTaxesResponse |
-    IAddDiscountResponse |
-    IDeleteDiscountResponse;
+export interface ICssRule {
+    cssText: string;
+}
+
+export interface IMediaRule {
+    conditionText: string;
+    cssRules: Array<ICssRule>
+}
+
+export interface ICssStylingPaymentIframeRequest {
+    css_rules?: Array<ICssRule>;
+    media_rules?: Array<IMediaRule>;
+}
 
 export interface IMethods {
     GET: string;
@@ -132,6 +139,7 @@ export interface IApiTypes {
     setTaxes: IApiTypesDetail;
     addDiscount: IApiTypesDetail;
     getPaymentIframe: IApiTypesDetail;
+    cssStylingPaymentIframe: IApiTypesDetail;
     deleteDiscount: IApiTypesDetail;
     processOrder: IApiTypesDetail;
     getApplicationState: IApiTypesDetail;
@@ -151,6 +159,7 @@ export interface IApiTypeKeys {
     setTaxes: keyof IApiTypes;
     addDiscount: keyof IApiTypes;
     getPaymentIframe: keyof IApiTypes;
+    cssStylingPaymentIframe: keyof IApiTypes;
     deleteDiscount: keyof IApiTypes;
     processOrder: keyof IApiTypes;
     getApplicationState: keyof IApiTypes;
@@ -373,6 +382,7 @@ export type IGetApiOptionsBody =
     IValidateAddressRequest |
     IChangeShippingLineRequest |
     IDiscountRequest |
+    ICssStylingPaymentIframeRequest |
     Record<string, unknown>;
 
 export interface IShippingLine {
