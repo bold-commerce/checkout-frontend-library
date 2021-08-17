@@ -71,7 +71,10 @@
     "paths": {
       "src": ["src"],
       "src/*": ["src/*"],
-    }
+    },
+    "plugins": [
+      { "transform": "typescript-transform-paths"},
+    ]
   },
   "include": [
     "src/**/*"

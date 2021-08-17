@@ -4,7 +4,7 @@
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "scripts": {
-    "build": "tsc",
+    "build": "ttsc",
     "test": "jest",
     "cover-test": "jest --coverage --colors",
     "lint": "eslint .",
@@ -27,7 +27,9 @@
     "lint-staged": "^11.1.2",
     "node-fetch": "^2.6.1",
     "ts-jest": "^27.0.0",
-    "typescript": "^4.3.2"
+    "ttypescript": "^1.5.12",
+    "typescript": "^4.3.2",
+    "typescript-transform-paths": "^3.3.1"
   },
   "files": [
     "lib/**/*"
