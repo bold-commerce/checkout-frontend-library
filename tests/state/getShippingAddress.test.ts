@@ -1,5 +1,6 @@
+import {getShippingAddress} from 'src';
+import {setShippingAddress} from 'src/state';
 import {applicationState} from 'src/variables';
-import {getShippingAddress, setShippingAddress} from 'src/state';
 import {shippingAddressMock} from 'src/variables/mocks';
 
 describe('get Shipping Address', () => {

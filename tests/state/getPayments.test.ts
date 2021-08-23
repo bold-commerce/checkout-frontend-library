@@ -1,5 +1,6 @@
+import {getPayments} from 'src';
+import {setPayments} from 'src/state';
 import {applicationState} from 'src/variables';
-import {getPayments, setPayments} from 'src/state';
 import {paymentMock} from 'src/variables/mocks';
 
 describe('get Payments', () => {

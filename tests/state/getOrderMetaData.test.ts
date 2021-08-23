@@ -1,5 +1,6 @@
+import {getOrderMetaData} from 'src';
+import {setOrderMetaData} from 'src/state';
 import {applicationState} from 'src/variables';
-import {getOrderMetaData, setOrderMetaData} from 'src/state';
 import {orderMetaDataMock} from 'src/variables/mocks';
 
 describe('get Meta data', () => {

@@ -1,5 +1,6 @@
+import {getShipping} from 'src';
+import {setShipping} from 'src/state';
 import {applicationState} from 'src/variables';
-import {getShipping, setShipping} from 'src/state';
 import {shippingMock} from 'src/variables/mocks';
 
 describe('get shipping lines', () => {

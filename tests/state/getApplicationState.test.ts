@@ -1,5 +1,6 @@
 import {applicationState} from 'src/variables';
-import {getApplicationState, setApplicationState} from 'src/state';
+import {getApplicationState} from 'src';
+import {setApplicationState} from 'src/state';
 import {applicationStateMock} from 'src/variables/mocks';
 
 describe('get Application State', () => {

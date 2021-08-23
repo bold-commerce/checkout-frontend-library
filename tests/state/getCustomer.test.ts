@@ -1,5 +1,6 @@
+import {getCustomer} from 'src';
+import {setCustomer} from 'src/state';
 import {applicationState} from 'src/variables';
-import {getCustomer, setCustomer} from 'src/state';
 import {customerMock} from 'src/variables/mocks';
 
 describe('get Customer', () => {

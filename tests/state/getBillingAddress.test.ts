@@ -1,5 +1,6 @@
+import {getBillingAddress} from 'src';
+import {setBillingAddress} from 'src/state';
 import {applicationState} from 'src/variables';
-import {setBillingAddress, getBillingAddress} from 'src/state';
 import {billingAddressMock} from 'src/variables/mocks';
 
 describe('get Billing Address', () => {

@@ -1,5 +1,6 @@
+import {getAddresses} from 'src';
+import {setAddresses} from 'src/state';
 import {applicationState} from 'src/variables';
-import {getAddresses, setAddresses} from 'src/state';
 import {addressesMock} from 'src/variables/mocks';
 
 describe('get Addresses', () => {
