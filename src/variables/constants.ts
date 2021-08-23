@@ -158,6 +158,12 @@ export const apiTypes: IApiTypes = {
         useCsrf: true,
         keysToTest: [...appStateKeysToTest]
     },
+    deleteShippingAddress: {
+        path: '/addresses/shipping',
+        method: methods.DELETE,
+        useCsrf: true,
+        keysToTest: [...appStateKeysToTest]
+    },
 };
 
 export const apiTypeKeys: IApiTypeKeys = {
@@ -177,7 +183,8 @@ export const apiTypeKeys: IApiTypeKeys = {
     cssStylingPaymentIframe: 'cssStylingPaymentIframe',
     processOrder: 'processOrder',
     getApplicationState: 'getApplicationState',
-    deleteBillingAddress: 'deleteBillingAddress'
+    deleteBillingAddress: 'deleteBillingAddress',
+    deleteShippingAddress: 'deleteShippingAddress'
 };
 
 export const baseReturnObject: IApiReturnObject = {
