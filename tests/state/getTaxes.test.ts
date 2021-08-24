@@ -1,5 +1,6 @@
+import {getTaxes} from 'src';
+import {setTaxes} from 'src/state';
 import {applicationState} from 'src/variables';
-import {getTaxes, setTaxes} from 'src/state';
 import {taxesArrayMock} from 'src/variables/mocks';
 
 describe('get Taxes', () => {

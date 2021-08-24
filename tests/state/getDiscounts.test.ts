@@ -1,5 +1,6 @@
+import {getDiscounts} from 'src';
+import {setDiscounts} from 'src/state';
 import {applicationState} from 'src/variables';
-import {getDiscounts, setDiscounts} from 'src/state';
 import {discountMock} from 'src/variables/mocks';
 
 describe('get Discounts', () => {

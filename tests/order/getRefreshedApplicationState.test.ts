@@ -1,4 +1,4 @@
-import {getApplicationState, FetchError} from 'src';
+import {getRefreshedApplicationState, FetchError} from 'src';
 import * as fetchAPI from 'src/utils/fetchAPI';
 import * as getApiOptions from 'src/utils/getApiOptions';
 import * as apiUrl from 'src/utils/apiUrl';
@@ -33,7 +33,7 @@ describe('testing getApplicationState', () => {
     });
 
     test('successful call (200)', async () => {
-        const res = await getApplicationState();
+        const res = await getRefreshedApplicationState();
 
         expect(getApiOptionsSpy).toHaveBeenCalledTimes(timesWhenCalled);
         expect(getApiUrlSpy).toHaveBeenCalledTimes(timesWhenCalled);
@@ -53,7 +53,7 @@ describe('testing getApplicationState', () => {
 
         fetchApiSpy.mockReturnValueOnce(Promise.resolve(tempReturnObject));
 
-        const res = await getApplicationState();
+        const res = await getRefreshedApplicationState();
 
         expect(getApiOptionsSpy).toHaveBeenCalledTimes(timesWhenCalled);
         expect(getApiUrlSpy).toHaveBeenCalledTimes(timesWhenCalled);

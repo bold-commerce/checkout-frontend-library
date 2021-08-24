@@ -1,5 +1,6 @@
+import {getLineItems} from 'src';
+import {setLineItems} from 'src/state';
 import {applicationState} from 'src/variables';
-import {getLineItems, setLineItems} from 'src/state';
 import {lineItemMock} from 'src/variables/mocks';
 
 describe('get Line items', () => {

@@ -8,12 +8,12 @@ import {
 import {apiTypeKeys, apiTypes} from 'src/variables';
 
 /**
- * # getApplicationState
+ * # getRefreshedApplicationState
  *
  * Get a refreshed copy of the application state
  *
  */
-export async function getApplicationState(): Promise<IApiReturnObject> {
+export async function getRefreshedApplicationState(): Promise<IApiReturnObject> {
     const {getApplicationState} = apiTypeKeys;
     const url = getApiUrl(getApplicationState);
     const options = getApiOptions(getApplicationState);
