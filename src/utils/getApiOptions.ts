@@ -10,11 +10,13 @@ import {apiTypes, methods} from 'src/variables';
  */
 export function getApiOptions(type: keyof IApiTypes, b: IGetApiOptionsBody = {}): RequestInit {
     const { method, useCsrf } = apiTypes[type] ?? {method: methods.GET};
+    const mode: RequestMode = 'cors';
+    const credentials: RequestCredentials = 'include';
     const body: BodyInit | null = b && Object.keys(b).length === 0 ? null : JSON.stringify(b);
-    const headers = new Headers();
+    const headers: HeadersInit = new Headers();
     headers.append('Content-Type', 'application/json');
     if(useCsrf) {
         headers.append('X-CSRF-TOKEN', getCsrfToken());
     }
-    return { method, headers, body };
+    return { method, mode, credentials, headers, body };
 }
