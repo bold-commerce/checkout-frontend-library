@@ -1,14 +1,15 @@
 import {
     IApiErrors,
     IApiReturnObject,
-    IApiTypes,
     IApiTypeKeys,
+    IApiTypes,
     IEnvironmentTypes,
     IEnvironmentUrls,
-    IMethods,
     IGeneralApiResponseParsingErrorType,
-    IPigiResponseType,
-    IPigiActionTypes
+    IHttpStatusCode,
+    IMethods,
+    IPigiActionTypes,
+    IPigiResponseType
 } from 'src';
 
 export const environmentTypes: IEnvironmentTypes = {
@@ -220,4 +221,16 @@ export const basePigiResponseType: IPigiResponseType = {
         success: false,
         height: 0
     }
+};
+
+export const httpStatusCode: IHttpStatusCode = {
+    OK: 200,
+    ACCEPTED: 202,
+    BAD_REQUEST: 400,
+    UNAUTHORIZED: 401,
+    FORBIDDEN: 403,
+    NOT_FOUND: 404,
+    UNPROCESSABLE_ENTITY: 422,
+    INTERNAL_SERVER_ERROR: 500,
+    SERVICE_UNAVAILABLE: 503
 };

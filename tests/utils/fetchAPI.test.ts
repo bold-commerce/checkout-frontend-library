@@ -2,6 +2,7 @@ import {fetchAPI, FetchError} from 'src';
 import {apiErrors} from 'src/variables';
 import {callFetch} from 'src/utils/fetchAPI';
 import fetchMock from 'fetch-mock-jest';
+import {Response} from 'node-fetch';
 
 const url = 'https://example.com/users';
 const options = {
@@ -35,7 +36,7 @@ describe('test fetchAPI functionality', () => {
             const result = await callFetch(url, options);
 
             expect(result).toBeInstanceOf(FetchError);
-            expect((result as FetchError).status).toBe(status); 
+            expect((result as FetchError).status).toBe(status);
             expect((result as FetchError).message).toContain('TypeError');
         });
 
@@ -47,7 +48,7 @@ describe('test fetchAPI functionality', () => {
             const result = await callFetch(url, options);
 
             expect(result).toBeInstanceOf(FetchError);
-            expect((result as FetchError).status).toBe(status); 
+            expect((result as FetchError).status).toBe(status);
             expect((result as FetchError).message).toContain('Test exception');
             expect(fetchMock).toHaveBeenCalledWith(url, options);
 
@@ -63,7 +64,24 @@ describe('test fetchAPI functionality', () => {
             expect((result as FetchError).status).toBe(testStatus);
             expect(result).toBeInstanceOf(FetchError);
             expect(fetchMock).toHaveBeenCalledTimes(1);
-            expect((result as FetchError).message).toContain('status is invalid');
+            expect((result as FetchError).message).toContain('Unable to process request');
+        });
+
+        test('callFetch fails: Unprocessable Entity & response.ok equals false', async () => {
+            const testStatus = 422;
+            const bodyJson = {errors: [{message: 'Test Error message', type: '', field: '', severity: 'test', sub_type: ''}]};
+            const body = JSON.stringify(bodyJson);
+            const testResponse = new Response(body, {status: testStatus, headers: {'content-type': 'application/json'}});
+            fetchMock
+                .getOnce(url, testResponse, { overwriteRoutes: true });
+
+            const result = await callFetch(url, options);
+
+            expect((result as FetchError).status).toBe(testStatus);
+            expect(result).toBeInstanceOf(FetchError);
+            expect(fetchMock).toHaveBeenCalledTimes(1);
+            expect((result as FetchError).message).toContain('Unable to process request');
+            expect((result as FetchError).body).toStrictEqual(bodyJson);
         });
     });
 
@@ -87,7 +105,7 @@ describe('test fetchAPI functionality', () => {
 
             expect(result.success).toBe(false);
             expect(result.error).toBeInstanceOf(FetchError);
-            expect(result.response).toBe(null);
+            expect(result.response).toBe(undefined);
         });
 
         test('failed fetchAPI call: return contains 404 error', async () => {
