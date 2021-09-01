@@ -126,6 +126,10 @@ export interface IApiErrorResponse {
     sub_type: string; // Todo - Check with PAPI the list of possible sub_types to declare const and types
 }
 
+export interface IApiErrorsResponse {
+    errors: Array<IApiErrorResponse>
+}
+
 export interface IApiTypes {
     sessionStart: IApiTypesDetail;
     addGuestCustomer: IApiTypesDetail;
@@ -369,7 +373,7 @@ export interface IValidateAddressRequest {
     country_code: string;
 }
 
-export type IApiResponse = IApiErrorResponse | IApiSuccessResponse;
+export type IApiResponse = IApiErrorResponse | IApiErrorsResponse | IApiSuccessResponse;
 
 export type ISetShippingAddressRequest = IAddress;
 
