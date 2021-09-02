@@ -1,13 +1,13 @@
-import {IFetchError} from 'src';
+import {IApiResponse, IFetchError} from 'src';
 
 export class FetchError implements IFetchError {
     name = 'FetchError';
     message: string;
     status: number;
     statusText: string | undefined;
-    body: ReadableStream<Uint8Array> | null | undefined;
+    body: string | IApiResponse | null | undefined;
     metaData: Record<string, unknown> | null | undefined;
-    constructor(status: number, msg: string, statusText?: string, body?: ReadableStream<Uint8Array> | null, metaData?: Record<string, unknown>) {
+    constructor(status: number, msg: string, statusText?: string, body?: string | IApiResponse | null | undefined, metaData?: Record<string, unknown>) {
         this.message = msg;
         this.status = status;
         this.statusText = statusText;
