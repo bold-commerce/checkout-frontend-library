@@ -98,7 +98,7 @@ export const order_meta_data: IOrderMetaData = {
 };
 
 export const shipping: IShipping = {
-    select_shipping_line: {
+    selected_shipping: {
         id: '',
         description: '',
         amount: 0

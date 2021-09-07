@@ -18,12 +18,12 @@ describe('get shipping lines', () => {
         expect(result).toStrictEqual(shippingMock);
         // eslint-disable-next-line @typescript-eslint/ban-ts-comment
         // @ts-ignore
-        result.select_shipping_line.description = text;
+        result.selected_shipping.description = text;
         // eslint-disable-next-line @typescript-eslint/ban-ts-comment
         // @ts-ignore
-        expect(result.select_shipping_line.description).toBe(text);
+        expect(result.selected_shipping.description).toBe(text);
         // eslint-disable-next-line @typescript-eslint/ban-ts-comment
         // @ts-ignore
-        expect(applicationState.shipping.select_shipping_line.description).not.toBe(text);
+        expect(applicationState.shipping.selected_shipping.description).not.toBe(text);
     });
 });

@@ -19,7 +19,7 @@ import {apiTypeKeys, apiTypes} from 'src/variables';
 export async function addGuestCustomer(firstName: string, lastName: string, email: string): Promise<IApiReturnObject> {
     const {addGuestCustomer} = apiTypeKeys;
     const url = getApiUrl(addGuestCustomer);
-    const options = getApiOptions(addGuestCustomer, {first_name: firstName, last_name: lastName, email});
+    const options = getApiOptions(addGuestCustomer, {first_name: firstName, last_name: lastName, email_address: email});
     const fetchRes = await fetchAPI(url, options);
     const {keysToTest} = apiTypes.addGuestCustomer;
     return checkApiResponse(fetchRes, keysToTest);
