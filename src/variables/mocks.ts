@@ -121,7 +121,7 @@ export const productData: IProductData = {
     id: 'product_test_id',
     title: 'Product Title',
     image_url: '',
-    properties: {key: 'test'},
+    properties: ['test'],
     description: 'Product Description',
     quantity: 1,
     price: 1000,
@@ -138,6 +138,7 @@ export const productData: IProductData = {
     sku: 'test_sku',
     taxable: true,
     tags: 'test_tag',
+    vendor: ''
 };
 
 export const paymentMock: IPayment = {
@@ -148,7 +149,7 @@ export const paymentMock: IPayment = {
     type: 'test_type',
     display_string: 'test_display_string',
     token: 'test_token',
-    retain: 'test_retain',
+    retain: true,
 };
 
 export const orderMetaDataMock: IOrderMetaData ={
@@ -165,11 +166,12 @@ export const selectShippingLineMock: IShippingLine = {
 };
 
 export const availableShippingLineMock: IAvailableShippingLine = {
-    id: 1
+    id: 1,
+    line: selectShippingLineMock
 };
 
 export const shippingMock: IShipping = {
-    select_shipping_line: selectShippingLineMock,
+    selected_shipping: selectShippingLineMock,
     available_shipping_lines: [availableShippingLineMock],
     taxes: [taxMock],
     discounts: [discountMock]
