@@ -133,6 +133,7 @@ export interface IApiErrorsResponse {
 export interface IApiTypes {
     sessionStart: IApiTypesDetail;
     addGuestCustomer: IApiTypesDetail;
+    updateGuestCustomer: IApiTypesDetail;
     deleteCustomer: IApiTypesDetail;
     validateEmail: IApiTypesDetail;
     getShippingLines: IApiTypesDetail;
@@ -154,6 +155,7 @@ export interface IApiTypes {
 export interface IApiTypeKeys {
     sessionStart: keyof IApiTypes;
     addGuestCustomer: keyof IApiTypes;
+    updateGuestCustomer: keyof IApiTypes;
     deleteCustomer: keyof IApiTypes;
     validateEmail: keyof IApiTypes;
     validateAddress: keyof IApiTypes;
