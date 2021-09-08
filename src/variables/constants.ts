@@ -72,6 +72,12 @@ export const apiTypes: IApiTypes = {
         useCsrf: true,
         keysToTest: [...appStateKeysToTest]
     },
+    updateGuestCustomer: {
+        path: '/customer/guest',
+        method: methods.PUT,
+        useCsrf: true,
+        keysToTest: [...appStateKeysToTest]
+    },
     deleteCustomer: {
         path: '/customer',
         method: methods.DELETE,
@@ -170,6 +176,7 @@ export const apiTypes: IApiTypes = {
 export const apiTypeKeys: IApiTypeKeys = {
     sessionStart: 'sessionStart',
     addGuestCustomer: 'addGuestCustomer',
+    updateGuestCustomer: 'updateGuestCustomer',
     deleteCustomer: 'deleteCustomer',
     validateEmail: 'validateEmail',
     setShippingAddress: 'setShippingAddress',
