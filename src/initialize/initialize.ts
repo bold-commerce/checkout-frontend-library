@@ -3,7 +3,6 @@ import {
     IInitializeOrderResponse,
     IEnvironment,
     setEnvironment,
-    sessionStart,
     setJwtToken,
     setPublicOrderId,
     setShopIdentifier,
@@ -34,5 +33,5 @@ export async function initialize(initData: IInitializeOrderResponse, shopIdentif
     setPublicOrderId(publicOrderId);
     setShopIdentifier(shopIdentifier);
     setEnvironment(environment.type, environment.path, environment.url);
-    return sessionStart();
+    return returnValue;
 }

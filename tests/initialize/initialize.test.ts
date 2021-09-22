@@ -3,7 +3,6 @@ import fetchMock from 'fetch-mock-jest';
 import {initializeOrderResponseMock} from 'src/variables/mocks';
 import {environmentUrls, environmentTypes, apiErrors, baseReturnObject} from 'src/variables';
 import * as checkApiResponse from 'src/utils/apiResponse';
-import * as sessionStart from 'src/initialize/sessionStart';
 
 describe('testing initialize function', () => {
     const url = `${environmentUrls.staging}/checkout/storefront/shopIdentifier/publicOrderId/session/start`;
@@ -11,10 +10,9 @@ describe('testing initialize function', () => {
     const defaultReturn = {...baseReturnObject};
     defaultReturn.success = true;
     const timesCalled = 1;
-    const sessionStartReturn = {...defaultReturn};
-    sessionStartReturn.response = { data: { csrf_token: 'test_csrf' }};
+    const successReturn = {...defaultReturn};
+    successReturn.response = {...initData};
     let checkApiResponseSpy: jest.SpyInstance;
-    let sessionStartSpy: jest.SpyInstance;
 
     beforeAll(() => {
         fetchMock
@@ -27,7 +25,6 @@ describe('testing initialize function', () => {
             append: jest.fn(() => null)
         });
         checkApiResponseSpy = jest.spyOn(checkApiResponse, 'checkApiResponse').mockReturnValue(defaultReturn);
-        sessionStartSpy = jest.spyOn(sessionStart, 'sessionStart').mockReturnValue(Promise.resolve(sessionStartReturn));
     });
 
     afterEach(() => {
@@ -35,13 +32,13 @@ describe('testing initialize function', () => {
     });
 
     test('successful initialize', async () => {
+        checkApiResponseSpy.mockReturnValueOnce(successReturn);
         const response = await initialize(initData, 'shopIdentifier', { type: environmentTypes.staging });
 
         expect((response as IApiReturnObject).success).toBe(true);
         expect((response as IApiReturnObject).error).toBeNull();
-        expect((response as IApiReturnObject).response).toEqual(sessionStartReturn.response);
+        expect((response as IApiReturnObject).response).toEqual(successReturn.response);
         expect(checkApiResponseSpy).toHaveBeenCalledTimes(timesCalled);
-        expect(sessionStartSpy).toHaveBeenCalledTimes(timesCalled);
     });
 
     test('failed initalize: key not found in object', async () => {
@@ -58,6 +55,5 @@ describe('testing initialize function', () => {
         expect(errorContent.message).toEqual(tempReturnObject.error.message);
         expect((response as IApiReturnObject).response).toBeNull();
         expect(checkApiResponseSpy).toHaveBeenCalledTimes(timesCalled);
-        expect(sessionStartSpy).not.toHaveBeenCalled();
     });
 });
