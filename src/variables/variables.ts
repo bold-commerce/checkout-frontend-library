@@ -42,7 +42,6 @@ export const customer: ICustomer =  {
 };
 
 export const shippingAddress: IAddress = {
-    id: '',
     first_name: '',
     last_name: '',
     address_line_1: '',
@@ -58,7 +57,6 @@ export const shippingAddress: IAddress = {
 };
 
 export const billingAddress: IAddress = {
-    id: '',
     first_name: '',
     last_name: '',
     address_line_1: '',

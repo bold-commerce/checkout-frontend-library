@@ -23,7 +23,6 @@ import {
 } from 'src';
 
 export const shippingAddressMock: IAddress = {
-    id: 'Test_id_1',
     first_name: 'John',
     last_name: 'Doe',
     address_line_1: '123 Any St',
@@ -39,7 +38,6 @@ export const shippingAddressMock: IAddress = {
 };
 
 export const billingAddressMock: IAddress = {
-    id: 'Test_id_2',
     first_name: 'Jane',
     last_name: 'Doe',
     address_line_1: '456 Any St',
@@ -61,7 +59,6 @@ export const customerMock: ICustomer = {
     last_name: 'Doe',
     email_address: 'john.doe@example.com',
     saved_addresses: [{
-        id: 'Test_id',
         first_name: 'John',
         last_name: 'Doe',
         address_line_1: '123 Any St',
