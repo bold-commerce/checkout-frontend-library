@@ -10,4 +10,14 @@ describe('setBillingAddress', () => {
         expect(billingAddress).toStrictEqual(billingAddressMock);
         expect(applicationState.addresses.billing).toStrictEqual(billingAddressMock);
     });
+
+    test('set billing address with id', () => {
+        const localMock = {...billingAddressMock};
+        localMock.id = '1';
+
+        setBillingAddress(localMock);
+
+        expect(billingAddress).toStrictEqual(localMock);
+        expect(applicationState.addresses.billing).toStrictEqual(localMock);
+    });
 });

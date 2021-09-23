@@ -16,7 +16,9 @@ export function setShippingAddress({
     business_name,
     phone_number
 }: IAddress): void {
-    shippingAddress.id = id;
+    if(id){
+        shippingAddress.id = id;
+    }
     shippingAddress.first_name = first_name;
     shippingAddress.last_name = last_name;
     shippingAddress.address_line_1 = address_line_1;

@@ -10,4 +10,14 @@ describe('setShippingAddress', () => {
         expect(shippingAddress).toStrictEqual(shippingAddressMock);
         expect(applicationState.addresses.shipping).toStrictEqual(shippingAddressMock);
     });
+
+    test('set shipping address with id', () => {
+        const localMock = {...shippingAddressMock};
+        localMock.id = '1';
+
+        setShippingAddress(localMock);
+
+        expect(shippingAddress).toStrictEqual(localMock);
+        expect(applicationState.addresses.shipping).toStrictEqual(localMock);
+    });
 });

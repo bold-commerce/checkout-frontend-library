@@ -16,7 +16,9 @@ export function setBillingAddress({
     business_name,
     phone_number
 }: IAddress): void {
-    billingAddress.id = id;
+    if(id) {
+        billingAddress.id = id;
+    }
     billingAddress.first_name = first_name;
     billingAddress.last_name = last_name;
     billingAddress.address_line_1 = address_line_1;

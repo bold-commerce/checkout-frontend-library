@@ -325,7 +325,7 @@ export interface ICustomer {
 }
 
 export interface IAddress {
-    id: string | null;
+    id?: string | null;
     first_name: string;
     last_name: string;
     address_line_1: string;
