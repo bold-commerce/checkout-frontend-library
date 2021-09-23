@@ -1,4 +1,4 @@
-import {IApiTypes, IGetApiOptionsBody, getCsrfToken} from 'src';
+import {IApiTypes, IGetApiOptionsBody, getJwtToken} from 'src';
 import {apiTypes, methods} from 'src/variables';
 
 /** getApiOptions
@@ -9,14 +9,15 @@ import {apiTypes, methods} from 'src/variables';
  * @param b object for body of request
  */
 export function getApiOptions(type: keyof IApiTypes, b: IGetApiOptionsBody = {}): RequestInit {
-    const { method, useCsrf } = apiTypes[type] ?? {method: methods.GET};
+    const { method, useJwt } = apiTypes[type] ?? {method: methods.GET};
     const mode: RequestMode = 'cors';
     const credentials: RequestCredentials = 'include';
     const body: BodyInit | null = b && Object.keys(b).length === 0 ? null : JSON.stringify(b);
     const headers: HeadersInit = new Headers();
     headers.append('Content-Type', 'application/json');
-    if(useCsrf) {
-        headers.append('X-CSRF-TOKEN', getCsrfToken());
+    headers.append('Accept', 'application/json');
+    if(useJwt) {
+        headers.append('Authorization', `Bearer ${getJwtToken()}`);
     }
     return { method, mode, credentials, headers, body };
 }

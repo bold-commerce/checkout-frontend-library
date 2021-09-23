@@ -61,120 +61,114 @@ export const pigiActionTypes: IPigiActionTypes = {
 };
 
 export const apiTypes: IApiTypes = {
-    sessionStart: {
-        path: '/session/start',
-        method: methods.POST,
-        useCsrf: false,
-    },
     addGuestCustomer: {
         path: '/customer/guest',
         method: methods.POST,
-        useCsrf: true,
+        useJwt: true,
         keysToTest: [...appStateKeysToTest]
     },
     updateGuestCustomer: {
         path: '/customer/guest',
         method: methods.PUT,
-        useCsrf: true,
+        useJwt: true,
         keysToTest: [...appStateKeysToTest]
     },
     deleteCustomer: {
         path: '/customer',
         method: methods.DELETE,
-        useCsrf: true,
+        useJwt: true,
         keysToTest: [...appStateKeysToTest]
     },
     validateEmail: {
         path: '/validate_email_address',
         method: methods.GET,
-        useCsrf: true,
+        useJwt: true,
     },
     setShippingAddress: {
         path: '/addresses/shipping',
         method: methods.POST,
-        useCsrf: true,
+        useJwt: true,
         keysToTest: [...appStateKeysToTest]
     },
     getShippingLines: {
         path: '/shipping_lines',
         method: methods.GET,
-        useCsrf: true,
+        useJwt: true,
         keysToTest: [...appStateKeysToTest]
     },
     setBillingAddress: {
         path: '/addresses/billing',
         method: methods.POST,
-        useCsrf: true,
+        useJwt: true,
         keysToTest: [...appStateKeysToTest]
     },
     validateAddress: {
         path: '/validate_address',
         method: methods.GET,
-        useCsrf: true,
+        useJwt: true,
     },
     changeShippingLines: {
         path: '/shipping_lines',
         method: methods.POST,
-        useCsrf: true,
+        useJwt: true,
         keysToTest: [...appStateKeysToTest]
     },
     setTaxes: {
         path: '/taxes',
         method: methods.POST,
-        useCsrf: true,
+        useJwt: true,
         keysToTest: [...appStateKeysToTest]
     },
     addDiscount: {
         path: '/discounts',
         method: methods.POST,
-        useCsrf: true,
+        useJwt: true,
         keysToTest: [...appStateKeysToTest]
     },
     deleteDiscount: {
         path: '/discounts',
         method: methods.DELETE,
-        useCsrf: true,
+        useJwt: true,
         keysToTest: [...appStateKeysToTest]
     },
     getPaymentIframe: {
         path: '/payments/iframe',
         method: methods.GET,
-        useCsrf: false
+        useJwt: false,
     },
     cssStylingPaymentIframe: {
         path: '/payments/styles',
         method: methods.POST,
-        useCsrf: false,
+        useJwt: true,
         keysToTest: [keysToTestFromResponse.css_rules]
     },
     processOrder: {
         path: '/process_order',
         method: methods.POST,
-        useCsrf: true,
+        useJwt: true,
         keysToTest: [keysToTestFromResponse.applicationState]
     },
     getApplicationState: {
         path: '/refresh',
         method: methods.GET,
-        useCsrf: true,
+        useJwt: true,
         keysToTest: [...appStateKeysToTest]
     },
     deleteBillingAddress: {
         path: '/addresses/billing',
         method: methods.DELETE,
-        useCsrf: true,
+        useJwt: true,
         keysToTest: [...appStateKeysToTest]
     },
     deleteShippingAddress: {
         path: '/addresses/shipping',
         method: methods.DELETE,
-        useCsrf: true,
+        useJwt: true,
         keysToTest: [...appStateKeysToTest]
     },
 };
 
 export const apiTypeKeys: IApiTypeKeys = {
-    sessionStart: 'sessionStart',
     addGuestCustomer: 'addGuestCustomer',
     updateGuestCustomer: 'updateGuestCustomer',
     deleteCustomer: 'deleteCustomer',

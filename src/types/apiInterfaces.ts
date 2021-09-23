@@ -131,7 +131,6 @@ export interface IApiErrorsResponse {
 }
 
 export interface IApiTypes {
-    sessionStart: IApiTypesDetail;
     addGuestCustomer: IApiTypesDetail;
     updateGuestCustomer: IApiTypesDetail;
     deleteCustomer: IApiTypesDetail;
@@ -153,7 +152,6 @@ export interface IApiTypes {
 }
 
 export interface IApiTypeKeys {
-    sessionStart: keyof IApiTypes;
     addGuestCustomer: keyof IApiTypes;
     updateGuestCustomer: keyof IApiTypes;
     deleteCustomer: keyof IApiTypes;
@@ -193,7 +191,7 @@ export type IApiUrlQueryParams = IValidateEmail | IValidateAddress | IPaymentFra
 export interface IApiTypesDetail {
     path: string;
     method: string;
-    useCsrf: boolean;
+    useJwt: boolean;
     keysToTest?: Array<string>;
 }
 

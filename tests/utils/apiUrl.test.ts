@@ -30,9 +30,9 @@ describe('getApiUrl', () => {
                 expectedUrl: `${env.url}/${env.path}/storefront/${shopId}/${publicOrderId}`,
             },
             {
-                testName: 'Test sessionStart succeed',
-                type: 'sessionStart',
-                expectedUrl: `${env.url}/${env.path}/storefront/${shopId}/${publicOrderId}/session/start`,
+                testName: 'Test addGuestCustomer succeed',
+                type: 'addGuestCustomer',
+                expectedUrl: `${env.url}/${env.path}/storefront/${shopId}/${publicOrderId}/customer/guest`,
             },
         ];
 
@@ -58,7 +58,7 @@ describe('getApiUrl', () => {
         apiUrlWithParamsDataProvider.forEach(data => {
             test(data.testName, () => {
                 const result = getApiUrlWithParams(data.type as keyof IApiTypes, data.params);
-    
+
                 const expectedUrl = new URL(data.expectedUrl);
                 expectedUrl.search = new URLSearchParams(data.params).toString();
 
