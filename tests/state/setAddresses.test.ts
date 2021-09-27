@@ -30,4 +30,15 @@ describe('setAddresses', () => {
         expect(billingAddress).toStrictEqual(billingAddressMock);
         expect(applicationState.addresses.billing).toStrictEqual(billingAddressMock);
     });
+
+    test('Set address to application state with empty object', () => {
+
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
+        setAddresses({shipping:{} , billing: {}});
+
+        expect(setShippingAddressSpy).toHaveBeenCalledTimes(0);
+        expect(setBillingAddressSpy).toHaveBeenCalledTimes(0);
+    });
+
 });
