@@ -23,7 +23,14 @@ describe('testing CSS Styling Payment Iframe api', () => {
         getApiUrlSpy = jest.spyOn(apiUrl, 'getApiUrl').mockReturnValue(apiUrlMock);
         fetchApiSpy = jest.spyOn(fetchAPI, 'fetchAPI').mockReturnValue(Promise.resolve(returnObject));
         checkApiResponseSpy = jest.spyOn(apiResponse, 'checkApiResponse').mockReturnValue(returnObject);
-        returnObject.response = { ...cssStylingPaymentIframeRequestMock };
+        returnObject.response = {
+            data: {
+                style_sheet: {
+                    cssRules: cssStylingPaymentIframeRequestMock.css_rules,
+                    mediaRules: cssStylingPaymentIframeRequestMock.media_rules
+                }
+            }
+        };
         returnObject.success = true;
     });
 
