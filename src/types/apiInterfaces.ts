@@ -14,10 +14,9 @@ export interface IApiSuccessResponse {
         IDeleteDiscountResponse |
         IGetPaymentIframeUrl |
         IInitializeOrderResponse |
+        ICssStylingPaymentIframeResponse |
         undefined;
     application_state?: IApplicationState | undefined;
-    css_rules?: Array<ICssRule>;
-    media_rules?: Array<IMediaRule>;
 }
 
 export interface ICssRule {
@@ -69,6 +68,16 @@ export interface IInitializeOrderResponse {
     jwt_token: string,
     public_order_id: string
 }
+
+export interface ICssStylingPaymentIframeResponse {
+    style_sheet: IStyleSheet
+}
+
+export interface IStyleSheet {
+    cssRules?: Array<ICssRule>;
+    mediaRules?: Array<IMediaRule>;
+}
+
 export interface ISessionStartApiResponse {
     csrf_token: string | undefined;
 }
