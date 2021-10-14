@@ -29,7 +29,7 @@ export const keysToTestFromResponse = {
     initial_data: 'initial_data',
     jwt_token: 'jwt_token',
     public_order_id: 'public_order_id',
-    css_rules: 'css_rules',
+    style_sheet: 'style_sheet',
 };
 
 export const appStateKeysToTest = [keysToTestFromResponse.data, keysToTestFromResponse.applicationState];
@@ -140,7 +140,7 @@ export const apiTypes: IApiTypes = {
         path: '/payments/styles',
         method: methods.POST,
         useJwt: true,
-        keysToTest: [keysToTestFromResponse.css_rules]
+        keysToTest: [keysToTestFromResponse.data, keysToTestFromResponse.style_sheet]
     },
     processOrder: {
         path: '/process_order',
