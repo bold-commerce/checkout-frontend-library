@@ -38,6 +38,7 @@ export const customer: ICustomer =  {
     first_name: '',
     last_name: '',
     email_address: '',
+    accepts_marketing: false,
     saved_addresses: []
 };
 

@@ -16,10 +16,10 @@ import {apiTypeKeys, apiTypes} from 'src/variables';
  * @param lastName Customer Last Name
  * @param email Customer Email
  */
-export async function addGuestCustomer(firstName: string, lastName: string, email: string): Promise<IApiReturnObject> {
+export async function addGuestCustomer(firstName: string, lastName: string, email: string, acceptsMarketing = false): Promise<IApiReturnObject> {
     const {addGuestCustomer} = apiTypeKeys;
     const url = getApiUrl(addGuestCustomer);
-    const options = getApiOptions(addGuestCustomer, {first_name: firstName, last_name: lastName, email_address: email});
+    const options = getApiOptions(addGuestCustomer, {first_name: firstName, last_name: lastName, email_address: email, accepts_marketing: acceptsMarketing});
     const fetchRes = await fetchAPI(url, options);
     const {keysToTest} = apiTypes.addGuestCustomer;
     return checkApiResponse(fetchRes, keysToTest);

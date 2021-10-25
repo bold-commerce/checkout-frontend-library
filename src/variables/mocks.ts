@@ -58,6 +58,7 @@ export const customerMock: ICustomer = {
     first_name: 'John',
     last_name: 'Doe',
     email_address: 'john.doe@example.com',
+    accepts_marketing: false,
     saved_addresses: [{
         first_name: 'John',
         last_name: 'Doe',
@@ -80,6 +81,7 @@ export const emptyCustomerMock: ICustomer = {
     first_name: '',
     last_name: '',
     email_address: '',
+    accepts_marketing: false,
     saved_addresses: []
 };
 
