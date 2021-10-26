@@ -330,6 +330,7 @@ export interface ICustomer {
     first_name: string;
     last_name: string;
     email_address: string;
+    accepts_marketing: boolean;
     saved_addresses: Array<IAddress>;
 }
 
@@ -369,6 +370,7 @@ export interface IAddGuestCustomerRequest {
     first_name: string;
     last_name: string;
     email: string;
+    accepts_marketing: boolean;
 }
 
 export interface IValidateEmailRequest {
