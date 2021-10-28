@@ -232,12 +232,12 @@ export interface IApplicationState {
     customer: ICustomer;
     addresses: IAddressType;
     line_items: Array<ILineItem>;
+    shipping: IShipping;
     taxes: Array<ITax>;
     discounts: Array<IDiscount>;
     payments: Array<IPayment>;
-    order_meta_data: IOrderMetaData;
-    shipping: IShipping;
     order_total: number;
+    order_meta_data: IOrderMetaData;
 }
 
 export interface IOrderMetaData {
@@ -260,7 +260,7 @@ export interface IPayment {
 
 export interface IShipping {
     selected_shipping: IShippingLine;
-    available_shipping_lines: Array<IAvailableShippingLine>;
+    available_shipping_lines: Array<IShippingLine>;
     taxes: Array<ITax>;
     discounts: Array<IDiscount>;
 }
