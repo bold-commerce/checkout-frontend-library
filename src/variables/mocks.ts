@@ -171,7 +171,7 @@ export const availableShippingLineMock: IAvailableShippingLine = {
 
 export const shippingMock: IShipping = {
     selected_shipping: selectShippingLineMock,
-    available_shipping_lines: [availableShippingLineMock],
+    available_shipping_lines: [selectShippingLineMock],
     taxes: [taxMock],
     discounts: [discountMock]
 };
