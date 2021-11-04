@@ -158,6 +158,7 @@ export interface IApiTypes {
     getApplicationState: IApiTypesDetail;
     deleteBillingAddress: IApiTypesDetail;
     deleteShippingAddress: IApiTypesDetail;
+    updateShippingAddress: IApiTypesDetail;
 }
 
 export interface IApiTypeKeys {
@@ -179,6 +180,7 @@ export interface IApiTypeKeys {
     getApplicationState: keyof IApiTypes;
     deleteBillingAddress: keyof IApiTypes;
     deleteShippingAddress: keyof IApiTypes;
+    updateShippingAddress: keyof IApiTypes;
 }
 
 export interface IValidateAddress {
