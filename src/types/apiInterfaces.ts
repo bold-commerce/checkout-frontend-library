@@ -50,6 +50,7 @@ export interface IPigiActionTypes {
     PIGI_SELECT_PAYMENT_METHOD: string;
     PIGI_INITIALIZED: string;
     PIGI_UPDATE_HEIGHT: string;
+    PIGI_HANDLE_SCA: string;
 }
 
 export interface IApiReturnObject {
