@@ -11,7 +11,8 @@ describe('testing updateGuestCustomer', () => {
     const firstName = 'John';
     const lastName = 'Doe';
     const email = 'john.doe@example.com';
-    const requestMock = {first_name: firstName, last_name: lastName, email_address: email};
+    const acceptsMarketing = false;
+    const requestMock = {first_name: firstName, last_name: lastName, email_address: email, accepts_marketing: acceptsMarketing};
     const timesWhenCalled = 1;
     const apiUrlMock = 'https://api.com/checkout/storefront/123/123/customer/guest';
     const keysToTest = [keysToTestFromResponse.data, keysToTestFromResponse.applicationState];
@@ -37,7 +38,7 @@ describe('testing updateGuestCustomer', () => {
     });
 
     test('successful call (200)', async () => {
-        const res = await updateGuestCustomer(firstName, lastName, email);
+        const res = await updateGuestCustomer(firstName, lastName, email, acceptsMarketing);
 
         expect(getApiOptionsSpy).toHaveBeenCalledTimes(timesWhenCalled);
         expect(getApiUrlSpy).toHaveBeenCalledTimes(timesWhenCalled);
@@ -57,7 +58,7 @@ describe('testing updateGuestCustomer', () => {
 
         fetchApiSpy.mockReturnValueOnce(Promise.resolve(tempReturnObject));
 
-        const res = await updateGuestCustomer(firstName, lastName, email);
+        const res = await updateGuestCustomer(firstName, lastName, email, acceptsMarketing);
 
         expect(getApiOptionsSpy).toHaveBeenCalledTimes(timesWhenCalled);
         expect(getApiUrlSpy).toHaveBeenCalledTimes(timesWhenCalled);
