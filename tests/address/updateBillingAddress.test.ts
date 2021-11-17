@@ -1,16 +1,15 @@
-import {updateShippingAddress} from 'src';
+import {updateBillingAddress} from 'src';
 import * as fetchAPI from 'src/utils/fetchAPI';
 import * as getApiOptions from 'src/utils/getApiOptions';
 import * as apiUrl from 'src/utils/apiUrl';
-import {apiTypeKeys, baseReturnObject, keysToTestFromResponse, methods} from 'src/variables';
-import {applicationStateMock, shippingAddressMock} from 'src/variables/mocks';
+import {apiTypeKeys, baseReturnObject, methods} from 'src/variables';
+import {applicationStateMock, billingAddressMock} from 'src/variables/mocks';
 import * as apiResponse from 'src/utils/apiResponse';
 
-describe('testing update shipping address api', () => {
+describe('testing update billing address api', () => {
     const returnObject = {...baseReturnObject};
     const timesWhenCalled = 1;
-    const apiUrlMock = 'https://api.com/checkout/storefront/123/123/addresses/shipping';
-    const keysToTest = [keysToTestFromResponse.data, keysToTestFromResponse.applicationState];
+    const apiUrlMock = 'https://api.com/checkout/storefront/123/123/addresses/billing';
     let optionsMock: RequestInit;
     let getApiOptionsSpy: jest.SpyInstance;
     let getApiUrlSpy: jest.SpyInstance;
@@ -18,15 +17,13 @@ describe('testing update shipping address api', () => {
     let checkApiResponseSpy: jest.SpyInstance;
 
     beforeEach(() => {
-        global.Headers = jest.fn().mockReturnValue({
-            append: jest.fn(() => null)
-        });
+        global.Headers = jest.fn().mockReturnValue({append: jest.fn()});
         optionsMock = {method: methods.PUT, headers: new Headers(), body: JSON.stringify({})};
         getApiOptionsSpy = jest.spyOn(getApiOptions, 'getApiOptions').mockReturnValue(optionsMock);
         getApiUrlSpy = jest.spyOn(apiUrl, 'getApiUrl').mockReturnValue(apiUrlMock);
         fetchApiSpy = jest.spyOn(fetchAPI, 'fetchAPI').mockReturnValue(Promise.resolve(returnObject));
         checkApiResponseSpy = jest.spyOn(apiResponse, 'checkApiResponse').mockReturnValue(returnObject);
-        returnObject.response = { data: { address: shippingAddressMock, application_state: applicationStateMock }};
+        returnObject.response = { data: { address: billingAddressMock, application_state: applicationStateMock }};
         returnObject.success = true;
     });
 
@@ -34,36 +31,31 @@ describe('testing update shipping address api', () => {
         jest.restoreAllMocks();
     });
 
-    test('calling updateShippingAddress', async () => {
-        const res = await updateShippingAddress(shippingAddressMock);
+    test('calling updateBillingAddress', async () => {
+        const res = await updateBillingAddress(billingAddressMock);
 
         expect(getApiOptionsSpy).toHaveBeenCalledTimes(timesWhenCalled);
         expect(getApiUrlSpy).toHaveBeenCalledTimes(timesWhenCalled);
         expect(fetchApiSpy).toHaveBeenCalledTimes(timesWhenCalled);
-        expect(checkApiResponseSpy).toHaveBeenCalledTimes(timesWhenCalled);
-        expect(getApiOptionsSpy).toHaveBeenCalledWith(apiTypeKeys.updateShippingAddress, shippingAddressMock);
-        expect(getApiUrlSpy).toHaveBeenCalledWith(apiTypeKeys.updateShippingAddress);
+        expect(getApiOptionsSpy).toHaveBeenCalledWith(apiTypeKeys.updateBillingAddress, billingAddressMock);
+        expect(getApiUrlSpy).toHaveBeenCalledWith(apiTypeKeys.updateBillingAddress);
         expect(fetchApiSpy).toHaveBeenCalledWith(apiUrlMock, optionsMock);
-        expect(checkApiResponseSpy).toHaveBeenCalledWith(returnObject, keysToTest);
         expect(res).toStrictEqual(returnObject);
     });
 
-    test('calling updateShippingAddress w/ success = false', async () => {
+    test('calling updateBillingAddress w/ success = false', async () => {
         const tempReturnObject = {...baseReturnObject};
-
-        fetchApiSpy.mockReturnValueOnce(Promise.resolve(tempReturnObject));
         checkApiResponseSpy.mockReturnValueOnce(tempReturnObject);
+        fetchApiSpy.mockReturnValueOnce(Promise.resolve(tempReturnObject));
 
-        const res = await updateShippingAddress(shippingAddressMock);
+        const res = await updateBillingAddress(billingAddressMock);
 
         expect(getApiOptionsSpy).toHaveBeenCalledTimes(timesWhenCalled);
         expect(getApiUrlSpy).toHaveBeenCalledTimes(timesWhenCalled);
         expect(fetchApiSpy).toHaveBeenCalledTimes(timesWhenCalled);
-        expect(checkApiResponseSpy).toHaveBeenCalledTimes(timesWhenCalled);
-        expect(getApiOptionsSpy).toHaveBeenCalledWith(apiTypeKeys.updateShippingAddress, shippingAddressMock);
-        expect(getApiUrlSpy).toHaveBeenCalledWith(apiTypeKeys.updateShippingAddress);
+        expect(getApiOptionsSpy).toHaveBeenCalledWith(apiTypeKeys.updateBillingAddress, billingAddressMock);
+        expect(getApiUrlSpy).toHaveBeenCalledWith(apiTypeKeys.updateBillingAddress);
         expect(fetchApiSpy).toHaveBeenCalledWith(apiUrlMock, optionsMock);
-        expect(checkApiResponseSpy).toHaveBeenCalledWith(tempReturnObject, keysToTest);
         expect(res).toStrictEqual(tempReturnObject);
     });
 });

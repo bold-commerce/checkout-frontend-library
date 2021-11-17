@@ -172,6 +172,12 @@ export const apiTypes: IApiTypes = {
         useJwt: true,
         keysToTest: [...appStateKeysToTest]
     },
+    updateBillingAddress: {
+        path: '/addresses/billing',
+        method: methods.PUT,
+        useJwt: true,
+        keysToTest: [...appStateKeysToTest]
+    },
 };
 
 export const apiTypeKeys: IApiTypeKeys = {
@@ -193,7 +199,8 @@ export const apiTypeKeys: IApiTypeKeys = {
     getApplicationState: 'getApplicationState',
     deleteBillingAddress: 'deleteBillingAddress',
     deleteShippingAddress: 'deleteShippingAddress',
-    updateShippingAddress: 'updateShippingAddress'
+    updateShippingAddress: 'updateShippingAddress',
+    updateBillingAddress: 'updateBillingAddress'
 };
 
 export const baseReturnObject: IApiReturnObject = {
