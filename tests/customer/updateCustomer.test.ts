@@ -1,4 +1,4 @@
-import {FetchError, updateGuestCustomer} from 'src';
+import {FetchError, updateCustomer} from 'src';
 import * as fetchAPI from 'src/utils/fetchAPI';
 import * as getApiOptions from 'src/utils/getApiOptions';
 import * as apiUrl from 'src/utils/apiUrl';
@@ -6,7 +6,7 @@ import * as apiResponse from 'src/utils/apiResponse';
 import {apiTypeKeys, baseReturnObject, keysToTestFromResponse, methods} from 'src/variables';
 import {applicationStateMock, customerMock} from 'src/variables/mocks';
 
-describe('testing updateGuestCustomer', () => {
+describe('testing updateCustomer', () => {
     const returnObject = {...baseReturnObject};
     const firstName = 'John';
     const lastName = 'Doe';
@@ -38,14 +38,14 @@ describe('testing updateGuestCustomer', () => {
     });
 
     test('successful call (200)', async () => {
-        const res = await updateGuestCustomer(firstName, lastName, email, acceptsMarketing);
+        const res = await updateCustomer(firstName, lastName, email, acceptsMarketing);
 
         expect(getApiOptionsSpy).toHaveBeenCalledTimes(timesWhenCalled);
         expect(getApiUrlSpy).toHaveBeenCalledTimes(timesWhenCalled);
         expect(fetchApiSpy).toHaveBeenCalledTimes(timesWhenCalled);
         expect(checkApiResponseSpy).toHaveBeenCalledTimes(timesWhenCalled);
-        expect(getApiOptionsSpy).toHaveBeenCalledWith(apiTypeKeys.updateGuestCustomer, requestMock);
-        expect(getApiUrlSpy).toHaveBeenCalledWith(apiTypeKeys.updateGuestCustomer);
+        expect(getApiOptionsSpy).toHaveBeenCalledWith(apiTypeKeys.updateCustomer, requestMock);
+        expect(getApiUrlSpy).toHaveBeenCalledWith(apiTypeKeys.updateCustomer);
         expect(fetchApiSpy).toHaveBeenCalledWith(apiUrlMock, optionsMock);
         expect(checkApiResponseSpy).toHaveBeenCalledWith(returnObject, keysToTest);
         expect(res).toStrictEqual(returnObject);
@@ -58,14 +58,14 @@ describe('testing updateGuestCustomer', () => {
 
         fetchApiSpy.mockReturnValueOnce(Promise.resolve(tempReturnObject));
 
-        const res = await updateGuestCustomer(firstName, lastName, email, acceptsMarketing);
+        const res = await updateCustomer(firstName, lastName, email, acceptsMarketing);
 
         expect(getApiOptionsSpy).toHaveBeenCalledTimes(timesWhenCalled);
         expect(getApiUrlSpy).toHaveBeenCalledTimes(timesWhenCalled);
         expect(fetchApiSpy).toHaveBeenCalledTimes(timesWhenCalled);
         expect(checkApiResponseSpy).toHaveBeenCalledTimes(timesWhenCalled);
-        expect(getApiOptionsSpy).toHaveBeenCalledWith(apiTypeKeys.updateGuestCustomer, requestMock);
-        expect(getApiUrlSpy).toHaveBeenCalledWith(apiTypeKeys.updateGuestCustomer);
+        expect(getApiOptionsSpy).toHaveBeenCalledWith(apiTypeKeys.updateCustomer, requestMock);
+        expect(getApiUrlSpy).toHaveBeenCalledWith(apiTypeKeys.updateCustomer);
         expect(fetchApiSpy).toHaveBeenCalledWith(apiUrlMock, optionsMock);
         expect(checkApiResponseSpy).toHaveBeenCalledWith(tempReturnObject, keysToTest);
         expect(res).toStrictEqual(tempReturnObject);

@@ -21,8 +21,8 @@ describe('multiple getApiOptions tests - success', () => {
             },
         },
         {
-            testName: 'test updateGuestCustomer - success',
-            type: 'updateGuestCustomer',
+            testName: 'test updateCustomer - success',
+            type: 'updateCustomer',
             body: { token: '' },
             headers: {
                 'Content-Type': 'application/json',

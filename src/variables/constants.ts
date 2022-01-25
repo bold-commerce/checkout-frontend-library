@@ -68,8 +68,8 @@ export const apiTypes: IApiTypes = {
         useJwt: true,
         keysToTest: [...appStateKeysToTest]
     },
-    updateGuestCustomer: {
-        path: '/customer/guest',
+    updateCustomer: {
+        path: '/customer',
         method: methods.PUT,
         useJwt: true,
         keysToTest: [...appStateKeysToTest]
@@ -183,7 +183,7 @@ export const apiTypes: IApiTypes = {
 
 export const apiTypeKeys: IApiTypeKeys = {
     addGuestCustomer: 'addGuestCustomer',
-    updateGuestCustomer: 'updateGuestCustomer',
+    updateCustomer: 'updateCustomer',
     deleteCustomer: 'deleteCustomer',
     validateEmail: 'validateEmail',
     setShippingAddress: 'setShippingAddress',
