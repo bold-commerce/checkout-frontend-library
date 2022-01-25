@@ -1,4 +1,4 @@
 export * from './addGuestCustomer';
 export * from './deleteCustomer';
-export * from './updateGuestCustomer';
+export * from './updateCustomer';
 export * from './validateEmail';
