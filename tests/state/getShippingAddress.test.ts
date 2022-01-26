@@ -7,7 +7,7 @@ describe('get Shipping Address', () => {
     test('get mocked shipping addresses', () => {
         setShippingAddress(shippingAddressMock);
         const result = getShippingAddress();
-        expect(result).toStrictEqual(shippingAddressMock);
+        expect(result).toEqual(shippingAddressMock);
     });
 
     test('should not alter Shipping address', () => {
@@ -15,7 +15,7 @@ describe('get Shipping Address', () => {
         setShippingAddress(shippingAddressMock);
         const result = getShippingAddress();
 
-        expect(result).toStrictEqual(shippingAddressMock);
+        expect(result).toEqual(shippingAddressMock);
 
         result.first_name = text;
 

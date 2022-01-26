@@ -7,7 +7,7 @@ describe('get Application State', () => {
     test('get mocked application state', () => {
         setApplicationState(applicationStateMock);
         const result = getApplicationState();
-        expect(result).toStrictEqual(applicationStateMock);
+        expect(result).toEqual(applicationStateMock);
     });
 
     test('should not alter application state', () => {
@@ -15,7 +15,7 @@ describe('get Application State', () => {
         setApplicationState(applicationStateMock);
         const result = getApplicationState();
 
-        expect(result).toStrictEqual(applicationStateMock);
+        expect(result).toEqual(applicationStateMock);
 
         result.customer.first_name = text;
 

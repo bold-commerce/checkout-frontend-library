@@ -23,6 +23,7 @@ import {
 } from 'src';
 
 export const shippingAddressMock: IAddress = {
+    id: undefined,
     first_name: 'John',
     last_name: 'Doe',
     address_line_1: '123 Any St',
@@ -38,6 +39,7 @@ export const shippingAddressMock: IAddress = {
 };
 
 export const billingAddressMock: IAddress = {
+    id: undefined,
     first_name: 'Jane',
     last_name: 'Doe',
     address_line_1: '456 Any St',
@@ -50,6 +52,22 @@ export const billingAddressMock: IAddress = {
     postal_code: 'R3Y0L6',
     business_name: 'Some Business Name',
     phone_number: '3453453456'
+};
+
+export const emptyAddressMock: IAddress = {
+    id: undefined,
+    first_name: '',
+    last_name: '',
+    address_line_1: '',
+    address_line_2: '',
+    country: '',
+    city: '',
+    province: '',
+    country_code: '',
+    province_code: '',
+    postal_code: '',
+    business_name: '',
+    phone_number: ''
 };
 
 export const customerMock: ICustomer = {
