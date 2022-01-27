@@ -2,7 +2,8 @@ import {setAddresses} from 'src/state';
 import * as setShippingAddress from 'src/state/setShippingAddress';
 import * as setBillingAddress from 'src/state/setBillingAddress';
 import {applicationState, billingAddress, shippingAddress} from 'src/variables';
-import {billingAddressMock, shippingAddressMock} from 'src/variables/mocks';
+import {billingAddressMock, emptyAddressMock, shippingAddressMock} from 'src/variables/mocks';
+import {IAddress} from '../../src';
 
 describe('setAddresses', () => {
     let setShippingAddressSpy: jest.SpyInstance;
@@ -33,12 +34,16 @@ describe('setAddresses', () => {
 
     test('Set address to application state with empty object', () => {
 
-        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-        // @ts-ignore
-        setAddresses({shipping:{} , billing: {}});
+        setAddresses({shipping:{} as IAddress , billing: {} as IAddress});
 
-        expect(setShippingAddressSpy).toHaveBeenCalledTimes(0);
-        expect(setBillingAddressSpy).toHaveBeenCalledTimes(0);
+        expect(setShippingAddressSpy).toHaveBeenCalledTimes(1);
+        expect(setShippingAddressSpy).toHaveBeenCalledWith({});
+        expect(shippingAddress).toStrictEqual(emptyAddressMock);
+        expect(applicationState.addresses.shipping).toStrictEqual(emptyAddressMock);
+        expect(setBillingAddressSpy).toHaveBeenCalledTimes(1);
+        expect(setBillingAddressSpy).toHaveBeenCalledWith({});
+        expect(billingAddress).toStrictEqual(emptyAddressMock);
+        expect(applicationState.addresses.billing).toStrictEqual(emptyAddressMock);
     });
 
 });

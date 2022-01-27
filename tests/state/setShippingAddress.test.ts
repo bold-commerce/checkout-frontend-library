@@ -1,6 +1,7 @@
 import {setShippingAddress} from 'src/state';
 import {applicationState, shippingAddress} from 'src/variables';
-import {shippingAddressMock} from 'src/variables/mocks';
+import {emptyAddressMock, shippingAddressMock} from 'src/variables/mocks';
+import {IAddress} from '../../src';
 
 describe('setShippingAddress', () => {
     test('Set shipping to application state', () => {
@@ -19,5 +20,12 @@ describe('setShippingAddress', () => {
 
         expect(shippingAddress).toStrictEqual(localMock);
         expect(applicationState.addresses.shipping).toStrictEqual(localMock);
+    });
+
+    test('set shipping address with empty array', () => {
+        setShippingAddress({} as IAddress);
+
+        expect(shippingAddress).toStrictEqual(emptyAddressMock);
+        expect(applicationState.addresses.shipping).toStrictEqual(emptyAddressMock);
     });
 });

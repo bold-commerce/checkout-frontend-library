@@ -16,19 +16,17 @@ export function setBillingAddress({
     business_name,
     phone_number
 }: IAddress): void {
-    if(id) {
-        billingAddress.id = id;
-    }
-    billingAddress.first_name = first_name;
-    billingAddress.last_name = last_name;
-    billingAddress.address_line_1 = address_line_1;
-    billingAddress.address_line_2 = address_line_2;
-    billingAddress.country = country;
-    billingAddress.city = city;
-    billingAddress.province = province;
-    billingAddress.country_code = country_code;
-    billingAddress.province_code = province_code;
-    billingAddress.postal_code = postal_code;
-    billingAddress.business_name = business_name;
-    billingAddress.phone_number = phone_number;
+    billingAddress.id = id ? id : undefined;
+    billingAddress.first_name = first_name ? first_name : '';
+    billingAddress.last_name = last_name ? last_name : '';
+    billingAddress.address_line_1 = address_line_1 ? address_line_1 : '';
+    billingAddress.address_line_2 = address_line_2 ? address_line_2 : '';
+    billingAddress.country = country ? country : '';
+    billingAddress.city = city ? city : '';
+    billingAddress.province = province ? province : '';
+    billingAddress.country_code = country_code ? country_code : '';
+    billingAddress.province_code = province_code ? province_code : '';
+    billingAddress.postal_code = postal_code ? postal_code : '';
+    billingAddress.business_name = business_name ? business_name : '';
+    billingAddress.phone_number = phone_number ? phone_number : '';
 }

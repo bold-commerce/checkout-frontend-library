@@ -7,7 +7,7 @@ describe('get Addresses', () => {
     test('get mocked addresses', () => {
         setAddresses(addressesMock);
         const result = getAddresses();
-        expect(result).toStrictEqual(addressesMock);
+        expect(result).toEqual(addressesMock);
     });
 
     test('should not alter addresses', () => {
@@ -15,7 +15,7 @@ describe('get Addresses', () => {
         setAddresses(addressesMock);
         const result = getAddresses();
 
-        expect(result).toStrictEqual(addressesMock);
+        expect(result).toEqual(addressesMock);
 
         result.billing.first_name = text;
 
