@@ -252,6 +252,17 @@ export const orderInitialDataMock: IOrderInitialData = {
     shop_name: 'test_shop_name',
     country_information: [countryInformationMock],
     supported_languages: ['English'],
+    general_settings: {
+        checkout_process: {
+            company_name_option: 'required',
+            phone_number_required: false,
+            accepts_marketing_checkbox_option: 'checked'
+        },
+        address_autocomplete: {
+            provider: null,
+            api_key: null
+        }
+    }
 };
 
 export const cssRuleMock: ICssRule = {

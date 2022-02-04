@@ -51,6 +51,7 @@ export interface IPigiActionTypes {
     PIGI_INITIALIZED: string;
     PIGI_UPDATE_HEIGHT: string;
     PIGI_HANDLE_SCA: string;
+    PIGI_PAYMENT_ADDED: string;
 }
 
 export interface IApiReturnObject {
@@ -213,6 +214,7 @@ export interface IOrderInitialData {
     shop_name?:           string;
     country_information?: Array<ICountryInformation>;
     supported_languages?: Array<string>;
+    general_settings?: IGeneralSettings
 }
 
 export interface ICountryInformation {
@@ -224,6 +226,22 @@ export interface ICountryInformation {
     provinces?:        Array<IProvince>;
     valid_for_shipping?: boolean;
     valid_for_billing?:  boolean;
+}
+
+export interface ICheckoutProcess{
+    company_name_option: string,
+    phone_number_required: boolean,
+    accepts_marketing_checkbox_option: string
+}
+
+export interface IAddressAutoComplete{
+    provider: string | null,
+    api_key: string | null,
+}
+
+export interface IGeneralSettings{
+    checkout_process: ICheckoutProcess,
+    address_autocomplete: IAddressAutoComplete,
 }
 
 export interface IProvince {
