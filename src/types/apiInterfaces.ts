@@ -191,6 +191,8 @@ export interface IValidateAddress {
     postal_code: string;
     province: string;
     country_code: string;
+    country: string;
+    province_code: string;
 }
 
 export interface IValidateEmail {
@@ -404,6 +406,8 @@ export interface IValidateAddressRequest {
     postal_code: string;
     province: string;
     country_code: string;
+    province_code: string;
+    country: string;
 }
 
 export type IApiResponse = IApiErrorResponse | IApiErrorsResponse | IApiSuccessResponse;

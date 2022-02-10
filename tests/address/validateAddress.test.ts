@@ -9,11 +9,13 @@ describe('testing validateAddress', () => {
     const fetchApiSpy = jest.spyOn(fetchAPI, 'fetchAPI').mockReturnValue(Promise.resolve(returnObject));
     jest.spyOn(getApiOptions, 'getApiOptions').mockReturnValue({});
     const postalCode = 'R3Y 0L6';
-    const province = 'MB';
+    const province = 'Manitoba';
     const countryCode = 'CA';
+    const country = 'Canada';
+    const provinceCode = 'MB';
 
     test('successful call (200)', async () => {
-        const res = await validateAddress(postalCode, province, countryCode);
+        const res = await validateAddress(postalCode, province, provinceCode, country, countryCode);
 
         expect(res.success).toBe(true);
     });
@@ -23,7 +25,7 @@ describe('testing validateAddress', () => {
 
         fetchApiSpy.mockReturnValueOnce(Promise.resolve(tempReturnObject));
 
-        const res = await validateAddress(postalCode, province, countryCode);
+        const res = await validateAddress(postalCode, province, provinceCode, country, countryCode);
 
         expect(res.success).toBe(false);
         expect(res.error).toBeInstanceOf(FetchError);
