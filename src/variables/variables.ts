@@ -117,4 +117,6 @@ export const applicationState: IApplicationState = {
     order_meta_data,
     shipping,
     order_total: 0,
+    resumable_link: '',
+    created_via: '',
 };

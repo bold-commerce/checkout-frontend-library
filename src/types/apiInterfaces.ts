@@ -263,6 +263,8 @@ export interface IApplicationState {
     payments: Array<IPayment>;
     order_total: number;
     order_meta_data: IOrderMetaData;
+    resumable_link: string | null;
+    created_via: string
 }
 
 export interface IOrderMetaData {

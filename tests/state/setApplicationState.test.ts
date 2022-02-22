@@ -59,6 +59,8 @@ describe('setApplicationState', () => {
         expect(setShippingSpy).toHaveBeenCalledWith(applicationStateMock.shipping);
 
         expect(applicationState.order_total).toBe(applicationStateMock.order_total);
+        expect(applicationState.resumable_link).toBe(applicationStateMock.resumable_link);
+        expect(applicationState.created_via).toBe(applicationStateMock.created_via);
         expect(applicationState).toStrictEqual(applicationStateMock);
     });
 });

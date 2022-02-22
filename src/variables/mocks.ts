@@ -215,7 +215,9 @@ export const applicationStateMock: IApplicationState = {
     payments: [paymentMock],
     order_meta_data: orderMetaDataMock,
     shipping: shippingMock,
-    order_total: 10000
+    order_total: 10000,
+    resumable_link: null,
+    created_via: 'checkout'
 };
 
 export const selectShippingLineArrayMock: Array<IShippingLine> = [

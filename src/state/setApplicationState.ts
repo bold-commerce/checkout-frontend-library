@@ -20,7 +20,9 @@ export function setApplicationState({
     payments,
     order_meta_data,
     shipping,
-    order_total
+    order_total,
+    resumable_link,
+    created_via
 }: IApplicationState): void {
     setCustomer(customer);
     setAddresses(addresses);
@@ -31,4 +33,6 @@ export function setApplicationState({
     setOrderMetaData(order_meta_data);
     setShipping(shipping);
     applicationState.order_total = order_total;
+    applicationState.resumable_link = resumable_link;
+    applicationState.created_via = created_via;
 }
