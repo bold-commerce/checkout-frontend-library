@@ -1,5 +1,5 @@
 export * from './getPigiFrameWindow';
-export * from './sendAction';
+export * from './sendPigiAction';
 export * from './sendAddPaymentAction';
 export * from './sendClearErrorMessageAction';
 export * from './sendDisplayErrorMessageAction';

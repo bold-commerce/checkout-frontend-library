@@ -1,14 +1,16 @@
 import {apiErrors, baseReturnObject, pigiActionTypes} from 'src/variables';
-import {FetchError, IPigiActionType, sendUpdateMediaMatchAction} from 'src';
-import * as sendAction from 'src/pigi/sendAction';
+import {FetchError, IPigiActionType, IPigiResponseType, sendUpdateMediaMatchAction, sendUpdateMediaMatchActionAsync} from 'src';
+import * as sendPigiAction from 'src/pigi/sendPigiAction';
 
 describe('Testing Pigi Update Media Match action', () => {
     const calledOnce = 1;
-    let sendActionSpy: jest.SpyInstance;
+    let sendPigiActionSpy: jest.SpyInstance;
+    let sendPigiActionAsyncSpy: jest.SpyInstance;
 
     beforeEach(() => {
         jest.restoreAllMocks();
-        sendActionSpy = jest.spyOn(sendAction, 'sendAction');
+        sendPigiActionSpy = jest.spyOn(sendPigiAction, 'sendPigiAction');
+        sendPigiActionAsyncSpy = jest.spyOn(sendPigiAction, 'sendPigiActionAsync');
     });
 
     test('sendUpdateMediaMatchAction Error return', () => {
@@ -18,12 +20,12 @@ describe('Testing Pigi Update Media Match action', () => {
         const action: IPigiActionType = {actionType: pigiActionTypes.PIGI_UPDATE_MEDIA_MATCH, payload};
         const falseReturnObject = {...baseReturnObject};
         falseReturnObject.error = new FetchError(apiErrors.noPigiIframe.status, apiErrors.noPigiIframe.message);
-        sendActionSpy.mockReturnValueOnce(falseReturnObject);
+        sendPigiActionSpy.mockReturnValueOnce(falseReturnObject);
 
         const res = sendUpdateMediaMatchAction(conditionText, matches);
 
-        expect(sendActionSpy).toHaveBeenCalledTimes(calledOnce);
-        expect(sendActionSpy).toHaveBeenCalledWith(action);
+        expect(sendPigiActionSpy).toHaveBeenCalledTimes(calledOnce);
+        expect(sendPigiActionSpy).toHaveBeenCalledWith(action);
         expect(res).toStrictEqual(falseReturnObject);
     });
 
@@ -34,12 +36,30 @@ describe('Testing Pigi Update Media Match action', () => {
         const action: IPigiActionType = {actionType: pigiActionTypes.PIGI_UPDATE_MEDIA_MATCH, payload};
         const trueReturnObject = {...baseReturnObject};
         trueReturnObject.success = true;
-        sendActionSpy.mockReturnValueOnce(trueReturnObject);
+        sendPigiActionSpy.mockReturnValueOnce(trueReturnObject);
 
         const res = sendUpdateMediaMatchAction(conditionText, matches);
 
-        expect(sendActionSpy).toHaveBeenCalledTimes(calledOnce);
-        expect(sendActionSpy).toHaveBeenCalledWith(action);
+        expect(sendPigiActionSpy).toHaveBeenCalledTimes(calledOnce);
+        expect(sendPigiActionSpy).toHaveBeenCalledWith(action);
         expect(res).toStrictEqual(trueReturnObject);
+    });
+
+
+
+    test('calling sendUpdateMediaMatchActionAsync success', async () => {
+        const conditionText = 'screen and (min-width: 768px)';
+        const matches = false;
+        const tempReturnObject: IPigiResponseType = {
+            responseType: pigiActionTypes.PIGI_ADD_PAYMENT,
+            payload: {success: true}
+        };
+        sendPigiActionAsyncSpy.mockReturnValueOnce(tempReturnObject);
+
+        const res = await sendUpdateMediaMatchActionAsync(conditionText, matches);
+
+        expect(sendPigiActionAsyncSpy).toHaveBeenCalledTimes(calledOnce);
+        expect(res).not.toBeNull();
+        expect(res).toStrictEqual(tempReturnObject);
     });
 });
