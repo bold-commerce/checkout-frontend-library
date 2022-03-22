@@ -1,5 +1,5 @@
 import {pigiActionTypes} from 'src/variables';
-import {IApiReturnObject, IPigiActionType, sendAction} from 'src';
+import {IApiReturnObject, IPigiActionType, IPigiResponseType, sendPigiAction, sendPigiActionAsync} from 'src';
 
 /**
  * ## sendHandleScaAction
@@ -13,5 +13,22 @@ export function sendHandleScaAction(clientSecretToken?: string): IApiReturnObjec
             clientSecretToken
         }
     };
-    return sendAction(action);
+    return sendPigiAction(action);
+}
+
+/**
+ * ## sendHandleScaActionAsync
+ *
+ * This action is to be sent to request Pigi to handle any SCA/3DS actions.
+ * 
+ * This method waits for a response back from PIGI before returning.
+ */
+export async function sendHandleScaActionAsync(clientSecretToken?: string): Promise<IPigiResponseType> {
+    const action: IPigiActionType = {
+        actionType: pigiActionTypes.PIGI_HANDLE_SCA,
+        payload: {
+            clientSecretToken
+        }
+    };
+    return await sendPigiActionAsync(action);
 }

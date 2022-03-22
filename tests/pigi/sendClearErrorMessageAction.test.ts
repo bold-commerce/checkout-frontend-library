@@ -1,24 +1,26 @@
-import {FetchError, sendClearErrorMessageAction} from 'src';
-import {apiErrors, baseReturnObject} from 'src/variables';
-import * as sendAction from 'src/pigi/sendAction';
+import {FetchError, IPigiResponseType, sendClearErrorMessageAction, sendClearErrorMessageActionAsync} from 'src';
+import {apiErrors, baseReturnObject, pigiActionTypes} from 'src/variables';
+import * as sendPigiAction from 'src/pigi/sendPigiAction';
 
 describe('testing send PIGI Clear Error Message Action', () => {
-    let sendActionSpy: jest.SpyInstance;
+    let sendPigiActionSpy: jest.SpyInstance;
+    let sendPigiActionAsyncSpy: jest.SpyInstance;
     const calledOnce = 1;
 
     beforeEach(() => {
         jest.restoreAllMocks();
-        sendActionSpy = jest.spyOn(sendAction, 'sendAction');
+        sendPigiActionSpy = jest.spyOn(sendPigiAction, 'sendPigiAction');
+        sendPigiActionAsyncSpy = jest.spyOn(sendPigiAction, 'sendPigiActionAsync');
     });
 
     test('calling sendClearErrorMessageAction success', () => {
         const tempReturnObject = {...baseReturnObject};
         tempReturnObject.success = true;
-        sendActionSpy.mockReturnValueOnce(tempReturnObject);
+        sendPigiActionSpy.mockReturnValueOnce(tempReturnObject);
 
         const res = sendClearErrorMessageAction();
 
-        expect(sendActionSpy).toHaveBeenCalledTimes(calledOnce);
+        expect(sendPigiActionSpy).toHaveBeenCalledTimes(calledOnce);
         expect(res).not.toBeNull();
         expect(res).toStrictEqual(tempReturnObject);
     });
@@ -27,11 +29,25 @@ describe('testing send PIGI Clear Error Message Action', () => {
         const tempReturnObject = {...baseReturnObject};
         tempReturnObject.success = false;
         tempReturnObject.error = new FetchError(apiErrors.noPigiIframe.status, apiErrors.noPigiIframe.message);
-        sendActionSpy.mockReturnValueOnce(tempReturnObject);
+        sendPigiActionSpy.mockReturnValueOnce(tempReturnObject);
 
         const res = sendClearErrorMessageAction();
 
-        expect(sendActionSpy).toHaveBeenCalledTimes(calledOnce);
+        expect(sendPigiActionSpy).toHaveBeenCalledTimes(calledOnce);
+        expect(res).not.toBeNull();
+        expect(res).toStrictEqual(tempReturnObject);
+    });
+
+    test('calling sendClearErrorMessageActionAsync success', async () => {
+        const tempReturnObject: IPigiResponseType = {
+            responseType: pigiActionTypes.PIGI_CLEAR_ERROR_MESSAGES,
+            payload: {success: true}
+        };
+        sendPigiActionAsyncSpy.mockReturnValueOnce(tempReturnObject);
+
+        const res = await sendClearErrorMessageActionAsync();
+
+        expect(sendPigiActionAsyncSpy).toHaveBeenCalledTimes(calledOnce);
         expect(res).not.toBeNull();
         expect(res).toStrictEqual(tempReturnObject);
     });
