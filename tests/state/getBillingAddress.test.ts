@@ -20,6 +20,6 @@ describe('get Billing Address', () => {
         result.first_name = text;
 
         expect(result.first_name).toBe(text);
-        expect(applicationState.addresses.billing.first_name).not.toBe(text);
+        expect(applicationState.addresses.billing?.first_name).not.toBe(text);
     });
 });

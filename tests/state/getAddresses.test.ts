@@ -17,9 +17,11 @@ describe('get Addresses', () => {
 
         expect(result).toEqual(addressesMock);
 
-        result.billing.first_name = text;
+        if(result.billing) {
+            result.billing.first_name = text;
+        }
 
-        expect(result.billing.first_name).toBe(text);
-        expect(applicationState.addresses.billing.first_name).not.toBe(text);
+        expect(result.billing?.first_name).toBe(text);
+        expect(applicationState.addresses.billing?.first_name).not.toBe(text);
     });
 });

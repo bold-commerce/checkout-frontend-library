@@ -347,8 +347,8 @@ export interface IProductData {
 }
 
 export interface IAddressType {
-    billing: IAddress;
-    shipping: IAddress;
+    billing: IAddress | null;
+    shipping: IAddress | null;
 }
 
 export interface ICustomer {
