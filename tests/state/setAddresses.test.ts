@@ -46,4 +46,18 @@ describe('setAddresses', () => {
         expect(applicationState.addresses.billing).toStrictEqual(emptyAddressMock);
     });
 
+    test('Set address to application state with nulls', () => {
+
+        setAddresses({shipping: null, billing: null});
+
+        expect(setShippingAddressSpy).toHaveBeenCalledTimes(1);
+        expect(setShippingAddressSpy).toHaveBeenCalledWith(shippingAddress);
+        expect(shippingAddress).toStrictEqual(emptyAddressMock);
+        expect(applicationState.addresses.shipping).toStrictEqual(emptyAddressMock);
+        expect(setBillingAddressSpy).toHaveBeenCalledTimes(1);
+        expect(setBillingAddressSpy).toHaveBeenCalledWith(billingAddress);
+        expect(billingAddress).toStrictEqual(emptyAddressMock);
+        expect(applicationState.addresses.billing).toStrictEqual(emptyAddressMock);
+    });
+
 });

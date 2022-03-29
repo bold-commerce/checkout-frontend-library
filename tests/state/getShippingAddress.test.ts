@@ -20,6 +20,6 @@ describe('get Shipping Address', () => {
         result.first_name = text;
 
         expect(result.first_name).toBe(text);
-        expect(applicationState.addresses.shipping.first_name).not.toBe(text);
+        expect(applicationState.addresses.shipping?.first_name).not.toBe(text);
     });
 });
