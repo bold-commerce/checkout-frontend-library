@@ -13,9 +13,15 @@ describe('testing validateAddress', () => {
     const countryCode = 'CA';
     const country = 'Canada';
     const provinceCode = 'MB';
+    const businessName = 'Business Name';
 
     test('successful call (200)', async () => {
         const res = await validateAddress(postalCode, province, provinceCode, country, countryCode);
+
+        expect(res.success).toBe(true);
+    });
+    test('successful call with business name (200)', async () => {
+        const res = await validateAddress(postalCode, province, provinceCode, country, countryCode, businessName);
 
         expect(res.success).toBe(true);
     });
