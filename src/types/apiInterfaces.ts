@@ -194,6 +194,7 @@ export interface IValidateAddress {
     country: string;
     province_code: string;
     business_name?: string;
+    phone_number?: string;
 }
 
 export interface IValidateEmail {
@@ -412,6 +413,7 @@ export interface IValidateAddressRequest {
     province_code: string;
     country: string;
     business_name?: string;
+    phone_number?: string;
 }
 
 export type IApiResponse = IApiErrorResponse | IApiErrorsResponse | IApiSuccessResponse;
