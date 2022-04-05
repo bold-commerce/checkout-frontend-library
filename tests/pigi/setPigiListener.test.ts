@@ -1,4 +1,4 @@
-import {IPigiActionTypes, setPigiListener} from 'src';
+import {IPigiActionTypes, setPigiListener, removePigiListener} from 'src';
 import {pigi, pigiActionTypes} from 'src/variables';
 
 describe('testing set pigi listener', () => {
@@ -28,9 +28,11 @@ describe('testing set pigi listener', () => {
         const eventHandlerFunction: EventListener = jest.fn();
         const addEventListenerSpy = jest.spyOn(window, 'addEventListener')
             .mockImplementationOnce(getAddEventListenerImplementation(event));
+        const removeEventListenerSpy = jest.spyOn(window, 'removeEventListener');
 
         setPigiListener(iFrameId, eventHandlerFunction);
 
+        expect(removeEventListenerSpy).toHaveBeenCalledTimes(1);
         expect(addEventListenerSpy).toHaveBeenCalledTimes(calledOnce);
         expect(eventHandlerFunction).toHaveBeenCalledTimes(calledOnce);
         expect(eventHandlerFunction).toHaveBeenCalledWith(event);
@@ -44,9 +46,11 @@ describe('testing set pigi listener', () => {
         const eventHandlerObject: EventListenerObject = {handleEvent: jest.fn()};
         const addEventListenerSpy = jest.spyOn(window, 'addEventListener')
             .mockImplementationOnce(getAddEventListenerImplementation(event));
+        const removeEventListenerSpy = jest.spyOn(window, 'removeEventListener');
 
         setPigiListener(iFrameId, eventHandlerObject);
 
+        expect(removeEventListenerSpy).toHaveBeenCalledTimes(1);
         expect(addEventListenerSpy).toHaveBeenCalledTimes(calledOnce);
         expect(eventHandlerObject.handleEvent).toHaveBeenCalledTimes(calledOnce);
         expect(eventHandlerObject.handleEvent).toHaveBeenCalledWith(event);
@@ -59,9 +63,11 @@ describe('testing set pigi listener', () => {
         const eventHandlerFunction: EventListener = jest.fn();
         const addEventListenerSpy = jest.spyOn(window, 'addEventListener')
             .mockImplementationOnce(getAddEventListenerImplementation(event));
+        const removeEventListenerSpy = jest.spyOn(window, 'removeEventListener');
 
         setPigiListener(iFrameId, eventHandlerFunction);
 
+        expect(removeEventListenerSpy).toHaveBeenCalledTimes(1);
         expect(addEventListenerSpy).toHaveBeenCalledTimes(calledOnce);
         expect(eventHandlerFunction).toHaveBeenCalledTimes(notCalled);
         expect(pigi.iFrameId).toBe(noHashTagIFrameId);
@@ -73,12 +79,23 @@ describe('testing set pigi listener', () => {
         const eventHandlerFunction: EventListener = jest.fn();
         const addEventListenerSpy = jest.spyOn(window, 'addEventListener')
             .mockImplementationOnce(getAddEventListenerImplementation(event));
+        const removeEventListenerSpy = jest.spyOn(window, 'removeEventListener');
 
         setPigiListener(iFrameId, eventHandlerFunction);
 
+        expect(removeEventListenerSpy).toHaveBeenCalledTimes(1);
         expect(addEventListenerSpy).toHaveBeenCalledTimes(calledOnce);
         expect(eventHandlerFunction).toHaveBeenCalledTimes(notCalled);
         expect(pigi.iFrameId).toBe(noHashTagIFrameId);
+    });
+
+    test('calling removePigiListener with function listener ', () => {
+        jest.restoreAllMocks();
+        const removeEventListenerSpy = jest.spyOn(window, 'removeEventListener');
+        
+        removePigiListener();
+
+        expect(removeEventListenerSpy).toHaveBeenCalledTimes(1);
     });
 });
 
