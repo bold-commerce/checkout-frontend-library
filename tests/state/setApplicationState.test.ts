@@ -61,6 +61,7 @@ describe('setApplicationState', () => {
         expect(applicationState.order_total).toBe(applicationStateMock.order_total);
         expect(applicationState.resumable_link).toBe(applicationStateMock.resumable_link);
         expect(applicationState.created_via).toBe(applicationStateMock.created_via);
+        expect(applicationState.is_processed).toBe(applicationStateMock.is_processed);
         expect(applicationState).toStrictEqual(applicationStateMock);
     });
 });

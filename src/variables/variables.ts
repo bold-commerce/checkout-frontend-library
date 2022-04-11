@@ -119,4 +119,5 @@ export const applicationState: IApplicationState = {
     order_total: 0,
     resumable_link: '',
     created_via: '',
+    is_processed: false,
 };

@@ -266,6 +266,7 @@ export interface IApplicationState {
     order_total: number;
     order_meta_data: IOrderMetaData;
     resumable_link: string | null;
+    is_processed: boolean;
     created_via: string
 }
 
