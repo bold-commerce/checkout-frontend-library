@@ -217,6 +217,7 @@ export const applicationStateMock: IApplicationState = {
     shipping: shippingMock,
     order_total: 10000,
     resumable_link: null,
+    is_processed: false,
     created_via: 'checkout'
 };
 

@@ -22,7 +22,8 @@ export function setApplicationState({
     shipping,
     order_total,
     resumable_link,
-    created_via
+    created_via,
+    is_processed
 }: IApplicationState): void {
     setCustomer(customer);
     setAddresses(addresses);
@@ -35,4 +36,5 @@ export function setApplicationState({
     applicationState.order_total = order_total;
     applicationState.resumable_link = resumable_link;
     applicationState.created_via = created_via;
+    applicationState.is_processed = is_processed;
 }
