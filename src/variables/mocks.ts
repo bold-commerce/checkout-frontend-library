@@ -138,7 +138,7 @@ export const productData: IProductData = {
     id: 'product_test_id',
     title: 'Product Title',
     image_url: '',
-    properties: ['test'],
+    properties: {'test': 'test-value'},
     description: 'Product Description',
     quantity: 1,
     price: 1000,
