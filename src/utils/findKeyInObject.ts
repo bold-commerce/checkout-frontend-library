@@ -1,24 +1,52 @@
 import {isObject} from 'src/utils/isObject';
 
-export function findKeyInObject(objectToParse: unknown, keyToFind: string, parent = ''): string | boolean {
-    let path: string | boolean = false;
-    if (!isObject(objectToParse) && parent === '') {
-        return false;
+/**
+ * Returns the path to the first object in nested in `obj` that has a property of `key`. If no object nested in `obj`
+ * has a property of `key` returns `false`. If `obj` is not an object returns `false`. If `key` is a property of `obj`
+ * returns `p.join('.')`.
+ * 
+ * ```
+ * const obj = {
+ *     key1: 'value1',
+ *     key2: 'value2',
+ *     key3: {
+ *         key4: 'value4',
+ *     },
+ *     key5: {
+ *         key6: 'value6',
+ *         key7: {
+ *            key8: 'value8',
+ *        },
+ *        key9: {
+ *           key8: 'duplicate',
+ *        },
+ *     },
+ * };
+ * 
+ * findKeyInObject(obj, 'noKey'); // false
+ * findKeyInObject(obj, 'key1'); // ''
+ * findKeyInObject(obj, 'key4'); // 'key3'
+ * findKeyInObject(obj, 'key8'); // 'key5.key7'
+ * findKeyInObject(obj, 'key8', ['root']); // 'root.key5.key7'
+ * findKeyInObject(obj, 'nokey', ['root']); // false
+ * ```
+ */
+export function findKeyInObject(obj: unknown, key: string, p: string[] | string = []): string | boolean {
+    if (!isObject(obj)) { return false; }
+    
+    const path = Array.isArray(p) ? p : p.split('.');
+    if (key in obj) {
+        return path.join('.');
     }
 
-    const keys = Object.keys(<Record<string, unknown>>objectToParse);
-    if (keys.length > 0 && keys.find(key => key === keyToFind)) {
-        return `${parent}`;
-    } else {
-        keys.forEach((key) => {
-            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-            // @ts-ignore
-            if (isObject(objectToParse[key])) {
-                // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-                // @ts-ignore
-                path = findKeyInObject({...objectToParse[key]}, keyToFind, `${parent}${parent ? '.' : ''}${key}`);
-            }
-        });
+    const objEntries = Object.entries(obj);
+    for (const [ k, v ] of objEntries) {
+        const pathToKey = findKeyInObject(v, key, [...path, k]);
+
+        if (pathToKey) {
+            return pathToKey;
+        }
     }
-    return path;
+
+    return false;
 }
