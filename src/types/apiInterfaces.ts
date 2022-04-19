@@ -329,7 +329,7 @@ export interface IProductData {
     id: string;
     title: string;
     image_url: string;
-    properties: Array<string>
+    properties: Record<string, string>
     description: string;
     quantity: number;
     price: number;
