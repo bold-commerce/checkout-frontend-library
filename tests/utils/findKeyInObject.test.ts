@@ -1,8 +1,8 @@
-import {findKeyInObject} from 'src';
+import { findKeyInObject } from 'src';
 
 describe('Test findKeyInObject function', () => {
     const keyToFind = 'testKey';
-    const parent = '';
+
     const dataProvider = {
         isNotObject: {
             expected: false,
@@ -20,7 +20,8 @@ describe('Test findKeyInObject function', () => {
             data: [
                 {
                     noTestKey: 'value'
-                }, {
+                },
+                {
                     key1: {
                         key1: 'value1',
                         noTestKey: 'value2'
@@ -34,12 +35,13 @@ describe('Test findKeyInObject function', () => {
             data: [
                 {
                     testKey: 'value'
-                }, {
+                },
+                {
+                    testKey: 'value3',
                     key1: {
                         key1: 'value1',
                         key2: 'value2'
                     },
-                    testKey: 'value3'
                 }
             ]
         },
@@ -50,6 +52,10 @@ describe('Test findKeyInObject function', () => {
                     key1: {
                         testKey: 'value1',
                         key2: 'value2'
+                    },
+                    key3: 'value3',
+                    key4: {
+                        key5: 'value5',
                     }
                 },
                 {
@@ -58,6 +64,11 @@ describe('Test findKeyInObject function', () => {
                         level2: {
                             testKey: 'test'
                         }
+                    },
+                    level1a: {
+                        level2a: {
+                            notTestKey: 'test'
+                        },
                     }
                 }
             ]
@@ -65,22 +76,28 @@ describe('Test findKeyInObject function', () => {
     };
 
     test.each(dataProvider.isNotObject.data)('value to test is not object', (data) => {
-        const resultIsObject = findKeyInObject(data, keyToFind, parent);
+        const resultIsObject = findKeyInObject(data, keyToFind);
         expect(resultIsObject).toStrictEqual(dataProvider.isNotObject.expected);
     });
 
     test.each(dataProvider.noKeyInObject.data)('No key in the object', (data) => {
-        const resultIsObject = findKeyInObject(data, keyToFind, parent);
+        const resultIsObject = findKeyInObject(data, keyToFind);
         expect(resultIsObject).toStrictEqual(dataProvider.noKeyInObject.expected);
     });
 
     test.each(dataProvider.keyAtFirstLevel.data)('Key at first level', (data) => {
-        const resultIsObject = findKeyInObject(data, keyToFind, parent);
+        const resultIsObject = findKeyInObject(data, keyToFind);
         expect(resultIsObject).toStrictEqual(dataProvider.keyAtFirstLevel.expected);
     });
 
     test.each(dataProvider.keyAtLowerLevel.data)('Key at other than first level', (data) => {
-        const resultIsObject = findKeyInObject(data, keyToFind, parent);
+        const resultIsObject = findKeyInObject(data, keyToFind);
         expect(resultIsObject).toBe(data.expected);
+    });
+
+    test('Starting path is a string', () => {
+        const data = dataProvider.keyAtLowerLevel.data[0];
+        const resultIsObject = findKeyInObject(data, keyToFind, 'test');
+        expect(resultIsObject).toBe('test.' + data.expected);
     });
 });

@@ -15,8 +15,8 @@ export interface IApiSuccessResponse {
         IGetPaymentIframeUrl |
         IInitializeOrderResponse |
         ICssStylingPaymentIframeResponse |
-        undefined;
-    application_state?: IApplicationState | undefined;
+        IUpdateLineItemQuantityResponse;
+    application_state?: IApplicationState;
 }
 
 export interface ICssRule {
@@ -73,6 +73,11 @@ export interface IInitializeOrderResponse {
 
 export interface ICssStylingPaymentIframeResponse {
     style_sheet: IStyleSheet
+}
+
+export interface IUpdateLineItemQuantityResponse {
+    line_item: IProductData;
+    application_state: IApplicationState;
 }
 
 export interface IStyleSheet {
@@ -162,6 +167,7 @@ export interface IApiTypes {
     deleteShippingAddress: IApiTypesDetail;
     updateShippingAddress: IApiTypesDetail;
     updateBillingAddress: IApiTypesDetail;
+    updateItem: IApiTypesDetail;
 }
 
 export interface IApiTypeKeys {
@@ -185,6 +191,7 @@ export interface IApiTypeKeys {
     deleteShippingAddress: keyof IApiTypes;
     updateShippingAddress: keyof IApiTypes;
     updateBillingAddress: keyof IApiTypes;
+    updateItem: keyof IApiTypes;
 }
 
 export interface IValidateAddress {
