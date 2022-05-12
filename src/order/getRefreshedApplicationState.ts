@@ -13,11 +13,11 @@ import {apiTypeKeys, apiTypes} from 'src/variables';
  * Get a refreshed copy of the application state
  *
  */
-export async function getRefreshedApplicationState(): Promise<IApiReturnObject> {
+export async function getRefreshedApplicationState(numOfRetries = 0): Promise<IApiReturnObject> {
     const {getApplicationState} = apiTypeKeys;
     const url = getApiUrl(getApplicationState);
     const options = getApiOptions(getApplicationState);
-    const fetchRes = await fetchAPI(url, options);
+    const fetchRes = await fetchAPI(url, options, numOfRetries);
     const {keysToTest} = apiTypes.getApplicationState;
     return checkApiResponse(fetchRes, keysToTest);
 }

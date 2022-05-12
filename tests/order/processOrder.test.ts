@@ -39,7 +39,7 @@ describe('testing set processOrder api', () => {
         expect(fetchApiMock).toHaveBeenCalledTimes(1);
         expect(getApitOptionsMock).toHaveBeenCalledWith(apiTypeKeys.processOrder);
         expect(getApiUrlMock).toHaveBeenCalledWith(apiTypeKeys.processOrder);
-        expect(fetchApiMock).toHaveBeenCalledWith(apiUrlMock, optionsMock);
+        expect(fetchApiMock).toHaveBeenCalledWith(apiUrlMock, optionsMock, 0);
         expect(res).toStrictEqual(returnObject);
     });
 
@@ -49,14 +49,14 @@ describe('testing set processOrder api', () => {
 
         fetchApiMock.mockReturnValueOnce(Promise.resolve(tempReturnObject));
 
-        const res = await processOrder();
+        const res = await processOrder(1);
 
         expect(getApitOptionsMock).toHaveBeenCalledTimes(1);
         expect(getApiUrlMock).toHaveBeenCalledTimes(1);
         expect(fetchApiMock).toHaveBeenCalledTimes(1);
         expect(getApitOptionsMock).toHaveBeenCalledWith(apiTypeKeys.processOrder);
         expect(getApiUrlMock).toHaveBeenCalledWith(apiTypeKeys.processOrder);
-        expect(fetchApiMock).toHaveBeenCalledWith(apiUrlMock, optionsMock);
+        expect(fetchApiMock).toHaveBeenCalledWith(apiUrlMock, optionsMock, 1);
         expect(res).toStrictEqual(tempReturnObject);
     });
 

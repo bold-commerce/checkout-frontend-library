@@ -46,7 +46,7 @@ describe('testing updateCustomer', () => {
         expect(checkApiResponseSpy).toHaveBeenCalledTimes(timesWhenCalled);
         expect(getApiOptionsSpy).toHaveBeenCalledWith(apiTypeKeys.updateCustomer, requestMock);
         expect(getApiUrlSpy).toHaveBeenCalledWith(apiTypeKeys.updateCustomer);
-        expect(fetchApiSpy).toHaveBeenCalledWith(apiUrlMock, optionsMock);
+        expect(fetchApiSpy).toHaveBeenCalledWith(apiUrlMock, optionsMock, 0);
         expect(checkApiResponseSpy).toHaveBeenCalledWith(returnObject, keysToTest);
         expect(res).toStrictEqual(returnObject);
     });
@@ -58,7 +58,7 @@ describe('testing updateCustomer', () => {
 
         fetchApiSpy.mockReturnValueOnce(Promise.resolve(tempReturnObject));
 
-        const res = await updateCustomer(firstName, lastName, email, acceptsMarketing);
+        const res = await updateCustomer(firstName, lastName, email, acceptsMarketing, 1);
 
         expect(getApiOptionsSpy).toHaveBeenCalledTimes(timesWhenCalled);
         expect(getApiUrlSpy).toHaveBeenCalledTimes(timesWhenCalled);
@@ -66,7 +66,7 @@ describe('testing updateCustomer', () => {
         expect(checkApiResponseSpy).toHaveBeenCalledTimes(timesWhenCalled);
         expect(getApiOptionsSpy).toHaveBeenCalledWith(apiTypeKeys.updateCustomer, requestMock);
         expect(getApiUrlSpy).toHaveBeenCalledWith(apiTypeKeys.updateCustomer);
-        expect(fetchApiSpy).toHaveBeenCalledWith(apiUrlMock, optionsMock);
+        expect(fetchApiSpy).toHaveBeenCalledWith(apiUrlMock, optionsMock, 1);
         expect(checkApiResponseSpy).toHaveBeenCalledWith(tempReturnObject, keysToTest);
         expect(res).toStrictEqual(tempReturnObject);
     });

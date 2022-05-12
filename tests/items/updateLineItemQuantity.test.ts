@@ -32,8 +32,8 @@ describe('testing updateLineItemQuantity', () => {
             body: JSON.stringify({
                 line_item_key: 'lineItemKey',
                 quantity: 42,
-            }),
-        }));
+            })
+        }), 0);
         expect(checkApiResponseMock).toHaveBeenCalledTimes(1);
         expect(checkApiResponseMock).toHaveBeenCalledWith(returnObject, ['data', 'application_state']);
     });

@@ -22,7 +22,7 @@ describe('test fetchAPI functionality', () => {
 
         test('successful callFetch call', async () => {
 
-            const result = await callFetch(url);
+            const result = await callFetch(url,0);
 
             expect(result).toEqual({});
             expect(fetchMock).toHaveBeenCalledTimes(1);
@@ -33,19 +33,20 @@ describe('test fetchAPI functionality', () => {
                 .getOnce(url, {}, { response: undefined, overwriteRoutes: true });
             const { status } = apiErrors.general;
 
-            const result = await callFetch(url, options);
+            const result = await callFetch(url, 0 ,options);
 
             expect(result).toBeInstanceOf(FetchError);
             expect((result as FetchError).status).toBe(status);
             expect((result as FetchError).message).toContain('TypeError');
         });
 
+
         test('callFetch fails: handles exception with message', async () => {
             fetchMock
                 .getOnce(url, { throws: 'Test exception was thrown'}, { overwriteRoutes: true });
             const { status } = apiErrors.general;
 
-            const result = await callFetch(url, options);
+            const result = await callFetch(url, 0, options);
 
             expect(result).toBeInstanceOf(FetchError);
             expect((result as FetchError).status).toBe(status);
@@ -54,16 +55,28 @@ describe('test fetchAPI functionality', () => {
 
         });
 
-        test('callFetch fails: Service is unavailable & response.ok equals false', async () => {
+        test('callFetch fails: Service is unavailable & response.ok equals false without retires', async () => {
             const testStatus = 503;
             fetchMock
                 .getOnce(url, testStatus, { overwriteRoutes: true });
 
-            const result = await callFetch(url, options);
+            const result = await callFetch(url, 0, options);
 
             expect((result as FetchError).status).toBe(testStatus);
             expect(result).toBeInstanceOf(FetchError);
             expect(fetchMock).toHaveBeenCalledTimes(1);
+            expect((result as FetchError).message).toContain('Unable to process request');
+        });
+
+        test('callFetch fails: Service is unavailable & response.ok equals false with retires', async () => {
+            const testStatus = 503;
+            fetchMock.get(url, testStatus, { overwriteRoutes: true });
+
+            const result = await callFetch(url, 1, options);
+
+            expect(fetchMock).toHaveBeenCalledTimes(2);
+            expect((result as FetchError).status).toBe(testStatus);
+            expect(result).toBeInstanceOf(FetchError);
             expect((result as FetchError).message).toContain('Unable to process request');
         });
 
@@ -75,7 +88,7 @@ describe('test fetchAPI functionality', () => {
             fetchMock
                 .getOnce(url, testResponse, { overwriteRoutes: true });
 
-            const result = await callFetch(url, options);
+            const result = await callFetch(url,0 , options);
 
             expect((result as FetchError).status).toBe(testStatus);
             expect(result).toBeInstanceOf(FetchError);
@@ -90,18 +103,27 @@ describe('test fetchAPI functionality', () => {
         test('successful fetchAPI call with callback', () => {
             const callback = jest.fn();
 
-            fetchAPI(url, undefined, callback).then(() => {
+            fetchAPI(url, undefined, 0 ,callback).then(() => {
                 expect(callback.mock.calls.length).toBe(1);
                 expect(callback.mock.calls[0].length).toBe(1);
                 expect(callback.mock.calls[0][0]).toStrictEqual({success: true, error: null, response: { }});
             });
         });
 
+        test('successful fetchAPI call with 10 retries', async () => {
+            const testStatus = 503;
+            fetchMock.get(url, testStatus, { overwriteRoutes: true });
+
+            await fetchAPI(url ,options, 10);
+            expect(fetchMock).toHaveBeenCalledTimes(6);
+
+        });
+
         test('failed fetchAPI call: exception was thrown', async () => {
             fetchMock
                 .getOnce(url, { throws: 'Exception was thrown'}, { overwriteRoutes: true});
 
-            const result = await fetchAPI(url, options);
+            const result = await fetchAPI(url ,options);
 
             expect(result.success).toBe(false);
             expect(result.error).toBeInstanceOf(FetchError);
@@ -112,7 +134,7 @@ describe('test fetchAPI functionality', () => {
             fetchMock
                 .getOnce(url, 404, { overwriteRoutes: true });
 
-            const result = await fetchAPI(url, options);
+            const result = await fetchAPI(url, options, 0);
 
             expect(result.success).toBe(false);
             expect(result.error).toBeInstanceOf(FetchError);

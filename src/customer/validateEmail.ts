@@ -8,10 +8,10 @@ import {apiTypeKeys} from 'src/variables';
  *
  * @param email email to be validated
  */
-export async function validateEmail(email: string): Promise<IApiReturnObject> {
+export async function validateEmail(email: string, numOfRetries = 0): Promise<IApiReturnObject> {
     const {validateEmail} = apiTypeKeys;
     const url = getApiUrlWithParams(validateEmail, { email_address: email });
     const options = getApiOptions(validateEmail);
 
-    return await fetchAPI(url, options);
+    return await fetchAPI(url, options, numOfRetries);
 }

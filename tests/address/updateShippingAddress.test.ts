@@ -43,7 +43,7 @@ describe('testing update shipping address api', () => {
         expect(checkApiResponseSpy).toHaveBeenCalledTimes(timesWhenCalled);
         expect(getApiOptionsSpy).toHaveBeenCalledWith(apiTypeKeys.updateShippingAddress, shippingAddressMock);
         expect(getApiUrlSpy).toHaveBeenCalledWith(apiTypeKeys.updateShippingAddress);
-        expect(fetchApiSpy).toHaveBeenCalledWith(apiUrlMock, optionsMock);
+        expect(fetchApiSpy).toHaveBeenCalledWith(apiUrlMock, optionsMock, 0);
         expect(checkApiResponseSpy).toHaveBeenCalledWith(returnObject, keysToTest);
         expect(res).toStrictEqual(returnObject);
     });
@@ -54,7 +54,7 @@ describe('testing update shipping address api', () => {
         fetchApiSpy.mockReturnValueOnce(Promise.resolve(tempReturnObject));
         checkApiResponseSpy.mockReturnValueOnce(tempReturnObject);
 
-        const res = await updateShippingAddress(shippingAddressMock);
+        const res = await updateShippingAddress(shippingAddressMock, 1);
 
         expect(getApiOptionsSpy).toHaveBeenCalledTimes(timesWhenCalled);
         expect(getApiUrlSpy).toHaveBeenCalledTimes(timesWhenCalled);
@@ -62,7 +62,7 @@ describe('testing update shipping address api', () => {
         expect(checkApiResponseSpy).toHaveBeenCalledTimes(timesWhenCalled);
         expect(getApiOptionsSpy).toHaveBeenCalledWith(apiTypeKeys.updateShippingAddress, shippingAddressMock);
         expect(getApiUrlSpy).toHaveBeenCalledWith(apiTypeKeys.updateShippingAddress);
-        expect(fetchApiSpy).toHaveBeenCalledWith(apiUrlMock, optionsMock);
+        expect(fetchApiSpy).toHaveBeenCalledWith(apiUrlMock, optionsMock, 1);
         expect(checkApiResponseSpy).toHaveBeenCalledWith(tempReturnObject, keysToTest);
         expect(res).toStrictEqual(tempReturnObject);
     });

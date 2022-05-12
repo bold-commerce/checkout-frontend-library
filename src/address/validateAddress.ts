@@ -9,7 +9,7 @@ import {apiTypeKeys} from 'src/variables';
  * @param province
  * @param countryCode
  */
-export async function validateAddress(postalCode: string, province: string, provinceCode: string, country:string, countryCode: string, businessName?: string, phoneNumber?: string): Promise<IApiReturnObject> {
+export async function validateAddress(postalCode: string, province: string, provinceCode: string, country:string, countryCode: string, businessName?: string, phoneNumber?: string , numOfRetries= 0): Promise<IApiReturnObject> {
     const {validateAddress} = apiTypeKeys;
     let params: IValidateAddress = { postal_code: postalCode, province: province, country_code: countryCode, country: country, province_code: provinceCode };
     if (businessName) {
@@ -22,5 +22,5 @@ export async function validateAddress(postalCode: string, province: string, prov
     const url = getApiUrlWithParams(validateAddress, params);
     const options = getApiOptions(validateAddress);
 
-    return await fetchAPI(url, options);
+    return await fetchAPI(url, options, numOfRetries);
 }

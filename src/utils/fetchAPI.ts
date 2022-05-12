@@ -9,25 +9,34 @@ import {baseReturnObject, apiErrors} from 'src/variables';
  * @param url URL to fetch data from
  * @param options RequestInit parameters to be supplied to fetch
  */
-export async function callFetch(url: RequestInfo, options: RequestInit = {}): Promise<FetchError | IApiResponse> {
+export async function callFetch(url: RequestInfo, numOfRetries: number, options: RequestInit = {}): Promise<FetchError | IApiResponse> {
     try {
         const response = await fetch(url, options);
-        if(!response.ok) {
+        if (response.ok) {
+            return response.json();
+        }
+        else if (numOfRetries > 0) {
+            return callFetch(url, numOfRetries - 1, options);
+        }
+        else {
             const message = 'Unable to process request';
             const body = await getResponseBody(response);
             return new FetchError(response.status, message, response.statusText, body);
         }
-        return await response.json();
     } catch(e) {
         const { status, message } = apiErrors.general;
         return new FetchError(status, `${message} - ${e}`);
     }
 }
 
-export function fetchAPI(url: string, options: RequestInit = {}, callback?: IFetchCallback): Promise<IApiReturnObject> {
+export function fetchAPI(url: string, options: RequestInit = {}, numOfRetries = 0 , callback?: IFetchCallback): Promise<IApiReturnObject> {
     const returnObject = {...baseReturnObject};
 
-    return callFetch(url, options)
+    if(numOfRetries > 5){
+        numOfRetries = 5;
+    }
+
+    return callFetch(url, numOfRetries ,options)
         .then((res) => {
             if (res instanceof FetchError) {
                 returnObject.error = res;

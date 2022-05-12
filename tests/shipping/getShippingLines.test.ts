@@ -43,7 +43,7 @@ describe('testing set shipping address api', () => {
         expect(checkApiResponseSpy).toHaveBeenCalledTimes(timesWhenCalled);
         expect(getApiOptionsSpy).toHaveBeenCalledWith(apiTypeKeys.getShippingLines);
         expect(getApiUrlSpy).toHaveBeenCalledWith(apiTypeKeys.getShippingLines);
-        expect(fetchApiSpy).toHaveBeenCalledWith(apiUrlMock, optionsMock);
+        expect(fetchApiSpy).toHaveBeenCalledWith(apiUrlMock, optionsMock, 0);
         expect(checkApiResponseSpy).toHaveBeenCalledWith(returnObject, keysToTest);
         expect(res).toStrictEqual(returnObject);
     });
@@ -54,7 +54,7 @@ describe('testing set shipping address api', () => {
         fetchApiSpy.mockReturnValueOnce(Promise.resolve(tempReturnObject));
         checkApiResponseSpy = jest.spyOn(apiResponse, 'checkApiResponse').mockReturnValue(tempReturnObject);
 
-        const res = await getShippingLines();
+        const res = await getShippingLines(1);
 
         expect(getApiOptionsSpy).toHaveBeenCalledTimes(timesWhenCalled);
         expect(getApiUrlSpy).toHaveBeenCalledTimes(timesWhenCalled);
@@ -62,7 +62,7 @@ describe('testing set shipping address api', () => {
         expect(checkApiResponseSpy).toHaveBeenCalledTimes(timesWhenCalled);
         expect(getApiOptionsSpy).toHaveBeenCalledWith(apiTypeKeys.getShippingLines);
         expect(getApiUrlSpy).toHaveBeenCalledWith(apiTypeKeys.getShippingLines);
-        expect(fetchApiSpy).toHaveBeenCalledWith(apiUrlMock, optionsMock);
+        expect(fetchApiSpy).toHaveBeenCalledWith(apiUrlMock, optionsMock, 1);
         expect(checkApiResponseSpy).toHaveBeenCalledWith(tempReturnObject, keysToTest);
         expect(res).toStrictEqual(tempReturnObject);
     });

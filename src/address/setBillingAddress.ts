@@ -12,10 +12,10 @@ import {apiTypeKeys, keysToTestFromResponse} from 'src/variables';
  *
  * Call API to set the Billing address to the order
  */
-export async function setBillingAddress(requestBody: ISetBillingAddressRequest): Promise<IApiReturnObject> {
+export async function setBillingAddress(requestBody: ISetBillingAddressRequest, numOfRetries= 0): Promise<IApiReturnObject> {
     const {setBillingAddress} = apiTypeKeys;
     const options = getApiOptions(setBillingAddress, requestBody);
     const url = getApiUrl(setBillingAddress);
-    const fetchRes = await fetchAPI(url, options);
+    const fetchRes = await fetchAPI(url, options, numOfRetries);
     return checkApiResponse(fetchRes, [keysToTestFromResponse.data, keysToTestFromResponse.applicationState]);
 }
