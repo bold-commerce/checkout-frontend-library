@@ -43,7 +43,7 @@ describe('testing delete billing address api', () => {
         expect(checkApiResponseSpy).toHaveBeenCalledTimes(timesWhenCalled);
         expect(getApiOptionsSpy).toHaveBeenCalledWith(apiTypeKeys.deleteBillingAddress);
         expect(getApiUrlSpy).toHaveBeenCalledWith(apiTypeKeys.deleteBillingAddress);
-        expect(fetchApiSpy).toHaveBeenCalledWith(apiUrlMock, optionsMock);
+        expect(fetchApiSpy).toHaveBeenCalledWith(apiUrlMock, optionsMock, 0);
         expect(checkApiResponseSpy).toHaveBeenCalledWith(returnObject, keysToTest);
         expect(res).toStrictEqual(returnObject);
     });
@@ -54,7 +54,7 @@ describe('testing delete billing address api', () => {
         fetchApiSpy.mockReturnValueOnce(Promise.resolve(tempReturnObject));
         checkApiResponseSpy.mockReturnValueOnce(tempReturnObject);
 
-        const res = await deleteBillingAddress();
+        const res = await deleteBillingAddress(1);
 
         expect(getApiOptionsSpy).toHaveBeenCalledTimes(timesWhenCalled);
         expect(getApiUrlSpy).toHaveBeenCalledTimes(timesWhenCalled);
@@ -62,7 +62,7 @@ describe('testing delete billing address api', () => {
         expect(checkApiResponseSpy).toHaveBeenCalledTimes(timesWhenCalled);
         expect(getApiOptionsSpy).toHaveBeenCalledWith(apiTypeKeys.deleteBillingAddress);
         expect(getApiUrlSpy).toHaveBeenCalledWith(apiTypeKeys.deleteBillingAddress);
-        expect(fetchApiSpy).toHaveBeenCalledWith(apiUrlMock, optionsMock);
+        expect(fetchApiSpy).toHaveBeenCalledWith(apiUrlMock, optionsMock, 1);
         expect(checkApiResponseSpy).toHaveBeenCalledWith(tempReturnObject, keysToTest);
         expect(res).toStrictEqual(tempReturnObject);
     });

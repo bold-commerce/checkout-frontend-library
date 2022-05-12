@@ -11,11 +11,11 @@ import {apiTypeKeys, apiTypes} from 'src/variables';
  *
  * Call API to delete the Shipping address to the order
  */
-export async function deleteShippingAddress(): Promise<IApiReturnObject> {
+export async function deleteShippingAddress(numOfRetries = 0): Promise<IApiReturnObject> {
     const {deleteShippingAddress} = apiTypeKeys;
     const {keysToTest} = apiTypes.deleteShippingAddress;
     const options = getApiOptions(deleteShippingAddress);
     const url = getApiUrl(deleteShippingAddress);
-    const fetchRes = await fetchAPI(url, options);
+    const fetchRes = await fetchAPI(url, options, numOfRetries);
     return checkApiResponse(fetchRes, keysToTest);
 }

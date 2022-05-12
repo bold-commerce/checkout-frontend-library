@@ -39,7 +39,7 @@ describe('testing update billing address api', () => {
         expect(fetchApiSpy).toHaveBeenCalledTimes(timesWhenCalled);
         expect(getApiOptionsSpy).toHaveBeenCalledWith(apiTypeKeys.updateBillingAddress, billingAddressMock);
         expect(getApiUrlSpy).toHaveBeenCalledWith(apiTypeKeys.updateBillingAddress);
-        expect(fetchApiSpy).toHaveBeenCalledWith(apiUrlMock, optionsMock);
+        expect(fetchApiSpy).toHaveBeenCalledWith(apiUrlMock, optionsMock, 0);
         expect(res).toStrictEqual(returnObject);
     });
 
@@ -48,14 +48,14 @@ describe('testing update billing address api', () => {
         checkApiResponseSpy.mockReturnValueOnce(tempReturnObject);
         fetchApiSpy.mockReturnValueOnce(Promise.resolve(tempReturnObject));
 
-        const res = await updateBillingAddress(billingAddressMock);
+        const res = await updateBillingAddress(billingAddressMock, 1);
 
         expect(getApiOptionsSpy).toHaveBeenCalledTimes(timesWhenCalled);
         expect(getApiUrlSpy).toHaveBeenCalledTimes(timesWhenCalled);
         expect(fetchApiSpy).toHaveBeenCalledTimes(timesWhenCalled);
         expect(getApiOptionsSpy).toHaveBeenCalledWith(apiTypeKeys.updateBillingAddress, billingAddressMock);
         expect(getApiUrlSpy).toHaveBeenCalledWith(apiTypeKeys.updateBillingAddress);
-        expect(fetchApiSpy).toHaveBeenCalledWith(apiUrlMock, optionsMock);
+        expect(fetchApiSpy).toHaveBeenCalledWith(apiUrlMock, optionsMock, 1);
         expect(res).toStrictEqual(tempReturnObject);
     });
 });

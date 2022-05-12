@@ -46,7 +46,7 @@ describe('testing CSS Styling Payment Iframe api', () => {
         expect(fetchApiSpy).toHaveBeenCalledTimes(timesWhenCalled);
         expect(getApiOptionsSpy).toHaveBeenCalledWith(apiTypeKeys.cssStylingPaymentIframe, cssStylingPaymentIframeRequestMock);
         expect(getApiUrlSpy).toHaveBeenCalledWith(apiTypeKeys.cssStylingPaymentIframe);
-        expect(fetchApiSpy).toHaveBeenCalledWith(apiUrlMock, optionsMock);
+        expect(fetchApiSpy).toHaveBeenCalledWith(apiUrlMock, optionsMock, 0);
         expect(res).toStrictEqual(returnObject);
     });
 
@@ -55,14 +55,14 @@ describe('testing CSS Styling Payment Iframe api', () => {
         checkApiResponseSpy.mockReturnValueOnce(tempReturnObject);
         fetchApiSpy.mockReturnValueOnce(Promise.resolve(tempReturnObject));
 
-        const res = await cssStylingPaymentIframe(cssStylingPaymentIframeRequestMock);
+        const res = await cssStylingPaymentIframe(cssStylingPaymentIframeRequestMock, 1);
 
         expect(getApiOptionsSpy).toHaveBeenCalledTimes(timesWhenCalled);
         expect(getApiUrlSpy).toHaveBeenCalledTimes(timesWhenCalled);
         expect(fetchApiSpy).toHaveBeenCalledTimes(timesWhenCalled);
         expect(getApiOptionsSpy).toHaveBeenCalledWith(apiTypeKeys.cssStylingPaymentIframe, cssStylingPaymentIframeRequestMock);
         expect(getApiUrlSpy).toHaveBeenCalledWith(apiTypeKeys.cssStylingPaymentIframe);
-        expect(fetchApiSpy).toHaveBeenCalledWith(apiUrlMock, optionsMock);
+        expect(fetchApiSpy).toHaveBeenCalledWith(apiUrlMock, optionsMock, 1);
         expect(res).toStrictEqual(tempReturnObject);
     });
 });

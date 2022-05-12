@@ -39,7 +39,7 @@ describe('testing set taxes api', () => {
         expect(fetchApiSpy).toHaveBeenCalledTimes(timesWhenCalled);
         expect(getApiOptionsSpy).toHaveBeenCalledWith(apiTypeKeys.setTaxes);
         expect(getApiUrlSpy).toHaveBeenCalledWith(apiTypeKeys.setTaxes);
-        expect(fetchApiSpy).toHaveBeenCalledWith(apiUrlMock, optionsMock);
+        expect(fetchApiSpy).toHaveBeenCalledWith(apiUrlMock, optionsMock, 0);
         expect(res).toStrictEqual(returnObject);
     });
 
@@ -48,14 +48,14 @@ describe('testing set taxes api', () => {
         checkApiResponseSpy.mockReturnValueOnce(tempReturnObject);
         fetchApiSpy.mockReturnValueOnce(Promise.resolve(tempReturnObject));
 
-        const res = await setTaxes();
+        const res = await setTaxes(1);
 
         expect(getApiOptionsSpy).toHaveBeenCalledTimes(timesWhenCalled);
         expect(getApiUrlSpy).toHaveBeenCalledTimes(timesWhenCalled);
         expect(fetchApiSpy).toHaveBeenCalledTimes(timesWhenCalled);
         expect(getApiOptionsSpy).toHaveBeenCalledWith(apiTypeKeys.setTaxes);
         expect(getApiUrlSpy).toHaveBeenCalledWith(apiTypeKeys.setTaxes);
-        expect(fetchApiSpy).toHaveBeenCalledWith(apiUrlMock, optionsMock);
+        expect(fetchApiSpy).toHaveBeenCalledWith(apiUrlMock, optionsMock, 1);
         expect(res).toStrictEqual(tempReturnObject);
     });
 });
