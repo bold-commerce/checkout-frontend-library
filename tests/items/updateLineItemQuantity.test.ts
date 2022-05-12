@@ -1,7 +1,7 @@
 import { updateLineItemQuantity } from 'src';
 import { fetchAPI, checkApiResponse } from 'src/utils';
 import { baseReturnObject } from 'src/variables';
-import { mocked } from 'ts-jest/utils';
+import {mocked} from 'jest-mock';
 
 jest.mock('src/utils', () => ({
     ...jest.requireActual('src/utils'),

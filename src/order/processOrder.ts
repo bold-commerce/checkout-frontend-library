@@ -1,5 +1,5 @@
-import {IApiReturnObject, checkApiResponse, fetchAPI, getApiOptions, getApiUrl} from 'src';
-import {apiTypeKeys, apiTypes} from 'src/variables';
+import {IApiReturnObject, fetchAPI, getApiOptions, getApiUrl} from 'src';
+import {apiTypeKeys} from 'src/variables';
 
 
 /**
@@ -12,7 +12,5 @@ export async function processOrder(): Promise<IApiReturnObject> {
     const {processOrder} = apiTypeKeys;
     const url = getApiUrl(processOrder);
     const options = getApiOptions(processOrder);
-    const fetchRes = await fetchAPI(url, options);
-    const {keysToTest} = apiTypes.processOrder;
-    return checkApiResponse(fetchRes, keysToTest);
+    return await fetchAPI(url, options);
 }
