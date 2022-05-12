@@ -17,6 +17,7 @@ export interface IApiSuccessResponse {
         ICssStylingPaymentIframeResponse |
         IUpdateLineItemQuantityResponse;
     application_state?: IApplicationState;
+    handleSCA?: boolean;
 }
 
 export interface ICssRule {
