@@ -9,11 +9,16 @@ import {baseReturnObject, apiErrors} from 'src/variables';
  * @param url URL to fetch data from
  * @param options RequestInit parameters to be supplied to fetch
  */
-export async function callFetch(url: RequestInfo, numOfRetries: number, options: RequestInit = {}): Promise<FetchError | IApiResponse> {
+export async function callFetch(url: RequestInfo, numOfRetries: number, options: RequestInit = {}): Promise<IApiReturnObject> {
+    const returnObject = {...baseReturnObject};
+
     try {
         const response = await fetch(url, options);
         if (response.ok) {
-            return response.json();
+            returnObject.response = await response.json();
+            returnObject.success = true;
+            returnObject.status = response.status;
+            return returnObject;
         }
         else if (numOfRetries > 0) {
             return callFetch(url, numOfRetries - 1, options);
@@ -21,32 +26,28 @@ export async function callFetch(url: RequestInfo, numOfRetries: number, options:
         else {
             const message = 'Unable to process request';
             const body = await getResponseBody(response);
-            return new FetchError(response.status, message, response.statusText, body);
+            returnObject.error = new FetchError(response.status, message, response.statusText, body);
+            returnObject.success = false;
+            returnObject.status = response.status;
+            return returnObject;
         }
     } catch(e) {
         const { status, message } = apiErrors.general;
-        return new FetchError(status, `${message} - ${e}`);
+        returnObject.error = new FetchError(status, `${message} - ${e}`);
+        returnObject.success = false;
+        return returnObject;
     }
 }
 
 export function fetchAPI(url: string, options: RequestInit = {}, numOfRetries = 0 , callback?: IFetchCallback): Promise<IApiReturnObject> {
-    const returnObject = {...baseReturnObject};
-
     if(numOfRetries > 5){
         numOfRetries = 5;
     }
 
     return callFetch(url, numOfRetries ,options)
         .then((res) => {
-            if (res instanceof FetchError) {
-                returnObject.error = res;
-                returnObject.response = typeof res.body !== 'string' ? res.body as IApiResponse : null;
-            } else {
-                returnObject.success = true;
-                returnObject.response = res;
-            }
-            callback && callback(returnObject);
-            return returnObject;
+            callback && callback(res);
+            return res;
         });
 }
 

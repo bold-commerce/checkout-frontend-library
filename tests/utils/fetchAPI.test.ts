@@ -1,5 +1,5 @@
 import {fetchAPI, FetchError} from 'src';
-import {apiErrors} from 'src/variables';
+import {apiErrors, baseReturnObject} from 'src/variables';
 import {callFetch} from 'src/utils/fetchAPI';
 import fetchMock from 'fetch-mock-jest';
 import {Response} from 'node-fetch';
@@ -10,8 +10,10 @@ const options = {
 };
 
 describe('test fetchAPI functionality', () => {
+    let aPIReturnObjectMock = {...baseReturnObject};
 
     beforeEach(() => {
+        aPIReturnObjectMock = {...baseReturnObject};
         fetchMock.mockReset();
         fetchMock
             .get(url, {})
@@ -21,10 +23,12 @@ describe('test fetchAPI functionality', () => {
     describe('testing callFetch async function', () => {
 
         test('successful callFetch call', async () => {
-
+            aPIReturnObjectMock.status = 200;
+            aPIReturnObjectMock.success = true;
+            aPIReturnObjectMock.response = {};
             const result = await callFetch(url,0);
 
-            expect(result).toEqual({});
+            expect(result).toEqual(aPIReturnObjectMock);
             expect(fetchMock).toHaveBeenCalledTimes(1);
         });
 
@@ -35,9 +39,9 @@ describe('test fetchAPI functionality', () => {
 
             const result = await callFetch(url, 0 ,options);
 
-            expect(result).toBeInstanceOf(FetchError);
-            expect((result as FetchError).status).toBe(status);
-            expect((result as FetchError).message).toContain('TypeError');
+            expect(result.error).toBeInstanceOf(FetchError);
+            expect((result.error as FetchError).status).toBe(status);
+            expect((result.error as FetchError).message).toContain('TypeError');
         });
 
 
@@ -48,9 +52,9 @@ describe('test fetchAPI functionality', () => {
 
             const result = await callFetch(url, 0, options);
 
-            expect(result).toBeInstanceOf(FetchError);
-            expect((result as FetchError).status).toBe(status);
-            expect((result as FetchError).message).toContain('Test exception');
+            expect(result.error).toBeInstanceOf(FetchError);
+            expect((result.error as FetchError).status).toBe(status);
+            expect((result.error as FetchError).message).toContain('Test exception');
             expect(fetchMock).toHaveBeenCalledWith(url, options);
 
         });
@@ -62,10 +66,10 @@ describe('test fetchAPI functionality', () => {
 
             const result = await callFetch(url, 0, options);
 
-            expect((result as FetchError).status).toBe(testStatus);
-            expect(result).toBeInstanceOf(FetchError);
+            expect((result.error as FetchError).status).toBe(testStatus);
+            expect(result.error).toBeInstanceOf(FetchError);
             expect(fetchMock).toHaveBeenCalledTimes(1);
-            expect((result as FetchError).message).toContain('Unable to process request');
+            expect((result.error as FetchError).message).toContain('Unable to process request');
         });
 
         test('callFetch fails: Service is unavailable & response.ok equals false with retires', async () => {
@@ -75,9 +79,9 @@ describe('test fetchAPI functionality', () => {
             const result = await callFetch(url, 1, options);
 
             expect(fetchMock).toHaveBeenCalledTimes(2);
-            expect((result as FetchError).status).toBe(testStatus);
-            expect(result).toBeInstanceOf(FetchError);
-            expect((result as FetchError).message).toContain('Unable to process request');
+            expect((result.error as FetchError).status).toBe(testStatus);
+            expect(result.error).toBeInstanceOf(FetchError);
+            expect((result.error as FetchError).message).toContain('Unable to process request');
         });
 
         test('callFetch fails: Unprocessable Entity & response.ok equals false', async () => {
@@ -90,11 +94,11 @@ describe('test fetchAPI functionality', () => {
 
             const result = await callFetch(url,0 , options);
 
-            expect((result as FetchError).status).toBe(testStatus);
-            expect(result).toBeInstanceOf(FetchError);
+            expect((result.error as FetchError).status).toBe(testStatus);
+            expect(result.error).toBeInstanceOf(FetchError);
             expect(fetchMock).toHaveBeenCalledTimes(1);
-            expect((result as FetchError).message).toContain('Unable to process request');
-            expect((result as FetchError).body).toStrictEqual(bodyJson);
+            expect((result.error as FetchError).message).toContain('Unable to process request');
+            expect((result.error as FetchError).body).toStrictEqual(bodyJson);
         });
     });
 
@@ -106,7 +110,7 @@ describe('test fetchAPI functionality', () => {
             fetchAPI(url, undefined, 0 ,callback).then(() => {
                 expect(callback.mock.calls.length).toBe(1);
                 expect(callback.mock.calls[0].length).toBe(1);
-                expect(callback.mock.calls[0][0]).toStrictEqual({success: true, error: null, response: { }});
+                expect(callback.mock.calls[0][0]).toStrictEqual({status: 200, success: true, error: null, response: { }});
             });
         });
 
@@ -127,7 +131,7 @@ describe('test fetchAPI functionality', () => {
 
             expect(result.success).toBe(false);
             expect(result.error).toBeInstanceOf(FetchError);
-            expect(result.response).toBe(undefined);
+            expect(result.response).toBe(null);
         });
 
         test('failed fetchAPI call: return contains 404 error', async () => {

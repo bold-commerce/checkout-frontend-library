@@ -177,11 +177,13 @@ function initializeFetchResponseProvider() {
     const errorSuccessFalse = new FetchError(apiErrors.general.status, apiErrors.general.message);
     return {
         emptyFetchResponse: {
+            status: 200,
             success: true,
             error: null,
             response: null,
         },
         undefinedDataFetchResponse: {
+            status: 200,
             success: true,
             error: null,
             response: {
@@ -189,11 +191,13 @@ function initializeFetchResponseProvider() {
             },
         },
         successFalseFetchResponse: {
+            status: 500,
             success: false,
             error: errorSuccessFalse,
             response: null,
         },
         undefinedApplicationStateFetchResponse: {
+            status: 200,
             success: true,
             error: null,
             response: {
@@ -204,6 +208,7 @@ function initializeFetchResponseProvider() {
             },
         },
         undefinedShippingLinesFetchResponse: {
+            status: 200,
             success: true,
             error: null,
             response: {
@@ -215,6 +220,7 @@ function initializeFetchResponseProvider() {
         },
         populatedFetchResponse: [
             {
+                status: 200,
                 success: true,
                 error: null,
                 response: {
@@ -224,6 +230,7 @@ function initializeFetchResponseProvider() {
                     }
                 }
             }, {
+                status: 200,
                 success: true,
                 error: null,
                 response: {
