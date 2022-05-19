@@ -148,6 +148,7 @@ export const apiTypes: IApiTypes = {
         path: '/process_order',
         method: methods.POST,
         useJwt: true,
+        keysToTest: [keysToTestFromResponse.applicationState]
     },
     getApplicationState: {
         path: '/refresh',
@@ -212,6 +213,7 @@ export const apiTypeKeys: IApiTypeKeys = {
 };
 
 export const baseReturnObject: IApiReturnObject = {
+    status: 0,
     success: false,
     error: null,
     response: null

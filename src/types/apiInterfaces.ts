@@ -17,6 +17,9 @@ export interface IApiSuccessResponse {
         ICssStylingPaymentIframeResponse |
         IUpdateLineItemQuantityResponse;
     application_state?: IApplicationState;
+}
+
+export interface IApiAcceptedResponse {
     handleSCA?: boolean;
 }
 
@@ -56,6 +59,7 @@ export interface IPigiActionTypes {
 }
 
 export interface IApiReturnObject {
+    status: number;
     success: boolean;
     error: null | IFetchError;
     response: null | IApiResponse;
@@ -425,7 +429,7 @@ export interface IValidateAddressRequest {
     phone_number?: string;
 }
 
-export type IApiResponse = IApiErrorResponse | IApiErrorsResponse | IApiSuccessResponse;
+export type IApiResponse = IApiErrorResponse | IApiErrorsResponse | IApiSuccessResponse | IApiAcceptedResponse;
 
 export type ISetShippingAddressRequest = IAddress;
 

@@ -1,5 +1,5 @@
-import {IApiReturnObject, fetchAPI, getApiOptions, getApiUrl} from 'src';
-import {apiTypeKeys} from 'src/variables';
+import {IApiReturnObject, fetchAPI, getApiOptions, getApiUrl, checkApiResponse} from 'src';
+import {apiTypeKeys, apiTypes, httpStatusCode} from 'src/variables';
 
 
 /**
@@ -12,5 +12,14 @@ export async function processOrder(numOfRetries = 0): Promise<IApiReturnObject> 
     const {processOrder} = apiTypeKeys;
     const url = getApiUrl(processOrder);
     const options = getApiOptions(processOrder);
-    return await fetchAPI(url, options, numOfRetries);
+    const fetchRes = await fetchAPI(url, options, numOfRetries);
+    //Every status but SCA action needed
+    if(fetchRes.status !== httpStatusCode.ACCEPTED) {
+        const {keysToTest} = apiTypes.processOrder;
+        return checkApiResponse(fetchRes, keysToTest);
+    } else{
+        return fetchRes;
+    }
+
 }
+
