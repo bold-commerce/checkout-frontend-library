@@ -1,5 +1,4 @@
-import {IApiTypes, IGetApiOptionsBody, getJwtToken} from 'src';
-import {apiTypes, methods} from 'src/variables';
+import {apiTypes, methods, IApiTypes, IGetApiOptionsBody, getJwtToken} from 'src';
 
 /** getApiOptions
  *

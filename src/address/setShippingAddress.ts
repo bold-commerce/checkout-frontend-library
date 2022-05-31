@@ -1,4 +1,6 @@
 import {
+    apiTypeKeys,
+    keysToTestFromResponse,
     fetchAPI,
     getApiUrl,
     getApiOptions,
@@ -6,7 +8,6 @@ import {
     ISetShippingAddressRequest,
     checkApiResponse,
 } from 'src';
-import {apiTypeKeys, keysToTestFromResponse} from 'src/variables';
 
 /** setShippingAddress
  *

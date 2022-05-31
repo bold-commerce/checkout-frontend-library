@@ -1,4 +1,5 @@
-import {pigi, pigiActionTypes} from 'src/variables';
+import {pigiActionTypes} from 'src';
+import {pigi} from 'src/variables';
 
 let pigiMessageListener: (this: Window, ev: MessageEvent) => void;
 
@@ -9,7 +10,7 @@ let pigiMessageListener: (this: Window, ev: MessageEvent) => void;
  *
  * @param iFrameId Provide the Pigi iFrame Id.
  * @param callback Provide the callback function to call when PIGI responses are received.
- * 
+ *
  * @returns The function used to subscribe to pigi messages, needed to unsubscribe from listener
  */
 export function setPigiListener(iFrameId: string, callback: EventListenerOrEventListenerObject): void {
@@ -31,12 +32,9 @@ export function setPigiListener(iFrameId: string, callback: EventListenerOrEvent
 }
 
 /**
- * ## setPigiListener
- * Set the PIGI iFrame id to be used for the actions
- * and the callback that will receive the responses from PIGI iFrame.
+ * ## removePigiListener
+ * Remove the callback that receives the responses from PIGI iFrame.
  *
- * @param iFrameId Provide the Pigi iFrame Id.
- * @param callback Provide the callback function to call when PIGI responses are received.
  */
 export function removePigiListener(): void{
     window.removeEventListener('message', pigiMessageListener);

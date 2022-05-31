@@ -1,78 +1,111 @@
 # Checkout Frontend Library
+
+## Contents
+
+* [Description](#description)
+* [Installation](#installation)
+  * [Install with Yarn](#install-with-yarn)
+  * [Install with NPM](#install-with-npm)
+* [Usage](#usage)
+
+---
+
+## Description
 Checkout Frontend Library is the Bold Javascript library of reusable methods to help:
 
-* Call Checkout Headless APIs
-* Control Request queue
+* Call Bold Checkout Headless APIs
+* Control Request retry
 * Communicate to PIGI API
+* Get useful types and constants
 
 ---
 
-# Contents
+## Installation
 
-* [Getting up and running](#getting-up-and-running)
-    * [Using checkout-frontend-library in a project](#using-checkout-frontend-library-in-a-project)
-    * [Setup local checkout-frontend-library project](#setup-local-checkout-frontend-library-project)
-* [NPM Scripts](#npm-scripts)
-
----
-
-# Getting up and running
-
-## Using Checkout Frontend Library in a project
-
-Note: checkout-frontend-library is published to an internal npm registry at npm.boldapps.net. Your project should be configured to use this registry rather than the standard public npm registry.
-
-**Switching to the internal npm registry**
-
-Add the follow code to your `.yarnrc`
-```
-"@bold-commerce:registry" "http://npm.boldapps.net"
-registry "https://registry.yarnpkg.com"
-```
-
-**Installing**
+### Install with Yarn
 ```
 yarn add "@bold-commerce/checkout-frontend-library"
 ```
 
-**Installing a specific version/tag/branch**
+Install a specific version
+
 ```
 yarn add "@bold-commerce/checkout-frontend-library"@1.0.0
 ```
-_(replace "1.0.0" with the version number, branch name, or tag name that you want)_
+_(replace "1.0.0" with the version number that you want)_
 
-**Using the Library**
+### Install with NPM
 ```
+npm install "@bold-commerce/checkout-frontend-library"
+```
+
+Install a specific version
+
+Using NPM
+```
+npm install "@bold-commerce/checkout-frontend-library"@1.0.0
+```
+_(replace "1.0.0" with the version number that you want)_
+
+## Usage
+
+Example of importing and using functions and types with Typescript code:
+```typescript
+// Your project imports 
 import {
-  initialize,
-  addAuthenticatedCustomer
+  IApiReturnObject, 
+  addGuestCustomer, 
+  getCustomer, 
+  ICustomer
 } from '@bold-commerce/checkout-frontend-library';
+
+type PreviousCustomer = Pick<ICustomer, 'email_address' | 'first_name' | 'last_name'>;
+type NewCustomer = Pick<ICustomer, 'email_address' | 'first_name' | 'last_name' | 'accepts_marketing'>;
+
+const handleAddGuestCustomer = async (customer: NewCustomer) : void => {
+  const prevCustomer: ICustomer = getCustomer();
+  const previous: PreviousCustomer = {email_address: prevCustomer.email_address, first_name: prevCustomer.first_name , last_name: prevCustomer.last_name};
+
+  if (isObjectEmpty(previous)){
+    const response: IApiReturnObject = await addGuestCustomer(customer.first_name,
+            customer.last_name,
+            customer.email_address,
+            customer.accepts_marketing);
+  }
+  handleErrorIfNeeded(response);
+};
 ```
 
-## Setup local checkout-frontend-library project
+Example importing and using constants
+```typescript
+// Your project imports 
+import {pigiActionTypes} from '@bold-commerce/checkout-frontend-library';
 
-After you clone the repo and run `yarn install`...
+const handlePigiMessage = (e) => {
+    const {responseType, payload} = e.data as IPigiResponseData;
 
-**Build everything**
+    if (responseType && payload && payload.height) {
+        handlePigiHeight(payload);
+    }
 
+    switch (responseType) {
+        case pigiActionTypes.PIGI_INITIALIZED:
+            handlePigiInitialized();
+            updatePigiLanguage();
+            break;
+        case pigiActionTypes.PIGI_ADD_PAYMENT:
+            handlePigiAddPayment(payload, history);
+            break;
+        case pigiActionTypes.PIGI_PAYMENT_ADDED:
+            handlePigiPaymentAdded();
+            break;
+        case pigiActionTypes.PIGI_HANDLE_SCA:
+            handlePigiSca(payload, history);
+            break;
+        case pigiActionTypes.PIGI_REFRESH_ORDER:
+            handlePigiRefreshOrder();
+            break;
+    }
+};
 ```
-yarn build
-```
-See [NPM Scripts](#npm-scripts) for more details.
-
 ---
-
-# NPM Scripts
-
-## Transpile to ES5
-```
-yarn build
-```
-This script will transpile the JS into ES5 syntax, then copy all the transpiled files from the `./src` directory into the `./lib` directory.
-
-## Run Tests
-```
-yarn test
-```
-This script will run all the tests in the `./tests` directory.
-

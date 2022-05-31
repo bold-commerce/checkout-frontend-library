@@ -1,7 +1,5 @@
-import {pigiActionTypes} from 'src/variables';
-import {IApiReturnObject, IPigiActionType, IPigiResponseType, sendPigiAction} from 'src';
-import { sendPigiActionAsync } from '.';
-
+import {pigiActionTypes, IApiReturnObject, IPigiActionType, IPigiResponseType, sendPigiAction} from 'src';
+import {sendPigiActionAsync} from '.';
 
 const action: IPigiActionType = { actionType: pigiActionTypes.PIGI_REFRESH_ORDER };
 /**
@@ -19,7 +17,7 @@ export function sendRefreshOrderAction(): IApiReturnObject {
  *
  * This action is to be sent if PIGI was displayed and the order was updated.
  * Payment gateways will require updated information about the customer or order to add the payment to the order.
- * 
+ *
  * This method waits for a response back from PIGI before returning.
  */
 export async function sendRefreshOrderActionAsync(): Promise<IPigiResponseType> {

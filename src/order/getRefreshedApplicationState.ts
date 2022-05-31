@@ -1,11 +1,12 @@
 import {
+    apiTypeKeys,
+    apiTypes,
     checkApiResponse,
     fetchAPI,
     getApiOptions,
     getApiUrl,
     IApiReturnObject
 } from 'src';
-import {apiTypeKeys, apiTypes} from 'src/variables';
 
 /**
  * # getRefreshedApplicationState

@@ -1,10 +1,9 @@
 import {applicationStateMock, shippingAddressMock, selectShippingLineArrayMock} from 'src/variables/mocks';
 import {checkApiResponse} from 'src/utils/apiResponse';
-import {FetchError} from 'src';
+import {apiErrors, keysToTestFromResponse, FetchError} from 'src';
 import * as getErrorFromFieldName from 'src/utils/getErrorFromFieldName';
 import * as findKeyInObject from 'src/utils/findKeyInObject';
 import * as setApplicationState from 'src/state/setApplicationState';
-import {apiErrors, keysToTestFromResponse} from 'src/variables';
 
 describe('checkApiResponse', () => {
     const keyToTest: Array<string> = [keysToTestFromResponse.data, keysToTestFromResponse.applicationState];

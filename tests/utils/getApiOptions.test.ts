@@ -1,6 +1,6 @@
-import {getApiOptions, IApiTypes} from 'src';
+import {apiTypes, getApiOptions, IApiTypes} from 'src';
 import {Headers} from 'node-fetch';
-import {apiTypes, auth} from 'src/variables';
+import {auth} from 'src/variables';
 
 describe('multiple getApiOptions tests - success', () => {
     const apiOptionsDataProvider = [

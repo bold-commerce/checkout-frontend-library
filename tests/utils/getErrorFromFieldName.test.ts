@@ -1,5 +1,4 @@
-import {getErrorFromFieldName} from 'src';
-import {apiErrors, generalApiResponseParsingErrorType, keysToTestFromResponse} from 'src/variables';
+import {apiErrors, generalApiResponseParsingErrorType, keysToTestFromResponse, getErrorFromFieldName} from 'src';
 
 describe('Test getErrorFromFieldName function', () => {
     test('Test when errorType is not provided', () => {

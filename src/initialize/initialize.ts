@@ -1,4 +1,5 @@
 import {
+    keysToTestFromResponse,
     IApiReturnObject,
     IInitializeOrderResponse,
     IEnvironment,
@@ -8,7 +9,7 @@ import {
     setShopIdentifier,
     checkApiResponse,
 } from 'src';
-import {baseReturnObject, keysToTestFromResponse} from 'src/variables';
+import {baseReturnObject} from 'src/variables';
 
 /**
  * # Initialize

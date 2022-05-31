@@ -1,5 +1,5 @@
-import {IApiResponse, IApiReturnObject, IFetchCallback, FetchError} from 'src';
-import {baseReturnObject, apiErrors} from 'src/variables';
+import {apiErrors, IApiResponse, IApiReturnObject, IFetchCallback, FetchError} from 'src';
+import {baseReturnObject} from 'src/variables';
 
 /**
  * # FetchAPI
@@ -7,6 +7,7 @@ import {baseReturnObject, apiErrors} from 'src/variables';
  * This function takes in a url and optional parameters, fetches data from the specified api and returns the data
  *
  * @param url URL to fetch data from
+ * @param numOfRetries
  * @param options RequestInit parameters to be supplied to fetch
  */
 export async function callFetch(url: RequestInfo, numOfRetries: number, options: RequestInit = {}): Promise<IApiReturnObject> {

@@ -1,6 +1,6 @@
-import { updateLineItemQuantity } from 'src';
-import { fetchAPI, checkApiResponse } from 'src/utils';
-import { baseReturnObject } from 'src/variables';
+import {updateLineItemQuantity} from 'src';
+import {fetchAPI, checkApiResponse} from 'src/utils';
+import {baseReturnObject} from 'src/variables';
 import {mocked} from 'jest-mock';
 
 jest.mock('src/utils', () => ({

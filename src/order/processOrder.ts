@@ -1,6 +1,13 @@
-import {IApiReturnObject, fetchAPI, getApiOptions, getApiUrl, checkApiResponse} from 'src';
-import {apiTypeKeys, apiTypes, httpStatusCode} from 'src/variables';
-
+import {
+    apiTypeKeys,
+    apiTypes,
+    httpStatusCode,
+    IApiReturnObject,
+    fetchAPI,
+    getApiOptions,
+    getApiUrl,
+    checkApiResponse
+} from 'src';
 
 /**
  * # processOrder
@@ -20,6 +27,4 @@ export async function processOrder(numOfRetries = 0): Promise<IApiReturnObject> 
     } else{
         return fetchRes;
     }
-
 }
-

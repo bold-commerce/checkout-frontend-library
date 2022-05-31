@@ -1,6 +1,5 @@
-import {IApiReturnObject, IPigiActionType, IPigiResponseType, sendPigiAction} from 'src';
-import {pigiActionTypes} from 'src/variables';
-import { sendPigiActionAsync } from '.';
+import {pigiActionTypes, IApiReturnObject, IPigiActionType, IPigiResponseType, sendPigiAction} from 'src';
+import {sendPigiActionAsync} from '.';
 
 /**
  * ## sendUpdateMediaMatchAction
@@ -28,7 +27,7 @@ export function sendUpdateMediaMatchAction(conditionText: string, matches: boole
  *
  * @param conditionText media rule condition.
  * @param matches true or false if condition is met.
- * 
+ *
  * This method waits for a response back from PIGI before returning.
  */
 export async function sendUpdateMediaMatchActionAsync(conditionText: string, matches: boolean): Promise<IPigiResponseType> {

@@ -1,3 +1,18 @@
+// variables/constants needs to be exported first due to nested use dependencies
+export {
+    environmentTypes,
+    environmentUrls,
+    keysToTestFromResponse,
+    environmentPath,
+    generalApiResponseParsingErrorType,
+    methods,
+    pigiActionTypes,
+    apiTypes,
+    apiTypeKeys,
+    apiErrors,
+    httpStatusCode
+} from './variables/constants';
+
 export * from './initialize';
 export * from './items';
 export * from './environment';

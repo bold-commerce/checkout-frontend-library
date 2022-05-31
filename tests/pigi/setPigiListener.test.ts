@@ -1,5 +1,5 @@
-import {IPigiActionTypes, setPigiListener, removePigiListener} from 'src';
-import {pigi, pigiActionTypes} from 'src/variables';
+import {pigiActionTypes, IPigiActionTypes, setPigiListener, removePigiListener} from 'src';
+import {pigi} from 'src/variables';
 
 describe('testing set pigi listener', () => {
     const iFrameId = '#PIGI';
@@ -92,7 +92,7 @@ describe('testing set pigi listener', () => {
     test('calling removePigiListener with function listener ', () => {
         jest.restoreAllMocks();
         const removeEventListenerSpy = jest.spyOn(window, 'removeEventListener');
-        
+
         removePigiListener();
 
         expect(removeEventListenerSpy).toHaveBeenCalledTimes(1);

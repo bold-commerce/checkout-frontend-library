@@ -1,5 +1,4 @@
-import {pigiActionTypes} from 'src/variables';
-import {IApiReturnObject, IPigiActionType, IPigiResponseType, sendPigiAction, sendPigiActionAsync} from 'src';
+import {pigiActionTypes, IApiReturnObject, IPigiActionType, IPigiResponseType, sendPigiAction, sendPigiActionAsync} from 'src';
 
 const action: IPigiActionType = { actionType: pigiActionTypes.PIGI_ADD_PAYMENT };
 /**
@@ -23,7 +22,7 @@ export function sendAddPaymentAction(): IApiReturnObject {
  *
  * This only tokenizes the payment information then puts it onto the order
  * and does not authorize or capture the payment.
- * 
+ *
  * This method waits for a response back from PIGI before returning.
  */
 export async function sendAddPaymentActionAsync(): Promise<IPigiResponseType> {

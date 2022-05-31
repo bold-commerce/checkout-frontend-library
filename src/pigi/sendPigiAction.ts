@@ -1,5 +1,5 @@
-import {apiErrors, baseReturnObject} from 'src/variables';
-import {getPigiFrameWindow, FetchError, IApiReturnObject, IPigiActionType, IPigiResponseType} from 'src';
+import {baseReturnObject} from 'src/variables';
+import {apiErrors, getPigiFrameWindow, FetchError, IApiReturnObject, IPigiActionType, IPigiResponseType} from 'src';
 
 /**
  * ## sendAction
@@ -35,7 +35,7 @@ export function sendPigiActionAsync(action: IPigiActionType): Promise<IPigiRespo
                     window.removeEventListener('message', iframeListener);
                     reject(pigiResponse);
                 }
-            } 
+            }
         };
 
         window.addEventListener('message', iframeListener);

@@ -1,5 +1,5 @@
-import {FetchError, IPigiResponseType, sendDisplayErrorMessageAction, sendDisplayErrorMessageActionAsync} from 'src';
-import {apiErrors, baseReturnObject, pigiActionTypes} from 'src/variables';
+import {apiErrors, pigiActionTypes, FetchError, IPigiResponseType, sendDisplayErrorMessageAction, sendDisplayErrorMessageActionAsync} from 'src';
+import {baseReturnObject} from 'src/variables';
 import * as sendPigiAction from 'src/pigi/sendPigiAction';
 
 describe('testing send pigi Display Error Message Action', () => {

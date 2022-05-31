@@ -1,5 +1,5 @@
-import {changeShippingLine} from 'src';
-import {apiTypeKeys, baseReturnObject, methods, apiTypes} from 'src/variables';
+import {apiTypeKeys, methods, apiTypes, changeShippingLine} from 'src';
+import {baseReturnObject} from 'src/variables';
 import {applicationStateMock, selectShippingLineMock} from 'src/variables/mocks';
 import * as fetchAPI from 'src/utils/fetchAPI';
 import * as getApiOptions from 'src/utils/getApiOptions';

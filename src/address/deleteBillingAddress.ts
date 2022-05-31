@@ -1,11 +1,12 @@
 import {
+    apiTypeKeys,
+    apiTypes,
     fetchAPI,
     getApiUrl,
     getApiOptions,
     IApiReturnObject,
     checkApiResponse
 } from 'src';
-import {apiTypeKeys, apiTypes} from 'src/variables';
 
 /** deleteBillingAddress
  *
