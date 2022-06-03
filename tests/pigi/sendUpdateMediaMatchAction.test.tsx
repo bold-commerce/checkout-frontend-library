@@ -1,5 +1,13 @@
-import {apiErrors, baseReturnObject, pigiActionTypes} from 'src/variables';
-import {FetchError, IPigiActionType, IPigiResponseType, sendUpdateMediaMatchAction, sendUpdateMediaMatchActionAsync} from 'src';
+import {
+    apiErrors,
+    pigiActionTypes,
+    FetchError,
+    IPigiActionType,
+    IPigiResponseType,
+    sendUpdateMediaMatchAction,
+    sendUpdateMediaMatchActionAsync
+} from 'src';
+import {baseReturnObject} from 'src/variables';
 import * as sendPigiAction from 'src/pigi/sendPigiAction';
 
 describe('Testing Pigi Update Media Match action', () => {
@@ -44,8 +52,6 @@ describe('Testing Pigi Update Media Match action', () => {
         expect(sendPigiActionSpy).toHaveBeenCalledWith(action);
         expect(res).toStrictEqual(trueReturnObject);
     });
-
-
 
     test('calling sendUpdateMediaMatchActionAsync success', async () => {
         const conditionText = 'screen and (min-width: 768px)';

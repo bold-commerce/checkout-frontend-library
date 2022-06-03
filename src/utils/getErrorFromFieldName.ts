@@ -1,5 +1,4 @@
-import {apiErrors, generalApiResponseParsingErrorType, keysToTestFromResponse} from 'src/variables';
-import {IErrorFormat} from 'src';
+import {apiErrors, generalApiResponseParsingErrorType, keysToTestFromResponse, IErrorFormat} from 'src';
 
 export function getErrorFromFieldName(fieldName: string, errorType = generalApiResponseParsingErrorType.emptyField): IErrorFormat {
     switch (fieldName) {

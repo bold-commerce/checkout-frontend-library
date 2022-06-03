@@ -1,7 +1,7 @@
-import {initialize, IApiReturnObject, IFetchError, FetchError} from 'src';
+import {environmentUrls, environmentTypes, apiErrors, initialize, IApiReturnObject, IFetchError, FetchError} from 'src';
 import fetchMock from 'fetch-mock-jest';
 import {initializeOrderResponseMock} from 'src/variables/mocks';
-import {environmentUrls, environmentTypes, apiErrors, baseReturnObject} from 'src/variables';
+import {baseReturnObject} from 'src/variables';
 import * as checkApiResponse from 'src/utils/apiResponse';
 
 describe('testing initialize function', () => {

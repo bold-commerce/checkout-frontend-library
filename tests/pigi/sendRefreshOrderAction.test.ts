@@ -1,6 +1,6 @@
-import {FetchError, IPigiResponseType, sendRefreshOrderAction, sendRefreshOrderActionAsync} from 'src';
-import {apiErrors, baseReturnObject, pigiActionTypes} from 'src/variables';
-import * as sendPigiAction from 'src/pigi/sendPigiAction'; 
+import {apiErrors, pigiActionTypes, FetchError, IPigiResponseType, sendRefreshOrderAction, sendRefreshOrderActionAsync} from 'src';
+import {baseReturnObject} from 'src/variables';
+import * as sendPigiAction from 'src/pigi/sendPigiAction';
 
 describe('testing send pigi Refresh Order Action', () => {
     const calledOnce = 1;

@@ -1,8 +1,8 @@
-import {setTaxes} from 'src';
+import {apiTypeKeys, methods, setTaxes} from 'src';
 import * as fetchAPI from 'src/utils/fetchAPI';
 import * as getApiOptions from 'src/utils/getApiOptions';
 import * as apiUrl from 'src/utils/apiUrl';
-import {apiTypeKeys, baseReturnObject, methods} from 'src/variables';
+import {baseReturnObject} from 'src/variables';
 import {applicationStateMock, taxesArrayMock} from 'src/variables/mocks';
 import * as apiResponse from 'src/utils/apiResponse';
 

@@ -1,5 +1,5 @@
-import {addDiscount} from 'src';
-import {apiTypeKeys, baseReturnObject, methods, apiTypes} from 'src/variables';
+import {apiTypeKeys, methods, apiTypes, addDiscount} from 'src';
+import {baseReturnObject} from 'src/variables';
 import {applicationStateMock, discountMock} from 'src/variables/mocks';
 import * as fetchAPI from 'src/utils/fetchAPI';
 import * as getApiOptions from 'src/utils/getApiOptions';

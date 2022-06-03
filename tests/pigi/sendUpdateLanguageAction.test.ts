@@ -1,6 +1,13 @@
-import {apiErrors, baseReturnObject, pigiActionTypes} from 'src/variables';
+import {
+    apiErrors,
+    pigiActionTypes,
+    FetchError,
+    IPigiResponseType,
+    sendUpdateLanguageAction,
+    sendUpdateLanguageActionAsync
+} from 'src';
+import {baseReturnObject} from 'src/variables';
 import * as sendPigiAction from 'src/pigi/sendPigiAction';
-import {FetchError, IPigiResponseType, sendUpdateLanguageAction, sendUpdateLanguageActionAsync} from 'src';
 
 describe('Testing UPDATE_LANGUAGE action sent to PIGI iFrame', () => {
     const calledOnce = 1;

@@ -1,11 +1,12 @@
 import {
+    apiTypeKeys,
+    keysToTestFromResponse,
     fetchAPI,
     getApiUrl,
     getApiOptions,
     IApiReturnObject,
     checkApiResponse,
 } from 'src';
-import {apiTypeKeys, keysToTestFromResponse} from 'src/variables';
 
 /** setBillingAddress
  *

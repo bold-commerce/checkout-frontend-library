@@ -1,4 +1,7 @@
 import {
+    environmentTypes,
+    environmentUrls,
+    environmentPath,
     IEnvironment,
     IAuth,
     IApplicationState,
@@ -13,7 +16,6 @@ import {
     IOrderMetaData,
     IShipping
 } from 'src';
-import {environmentTypes, environmentUrls, environmentPath} from 'src/variables';
 
 export const environment: Required<IEnvironment> = {
     type: environmentTypes.production,

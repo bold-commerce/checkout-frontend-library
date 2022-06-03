@@ -1,9 +1,9 @@
-import {FetchError, updateCustomer} from 'src';
+import {apiTypeKeys, keysToTestFromResponse, methods, FetchError, updateCustomer} from 'src';
 import * as fetchAPI from 'src/utils/fetchAPI';
 import * as getApiOptions from 'src/utils/getApiOptions';
 import * as apiUrl from 'src/utils/apiUrl';
 import * as apiResponse from 'src/utils/apiResponse';
-import {apiTypeKeys, baseReturnObject, keysToTestFromResponse, methods} from 'src/variables';
+import {baseReturnObject} from 'src/variables';
 import {applicationStateMock, customerMock} from 'src/variables/mocks';
 
 describe('testing updateCustomer', () => {

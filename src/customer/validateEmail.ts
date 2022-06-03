@@ -1,5 +1,4 @@
-import {fetchAPI, getApiOptions, getApiUrlWithParams, IApiReturnObject} from 'src';
-import {apiTypeKeys} from 'src/variables';
+import {apiTypeKeys, fetchAPI, getApiOptions, getApiUrlWithParams, IApiReturnObject} from 'src';
 
 /**
  * # validateEmail
@@ -7,6 +6,7 @@ import {apiTypeKeys} from 'src/variables';
  * validates the format of a supplied string as a valid email
  *
  * @param email email to be validated
+ * @param numOfRetries email to be validated
  */
 export async function validateEmail(email: string, numOfRetries = 0): Promise<IApiReturnObject> {
     const {validateEmail} = apiTypeKeys;

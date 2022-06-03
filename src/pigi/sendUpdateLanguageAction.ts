@@ -1,6 +1,5 @@
-import {IApiReturnObject, IPigiActionType, IPigiResponseType, sendPigiAction} from 'src';
-import {pigiActionTypes} from 'src/variables';
-import { sendPigiActionAsync } from '.';
+import {pigiActionTypes, IApiReturnObject, IPigiActionType, IPigiResponseType, sendPigiAction} from 'src';
+import {sendPigiActionAsync} from '.';
 
 export function sendUpdateLanguageAction(languageCode: string): IApiReturnObject {
     const action: IPigiActionType = {

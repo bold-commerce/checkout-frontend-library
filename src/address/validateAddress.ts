@@ -1,5 +1,4 @@
-import {fetchAPI, getApiOptions, getApiUrlWithParams, IApiReturnObject, IValidateAddress} from 'src';
-import {apiTypeKeys} from 'src/variables';
+import {apiTypeKeys, fetchAPI, getApiOptions, getApiUrlWithParams, IApiReturnObject, IValidateAddress} from 'src';
 
 /**
  *
@@ -7,7 +6,12 @@ import {apiTypeKeys} from 'src/variables';
  *
  * @param postalCode
  * @param province
+ * @param provinceCode
+ * @param country
  * @param countryCode
+ * @param businessName
+ * @param phoneNumber
+ * @param numOfRetries
  */
 export async function validateAddress(postalCode: string, province: string, provinceCode: string, country:string, countryCode: string, businessName?: string, phoneNumber?: string , numOfRetries= 0): Promise<IApiReturnObject> {
     const {validateAddress} = apiTypeKeys;

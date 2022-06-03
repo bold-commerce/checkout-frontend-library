@@ -1,5 +1,5 @@
-import {fetchAPI, FetchError} from 'src';
-import {apiErrors, baseReturnObject} from 'src/variables';
+import {apiErrors, fetchAPI, FetchError} from 'src';
+import {baseReturnObject} from 'src/variables';
 import {callFetch} from 'src/utils/fetchAPI';
 import fetchMock from 'fetch-mock-jest';
 import {Response} from 'node-fetch';

@@ -1,12 +1,11 @@
-import { IApiReturnObject } from 'src';
-import { checkApiResponse, fetchAPI, getApiOptions, getApiUrl } from 'src/utils';
-import { apiTypeKeys, apiTypes } from 'src/variables';
+import {apiTypeKeys, apiTypes, IApiReturnObject, checkApiResponse, fetchAPI, getApiOptions, getApiUrl} from 'src';
 
 /**
  * Update line item quantity
  *
  * @param lineItemKey The unique key of the line item to update
  * @param quantity The new quantity of the line item
+ * @param numOfRetries
  */
 export const updateLineItemQuantity = async (lineItemKey: string, quantity: number, numOfRetries = 0): Promise<IApiReturnObject> => {
     const { updateItem } = apiTypeKeys;

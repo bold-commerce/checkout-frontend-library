@@ -1,5 +1,5 @@
-import {FetchError, IPigiActionType, sendPigiAction, sendPigiActionAsync} from 'src';
-import {apiErrors, baseReturnObject, pigi} from 'src/variables';
+import {apiErrors, FetchError, IPigiActionType, sendPigiAction, sendPigiActionAsync} from 'src';
+import {baseReturnObject, pigi} from 'src/variables';
 import * as getPigiFrameWindow from 'src/pigi/getPigiFrameWindow';
 
 describe('testing send pigi Action', () => {
@@ -71,7 +71,7 @@ describe('testing send pigi Action', () => {
             removeEventListener: removeEventListenerMock
         });
 
-        const res = await sendPigiActionAsync(action); 
+        const res = await sendPigiActionAsync(action);
 
         expect(getPigiFrameWindowSpy).toHaveBeenCalledTimes(calledOnce);
         expect(postMessageSpy).toHaveBeenCalledTimes(calledOnce);
@@ -136,8 +136,8 @@ describe('testing send pigi Action', () => {
             removeEventListener: removeEventListenerMock
         });
 
-        
-        await sendPigiActionAsync(action).catch(error => {expect(error).toBe('Pigi response timeout');}); 
+
+        await sendPigiActionAsync(action).catch(error => {expect(error).toBe('Pigi response timeout');});
 
         expect(getPigiFrameWindowSpy).toHaveBeenCalledTimes(calledOnce);
         expect(postMessageSpy).toHaveBeenCalledTimes(calledOnce);

@@ -1,5 +1,5 @@
-import {getApiUrlWithParams, getJwtToken, IApiReturnObject} from 'src';
-import {apiTypeKeys, baseReturnObject} from 'src/variables';
+import {apiTypeKeys, getApiUrlWithParams, getJwtToken, IApiReturnObject} from 'src';
+import {baseReturnObject} from 'src/variables';
 
 /**
  *

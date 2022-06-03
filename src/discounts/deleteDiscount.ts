@@ -1,5 +1,4 @@
-import {IApiReturnObject, checkApiResponse, fetchAPI, getApiOptions, getApiUrl} from 'src';
-import {apiTypeKeys, apiTypes} from 'src/variables';
+import {apiTypeKeys, apiTypes, IApiReturnObject, checkApiResponse, fetchAPI, getApiOptions, getApiUrl} from 'src';
 
 /**
  * # deleteDiscount
@@ -7,6 +6,7 @@ import {apiTypeKeys, apiTypes} from 'src/variables';
  * deletes the chosen discount from the order
  *
  * @param code discount code to remove
+ * @param numOfRetries
  *
  */
 export async function deleteDiscount(code: string, numOfRetries = 0): Promise<IApiReturnObject> {

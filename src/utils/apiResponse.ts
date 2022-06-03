@@ -1,4 +1,7 @@
 import {
+    apiErrors,
+    generalApiResponseParsingErrorType,
+    keysToTestFromResponse,
     FetchError,
     findKeyInObject,
     getErrorFromFieldName,
@@ -6,11 +9,6 @@ import {
     IApiReturnObject,
     IApplicationState,
 } from 'src';
-import {
-    apiErrors,
-    generalApiResponseParsingErrorType,
-    keysToTestFromResponse
-} from 'src/variables';
 import {setApplicationState} from 'src/state';
 
 export function checkApiResponse(fetchRes: IApiReturnObject, keysToCheck?: Array<string>): IApiReturnObject {

@@ -1,5 +1,4 @@
-import {checkApiResponse, fetchAPI, getApiOptions, getApiUrl, IApiReturnObject} from 'src';
-import {apiTypeKeys, apiTypes} from 'src/variables';
+import {apiTypeKeys, apiTypes, checkApiResponse, fetchAPI, getApiOptions, getApiUrl, IApiReturnObject} from 'src';
 
 /**
  * # AddDiscount
@@ -7,6 +6,7 @@ import {apiTypeKeys, apiTypes} from 'src/variables';
  * Adds a discount to an order
  *
  * @param code discount code to add
+ * @param numOfRetries
  */
 export async function addDiscount(code: string, numOfRetries = 0): Promise<IApiReturnObject> {
     const {addDiscount} = apiTypeKeys;

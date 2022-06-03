@@ -1,11 +1,12 @@
 import {
+    apiTypeKeys,
+    apiTypes,
     checkApiResponse,
     fetchAPI,
     getApiOptions,
     getApiUrl,
     IApiReturnObject
 } from 'src';
-import {apiTypeKeys, apiTypes} from 'src/variables';
 
 /**
  * # updateCustomer
@@ -15,6 +16,8 @@ import {apiTypeKeys, apiTypes} from 'src/variables';
  * @param firstName Customer First Name
  * @param lastName Customer Last Name
  * @param email Customer Email
+ * @param acceptsMarketing
+ * @param numOfRetries
  */
 export async function updateCustomer(firstName: string, lastName: string, email: string, acceptsMarketing: boolean, numOfRetries = 0): Promise<IApiReturnObject> {
     const {updateCustomer} = apiTypeKeys;

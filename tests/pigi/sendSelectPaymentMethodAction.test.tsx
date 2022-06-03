@@ -1,5 +1,12 @@
-import {apiErrors, baseReturnObject, pigiActionTypes} from 'src/variables';
-import {FetchError, IPigiResponseType, sendSelectPaymentMethodAction, sendSelectPaymentMethodActionAsync} from 'src';
+import {
+    apiErrors,
+    pigiActionTypes,
+    FetchError,
+    IPigiResponseType,
+    sendSelectPaymentMethodAction,
+    sendSelectPaymentMethodActionAsync
+} from 'src';
+import {baseReturnObject} from 'src/variables';
 import * as sendPigiAction from 'src/pigi/sendPigiAction';
 
 describe('Testing Pigi Select Payment Method action', () => {

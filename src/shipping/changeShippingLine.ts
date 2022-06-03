@@ -1,5 +1,4 @@
-import {fetchAPI, getApiOptions, getApiUrl, IApiReturnObject, checkApiResponse} from 'src';
-import {apiTypeKeys, apiTypes} from 'src/variables';
+import {apiTypeKeys, apiTypes, fetchAPI, getApiOptions, getApiUrl, IApiReturnObject, checkApiResponse} from 'src';
 
 /**
  * # changeShippingLine
@@ -7,6 +6,7 @@ import {apiTypeKeys, apiTypes} from 'src/variables';
  * calls post shipping lines endpoint and sets the values for a shipping line
  *
  * @param index id of the appropriate available shipping line
+ * @param numOfRetries
  */
 export async function changeShippingLine(index: string, numOfRetries = 0): Promise<IApiReturnObject> {
     const {changeShippingLines} = apiTypeKeys;

@@ -1,5 +1,5 @@
-import {FetchError, IPigiResponseType, sendHandleScaAction, sendHandleScaActionAsync} from 'src';
-import {apiErrors, baseReturnObject, pigiActionTypes} from 'src/variables';
+import {apiErrors, pigiActionTypes, FetchError, IPigiResponseType, sendHandleScaAction, sendHandleScaActionAsync} from 'src';
+import {baseReturnObject} from 'src/variables';
 import * as sendPigiAction from 'src/pigi/sendPigiAction';
 
 describe('testing send pigi Handle Sca Action', () => {
