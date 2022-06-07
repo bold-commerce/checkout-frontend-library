@@ -15,6 +15,7 @@ export interface IApiSuccessResponse {
         IGetPaymentIframeUrl |
         IInitializeOrderResponse |
         ICssStylingPaymentIframeResponse |
+        ICheckInventoryResponse |
         IUpdateLineItemQuantityResponse;
     application_state?: IApplicationState;
 }
@@ -135,6 +136,11 @@ export interface ISetTaxesResponse {
     application_state: IApplicationState | undefined;
 }
 
+export interface ICheckInventoryResponse {
+    inventory_check: IInventoryCheck;
+    application_state: IApplicationState | undefined;
+}
+
 export interface IGetPaymentIframeUrl {
     url: string | undefined;
 }
@@ -173,6 +179,7 @@ export interface IApiTypes {
     updateShippingAddress: IApiTypesDetail;
     updateBillingAddress: IApiTypesDetail;
     updateItem: IApiTypesDetail;
+    checkInventory: IApiTypesDetail;
 }
 
 export interface IApiTypeKeys {
@@ -197,6 +204,7 @@ export interface IApiTypeKeys {
     updateShippingAddress: keyof IApiTypes;
     updateBillingAddress: keyof IApiTypes;
     updateItem: keyof IApiTypes;
+    checkInventory: keyof IApiTypes;
 }
 
 export interface IValidateAddress {
@@ -217,7 +225,11 @@ export interface IPaymentFrame {
     token: string
 }
 
-export type IApiUrlQueryParams = IValidateEmail | IValidateAddress | IPaymentFrame;
+export interface ICheckInventory {
+    stage: 'initial'|'final'
+}
+
+export type IApiUrlQueryParams = IValidateEmail | IValidateAddress | IPaymentFrame | ICheckInventory;
 
 export interface IApiTypesDetail {
     path: string;
@@ -461,4 +473,15 @@ export interface IPigiActionType {
 export interface IPigiResponseType {
     responseType: string;
     payload: Record<string, unknown>;
+}
+
+export interface IInventoryCheck {
+    result: 'pass' | 'fail' | 'not_enabled';
+    reason?: string;
+    failed_items?: Array<IInventoryFailedItems>;
+}
+
+export interface IInventoryFailedItems {
+    platform_variant_id: string,
+    available_quantity: number
 }
