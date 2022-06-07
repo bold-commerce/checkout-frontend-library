@@ -186,6 +186,12 @@ export const apiTypes: IApiTypes = {
         useJwt: true,
         keysToTest: [...appStateKeysToTest],
     },
+    checkInventory: {
+        path: '/check_inventory',
+        method: methods.GET,
+        useJwt: true,
+        keysToTest: [...appStateKeysToTest],
+    },
 };
 
 export const apiTypeKeys: IApiTypeKeys = {
@@ -210,6 +216,7 @@ export const apiTypeKeys: IApiTypeKeys = {
     updateShippingAddress: 'updateShippingAddress',
     updateBillingAddress: 'updateBillingAddress',
     updateItem: 'updateItem',
+    checkInventory: 'checkInventory',
 };
 
 export const baseReturnObject: IApiReturnObject = {
