@@ -1,6 +1,7 @@
 import {
     apiTypeKeys,
     apiTypes,
+    baseReturnObject,
     httpStatusCode,
     methods,
     processOrder,
@@ -10,7 +11,6 @@ import {
     getApiUrl,
     checkApiResponse
 } from 'src';
-import {baseReturnObject} from 'src/variables';
 import {applicationStateMock} from 'src/variables/mocks';
 import {mocked} from 'jest-mock';
 

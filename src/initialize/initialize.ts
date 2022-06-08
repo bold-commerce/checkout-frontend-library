@@ -1,4 +1,5 @@
 import {
+    baseReturnObject,
     keysToTestFromResponse,
     IApiReturnObject,
     IInitializeOrderResponse,
@@ -9,7 +10,6 @@ import {
     setShopIdentifier,
     checkApiResponse,
 } from 'src';
-import {baseReturnObject} from 'src/variables';
 
 /**
  * # Initialize

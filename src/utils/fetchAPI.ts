@@ -1,5 +1,4 @@
-import {apiErrors, IApiResponse, IApiReturnObject, IFetchCallback, FetchError} from 'src';
-import {baseReturnObject} from 'src/variables';
+import {apiErrors, baseReturnObject, IApiResponse, IApiReturnObject, IFetchCallback, FetchError} from 'src';
 
 /**
  * # FetchAPI

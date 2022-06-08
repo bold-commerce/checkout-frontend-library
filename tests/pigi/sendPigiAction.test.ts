@@ -1,5 +1,5 @@
-import {apiErrors, FetchError, IPigiActionType, sendPigiAction, sendPigiActionAsync} from 'src';
-import {baseReturnObject, pigi} from 'src/variables';
+import {apiErrors, baseReturnObject, FetchError, IPigiActionType, sendPigiAction, sendPigiActionAsync} from 'src';
+import {pigi} from 'src/variables';
 import * as getPigiFrameWindow from 'src/pigi/getPigiFrameWindow';
 
 describe('testing send pigi Action', () => {

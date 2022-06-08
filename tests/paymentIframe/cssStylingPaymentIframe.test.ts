@@ -1,8 +1,7 @@
-import {apiTypeKeys, methods, cssStylingPaymentIframe} from 'src';
+import {apiTypeKeys, baseReturnObject, methods, cssStylingPaymentIframe} from 'src';
 import * as fetchAPI from 'src/utils/fetchAPI';
 import * as getApiOptions from 'src/utils/getApiOptions';
 import * as apiUrl from 'src/utils/apiUrl';
-import {baseReturnObject} from 'src/variables';
 import {cssStylingPaymentIframeRequestMock} from 'src/variables/mocks';
 import * as apiResponse from 'src/utils/apiResponse';
 

@@ -1,9 +1,8 @@
-import {apiTypeKeys, keysToTestFromResponse, methods, deleteCustomer, FetchError} from 'src';
+import {apiTypeKeys, baseReturnObject, keysToTestFromResponse, methods, deleteCustomer, FetchError} from 'src';
 import * as fetchAPI from 'src/utils/fetchAPI';
 import * as getApiOptions from 'src/utils/getApiOptions';
 import * as apiUrl from 'src/utils/apiUrl';
 import * as apiResponse from 'src/utils/apiResponse';
-import {baseReturnObject} from 'src/variables';
 import {applicationStateMock, emptyCustomerMock} from 'src/variables/mocks';
 
 describe('testing deleteCustomer', () => {

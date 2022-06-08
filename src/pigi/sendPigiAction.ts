@@ -1,5 +1,4 @@
-import {baseReturnObject} from 'src/variables';
-import {apiErrors, getPigiFrameWindow, FetchError, IApiReturnObject, IPigiActionType, IPigiResponseType} from 'src';
+import {apiErrors, baseReturnObject, getPigiFrameWindow, FetchError, IApiReturnObject, IPigiActionType, IPigiResponseType} from 'src';
 
 /**
  * ## sendAction
