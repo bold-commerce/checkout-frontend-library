@@ -29,6 +29,7 @@ export async function callFetch(url: RequestInfo, numOfRetries: number, options:
             returnObject.error = new FetchError(response.status, message, response.statusText, body);
             returnObject.success = false;
             returnObject.status = response.status;
+            returnObject.response = typeof returnObject.error.body !== 'string' ? returnObject.error.body as IApiResponse : null;
             return returnObject;
         }
     } catch(e) {
