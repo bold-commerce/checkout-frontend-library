@@ -1,11 +1,8 @@
-import {environmentUrls, environmentTypes, apiErrors, initialize, IApiReturnObject, IFetchError, FetchError} from 'src';
-import fetchMock from 'fetch-mock-jest';
+import {environmentTypes, apiErrors, baseReturnObject, initialize, IApiReturnObject, IFetchError, FetchError} from 'src';
 import {initializeOrderResponseMock} from 'src/variables/mocks';
-import {baseReturnObject} from 'src/variables';
 import * as checkApiResponse from 'src/utils/apiResponse';
 
 describe('testing initialize function', () => {
-    const url = `${environmentUrls.staging}/checkout/storefront/shopIdentifier/publicOrderId/session/start`;
     const initData = initializeOrderResponseMock;
     const defaultReturn = {...baseReturnObject};
     defaultReturn.success = true;
@@ -13,12 +10,6 @@ describe('testing initialize function', () => {
     const successReturn = {...defaultReturn};
     successReturn.response = {...initData};
     let checkApiResponseSpy: jest.SpyInstance;
-
-    beforeAll(() => {
-        fetchMock
-            .get(url, {})
-            .post(url, {});
-    });
 
     beforeEach(() => {
         global.Headers = jest.fn().mockReturnValue({

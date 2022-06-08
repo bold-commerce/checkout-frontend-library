@@ -1,12 +1,12 @@
 import {
     apiErrors,
+    baseReturnObject,
     pigiActionTypes,
     FetchError,
     IPigiResponseType,
     sendClearErrorMessageAction,
     sendClearErrorMessageActionAsync
 } from 'src';
-import {baseReturnObject} from 'src/variables';
 import * as sendPigiAction from 'src/pigi/sendPigiAction';
 
 describe('testing send PIGI Clear Error Message Action', () => {

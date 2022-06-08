@@ -1,12 +1,12 @@
 import {
     apiErrors,
+    baseReturnObject,
     pigiActionTypes,
     FetchError,
     IPigiResponseType,
     sendUpdateLanguageAction,
     sendUpdateLanguageActionAsync
 } from 'src';
-import {baseReturnObject} from 'src/variables';
 import * as sendPigiAction from 'src/pigi/sendPigiAction';
 
 describe('Testing UPDATE_LANGUAGE action sent to PIGI iFrame', () => {

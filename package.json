@@ -14,14 +14,12 @@
     "lint-staged": "lint-staged",
     "prepare": "husky install"
   },
-  "dependencies": {},
   "devDependencies": {
     "@types/jest": "^27.0.0",
     "@types/node-fetch": "^2.5.10",
     "@typescript-eslint/eslint-plugin": "^4.25.0",
     "@typescript-eslint/parser": "^4.25.0",
     "eslint": "^7.27.0",
-    "fetch-mock-jest": "^1.5.1",
     "husky": "^7.0.1",
     "jest": "^27.4.7",
     "lint-staged": "^11.1.2",

@@ -10,9 +10,9 @@ export {
     apiTypes,
     apiTypeKeys,
     apiErrors,
-    httpStatusCode
+    httpStatusCode,
+    baseReturnObject
 } from './variables/constants';
-
 export * from './initialize';
 export * from './items';
 export * from './environment';

@@ -1,5 +1,4 @@
-import {validateEmail, FetchError} from 'src';
-import {baseReturnObject} from 'src/variables';
+import {baseReturnObject, validateEmail, FetchError} from 'src';
 import * as fetchAPI from 'src/utils/fetchAPI';
 import * as getApiOptions from 'src/utils/getApiOptions';
 

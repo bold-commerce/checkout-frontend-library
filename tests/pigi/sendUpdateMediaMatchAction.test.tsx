@@ -1,5 +1,6 @@
 import {
     apiErrors,
+    baseReturnObject,
     pigiActionTypes,
     FetchError,
     IPigiActionType,
@@ -7,7 +8,6 @@ import {
     sendUpdateMediaMatchAction,
     sendUpdateMediaMatchActionAsync
 } from 'src';
-import {baseReturnObject} from 'src/variables';
 import * as sendPigiAction from 'src/pigi/sendPigiAction';
 
 describe('Testing Pigi Update Media Match action', () => {

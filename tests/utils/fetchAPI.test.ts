@@ -1,7 +1,5 @@
-import {apiErrors, fetchAPI, FetchError} from 'src';
-import {baseReturnObject} from 'src/variables';
+import {apiErrors, baseReturnObject, fetchAPI, FetchError} from 'src';
 import {callFetch} from 'src/utils/fetchAPI';
-import fetchMock from 'fetch-mock-jest';
 import {Response} from 'node-fetch';
 
 const url = 'https://example.com/users';
@@ -10,14 +8,36 @@ const options = {
 };
 
 describe('test fetchAPI functionality', () => {
+    const fetchMock = jest.fn();
+    const serviceUnavailableStatus = 503;
+    const serviceUnavailableImplementationJsonMock = () => Promise.resolve({
+        json: () => Promise.resolve({}),
+        ok: false,
+        status: serviceUnavailableStatus,
+        headers: {get: () => 'application/json'}
+    });
+    const serviceUnavailableImplementationTextMock = () => Promise.resolve({
+        text: () => Promise.resolve(''),
+        ok: false,
+        status: serviceUnavailableStatus,
+        headers: {get: () => 'text/html'}
+    });
     let aPIReturnObjectMock = {...baseReturnObject};
 
     beforeEach(() => {
-        aPIReturnObjectMock = {...baseReturnObject};
         fetchMock.mockReset();
-        fetchMock
-            .get(url, {})
-            .post(url, {});
+        fetchMock.mockImplementation(() => Promise.resolve({
+            json: () => Promise.resolve({}),
+            ok: true,
+            status: 200
+        }));
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
+        window.fetch = fetchMock;
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
+        global.fetch = fetchMock;
+        aPIReturnObjectMock = {...baseReturnObject};
     });
 
     describe('testing callFetch async function', () => {
@@ -33,8 +53,9 @@ describe('test fetchAPI functionality', () => {
         });
 
         test('callFetch fails: response is undefined', async () => {
-            fetchMock
-                .getOnce(url, {}, { response: undefined, overwriteRoutes: true });
+            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+            // @ts-ignore
+            fetchMock.mockImplementationOnce(() => Promise.resolve());
             const { status } = apiErrors.general;
 
             const result = await callFetch(url, 0 ,options);
@@ -44,10 +65,10 @@ describe('test fetchAPI functionality', () => {
             expect((result.error as FetchError).message).toContain('TypeError');
         });
 
-
         test('callFetch fails: handles exception with message', async () => {
-            fetchMock
-                .getOnce(url, { throws: 'Test exception was thrown'}, { overwriteRoutes: true });
+            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+            // @ts-ignore
+            fetchMock.mockImplementationOnce(() => {throw new Error('Test exception was thrown');});
             const { status } = apiErrors.general;
 
             const result = await callFetch(url, 0, options);
@@ -56,30 +77,28 @@ describe('test fetchAPI functionality', () => {
             expect((result.error as FetchError).status).toBe(status);
             expect((result.error as FetchError).message).toContain('Test exception');
             expect(fetchMock).toHaveBeenCalledWith(url, options);
-
         });
 
-        test('callFetch fails: Service is unavailable & response.ok equals false without retires', async () => {
-            const testStatus = 503;
-            fetchMock
-                .getOnce(url, testStatus, { overwriteRoutes: true });
+        test('callFetch fails: Service is unavailable & response.ok equals false & json header without retires', async () => {
+            fetchMock.mockImplementationOnce(serviceUnavailableImplementationJsonMock);
 
             const result = await callFetch(url, 0, options);
 
-            expect((result.error as FetchError).status).toBe(testStatus);
+            expect((result.error as FetchError).status).toBe(serviceUnavailableStatus);
             expect(result.error).toBeInstanceOf(FetchError);
             expect(fetchMock).toHaveBeenCalledTimes(1);
             expect((result.error as FetchError).message).toContain('Unable to process request');
         });
 
-        test('callFetch fails: Service is unavailable & response.ok equals false with retires', async () => {
-            const testStatus = 503;
-            fetchMock.get(url, testStatus, { overwriteRoutes: true });
+        test('callFetch fails: Service is unavailable & response.ok equals false & text header with retires', async () => {
+            fetchMock
+                .mockImplementationOnce(serviceUnavailableImplementationTextMock)
+                .mockImplementationOnce(serviceUnavailableImplementationTextMock);
 
             const result = await callFetch(url, 1, options);
 
             expect(fetchMock).toHaveBeenCalledTimes(2);
-            expect((result.error as FetchError).status).toBe(testStatus);
+            expect((result.error as FetchError).status).toBe(serviceUnavailableStatus);
             expect(result.error).toBeInstanceOf(FetchError);
             expect((result.error as FetchError).message).toContain('Unable to process request');
         });
@@ -89,8 +108,7 @@ describe('test fetchAPI functionality', () => {
             const bodyJson = {errors: [{message: 'Test Error message', type: '', field: '', severity: 'test', sub_type: ''}]};
             const body = JSON.stringify(bodyJson);
             const testResponse = new Response(body, {status: testStatus, headers: {'content-type': 'application/json'}});
-            fetchMock
-                .getOnce(url, testResponse, { overwriteRoutes: true });
+            fetchMock.mockImplementationOnce(() => Promise.resolve(testResponse));
 
             const result = await callFetch(url,0 , options);
 
@@ -115,17 +133,16 @@ describe('test fetchAPI functionality', () => {
         });
 
         test('successful fetchAPI call with 10 retries', async () => {
-            const testStatus = 503;
-            fetchMock.get(url, testStatus, { overwriteRoutes: true });
+            fetchMock.mockImplementation(serviceUnavailableImplementationJsonMock);
 
             await fetchAPI(url ,options, 10);
             expect(fetchMock).toHaveBeenCalledTimes(6);
-
         });
 
         test('failed fetchAPI call: exception was thrown', async () => {
-            fetchMock
-                .getOnce(url, { throws: 'Exception was thrown'}, { overwriteRoutes: true});
+            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+            // @ts-ignore
+            fetchMock.mockImplementationOnce(() => {throw new Error('Exception was thrown');});
 
             const result = await fetchAPI(url ,options);
 
@@ -135,8 +152,11 @@ describe('test fetchAPI functionality', () => {
         });
 
         test('failed fetchAPI call: return contains 404 error', async () => {
-            fetchMock
-                .getOnce(url, 404, { overwriteRoutes: true });
+            fetchMock.mockImplementationOnce(() => Promise.resolve({
+                json: () => Promise.resolve({}),
+                ok: false,
+                status: 404
+            }));
 
             const result = await fetchAPI(url, options, 0);
 

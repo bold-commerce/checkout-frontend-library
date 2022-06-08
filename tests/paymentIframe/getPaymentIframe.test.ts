@@ -1,5 +1,4 @@
-import {getPaymentIframeUrl} from 'src';
-import {baseReturnObject} from 'src/variables';
+import {baseReturnObject, getPaymentIframeUrl} from 'src';
 import * as getShopIdentifier from 'src/auth/getShopIdentifier';
 import * as getPublicOrderId from 'src/auth/getPublicOrderId';
 import * as getEnvironment from 'src/environment/getEnvironment';

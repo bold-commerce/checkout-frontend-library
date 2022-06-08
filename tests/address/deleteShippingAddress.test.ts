@@ -1,5 +1,4 @@
-import {apiTypeKeys, methods, apiTypes, deleteShippingAddress} from 'src';
-import {baseReturnObject} from 'src/variables';
+import {apiTypeKeys, baseReturnObject, methods, apiTypes, deleteShippingAddress} from 'src';
 import {applicationStateMock} from 'src/variables/mocks';
 import * as fetchAPI from 'src/utils/fetchAPI';
 import * as getApiOptions from 'src/utils/getApiOptions';
