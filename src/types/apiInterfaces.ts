@@ -59,6 +59,11 @@ export interface IPigiActionTypes {
     PIGI_PAYMENT_ADDED: string;
 }
 
+export interface ICheckInventoryStage {
+    initial: string;
+    final: string
+}
+
 export interface IApiReturnObject {
     status: number;
     success: boolean;
