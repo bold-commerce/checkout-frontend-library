@@ -7,6 +7,7 @@ import {
     IEnvironmentUrls,
     IGeneralApiResponseParsingErrorType,
     IHttpStatusCode,
+    ICheckInventoryStage,
     IMethods,
     IPigiActionTypes,
     IPigiResponseType
@@ -60,6 +61,12 @@ export const pigiActionTypes: IPigiActionTypes = {
     PIGI_UPDATE_HEIGHT: 'PIGI_UPDATE_HEIGHT',
     PIGI_HANDLE_SCA: 'PIGI_HANDLE_SCA',
     PIGI_PAYMENT_ADDED: 'PIGI_PAYMENT_ADDED',
+};
+
+
+export const checkInventoryStage: ICheckInventoryStage = {
+    initial: 'initial',
+    final: 'final',
 };
 
 export const apiTypes: IApiTypes = {
