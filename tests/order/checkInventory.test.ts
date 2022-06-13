@@ -1,4 +1,12 @@
-import {baseReturnObject, FetchError, checkInventory, apiTypeKeys, keysToTestFromResponse, methods} from 'src';
+import {
+    baseReturnObject,
+    FetchError,
+    checkInventory,
+    apiTypeKeys,
+    keysToTestFromResponse,
+    methods,
+    checkInventoryStage
+} from 'src';
 import * as fetchAPI from 'src/utils/fetchAPI';
 import * as getApiOptions from 'src/utils/getApiOptions';
 import * as apiUrl from 'src/utils/apiUrl';
@@ -32,14 +40,14 @@ describe('testing getApplicationState', () => {
     });
 
     test('successful call (200)', async () => {
-        const res = await checkInventory('initial');
+        const res = await checkInventory(checkInventoryStage.initial);
 
         expect(getApiOptionsSpy).toHaveBeenCalledTimes(timesWhenCalled);
         expect(getApiUrlSpy).toHaveBeenCalledTimes(timesWhenCalled);
         expect(fetchApiSpy).toHaveBeenCalledTimes(timesWhenCalled);
         expect(checkApiResponseSpy).toHaveBeenCalledTimes(timesWhenCalled);
         expect(getApiOptionsSpy).toHaveBeenCalledWith(apiTypeKeys.checkInventory);
-        expect(getApiUrlSpy).toHaveBeenCalledWith(apiTypeKeys.checkInventory, {stage: 'initial'});
+        expect(getApiUrlSpy).toHaveBeenCalledWith(apiTypeKeys.checkInventory, {stage: checkInventoryStage.initial});
         expect(fetchApiSpy).toHaveBeenCalledWith(apiUrlMock, optionsMock, 0);
         expect(checkApiResponseSpy).toHaveBeenCalledWith(returnObject, keysToTest);
         expect(res).toStrictEqual(returnObject);
@@ -52,14 +60,14 @@ describe('testing getApplicationState', () => {
 
         fetchApiSpy.mockReturnValueOnce(Promise.resolve(tempReturnObject));
 
-        const res = await checkInventory('initial', 1);
+        const res = await checkInventory(checkInventoryStage.initial, 1);
 
         expect(getApiOptionsSpy).toHaveBeenCalledTimes(timesWhenCalled);
         expect(getApiUrlSpy).toHaveBeenCalledTimes(timesWhenCalled);
         expect(fetchApiSpy).toHaveBeenCalledTimes(timesWhenCalled);
         expect(checkApiResponseSpy).toHaveBeenCalledTimes(timesWhenCalled);
         expect(getApiOptionsSpy).toHaveBeenCalledWith(apiTypeKeys.checkInventory);
-        expect(getApiUrlSpy).toHaveBeenCalledWith(apiTypeKeys.checkInventory, {stage: 'initial'});
+        expect(getApiUrlSpy).toHaveBeenCalledWith(apiTypeKeys.checkInventory, {stage: checkInventoryStage.initial});
         expect(fetchApiSpy).toHaveBeenCalledWith(apiUrlMock, optionsMock, 1);
         expect(checkApiResponseSpy).toHaveBeenCalledWith(tempReturnObject, keysToTest);
         expect(res).toStrictEqual(tempReturnObject);
