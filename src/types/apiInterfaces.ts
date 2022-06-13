@@ -59,9 +59,11 @@ export interface IPigiActionTypes {
     PIGI_PAYMENT_ADDED: string;
 }
 
+export type IInventoryStage = 'initial' | 'final';
+
 export interface ICheckInventoryStage {
-    initial: string;
-    final: string
+    initial: IInventoryStage;
+    final: IInventoryStage
 }
 
 export interface IApiReturnObject {
@@ -231,7 +233,7 @@ export interface IPaymentFrame {
 }
 
 export interface ICheckInventory {
-    stage: 'initial'|'final'
+    stage: IInventoryStage
 }
 
 export type IApiUrlQueryParams = IValidateEmail | IValidateAddress | IPaymentFrame | ICheckInventory;

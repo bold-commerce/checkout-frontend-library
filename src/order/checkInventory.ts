@@ -1,4 +1,13 @@
-import {IApiReturnObject, fetchAPI, getApiOptions, checkApiResponse, getApiUrlWithParams, apiTypeKeys, apiTypes} from 'src';
+import {
+    IApiReturnObject,
+    fetchAPI,
+    getApiOptions,
+    checkApiResponse,
+    getApiUrlWithParams,
+    apiTypeKeys,
+    apiTypes,
+    IInventoryStage
+} from 'src';
 
 /**
  * # checkInventory
@@ -11,7 +20,7 @@ import {IApiReturnObject, fetchAPI, getApiOptions, checkApiResponse, getApiUrlWi
  * @returns {Promise<IApiReturnObject>}
  *
  */
-export async function checkInventory(stage: 'initial'|'final', numOfRetries = 0): Promise<IApiReturnObject> {
+export async function checkInventory(stage: IInventoryStage, numOfRetries = 0): Promise<IApiReturnObject> {
     const {checkInventory} = apiTypeKeys;
     const url = getApiUrlWithParams(checkInventory, {stage});
     const options = getApiOptions(checkInventory);

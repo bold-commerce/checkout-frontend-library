@@ -11,7 +11,8 @@ export {
     apiTypeKeys,
     apiErrors,
     httpStatusCode,
-    baseReturnObject
+    baseReturnObject,
+    checkInventoryStage
 } from './variables/constants';
 export * from './initialize';
 export * from './items';
