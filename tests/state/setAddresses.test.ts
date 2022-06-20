@@ -3,7 +3,7 @@ import * as setShippingAddress from 'src/state/setShippingAddress';
 import * as setBillingAddress from 'src/state/setBillingAddress';
 import {applicationState, billingAddress, shippingAddress} from 'src/variables';
 import {billingAddressMock, emptyAddressMock, shippingAddressMock} from 'src/variables/mocks';
-import {IAddress} from '../../src';
+import {IAddress} from 'src';
 
 describe('setAddresses', () => {
     let setShippingAddressSpy: jest.SpyInstance;
@@ -42,20 +42,6 @@ describe('setAddresses', () => {
         expect(applicationState.addresses.shipping).toStrictEqual(emptyAddressMock);
         expect(setBillingAddressSpy).toHaveBeenCalledTimes(1);
         expect(setBillingAddressSpy).toHaveBeenCalledWith({});
-        expect(billingAddress).toStrictEqual(emptyAddressMock);
-        expect(applicationState.addresses.billing).toStrictEqual(emptyAddressMock);
-    });
-
-    test('Set address to application state with nulls', () => {
-
-        setAddresses({shipping: null, billing: null});
-
-        expect(setShippingAddressSpy).toHaveBeenCalledTimes(1);
-        expect(setShippingAddressSpy).toHaveBeenCalledWith(shippingAddress);
-        expect(shippingAddress).toStrictEqual(emptyAddressMock);
-        expect(applicationState.addresses.shipping).toStrictEqual(emptyAddressMock);
-        expect(setBillingAddressSpy).toHaveBeenCalledTimes(1);
-        expect(setBillingAddressSpy).toHaveBeenCalledWith(billingAddress);
         expect(billingAddress).toStrictEqual(emptyAddressMock);
         expect(applicationState.addresses.billing).toStrictEqual(emptyAddressMock);
     });
