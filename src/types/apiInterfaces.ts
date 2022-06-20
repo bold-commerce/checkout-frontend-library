@@ -246,21 +246,38 @@ export interface IApiTypesDetail {
 }
 
 export interface IOrderInitialData {
-    shop_name?:           string;
-    country_information?: Array<ICountryInformation>;
-    supported_languages?: Array<string>;
-    general_settings?: IGeneralSettings
+    shop_name: string;
+    country_info: Array<ICountryInformation>;
+    supported_languages: Array<ISupportedLanguage>;
+    general_settings: IGeneralSettings
+}
+
+export interface ISupportedLanguage{
+    id: number,
+    shop_id: number,
+    iso_language: string,
+    language_name: string,
+    language_blob: string,
+    is_default: boolean,
+    out_of_date: number,
+    enabled: number,
+    source: null | string,
+    created_at: string | null,
+    updated_at: string | null,
+    deleted_at: string | null,
+    name: string,
+    shop_language_id: number
 }
 
 export interface ICountryInformation {
-    iso_code?:          string;
-    name?:             string;
-    show_province?:     boolean;
-    province_label?:    string;
-    show_postal_code?:   boolean;
-    provinces?:        Array<IProvince>;
-    valid_for_shipping?: boolean;
-    valid_for_billing?:  boolean;
+    iso_code:          string;
+    name:             string;
+    show_province:     boolean;
+    province_label:    string;
+    show_postal_code:   boolean;
+    provinces:        Array<IProvince>;
+    valid_for_shipping: boolean;
+    valid_for_billing:  boolean;
 }
 
 export interface ICheckoutProcess{
@@ -280,10 +297,10 @@ export interface IGeneralSettings{
 }
 
 export interface IProvince {
-    iso_code?:          string;
-    name?:             string;
-    valid_for_shipping?: boolean;
-    valid_for_billing?:  boolean;
+    iso_code: string;
+    name: string;
+    valid_for_shipping: boolean;
+    valid_for_billing: boolean;
 }
 
 export interface IApplicationState {
@@ -296,6 +313,7 @@ export interface IApplicationState {
     payments: Array<IPayment>;
     order_total: number;
     order_meta_data: IOrderMetaData;
+    currency: ICurrency;
     resumable_link: string | null;
     is_processed: boolean;
     created_via: string
@@ -309,14 +327,20 @@ export interface IOrderMetaData {
 }
 
 export interface IPayment {
-    gateway_public_id: string;
-    amount: number;
-    currency: string;
-    type: string;
-    display_string: string;
-    id: string;
-    token: string;
-    retain: boolean;
+    gateway_public_id: string,
+    amount: number,
+    currency: string,
+    tag?: string,
+    type: string,
+    display_string: string,
+    id: string,
+    token: string,
+    retain: boolean,
+    friendly_brand?: string,
+    lineText?: string,
+    value?: number,
+    brand?: string,
+    driver?: string,
 }
 
 export interface IShipping {
@@ -330,6 +354,16 @@ export interface IAvailableShippingLine {
     id: number;
     line: IShippingLine;
 }
+
+export interface ICurrency {
+    iso_code: string,
+    iso_numeric_code: number,
+    symbol: string,
+    format: string,
+    has_decimal: boolean,
+    show_iso_code: boolean
+}
+
 
 export interface ILineItem {
     product_data: IProductData;
@@ -360,6 +394,7 @@ export interface IProductData {
     id: string;
     title: string;
     image_url: string;
+    product_title: string;
     properties: Record<string, string>
     description: string;
     quantity: number;
@@ -381,8 +416,8 @@ export interface IProductData {
 }
 
 export interface IAddressType {
-    billing: IAddress | null;
-    shipping: IAddress | null;
+    billing: IAddress;
+    shipping: IAddress;
 }
 
 export interface ICustomer {

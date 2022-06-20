@@ -14,7 +14,8 @@ import {
     IPayment,
     IPigi,
     IOrderMetaData,
-    IShipping
+    IShipping,
+    ICurrency
 } from 'src';
 
 export const environment: Required<IEnvironment> = {
@@ -109,6 +110,15 @@ export const shipping: IShipping = {
     discounts: []
 };
 
+export const currency: ICurrency = {
+    iso_code: 'cad',
+    iso_numeric_code: 124,
+    symbol: '$',
+    format: '${amount}',
+    has_decimal: false,
+    show_iso_code: true
+};
+
 export const applicationState: IApplicationState = {
     customer,
     addresses,
@@ -120,6 +130,7 @@ export const applicationState: IApplicationState = {
     shipping,
     order_total: 0,
     resumable_link: '',
+    currency,
     created_via: '',
     is_processed: false,
 };
