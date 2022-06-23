@@ -296,7 +296,8 @@ export const orderInitialDataMock: IOrderInitialData = {
             provider: null,
             api_key: null
         }
-    }
+    },
+    alternate_payment_methods: []
 };
 
 export const cssRuleMock: ICssRule = {

@@ -249,7 +249,8 @@ export interface IOrderInitialData {
     shop_name: string;
     country_info: Array<ICountryInformation>;
     supported_languages: Array<ISupportedLanguage>;
-    general_settings: IGeneralSettings
+    general_settings: IGeneralSettings;
+    alternate_payment_methods?: Array<IExpressPayStripe>; //TODO need to make it mandatory once CASHPAY-2834 is enabled by default
 }
 
 export interface ISupportedLanguage{
@@ -294,6 +295,14 @@ export interface IAddressAutoComplete{
 export interface IGeneralSettings{
     checkout_process: ICheckoutProcess,
     address_autocomplete: IAddressAutoComplete,
+}
+
+export interface IExpressPayStripe {
+   type: string;
+   key: string;
+   stripe_user_id: string;
+   account_country: string;
+   public_id: string;
 }
 
 export interface IProvince {
