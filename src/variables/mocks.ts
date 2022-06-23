@@ -21,7 +21,8 @@ import {
     IMediaRule,
     ICssStylingPaymentIframeRequest,
     ICurrency,
-    ISupportedLanguage
+    ISupportedLanguage,
+    alternatePaymentMethodType
 } from 'src';
 
 export const shippingAddressMock: IAddress = {
@@ -297,7 +298,15 @@ export const orderInitialDataMock: IOrderInitialData = {
             api_key: null
         }
     },
-    alternate_payment_methods: []
+    alternate_payment_methods: [
+        {
+            type: alternatePaymentMethodType.STRIPE,
+            key: '',
+            stripe_user_id: '',
+            public_id: '',
+            account_country: ''
+        }
+    ]
 };
 
 export const cssRuleMock: ICssRule = {

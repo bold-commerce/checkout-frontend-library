@@ -59,6 +59,10 @@ export interface IPigiActionTypes {
     PIGI_PAYMENT_ADDED: string;
 }
 
+export interface IAlternatePaymentMethodType {
+    STRIPE: string;
+}
+
 export type IInventoryStage = 'initial' | 'final';
 
 export interface ICheckInventoryStage {
@@ -245,12 +249,14 @@ export interface IApiTypesDetail {
     keysToTest?: Array<string>;
 }
 
+export type IAlternatePaymentMethod = Array<IExpressPayStripe>;
+
 export interface IOrderInitialData {
     shop_name: string;
     country_info: Array<ICountryInformation>;
     supported_languages: Array<ISupportedLanguage>;
     general_settings: IGeneralSettings;
-    alternate_payment_methods?: Array<IExpressPayStripe>; //TODO need to make it mandatory once CASHPAY-2834 is enabled by default
+    alternate_payment_methods?: IAlternatePaymentMethod //TODO need to make it mandatory once CASHPAY-2834 is enabled by default
 }
 
 export interface ISupportedLanguage{
