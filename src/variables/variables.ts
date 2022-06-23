@@ -15,7 +15,11 @@ import {
     IPigi,
     IOrderMetaData,
     IShipping,
-    ICurrency
+    ICurrency,
+    IOrderInitialData,
+    ICountryInformation,
+    IGeneralSettings,
+    ISupportedLanguage
 } from 'src';
 
 export const environment: Required<IEnvironment> = {
@@ -119,6 +123,46 @@ export const currency: ICurrency = {
     show_iso_code: true
 };
 
+export const countryInfo: ICountryInformation = {
+    iso_code: 'CA',
+    name: 'Canada',
+    show_province: false,
+    province_label: 'Province',
+    show_postal_code: false,
+    provinces: [],
+    valid_for_shipping: false,
+    valid_for_billing: false
+};
+
+export const generalSettings: IGeneralSettings = {
+    checkout_process: {
+        company_name_option: 'required',
+        phone_number_required: false,
+        accepts_marketing_checkbox_option: 'checked'
+    },
+    address_autocomplete: {
+        provider: null,
+        api_key: null
+    }
+};
+
+export const supportedLanguages: ISupportedLanguage = {
+    id: 0,
+    shop_id: 0,
+    iso_language: '',
+    language_name: '',
+    language_blob: '',
+    is_default: true,
+    out_of_date: 0,
+    enabled: 1,
+    source: null,
+    created_at: '',
+    updated_at: '',
+    deleted_at: null,
+    name: '',
+    shop_language_id: 0
+};
+
 export const applicationState: IApplicationState = {
     customer,
     addresses,
@@ -133,4 +177,11 @@ export const applicationState: IApplicationState = {
     currency,
     created_via: '',
     is_processed: false,
+};
+
+export const orderInitialData: IOrderInitialData = {
+    shop_name: '',
+    country_info: [countryInfo],
+    general_settings: generalSettings,
+    supported_languages: [supportedLanguages]
 };

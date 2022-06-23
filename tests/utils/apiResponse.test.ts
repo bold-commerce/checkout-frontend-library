@@ -1,15 +1,22 @@
-import {applicationStateMock, shippingAddressMock, selectShippingLineArrayMock} from 'src/variables/mocks';
+import {
+    applicationStateMock,
+    shippingAddressMock,
+    selectShippingLineArrayMock,
+    orderInitialDataMock
+} from 'src/variables/mocks';
 import {checkApiResponse} from 'src/utils/apiResponse';
 import {apiErrors, keysToTestFromResponse, FetchError} from 'src';
 import * as getErrorFromFieldName from 'src/utils/getErrorFromFieldName';
 import * as findKeyInObject from 'src/utils/findKeyInObject';
 import * as setApplicationState from 'src/state/setApplicationState';
+import * as setOrderInitialData from 'src/state/setOrderInitialData';
 
 describe('checkApiResponse', () => {
     const keyToTest: Array<string> = [keysToTestFromResponse.data, keysToTestFromResponse.applicationState];
 
     let findKeyInObjectSpy: jest.SpyInstance;
     let setApplicationStateSpy: jest.SpyInstance;
+    let setOrderInitialDataSpy: jest.SpyInstance;
     let getErrorFromFieldNameSpy: jest.SpyInstance;
     let fetchResponseProvider = initializeFetchResponseProvider();
 
@@ -20,6 +27,7 @@ describe('checkApiResponse', () => {
 
         findKeyInObjectSpy = jest.spyOn(findKeyInObject, 'findKeyInObject');
         setApplicationStateSpy = jest.spyOn(setApplicationState, 'setApplicationState');
+        setOrderInitialDataSpy = jest.spyOn(setOrderInitialData, 'setOrderInitialData');
         getErrorFromFieldNameSpy = jest.spyOn(getErrorFromFieldName, 'getErrorFromFieldName');
         fetchResponseProvider = initializeFetchResponseProvider();
     });
@@ -62,11 +70,12 @@ describe('checkApiResponse', () => {
     });
 
     test.each(fetchResponseProvider.populatedFetchResponse)('Call with Shipping Address / Shipping Lines populated data', (data) => {
-        const resultCheckApiResponse = checkApiResponse(data, keyToTest);
+        const resultCheckApiResponse = checkApiResponse(data, [keysToTestFromResponse.data, keysToTestFromResponse.applicationState, keysToTestFromResponse.initial_data]);
         expect(resultCheckApiResponse.success).toBe(true);
         expect(resultCheckApiResponse.error).toBeNull();
-        expect(findKeyInObjectSpy).toHaveBeenCalledTimes(2);
+        expect(findKeyInObjectSpy).toHaveBeenCalledTimes(3);
         expect(setApplicationStateSpy).toHaveBeenCalledTimes(1);
+        expect(setOrderInitialDataSpy).toHaveBeenCalledTimes(1);
         expect(getErrorFromFieldNameSpy).not.toHaveBeenCalled();
         expect(setApplicationStateSpy).toHaveBeenCalledWith(applicationStateMock);
     });
@@ -150,6 +159,22 @@ describe('checkApiResponse', () => {
         expect(getErrorFromFieldNameSpy).toHaveBeenCalledWith('application_state');
     });
 
+    test('Call with undefined initial state', () => {
+        const {errorsInResponse} = apiErrors;
+
+        const resultCheckApiResponse = checkApiResponse(fetchResponseProvider.undefinedInitialDataFetchResponse, [keysToTestFromResponse.initial_data]);
+        expect(resultCheckApiResponse.success).toBe(false);
+        expect(resultCheckApiResponse.error).toBeInstanceOf(FetchError);
+        expect((resultCheckApiResponse.error as FetchError).status).toBe(errorsInResponse.status);
+        expect((resultCheckApiResponse.error as FetchError).message).toStrictEqual(errorsInResponse.message);
+        expect((resultCheckApiResponse.error as FetchError).metaData).toStrictEqual({fields: ['initial_data is empty in response']});
+        expect(findKeyInObjectSpy).toHaveBeenCalledTimes(1);
+        expect(setApplicationStateSpy).toHaveBeenCalledTimes(0);
+        expect(setOrderInitialDataSpy).toHaveBeenCalledTimes(0);
+        expect(getErrorFromFieldNameSpy).toHaveBeenCalledTimes(1);
+        expect(getErrorFromFieldNameSpy).toHaveBeenCalledWith('initial_data');
+    });
+
     test('Call with undefined new field name - other than `application_state` and `data`', () => {
         const {errorsInResponse, emptyFieldInResponse, noFieldInResponse} = apiErrors;
         const keysToTest: Array<string> = ['shipping_lines', 'dummyNode'];
@@ -206,6 +231,17 @@ function initializeFetchResponseProvider() {
                 }
             },
         },
+        undefinedInitialDataFetchResponse: {
+            status: 200,
+            success: true,
+            error: null,
+            response: {
+                data: {
+                    initial_data: undefined,
+                    application_state: applicationStateMock
+                }
+            },
+        },
         undefinedShippingLinesFetchResponse: {
             status: 200,
             success: true,
@@ -225,7 +261,8 @@ function initializeFetchResponseProvider() {
                 response: {
                     data: {
                         address: shippingAddressMock,
-                        application_state: applicationStateMock
+                        application_state: applicationStateMock,
+                        initial_data: orderInitialDataMock,
                     }
                 }
             }, {
@@ -235,7 +272,8 @@ function initializeFetchResponseProvider() {
                 response: {
                     data: {
                         shipping_lines: selectShippingLineArrayMock,
-                        application_state: applicationStateMock
+                        application_state: applicationStateMock,
+                        initial_data: orderInitialDataMock,
                     }
                 }
             },

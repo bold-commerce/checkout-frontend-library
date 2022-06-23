@@ -8,8 +8,10 @@ import {
     IApiResponse,
     IApiReturnObject,
     IApplicationState,
+    IOrderInitialData,
 } from 'src';
 import {setApplicationState} from 'src/state';
+import {setOrderInitialData} from 'src/state/setOrderInitialData';
 
 export function checkApiResponse(fetchRes: IApiReturnObject, keysToCheck?: Array<string>): IApiReturnObject {
     const success = fetchRes.success;
@@ -43,6 +45,10 @@ export function checkApiResponse(fetchRes: IApiReturnObject, keysToCheck?: Array
                     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
                     // @ts-ignore
                     setApplicationState(valueExtractedFromObject[key] as unknown as IApplicationState);
+                } else if (key === keysToTestFromResponse.initial_data) {
+                    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                    // @ts-ignore
+                    setOrderInitialData(valueExtractedFromObject[key] as unknown as IOrderInitialData);
                 }
             } else {
                 const error = getErrorFromFieldName(key, generalApiResponseParsingErrorType.noField);
