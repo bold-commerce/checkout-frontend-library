@@ -10,7 +10,8 @@ import {
     ICheckInventoryStage,
     IMethods,
     IPigiActionTypes,
-    IPigiResponseType
+    IPigiResponseType,
+    IAlternatePaymentMethodType
 } from 'src';
 
 export const environmentTypes: IEnvironmentTypes = {
@@ -63,6 +64,9 @@ export const pigiActionTypes: IPigiActionTypes = {
     PIGI_PAYMENT_ADDED: 'PIGI_PAYMENT_ADDED',
 };
 
+export const alternatePaymentMethodType: IAlternatePaymentMethodType = {
+    STRIPE: 'stripe'
+};
 
 export const checkInventoryStage: ICheckInventoryStage = {
     initial: 'initial',

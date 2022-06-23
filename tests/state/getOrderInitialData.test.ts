@@ -1,5 +1,6 @@
 import {orderInitialDataMock} from 'src/variables/mocks';
-import {setOrderInitialData, getOrderInitialData} from 'src/state';
+import {setOrderInitialData} from 'src/state';
+import {getOrderInitialData} from 'src';
 
 describe('get order initial data', () => {
     test('get mocked initial data', () => {

@@ -12,7 +12,8 @@ export {
     apiErrors,
     httpStatusCode,
     baseReturnObject,
-    checkInventoryStage
+    checkInventoryStage,
+    alternatePaymentMethodType
 } from './variables/constants';
 export * from './initialize';
 export * from './items';
@@ -38,6 +39,7 @@ export {
     getPayments,
     getShipping,
     getShippingAddress,
-    getTaxes
+    getTaxes,
+    getOrderInitialData
 } from './state';
 export * from './pigi';
