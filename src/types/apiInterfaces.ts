@@ -191,6 +191,7 @@ export interface IApiTypes {
     updateBillingAddress: IApiTypesDetail;
     updateItem: IApiTypesDetail;
     checkInventory: IApiTypesDetail;
+    validateDiscount: IApiTypesDetail;
 }
 
 export interface IApiTypeKeys {
@@ -216,6 +217,7 @@ export interface IApiTypeKeys {
     updateBillingAddress: keyof IApiTypes;
     updateItem: keyof IApiTypes;
     checkInventory: keyof IApiTypes;
+    validateDiscount: keyof  IApiTypes;
 }
 
 export interface IValidateAddress {
