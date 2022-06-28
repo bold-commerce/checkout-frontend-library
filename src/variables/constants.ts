@@ -203,6 +203,11 @@ export const apiTypes: IApiTypes = {
         useJwt: true,
         keysToTest: [...appStateKeysToTest],
     },
+    validateDiscount: {
+        path: '/validate_discount_code',
+        method: methods.GET,
+        useJwt: true,
+    }
 };
 
 export const apiTypeKeys: IApiTypeKeys = {
@@ -218,6 +223,7 @@ export const apiTypeKeys: IApiTypeKeys = {
     setTaxes: 'setTaxes',
     addDiscount: 'addDiscount',
     deleteDiscount: 'deleteDiscount',
+    validateDiscount: 'validateDiscount',
     getPaymentIframe: 'getPaymentIframe',
     cssStylingPaymentIframe: 'cssStylingPaymentIframe',
     processOrder: 'processOrder',
