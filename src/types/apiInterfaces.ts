@@ -242,7 +242,11 @@ export interface ICheckInventory {
     stage: IInventoryStage
 }
 
-export type IApiUrlQueryParams = IValidateEmail | IValidateAddress | IPaymentFrame | ICheckInventory;
+export interface IValidateDiscount {
+    discount_code: string
+}
+
+export type IApiUrlQueryParams = IValidateEmail | IValidateAddress | IPaymentFrame | ICheckInventory | IValidateDiscount;
 
 export interface IApiTypesDetail {
     path: string;

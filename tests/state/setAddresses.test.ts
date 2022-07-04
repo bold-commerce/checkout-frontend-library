@@ -46,4 +46,11 @@ describe('setAddresses', () => {
         expect(applicationState.addresses.billing).toStrictEqual(emptyAddressMock);
     });
 
+    test('Set address to application state with null object', () => {
+
+        setAddresses({shipping: null as unknown as IAddress , billing: null as unknown as IAddress});
+
+        expect(setShippingAddressSpy).toHaveBeenCalledTimes(0);
+        expect(setBillingAddressSpy).toHaveBeenCalledTimes(0);
+    });
 });
