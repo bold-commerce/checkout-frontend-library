@@ -1,4 +1,4 @@
-import {apiTypeKeys, apiTypes, checkApiResponse, fetchAPI, getApiOptions, getApiUrl, IApiReturnObject} from 'src';
+import {apiTypeKeys, fetchAPI, getApiOptions, getApiUrlWithParams, IApiReturnObject} from 'src';
 
 /**
  * # ValidateDiscount
@@ -10,9 +10,7 @@ import {apiTypeKeys, apiTypes, checkApiResponse, fetchAPI, getApiOptions, getApi
  */
 export async function validateDiscount(code: string, numOfRetries = 0): Promise<IApiReturnObject> {
     const {validateDiscount} = apiTypeKeys;
-    const options = getApiOptions(validateDiscount, { discount_code: code });
-    const url = getApiUrl(validateDiscount);
-    const fetchRes = await fetchAPI(url, options, numOfRetries);
-    const {keysToTest} = apiTypes.validateDiscount;
-    return checkApiResponse(fetchRes, keysToTest);
+    const url = getApiUrlWithParams(validateDiscount, { discount_code: code });
+    const options = getApiOptions(validateDiscount);
+    return await fetchAPI(url, options, numOfRetries);
 }
