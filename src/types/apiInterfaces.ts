@@ -337,7 +337,8 @@ export interface IApplicationState {
     currency: ICurrency;
     resumable_link: string | null;
     is_processed: boolean;
-    created_via: string
+    created_via: string;
+    fees: Array<IFees> | undefined; // TODO remove undefined type once CASHINT-473 is enabled by default
 }
 
 export interface IOrderMetaData {
@@ -385,6 +386,15 @@ export interface ICurrency {
     show_iso_code: boolean
 }
 
+export interface IFees {
+    id: string;
+    line_text: string;
+    fee_type: string;
+    value: number;
+    source: string;
+    plugin_uuid?: string;
+    taxable: boolean;
+}
 
 export interface ILineItem {
     product_data: IProductData;

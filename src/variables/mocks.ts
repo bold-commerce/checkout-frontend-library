@@ -22,7 +22,8 @@ import {
     ICssStylingPaymentIframeRequest,
     ICurrency,
     ISupportedLanguage,
-    alternatePaymentMethodType
+    alternatePaymentMethodType,
+    IFees
 } from 'src';
 
 export const shippingAddressMock: IAddress = {
@@ -111,6 +112,17 @@ export const taxMock: ITax = {
     name: 'test_tax_name',
     is_included: true
 };
+
+export const feesMock: IFees = {
+    id: '101292879',
+    line_text:' Some Fee Description',
+    fee_type: 'percentage',
+    value: 1200,
+    source: 'PLUGIN',
+    plugin_uuid: 'd5eccfe2-f3f0-11ec-afac-be28b404fd64',
+    taxable: false
+};
+
 
 export const taxesArrayMock: Array<ITax> = [
     {
@@ -233,7 +245,8 @@ export const applicationStateMock: IApplicationState = {
     resumable_link: null,
     currency: currency,
     is_processed: false,
-    created_via: 'checkout'
+    created_via: 'checkout',
+    fees: [feesMock]
 };
 
 export const selectShippingLineArrayMock: Array<IShippingLine> = [

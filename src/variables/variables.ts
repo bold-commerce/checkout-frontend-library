@@ -19,7 +19,8 @@ import {
     IOrderInitialData,
     ICountryInformation,
     IGeneralSettings,
-    ISupportedLanguage
+    ISupportedLanguage,
+    IFees
 } from 'src';
 
 export const environment: Required<IEnvironment> = {
@@ -89,6 +90,8 @@ export const line_items: Array<ILineItem> = [];
 export const taxes: Array<ITax> = [];
 
 export const discounts: Array<IDiscount> = [];
+
+export const fees: Array<IFees> = [];
 
 export const payments: Array<IPayment> = [];
 
@@ -177,6 +180,7 @@ export const applicationState: IApplicationState = {
     currency,
     created_via: '',
     is_processed: false,
+    fees,
 };
 
 export const orderInitialData: IOrderInitialData = {

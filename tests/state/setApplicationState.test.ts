@@ -7,6 +7,7 @@ import * as setDiscounts from 'src/state/setDiscounts';
 import * as setPayments from 'src/state/setPayments';
 import * as setOrderMetaData from 'src/state/setOrderMetaData';
 import * as setShipping from 'src/state/setShipping';
+import * as setFees from 'src/state/setFees';
 import {applicationState} from 'src/variables';
 import {applicationStateMock} from 'src/variables/mocks';
 
@@ -19,6 +20,7 @@ describe('setApplicationState', () => {
     let setPaymentsSpy: jest.SpyInstance;
     let setOrderMetaDataSpy: jest.SpyInstance;
     let setShippingSpy: jest.SpyInstance;
+    let setFeesSpy: jest.SpyInstance;
 
     beforeEach(() => {
         setCustomerSpy = jest.spyOn(setCustomer, 'setCustomer');
@@ -29,6 +31,7 @@ describe('setApplicationState', () => {
         setPaymentsSpy = jest.spyOn(setPayments, 'setPayments');
         setOrderMetaDataSpy = jest.spyOn(setOrderMetaData, 'setOrderMetaData');
         setShippingSpy = jest.spyOn(setShipping, 'setShipping');
+        setFeesSpy = jest.spyOn(setFees, 'setFees');
     });
 
     afterEach(() => {
@@ -48,6 +51,7 @@ describe('setApplicationState', () => {
         expect(setPaymentsSpy).toHaveBeenCalledTimes(callTimes);
         expect(setOrderMetaDataSpy).toHaveBeenCalledTimes(callTimes);
         expect(setShippingSpy).toHaveBeenCalledTimes(callTimes);
+        expect(setFeesSpy).toHaveBeenCalledTimes(callTimes);
 
         expect(setCustomerSpy).toHaveBeenCalledWith(applicationStateMock.customer);
         expect(setAddressesSpy).toHaveBeenCalledWith(applicationStateMock.addresses);
@@ -57,6 +61,7 @@ describe('setApplicationState', () => {
         expect(setPaymentsSpy).toHaveBeenCalledWith(applicationStateMock.payments);
         expect(setOrderMetaDataSpy).toHaveBeenCalledWith(applicationStateMock.order_meta_data);
         expect(setShippingSpy).toHaveBeenCalledWith(applicationStateMock.shipping);
+        expect(setFeesSpy).toHaveBeenCalledWith(applicationStateMock.fees);
 
         expect(applicationState.order_total).toBe(applicationStateMock.order_total);
         expect(applicationState.resumable_link).toBe(applicationStateMock.resumable_link);
