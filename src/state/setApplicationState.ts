@@ -3,6 +3,7 @@ import {
     setAddresses,
     setCustomer,
     setDiscounts,
+    setFees,
     setLineItems,
     setOrderMetaData,
     setPayments,
@@ -23,7 +24,8 @@ export function setApplicationState({
     order_total,
     resumable_link,
     created_via,
-    is_processed
+    is_processed,
+    fees
 }: IApplicationState): void {
     setCustomer(customer);
     setAddresses(addresses);
@@ -33,6 +35,7 @@ export function setApplicationState({
     setPayments(payments);
     setOrderMetaData(order_meta_data);
     setShipping(shipping);
+    setFees(fees),
     applicationState.order_total = order_total;
     applicationState.resumable_link = resumable_link;
     applicationState.created_via = created_via;
