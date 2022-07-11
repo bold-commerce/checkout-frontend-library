@@ -16,6 +16,7 @@ export interface IApiSuccessResponse {
         IInitializeOrderResponse |
         ICssStylingPaymentIframeResponse |
         ICheckInventoryResponse |
+        IAddPaymentResponse |
         IUpdateLineItemQuantityResponse;
     application_state?: IApplicationState;
 }
@@ -152,6 +153,11 @@ export interface ICheckInventoryResponse {
     application_state: IApplicationState | undefined;
 }
 
+export interface IAddPaymentResponse {
+    payment: IPayment;
+    application_state: IApplicationState | undefined;
+}
+
 export interface IGetPaymentIframeUrl {
     url: string | undefined;
 }
@@ -192,6 +198,7 @@ export interface IApiTypes {
     updateItem: IApiTypesDetail;
     checkInventory: IApiTypesDetail;
     validateDiscount: IApiTypesDetail;
+    addPayment: IApiTypesDetail;
 }
 
 export interface IApiTypeKeys {
@@ -218,6 +225,7 @@ export interface IApiTypeKeys {
     updateItem: keyof IApiTypes;
     checkInventory: keyof IApiTypes;
     validateDiscount: keyof  IApiTypes;
+    addPayment: keyof  IApiTypes;
 }
 
 export interface IValidateAddress {
@@ -520,6 +528,16 @@ export type ISetShippingAddressRequest = IAddress;
 
 export type ISetBillingAddressRequest = IAddress;
 
+export interface IAddPaymentRequest {
+    gateway_public_id: string;
+    amount?: number;
+    currency?: string;
+    type?: string;
+    display_string?: string;
+    token: string;
+    retain?: boolean
+}
+
 export type IGetApiOptionsBody =
     ISessionStartRequest |
     IAddGuestCustomerRequest |
@@ -530,6 +548,7 @@ export type IGetApiOptionsBody =
     IChangeShippingLineRequest |
     IDiscountRequest |
     ICssStylingPaymentIframeRequest |
+    IAddPaymentRequest |
     Record<string, unknown>;
 
 export interface IShippingLine {
