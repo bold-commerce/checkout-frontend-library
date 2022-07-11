@@ -207,6 +207,12 @@ export const apiTypes: IApiTypes = {
         path: '/validate_discount_code',
         method: methods.GET,
         useJwt: true,
+    },
+    addPayment: {
+        path: '/payments',
+        method: methods.POST,
+        useJwt: true,
+        keysToTest: [...appStateKeysToTest],
     }
 };
 
@@ -234,6 +240,7 @@ export const apiTypeKeys: IApiTypeKeys = {
     updateBillingAddress: 'updateBillingAddress',
     updateItem: 'updateItem',
     checkInventory: 'checkInventory',
+    addPayment: 'addPayment',
 };
 
 export const baseReturnObject: IApiReturnObject = {

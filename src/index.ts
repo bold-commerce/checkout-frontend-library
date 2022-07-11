@@ -26,6 +26,7 @@ export * from './address';
 export * from './shipping';
 export * from './taxes';
 export * from './discounts';
+export * from './payment';
 export * from './paymentIframe';
 export * from './order';
 export {
