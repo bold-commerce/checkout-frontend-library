@@ -198,7 +198,11 @@ export interface IApiTypes {
     updateItem: IApiTypesDetail;
     checkInventory: IApiTypesDetail;
     validateDiscount: IApiTypesDetail;
+    getPaymentList: IApiTypesDetail;
     addPayment: IApiTypesDetail;
+    updatePayment: IApiTypesDetail;
+    deletePayment: IApiTypesDetail;
+    deleteGiftCardPayment: IApiTypesDetail;
 }
 
 export interface IApiTypeKeys {
@@ -225,7 +229,11 @@ export interface IApiTypeKeys {
     updateItem: keyof IApiTypes;
     checkInventory: keyof IApiTypes;
     validateDiscount: keyof  IApiTypes;
+    getPaymentList: keyof  IApiTypes;
     addPayment: keyof  IApiTypes;
+    updatePayment: keyof  IApiTypes;
+    deletePayment: keyof  IApiTypes;
+    deleteGiftCardPayment: keyof  IApiTypes;
 }
 
 export interface IValidateAddress {
@@ -538,6 +546,10 @@ export interface IAddPaymentRequest {
     retain?: boolean
 }
 
+export type IUpdatePaymentRequest = IAddPaymentRequest;
+
+export type IDeletePaymentRequest = IAddPaymentRequest;
+
 export type IGetApiOptionsBody =
     ISessionStartRequest |
     IAddGuestCustomerRequest |
@@ -549,6 +561,8 @@ export type IGetApiOptionsBody =
     IDiscountRequest |
     ICssStylingPaymentIframeRequest |
     IAddPaymentRequest |
+    IUpdatePaymentRequest |
+    IDeletePaymentRequest |
     Record<string, unknown>;
 
 export interface IShippingLine {

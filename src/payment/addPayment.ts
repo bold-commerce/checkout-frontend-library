@@ -12,6 +12,11 @@ import {
 /** addPayment
  *
  * Adds a new payment to the order.
+ *
+ * @param {@link IAddPaymentRequest} requestBody - Add Payment Request Body.
+ * @param {number} [numOfRetries=0] - Number of retries for some HTTP errors - Number from 0 to 5
+ *
+ * @returns {Promise<IApiReturnObject>} response
  */
 export async function addPayment(requestBody: IAddPaymentRequest, numOfRetries= 0): Promise<IApiReturnObject> {
     const {addPayment} = apiTypeKeys;

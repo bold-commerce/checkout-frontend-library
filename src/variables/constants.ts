@@ -208,12 +208,36 @@ export const apiTypes: IApiTypes = {
         method: methods.GET,
         useJwt: true,
     },
+    getPaymentList: {
+        path: '/payments',
+        method: methods.GET,
+        useJwt: true,
+        keysToTest: [...appStateKeysToTest]
+    },
     addPayment: {
         path: '/payments',
         method: methods.POST,
         useJwt: true,
-        keysToTest: [...appStateKeysToTest],
-    }
+        keysToTest: [...appStateKeysToTest]
+    },
+    updatePayment: {
+        path: '/payments',
+        method: methods.PUT,
+        useJwt: true,
+        keysToTest: [...appStateKeysToTest]
+    },
+    deletePayment: {
+        path: '/payments',
+        method: methods.DELETE,
+        useJwt: true,
+        keysToTest: [...appStateKeysToTest]
+    },
+    deleteGiftCardPayment: {
+        path: '/payments/gift_card',
+        method: methods.DELETE,
+        useJwt: true,
+        keysToTest: [...appStateKeysToTest]
+    },
 };
 
 export const apiTypeKeys: IApiTypeKeys = {
@@ -240,7 +264,11 @@ export const apiTypeKeys: IApiTypeKeys = {
     updateBillingAddress: 'updateBillingAddress',
     updateItem: 'updateItem',
     checkInventory: 'checkInventory',
+    getPaymentList: 'getPaymentList',
     addPayment: 'addPayment',
+    updatePayment: 'updatePayment',
+    deletePayment: 'deletePayment',
+    deleteGiftCardPayment: 'deleteGiftCardPayment',
 };
 
 export const baseReturnObject: IApiReturnObject = {

@@ -1,13 +1,14 @@
-import {addPayment, apiTypeKeys, baseReturnObject, methods} from 'src';
+import {apiTypeKeys, baseReturnObject, keysToTestFromResponse, methods, FetchError, updatePayment} from 'src';
 import * as fetchAPI from 'src/utils/fetchAPI';
 import * as getApiOptions from 'src/utils/getApiOptions';
 import * as apiUrl from 'src/utils/apiUrl';
-import {applicationStateMock, paymentMock} from 'src/variables/mocks';
 import * as apiResponse from 'src/utils/apiResponse';
+import {applicationStateMock, paymentMock} from 'src/variables/mocks';
 
-describe('testing add payment', () => {
+describe('testing updatePayment', () => {
     const returnObject = {...baseReturnObject};
     const apiUrlMock = 'https://api.com/checkout/storefront/123/123/payments';
+    const keysToTest = [keysToTestFromResponse.data, keysToTestFromResponse.applicationState];
     let optionsMock: RequestInit;
     let getApiOptionsSpy: jest.SpyInstance;
     let getApiUrlSpy: jest.SpyInstance;
@@ -16,45 +17,50 @@ describe('testing add payment', () => {
 
     beforeEach(() => {
         global.Headers = jest.fn().mockReturnValue({append: jest.fn()});
-        optionsMock = {method: methods.POST, headers: new Headers(), body: JSON.stringify({})};
+        returnObject.response = { data: { payment: paymentMock , application_state: applicationStateMock }};
+        returnObject.success = true;
+        optionsMock = {method: methods.PUT, headers: new Headers(), body: JSON.stringify({})};
         getApiOptionsSpy = jest.spyOn(getApiOptions, 'getApiOptions').mockReturnValue(optionsMock);
         getApiUrlSpy = jest.spyOn(apiUrl, 'getApiUrl').mockReturnValue(apiUrlMock);
         fetchApiSpy = jest.spyOn(fetchAPI, 'fetchAPI').mockReturnValue(Promise.resolve(returnObject));
         checkApiResponseSpy = jest.spyOn(apiResponse, 'checkApiResponse').mockReturnValue(returnObject);
-        returnObject.response = { data: { payment: paymentMock , application_state: applicationStateMock }};
-        returnObject.success = true;
     });
 
     afterEach(() => {
         jest.restoreAllMocks();
     });
 
-    test('calling addPayment', async () => {
-        const res = await addPayment(paymentMock);
+    test('successful call (200)', async () => {
+        const res = await updatePayment(paymentMock);
 
         expect(getApiOptionsSpy).toHaveBeenCalledTimes(1);
         expect(getApiUrlSpy).toHaveBeenCalledTimes(1);
         expect(fetchApiSpy).toHaveBeenCalledTimes(1);
-        expect(getApiOptionsSpy).toHaveBeenCalledWith(apiTypeKeys.addPayment, paymentMock);
-        expect(getApiUrlSpy).toHaveBeenCalledWith(apiTypeKeys.addPayment);
+        expect(checkApiResponseSpy).toHaveBeenCalledTimes(1);
+        expect(getApiOptionsSpy).toHaveBeenCalledWith(apiTypeKeys.updatePayment, paymentMock);
+        expect(getApiUrlSpy).toHaveBeenCalledWith(apiTypeKeys.updatePayment);
         expect(fetchApiSpy).toHaveBeenCalledWith(apiUrlMock, optionsMock, 0);
+        expect(checkApiResponseSpy).toHaveBeenCalledWith(returnObject, keysToTest);
         expect(res).toStrictEqual(returnObject);
     });
 
-    test('calling addPayment w/ success = false', async () => {
+    test('failed call (422)', async () => {
         const tempReturnObject = {...baseReturnObject};
-        checkApiResponseSpy.mockReturnValueOnce(tempReturnObject);
+        tempReturnObject.error = new FetchError(422, 'Unprocessable Entity');
+        checkApiResponseSpy = jest.spyOn(apiResponse, 'checkApiResponse').mockReturnValueOnce(tempReturnObject);
+
         fetchApiSpy.mockReturnValueOnce(Promise.resolve(tempReturnObject));
 
-        const res = await addPayment(paymentMock, 1);
+        const res = await updatePayment(paymentMock, 1);
 
         expect(getApiOptionsSpy).toHaveBeenCalledTimes(1);
         expect(getApiUrlSpy).toHaveBeenCalledTimes(1);
         expect(fetchApiSpy).toHaveBeenCalledTimes(1);
-        expect(getApiOptionsSpy).toHaveBeenCalledWith(apiTypeKeys.addPayment, paymentMock);
-        expect(getApiUrlSpy).toHaveBeenCalledWith(apiTypeKeys.addPayment);
+        expect(checkApiResponseSpy).toHaveBeenCalledTimes(1);
+        expect(getApiOptionsSpy).toHaveBeenCalledWith(apiTypeKeys.updatePayment, paymentMock);
+        expect(getApiUrlSpy).toHaveBeenCalledWith(apiTypeKeys.updatePayment);
         expect(fetchApiSpy).toHaveBeenCalledWith(apiUrlMock, optionsMock, 1);
+        expect(checkApiResponseSpy).toHaveBeenCalledWith(tempReturnObject, keysToTest);
         expect(res).toStrictEqual(tempReturnObject);
     });
 });
-
