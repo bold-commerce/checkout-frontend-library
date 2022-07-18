@@ -8,6 +8,7 @@ import * as setPayments from 'src/state/setPayments';
 import * as setOrderMetaData from 'src/state/setOrderMetaData';
 import * as setShipping from 'src/state/setShipping';
 import * as setFees from 'src/state/setFees';
+import * as setCurrency from 'src/state/setCurrency';
 import {applicationState} from 'src/variables';
 import {applicationStateMock} from 'src/variables/mocks';
 
@@ -21,6 +22,7 @@ describe('setApplicationState', () => {
     let setOrderMetaDataSpy: jest.SpyInstance;
     let setShippingSpy: jest.SpyInstance;
     let setFeesSpy: jest.SpyInstance;
+    let setCurrencySpy: jest.SpyInstance;
 
     beforeEach(() => {
         setCustomerSpy = jest.spyOn(setCustomer, 'setCustomer');
@@ -32,6 +34,7 @@ describe('setApplicationState', () => {
         setOrderMetaDataSpy = jest.spyOn(setOrderMetaData, 'setOrderMetaData');
         setShippingSpy = jest.spyOn(setShipping, 'setShipping');
         setFeesSpy = jest.spyOn(setFees, 'setFees');
+        setCurrencySpy = jest.spyOn(setCurrency, 'setCurrency');
     });
 
     afterEach(() => {
@@ -39,19 +42,19 @@ describe('setApplicationState', () => {
     });
 
     test('Set application state', () => {
-        const callTimes = 1;
 
         setApplicationState(applicationStateMock);
 
-        expect(setCustomerSpy).toHaveBeenCalledTimes(callTimes);
-        expect(setAddressesSpy).toHaveBeenCalledTimes(callTimes);
-        expect(setLineItemsSpy).toHaveBeenCalledTimes(callTimes);
-        expect(setTaxesSpy).toHaveBeenCalledTimes(callTimes);
-        expect(setDiscountsSpy).toHaveBeenCalledTimes(callTimes);
-        expect(setPaymentsSpy).toHaveBeenCalledTimes(callTimes);
-        expect(setOrderMetaDataSpy).toHaveBeenCalledTimes(callTimes);
-        expect(setShippingSpy).toHaveBeenCalledTimes(callTimes);
-        expect(setFeesSpy).toHaveBeenCalledTimes(callTimes);
+        expect(setCustomerSpy).toHaveBeenCalledTimes(1);
+        expect(setAddressesSpy).toHaveBeenCalledTimes(1);
+        expect(setLineItemsSpy).toHaveBeenCalledTimes(1);
+        expect(setTaxesSpy).toHaveBeenCalledTimes(1);
+        expect(setDiscountsSpy).toHaveBeenCalledTimes(1);
+        expect(setPaymentsSpy).toHaveBeenCalledTimes(1);
+        expect(setOrderMetaDataSpy).toHaveBeenCalledTimes(1);
+        expect(setShippingSpy).toHaveBeenCalledTimes(1);
+        expect(setFeesSpy).toHaveBeenCalledTimes(1);
+        expect(setCurrencySpy).toHaveBeenCalledTimes(1);
 
         expect(setCustomerSpy).toHaveBeenCalledWith(applicationStateMock.customer);
         expect(setAddressesSpy).toHaveBeenCalledWith(applicationStateMock.addresses);
@@ -62,6 +65,7 @@ describe('setApplicationState', () => {
         expect(setOrderMetaDataSpy).toHaveBeenCalledWith(applicationStateMock.order_meta_data);
         expect(setShippingSpy).toHaveBeenCalledWith(applicationStateMock.shipping);
         expect(setFeesSpy).toHaveBeenCalledWith(applicationStateMock.fees);
+        expect(setCurrencySpy).toHaveBeenCalledWith(applicationStateMock.currency);
 
         expect(applicationState.order_total).toBe(applicationStateMock.order_total);
         expect(applicationState.resumable_link).toBe(applicationStateMock.resumable_link);

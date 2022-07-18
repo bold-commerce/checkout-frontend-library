@@ -187,5 +187,6 @@ export const orderInitialData: IOrderInitialData = {
     shop_name: '',
     country_info: [countryInfo],
     general_settings: generalSettings,
-    supported_languages: [supportedLanguages]
+    supported_languages: [supportedLanguages],
+    alternate_payment_methods: []
 };

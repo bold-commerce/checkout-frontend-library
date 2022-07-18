@@ -1,6 +1,7 @@
 import {IApplicationState} from 'src';
 import {
     setAddresses,
+    setCurrency,
     setCustomer,
     setDiscounts,
     setFees,
@@ -25,7 +26,8 @@ export function setApplicationState({
     resumable_link,
     created_via,
     is_processed,
-    fees
+    fees,
+    currency
 }: IApplicationState): void {
     setCustomer(customer);
     setAddresses(addresses);
@@ -35,7 +37,8 @@ export function setApplicationState({
     setPayments(payments);
     setOrderMetaData(order_meta_data);
     setShipping(shipping);
-    setFees(fees),
+    setFees(fees);
+    setCurrency(currency);
     applicationState.order_total = order_total;
     applicationState.resumable_link = resumable_link;
     applicationState.created_via = created_via;
