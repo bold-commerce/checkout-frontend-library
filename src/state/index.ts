@@ -1,6 +1,7 @@
 export * from './setAddresses';
 export * from './setApplicationState';
 export * from './setBillingAddress';
+export * from './setCurrency';
 export * from './setCustomer';
 export * from './setDiscounts';
 export * from './setFees';
@@ -14,6 +15,7 @@ export * from './setTaxes';
 export * from './getAddresses';
 export * from './getApplicationState';
 export * from './getBillingAddress';
+export * from './getCurrency';
 export * from './getCustomer';
 export * from './getDiscounts';
 export * from './getFees';

@@ -42,6 +42,7 @@ export {
     getShippingAddress,
     getTaxes,
     getFees,
-    getOrderInitialData
+    getOrderInitialData,
+    getCurrency
 } from './state';
 export * from './pigi';

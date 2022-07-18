@@ -149,6 +149,15 @@ export const feeMock: IFee = {
     name: 'test fee'
 };
 
+export const currencyMock: ICurrency = {
+    iso_code: 'USD',
+    iso_numeric_code: 840,
+    symbol: '$',
+    format: '${{amount}}',
+    has_decimal: true,
+    show_iso_code: true
+};
+
 export const productData: IProductData = {
     id: 'product_test_id',
     title: 'Product Title',
