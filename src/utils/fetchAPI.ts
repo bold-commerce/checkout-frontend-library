@@ -1,5 +1,7 @@
 import {apiErrors, baseReturnObject, IApiResponse, IApiReturnObject, IFetchCallback, FetchError} from 'src';
+import {retryErrorCodeList, retryErrorCodeWaitTime} from 'src/variables';
 
+const sleep = (time: number) => new Promise(func => setTimeout(func, time));
 /**
  * # FetchAPI
  *
@@ -9,7 +11,7 @@ import {apiErrors, baseReturnObject, IApiResponse, IApiReturnObject, IFetchCallb
  * @param numOfRetries
  * @param options RequestInit parameters to be supplied to fetch
  */
-export async function callFetch(url: RequestInfo, numOfRetries: number, options: RequestInit = {}): Promise<IApiReturnObject> {
+export async function callFetch(url: RequestInfo, numOfRetries: number, totalNumberOfRetries: number, options: RequestInit = {}): Promise<IApiReturnObject> {
     const returnObject = {...baseReturnObject};
 
     try {
@@ -20,8 +22,10 @@ export async function callFetch(url: RequestInfo, numOfRetries: number, options:
             returnObject.status = response.status;
             return returnObject;
         }
-        else if (numOfRetries > 0) {
-            return callFetch(url, numOfRetries - 1, options);
+        else if (numOfRetries > 0 && retryErrorCodeList.find(code => code === response.status)) {
+            const index = totalNumberOfRetries - numOfRetries;
+            await sleep(retryErrorCodeWaitTime[index]);
+            return callFetch(url, numOfRetries - 1, totalNumberOfRetries, options);
         }
         else {
             const message = 'Unable to process request';
@@ -45,7 +49,7 @@ export function fetchAPI(url: string, options: RequestInit = {}, numOfRetries = 
         numOfRetries = 5;
     }
 
-    return callFetch(url, numOfRetries ,options)
+    return callFetch(url, numOfRetries, numOfRetries ,options)
         .then((res) => {
             callback && callback(res);
             return res;

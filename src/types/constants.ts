@@ -18,5 +18,11 @@ export interface IHttpStatusCode {
     NOT_FOUND: number,
     UNPROCESSABLE_ENTITY: number,
     INTERNAL_SERVER_ERROR: number,
-    SERVICE_UNAVAILABLE: number
+    SERVICE_UNAVAILABLE: number,
+    METHOD_NOT_ALLOWED: number,
+    REQUEST_TIMEOUT: number,
+    TOO_MANY_REQUEST: number,
+    NOT_IMPLEMENTED: number,
+    GATEWAY_TIMEOUT: number,
+    ORDER_LOCKED: number
 }

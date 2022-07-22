@@ -20,7 +20,8 @@ import {
     ICountryInformation,
     IGeneralSettings,
     ISupportedLanguage,
-    IFees
+    IFees,
+    httpStatusCode
 } from 'src';
 
 export const environment: Required<IEnvironment> = {
@@ -190,3 +191,12 @@ export const orderInitialData: IOrderInitialData = {
     supported_languages: [supportedLanguages],
     alternate_payment_methods: []
 };
+
+export const retryErrorCodeList: Array<number> = [
+    httpStatusCode.REQUEST_TIMEOUT,
+    httpStatusCode.TOO_MANY_REQUEST,
+    httpStatusCode.SERVICE_UNAVAILABLE,
+    httpStatusCode.GATEWAY_TIMEOUT,
+    httpStatusCode.ORDER_LOCKED];
+
+export const retryErrorCodeWaitTime: Array<number> = [300, 300, 600, 900, 1500];
