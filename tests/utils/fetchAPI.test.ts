@@ -25,6 +25,7 @@ describe('test fetchAPI functionality', () => {
     let aPIReturnObjectMock = {...baseReturnObject};
 
     beforeEach(() => {
+        jest.spyOn(global, 'setTimeout');
         fetchMock.mockReset();
         fetchMock.mockImplementation(() => Promise.resolve({
             json: () => Promise.resolve({}),
@@ -46,7 +47,7 @@ describe('test fetchAPI functionality', () => {
             aPIReturnObjectMock.status = 200;
             aPIReturnObjectMock.success = true;
             aPIReturnObjectMock.response = {};
-            const result = await callFetch(url,0);
+            const result = await callFetch(url,0, 0);
 
             expect(result).toEqual(aPIReturnObjectMock);
             expect(fetchMock).toHaveBeenCalledTimes(1);
@@ -58,7 +59,7 @@ describe('test fetchAPI functionality', () => {
             fetchMock.mockImplementationOnce(() => Promise.resolve());
             const { status } = apiErrors.general;
 
-            const result = await callFetch(url, 0 ,options);
+            const result = await callFetch(url, 0 ,0, options);
 
             expect(result.error).toBeInstanceOf(FetchError);
             expect((result.error as FetchError).status).toBe(status);
@@ -71,7 +72,7 @@ describe('test fetchAPI functionality', () => {
             fetchMock.mockImplementationOnce(() => {throw new Error('Test exception was thrown');});
             const { status } = apiErrors.general;
 
-            const result = await callFetch(url, 0, options);
+            const result = await callFetch(url, 0, 0, options);
 
             expect(result.error).toBeInstanceOf(FetchError);
             expect((result.error as FetchError).status).toBe(status);
@@ -82,7 +83,7 @@ describe('test fetchAPI functionality', () => {
         test('callFetch fails: Service is unavailable & response.ok equals false & json header without retires', async () => {
             fetchMock.mockImplementationOnce(serviceUnavailableImplementationJsonMock);
 
-            const result = await callFetch(url, 0, options);
+            const result = await callFetch(url, 0, 0, options);
 
             expect((result.error as FetchError).status).toBe(serviceUnavailableStatus);
             expect(result.error).toBeInstanceOf(FetchError);
@@ -95,9 +96,10 @@ describe('test fetchAPI functionality', () => {
                 .mockImplementationOnce(serviceUnavailableImplementationTextMock)
                 .mockImplementationOnce(serviceUnavailableImplementationTextMock);
 
-            const result = await callFetch(url, 1, options);
+            const result = await callFetch(url, 1, 1, options);
 
             expect(fetchMock).toHaveBeenCalledTimes(2);
+            expect(setTimeout).toHaveBeenCalledTimes(1);
             expect((result.error as FetchError).status).toBe(serviceUnavailableStatus);
             expect(result.error).toBeInstanceOf(FetchError);
             expect((result.error as FetchError).message).toContain('Unable to process request');
@@ -110,7 +112,7 @@ describe('test fetchAPI functionality', () => {
             const testResponse = new Response(body, {status: testStatus, headers: {'content-type': 'application/json'}});
             fetchMock.mockImplementationOnce(() => Promise.resolve(testResponse));
 
-            const result = await callFetch(url,0 , options);
+            const result = await callFetch(url,0 , 0, options);
 
             expect((result.error as FetchError).status).toBe(testStatus);
             expect(result.error).toBeInstanceOf(FetchError);
@@ -137,6 +139,7 @@ describe('test fetchAPI functionality', () => {
 
             await fetchAPI(url ,options, 10);
             expect(fetchMock).toHaveBeenCalledTimes(6);
+            expect(setTimeout).toHaveBeenCalledTimes(6);
         });
 
         test('failed fetchAPI call: exception was thrown', async () => {
