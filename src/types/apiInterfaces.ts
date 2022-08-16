@@ -62,6 +62,7 @@ export interface IPigiActionTypes {
 
 export interface IAlternatePaymentMethodType {
     STRIPE: string;
+    PAYPAL: string;
 }
 
 export type IInventoryStage = 'initial' | 'final';
@@ -271,7 +272,7 @@ export interface IApiTypesDetail {
     keysToTest?: Array<string>;
 }
 
-export type IAlternatePaymentMethod = Array<IExpressPayStripe>;
+export type IAlternatePaymentMethod = Array<IExpressPayStripe | IExpressPayPaypal>;
 
 export interface IOrderInitialData {
     shop_name: string;
@@ -330,6 +331,14 @@ export interface IExpressPayStripe {
    key: string;
    stripe_user_id: string;
    account_country: string;
+   public_id: string;
+}
+
+export interface IExpressPayPaypal {
+   type: string;
+   is_test: boolean;
+   client_id: string;
+   button_style: Record<string, unknown>;
    public_id: string;
 }
 
