@@ -65,7 +65,8 @@ export const pigiActionTypes: IPigiActionTypes = {
 };
 
 export const alternatePaymentMethodType: IAlternatePaymentMethodType = {
-    STRIPE: 'stripe'
+    STRIPE: 'stripe',
+    PAYPAL: 'paypal'
 };
 
 export const checkInventoryStage: ICheckInventoryStage = {
