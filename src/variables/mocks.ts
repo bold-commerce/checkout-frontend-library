@@ -320,7 +320,7 @@ export const orderInitialDataMock: IOrderInitialData = {
             api_key: null
         }
     },
-    alternate_payment_methods: [
+    alternative_payment_methods: [
         {
             type: alternatePaymentMethodType.STRIPE,
             key: '',
