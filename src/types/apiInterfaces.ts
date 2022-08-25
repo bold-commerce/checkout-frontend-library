@@ -272,14 +272,14 @@ export interface IApiTypesDetail {
     keysToTest?: Array<string>;
 }
 
-export type IAlternatePaymentMethod = Array<IExpressPayStripe | IExpressPayPaypal>;
+export type IAlternativePaymentMethod = Array<IExpressPayStripe | IExpressPayPaypal>;
 
 export interface IOrderInitialData {
     shop_name: string;
     country_info: Array<ICountryInformation>;
     supported_languages: Array<ISupportedLanguage>;
     general_settings: IGeneralSettings;
-    alternate_payment_methods: IAlternatePaymentMethod | undefined //TODO remove undefined once CASHPAY-2834 is enabled by default
+    alternative_payment_methods: IAlternativePaymentMethod
 }
 
 export interface ISupportedLanguage{

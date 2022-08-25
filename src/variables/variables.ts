@@ -189,7 +189,7 @@ export const orderInitialData: IOrderInitialData = {
     country_info: [countryInfo],
     general_settings: generalSettings,
     supported_languages: [supportedLanguages],
-    alternate_payment_methods: []
+    alternative_payment_methods: []
 };
 
 export const retryErrorCodeList: Array<number> = [
