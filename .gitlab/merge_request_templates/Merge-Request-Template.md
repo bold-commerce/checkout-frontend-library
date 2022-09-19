@@ -12,4 +12,5 @@
 1. [ ] Are tests covering the code?
 2. [ ] Run `yarn lint`?
 3. [ ] Run `yarn test`?
+4. [ ] Run `yarn docs`?
 

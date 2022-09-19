@@ -79,5 +79,9 @@
   },
   "include": [
     "src/**/*"
-  ]
+  ],
+  "typedocOptions": {
+    "entryPoints": ["src/types/index.ts"],
+    "out": "docs"
+  }
 }
