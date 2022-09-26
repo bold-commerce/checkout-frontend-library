@@ -36,7 +36,9 @@ _(replace "1.0.0" with the version number that you want)_
 
 ## Methods Reference
 
-###Initialize
+### Initialize
+
+---
 
 #### Initialize library
 
@@ -66,6 +68,8 @@ A promise that resolves the API response.
 ---
 
 ### Address
+
+---
 
 #### Set Shipping Address
 
@@ -216,6 +220,8 @@ A promise that resolves the API response.
 
 ### Customer
 
+---
+
 #### Add Guest customer
 
 ▸ **addGuestCustomer**(`firstName`, `lastName`, `email`, `acceptsMarketing?`, `numOfRetries?`): Promise <[IApiReturnObject](./docs/interfaces/IApiReturnObject.md)>
@@ -311,6 +317,192 @@ Validates the customer email address.
 | Parameter| Type| Description|
 | ---------| ----|-----------|
 | `email`|`string`| The customer's email address. |
+| `numOfRetries?`| `number`| The number of times to retry the API in case of a 408, 429, 503, 504, or 544 error. The default is 0. |
+
+**Returns**
+
+`Promise`<[IApiReturnObject](./docs/interfaces/IApiReturnObject.md)>
+
+A promise that resolves the API response.
+
+---
+
+### Discounts
+
+---
+
+#### Add Discount Code
+
+▸ **addDiscount**(`code`,`numOfRetries?`): Promise <[IApiReturnObject](./docs/interfaces/IApiReturnObject.md)>
+
+Adds discount code to the order.
+
+```typescript
+ const response: IApiReturnObject = await addDiscount(code, API_RETRY);
+```
+
+**Parameters**
+
+| Parameter| type| Description|
+| ---------| ----|-----------|
+| `code`| `string`| The discount code. |
+| `numOfRetries?`| `number`| The number of times to retry the API in case of a 408, 429, 503, 504, or 544 error. The default is 0. |
+
+**Returns**
+
+`Promise`<[IApiReturnObject](./docs/interfaces/IApiReturnObject.md)>
+
+A promise that resolves the API response.
+
+---
+
+#### Delete Discount Code
+
+▸ **deleteDiscount**(`code`,`numOfRetries?`): Promise <[IApiReturnObject](./docs/interfaces/IApiReturnObject.md)>
+
+Deletes a discount code from the order.
+
+```typescript
+ const response: IApiReturnObject = await deleteDiscount(code, API_RETRY);
+```
+
+**Parameters**
+
+| Parameter| type| Description|
+| ---------| ----|-----------|
+| `code`| `string`| The discount code. |
+| `numOfRetries?`| `number`| The number of times to retry the API in case of a 408, 429, 503, 504, or 544 error. The default is 0. |
+
+**Returns**
+
+`Promise`<[IApiReturnObject](./docs/interfaces/IApiReturnObject.md)>
+
+A promise that resolves the API response.
+
+---
+
+#### Validate Discount Code
+
+▸ **validateDiscount**(`code`,`numOfRetries?`): Promise <[IApiReturnObject](./docs/interfaces/IApiReturnObject.md)>
+
+Validates the given discount code against the current order state. This method does not add discount code to the order.
+
+```typescript
+ const response: IApiReturnObject = await validateDiscount(code, API_RETRY);
+```
+
+**Parameters**
+
+| Parameter| type| Description|
+| ---------| ----|-----------|
+| `code`| `string`| The discount code. |
+| `numOfRetries?`| `number`| The number of times to retry the API in case of a 408, 429, 503, 504, or 544 error. The default is 0. |
+
+**Returns**
+
+`Promise`<[IApiReturnObject](./docs/interfaces/IApiReturnObject.md)>
+
+A promise that resolves the API response.
+
+
+### Items
+
+---
+
+#### Update Line Item Quantity
+
+▸ **updateLineItemQuantity**(`lineItemKey`, `quantity` ,`numOfRetries?`): Promise <[IApiReturnObject](./docs/interfaces/IApiReturnObject.md)>
+
+Updates the quantity of a line item on the order.
+
+```typescript
+ const response: IApiReturnObject = await updateLineItemQuantity(lineItemKey, quantity, API_RETRY);
+```
+
+**Parameters**
+
+| Parameter| type| Description|
+| ---------| ----|-----------|
+| `lineItemKey`| `string`| The unique key to identify the line item. |
+| `quantity`| `number`| The updated quantity. |
+| `numOfRetries?`| `number`| The number of times to retry the API in case of a 408, 429, 503, 504, or 544 error. The default is 0. |
+
+**Returns**
+
+`Promise`<[IApiReturnObject](./docs/interfaces/IApiReturnObject.md)>
+
+A promise that resolves the API response.
+
+
+### Shipping Lines
+
+---
+
+#### Change Shipping Line
+
+▸ **changeShippingLine**(`index` ,`numOfRetries?`): Promise <[IApiReturnObject](./docs/interfaces/IApiReturnObject.md)>
+
+Adds or updates the shipping line on the order.
+
+```typescript
+ const response: IApiReturnObject = await changeShippingLine(index, API_RETRY);
+```
+
+**Parameters**
+
+| Parameter| type| Description|
+| ---------| ----|-----------|
+| `index`| `string`| The index of a shipping line, selected from available shipping lines. The available shipping lines can be retrieved from the [get shipping line](#get-shipping-lines) method.  |
+| `numOfRetries?`| `number`| The number of times to retry the API in case of a 408, 429, 503, 504, or 544 error. The default is 0. |
+
+**Returns**
+
+`Promise`<[IApiReturnObject](./docs/interfaces/IApiReturnObject.md)>
+
+A promise that resolves the API response.
+
+---
+
+#### Get Shipping Lines
+
+▸ **getShippingLines**(`numOfRetries?`): Promise <[IApiReturnObject](./docs/interfaces/IApiReturnObject.md)>
+
+Get all the available shipping lines.
+
+```typescript
+ const response: IApiReturnObject = await getShippingLines(API_RETRY);
+```
+
+**Parameters**
+
+| Parameter| type| Description|
+| ---------| ----|-----------|
+| `numOfRetries?`| `number`| The number of times to retry the API in case of a 408, 429, 503, 504, or 544 error. The default is 0. |
+
+**Returns**
+
+`Promise`<[IApiReturnObject](./docs/interfaces/IApiReturnObject.md)>
+
+A promise that resolves the API response.
+
+### Taxes
+
+---
+
+#### Set Taxes
+
+▸ **setTaxes**(`numOfRetries?`): Promise <[IApiReturnObject](./docs/interfaces/IApiReturnObject.md)>
+
+Calculates and applies taxes to the order. Taxes are not automatically recalculated, so you must call this method after you make any changes to the shipping address.
+
+```typescript
+ const response: IApiReturnObject = await setTaxes(API_RETRY);
+```
+
+**Parameters**
+
+| Parameter| type| Description|
+| ---------| ----|-----------|
 | `numOfRetries?`| `number`| The number of times to retry the API in case of a 408, 429, 503, 504, or 544 error. The default is 0. |
 
 **Returns**
