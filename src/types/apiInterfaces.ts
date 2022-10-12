@@ -342,6 +342,27 @@ export interface IExpressPayPaypal {
    public_id: string;
 }
 
+export interface IExpressPayBraintree {
+    type: string;
+    public_id: string;
+    is_test: boolean;
+    merchant_account: string;
+    tokenization_key: string;
+    button_style: Record<string, unknown>;
+}
+
+export interface IExpressPayBraintreeGoogle extends IExpressPayBraintree {
+    google_pay_enabled: boolean;
+    google_pay_merchant_identifier: string;
+    apiVersion: string;
+    sdkVersion: string;
+    merchantId: string;
+}
+
+export interface IExpressPayBraintreeApple extends IExpressPayBraintree {
+    apple_pay_enabled: boolean;
+}
+
 export interface IProvince {
     iso_code: string;
     name: string;

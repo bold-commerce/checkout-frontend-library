@@ -108,7 +108,7 @@ Function.prototype
 
 #### Inherited from
 
-Function.\_\_@hasInstance@723
+Function.\_\_@hasInstance@1079
 
 ___
 
