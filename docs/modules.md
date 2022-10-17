@@ -109,7 +109,7 @@
 
 ### IAlternativePaymentMethod
 
-Ƭ **IAlternativePaymentMethod**: ([`IExpressPayStripe`](interfaces/IExpressPayStripe.md) \| [`IExpressPayPaypal`](interfaces/IExpressPayPaypal.md))[]
+Ƭ **IAlternativePaymentMethod**: ([`IExpressPayStripe`](interfaces/IExpressPayStripe.md) \| [`IExpressPayPaypal`](interfaces/IExpressPayPaypal.md) \| [`IExpressPayBraintreeGoogle`](interfaces/IExpressPayBraintreeGoogle.md) \| [`IExpressPayBraintreeApple`](interfaces/IExpressPayBraintreeApple.md))[]
 
 ___
 

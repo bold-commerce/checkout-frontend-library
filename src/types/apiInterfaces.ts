@@ -63,6 +63,8 @@ export interface IPigiActionTypes {
 export interface IAlternatePaymentMethodType {
     STRIPE: string;
     PAYPAL: string;
+    BRAINTREE: string;
+    BRAINTREE_APPLE: string;
 }
 
 export type IInventoryStage = 'initial' | 'final';
@@ -272,7 +274,7 @@ export interface IApiTypesDetail {
     keysToTest?: Array<string>;
 }
 
-export type IAlternativePaymentMethod = Array<IExpressPayStripe | IExpressPayPaypal>;
+export type IAlternativePaymentMethod = Array<IExpressPayStripe | IExpressPayPaypal | IExpressPayBraintreeGoogle | IExpressPayBraintreeApple>;
 
 export interface IOrderInitialData {
     shop_name: string;
@@ -282,7 +284,7 @@ export interface IOrderInitialData {
     alternative_payment_methods: IAlternativePaymentMethod
 }
 
-export interface ISupportedLanguage{
+export interface ISupportedLanguage {
     id: number,
     shop_id: number,
     iso_language: string,
