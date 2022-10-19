@@ -67,7 +67,7 @@ export const pigiActionTypes: IPigiActionTypes = {
 export const alternatePaymentMethodType: IAlternatePaymentMethodType = {
     STRIPE: 'stripe',
     PAYPAL: 'paypal',
-    BRAINTREE: 'braintree',
+    BRAINTREE_GOOGLE: 'braintree',
     BRAINTREE_APPLE: 'braintree-apple'
 };
 
