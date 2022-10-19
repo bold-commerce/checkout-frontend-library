@@ -63,7 +63,7 @@ export interface IPigiActionTypes {
 export interface IAlternatePaymentMethodType {
     STRIPE: string;
     PAYPAL: string;
-    BRAINTREE: string;
+    BRAINTREE_GOOGLE: string;
     BRAINTREE_APPLE: string;
 }
 
