@@ -1,0 +1,13 @@
+.idea
+.vscode
+.DS_Store
+.eslintcache
+
+build/
+node_modules/
+coverage/
+lib/
+e2e-tests/config.local.json
+
+npm-debug.log
+yarn-error.log
