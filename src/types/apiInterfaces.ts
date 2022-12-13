@@ -462,6 +462,7 @@ export interface IDiscount {
     text: string;
     value: number;
     valid: boolean;
+    source?: string;
 }
 
 export interface IFee {
