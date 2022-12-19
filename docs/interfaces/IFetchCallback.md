@@ -136,7 +136,7 @@ ___
 
 ### bind
 
-▸ **bind**(`this`, `thisArg`, ...`argArray`): `any`
+▸ **bind**(`this`, `thisArg`, `...argArray`): `any`
 
 #### Parameters
 
@@ -158,7 +158,7 @@ ___
 
 ### call
 
-▸ **call**(`this`, `thisArg`, ...`argArray`): `any`
+▸ **call**(`this`, `thisArg`, `...argArray`): `any`
 
 #### Parameters
 
