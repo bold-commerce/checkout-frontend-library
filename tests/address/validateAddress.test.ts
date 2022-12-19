@@ -7,6 +7,11 @@ describe('testing validateAddress', () => {
     returnObject.success = true;
     const fetchApiSpy = jest.spyOn(fetchAPI, 'fetchAPI').mockReturnValue(Promise.resolve(returnObject));
     jest.spyOn(getApiOptions, 'getApiOptions').mockReturnValue({});
+    const firstName = 'first';
+    const lastName = 'last';
+    const addressLine1 = '50 Fultz Blvd';
+    const addressLine2 = '';
+    const city = 'Winnipeg';
     const postalCode = 'R3Y 0L6';
     const province = 'Manitoba';
     const countryCode = 'CA';
@@ -16,22 +21,22 @@ describe('testing validateAddress', () => {
     const phoneNumber = '204-555-1234';
 
     test('successful call (200)', async () => {
-        const res = await validateAddress(postalCode, province, provinceCode, country, countryCode);
+        const res = await validateAddress(firstName, lastName, addressLine1, addressLine2, city, postalCode, province, provinceCode, country, countryCode);
 
         expect(res.success).toBe(true);
     });
     test('successful call with business name (200)', async () => {
-        const res = await validateAddress(postalCode, province, provinceCode, country, countryCode, businessName);
+        const res = await validateAddress(firstName, lastName, addressLine1, addressLine2, city, postalCode, province, provinceCode, country, countryCode, businessName);
 
         expect(res.success).toBe(true);
     });
     test('successful call with Phone Number AND Company Name (200)', async () => {
-        const res = await validateAddress(postalCode, province, provinceCode, country, countryCode, businessName, phoneNumber);
+        const res = await validateAddress(firstName, lastName, addressLine1, addressLine2, city, postalCode, province, provinceCode, country, countryCode, businessName, phoneNumber);
 
         expect(res.success).toBe(true);
     });
     test('successful call with Phone Number (200)', async () => {
-        const res = await validateAddress(postalCode, province, provinceCode, country, countryCode, '', phoneNumber);
+        const res = await validateAddress(firstName, lastName, addressLine1, addressLine2, city, postalCode, province, provinceCode, country, countryCode, '', phoneNumber);
 
         expect(res.success).toBe(true);
     });
@@ -41,7 +46,7 @@ describe('testing validateAddress', () => {
 
         fetchApiSpy.mockReturnValueOnce(Promise.resolve(tempReturnObject));
 
-        const res = await validateAddress(postalCode, province, provinceCode, country, countryCode);
+        const res = await validateAddress(firstName,lastName,addressLine1,addressLine2,city,postalCode, province, provinceCode, country, countryCode);
 
         expect(res.success).toBe(false);
         expect(res.error).toBeInstanceOf(FetchError);
