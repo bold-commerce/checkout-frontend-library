@@ -4,6 +4,11 @@ import {apiTypeKeys, fetchAPI, getApiOptions, getApiUrlWithParams, IApiReturnObj
  *
  * Validates the postal code coming from shipping / billing address
  *
+ * @param firstName
+ * @param lastName
+ * @param addressLine1
+ * @param addressLine2
+ * @param city
  * @param postalCode
  * @param province
  * @param provinceCode
@@ -13,9 +18,9 @@ import {apiTypeKeys, fetchAPI, getApiOptions, getApiUrlWithParams, IApiReturnObj
  * @param phoneNumber
  * @param numOfRetries
  */
-export async function validateAddress(postalCode: string, province: string, provinceCode: string, country:string, countryCode: string, businessName?: string, phoneNumber?: string , numOfRetries= 0): Promise<IApiReturnObject> {
+export async function validateAddress(firstName: string, lastName: string, addressLine1:string, addressLine2: string, city: string, postalCode: string, province: string, provinceCode: string, country:string, countryCode: string, businessName?: string, phoneNumber?: string , numOfRetries= 0): Promise<IApiReturnObject> {
     const {validateAddress} = apiTypeKeys;
-    let params: IValidateAddress = { postal_code: postalCode, province: province, country_code: countryCode, country: country, province_code: provinceCode };
+    let params: IValidateAddress = { first_name: firstName, last_name: lastName, address_line_1: addressLine1, address_line_2: addressLine2, city: city, postal_code: postalCode, province: province, country_code: countryCode, country: country, province_code: provinceCode };
     if (businessName) {
         params = {...params, business_name: businessName};
     }

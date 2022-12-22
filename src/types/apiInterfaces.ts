@@ -240,6 +240,11 @@ export interface IApiTypeKeys {
 }
 
 export interface IValidateAddress {
+    first_name: string;
+    last_name: string;
+    address_line_1: string;
+    address_line_2: string;
+    city: string;
     postal_code: string;
     province: string;
     country_code: string;
@@ -462,6 +467,7 @@ export interface IDiscount {
     text: string;
     value: number;
     valid: boolean;
+    source?: string;
 }
 
 export interface IFee {
