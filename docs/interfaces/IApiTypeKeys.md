@@ -6,6 +6,7 @@
 
 - [addDiscount](IApiTypeKeys.md#adddiscount)
 - [addGuestCustomer](IApiTypeKeys.md#addguestcustomer)
+- [addLineItem](IApiTypeKeys.md#addlineitem)
 - [addPayment](IApiTypeKeys.md#addpayment)
 - [changeShippingLines](IApiTypeKeys.md#changeshippinglines)
 - [checkInventory](IApiTypeKeys.md#checkinventory)
@@ -14,6 +15,7 @@
 - [deleteCustomer](IApiTypeKeys.md#deletecustomer)
 - [deleteDiscount](IApiTypeKeys.md#deletediscount)
 - [deleteGiftCardPayment](IApiTypeKeys.md#deletegiftcardpayment)
+- [deleteLineItem](IApiTypeKeys.md#deletelineitem)
 - [deletePayment](IApiTypeKeys.md#deletepayment)
 - [deleteShippingAddress](IApiTypeKeys.md#deleteshippingaddress)
 - [getApplicationState](IApiTypeKeys.md#getapplicationstate)
@@ -44,6 +46,12 @@ ___
 ### addGuestCustomer
 
 • **addGuestCustomer**: keyof [`IApiTypes`](IApiTypes.md)
+
+___
+
+### addLineItem
+
+• **addLineItem**: keyof [`IApiTypes`](IApiTypes.md)
 
 ___
 
@@ -92,6 +100,12 @@ ___
 ### deleteGiftCardPayment
 
 • **deleteGiftCardPayment**: keyof [`IApiTypes`](IApiTypes.md)
+
+___
+
+### deleteLineItem
+
+• **deleteLineItem**: keyof [`IApiTypes`](IApiTypes.md)
 
 ___
 
