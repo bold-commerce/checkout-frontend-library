@@ -7,6 +7,8 @@
 - [PIGI\_ADD\_PAYMENT](IPigiActionTypes.md#pigi_add_payment)
 - [PIGI\_CLEAR\_ERROR\_MESSAGES](IPigiActionTypes.md#pigi_clear_error_messages)
 - [PIGI\_DISPLAY\_ERROR\_MESSAGE](IPigiActionTypes.md#pigi_display_error_message)
+- [PIGI\_DISPLAY\_IN\_FULL\_PAGE](IPigiActionTypes.md#pigi_display_in_full_page)
+- [PIGI\_DISPLAY\_IN\_FULL\_PAGE\_DONE](IPigiActionTypes.md#pigi_display_in_full_page_done)
 - [PIGI\_HANDLE\_SCA](IPigiActionTypes.md#pigi_handle_sca)
 - [PIGI\_INITIALIZED](IPigiActionTypes.md#pigi_initialized)
 - [PIGI\_PAYMENT\_ADDED](IPigiActionTypes.md#pigi_payment_added)
@@ -33,6 +35,18 @@ ___
 ### PIGI\_DISPLAY\_ERROR\_MESSAGE
 
 • **PIGI\_DISPLAY\_ERROR\_MESSAGE**: `string`
+
+___
+
+### PIGI\_DISPLAY\_IN\_FULL\_PAGE
+
+• **PIGI\_DISPLAY\_IN\_FULL\_PAGE**: `string`
+
+___
+
+### PIGI\_DISPLAY\_IN\_FULL\_PAGE\_DONE
+
+• **PIGI\_DISPLAY\_IN\_FULL\_PAGE\_DONE**: `string`
 
 ___
 
