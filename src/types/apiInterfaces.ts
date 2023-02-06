@@ -208,8 +208,6 @@ export interface IApiTypes {
     updatePayment: IApiTypesDetail;
     deletePayment: IApiTypesDetail;
     deleteGiftCardPayment: IApiTypesDetail;
-    addLineItem: IApiTypesDetail;
-    deleteLineItem: IApiTypesDetail;
     dispatchAppHookEvent: IApiTypesDetail;
 }
 
@@ -244,8 +242,6 @@ export interface IApiTypeKeys {
     updatePayment: keyof  IApiTypes;
     deletePayment: keyof  IApiTypes;
     deleteGiftCardPayment: keyof  IApiTypes;
-    addLineItem: keyof IApiTypes;
-    deleteLineItem: keyof IApiTypes;
     dispatchAppHookEvent: keyof IApiTypes;
 }
 

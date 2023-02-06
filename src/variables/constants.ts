@@ -218,18 +218,6 @@ export const apiTypes: IApiTypes = {
         useJwt: true,
         keysToTest: [...appStateKeysToTest],
     },
-    addLineItem: {
-        path: '/items',
-        method: methods.POST,
-        useJwt: true,
-        keysToTest: [...appStateKeysToTest]
-    },
-    deleteLineItem: {
-        path: '/items',
-        method: methods.DELETE,
-        useJwt: true,
-        keysToTest: [...appStateKeysToTest]
-    },
     checkInventory: {
         path: '/check_inventory',
         method: methods.GET,
@@ -299,8 +287,6 @@ export const apiTypeKeys: IApiTypeKeys = {
     updateShippingAddress: 'updateShippingAddress',
     updateBillingAddress: 'updateBillingAddress',
     updateItem: 'updateItem',
-    addLineItem: 'addLineItem',
-    deleteLineItem: 'deleteLineItem',
     checkInventory: 'checkInventory',
     getPaymentList: 'getPaymentList',
     addPayment: 'addPayment',
