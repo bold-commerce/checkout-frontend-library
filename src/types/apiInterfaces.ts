@@ -206,6 +206,9 @@ export interface IApiTypes {
     updatePayment: IApiTypesDetail;
     deletePayment: IApiTypesDetail;
     deleteGiftCardPayment: IApiTypesDetail;
+    addLineItem: IApiTypesDetail;
+    deleteLineItem: IApiTypesDetail;
+    dispatchAppHookEvent: IApiTypesDetail;
 }
 
 export interface IApiTypeKeys {
@@ -237,6 +240,9 @@ export interface IApiTypeKeys {
     updatePayment: keyof  IApiTypes;
     deletePayment: keyof  IApiTypes;
     deleteGiftCardPayment: keyof  IApiTypes;
+    addLineItem: keyof IApiTypes;
+    deleteLineItem: keyof IApiTypes;
+    dispatchAppHookEvent: keyof IApiTypes;
 }
 
 export interface IValidateAddress {
@@ -595,6 +601,10 @@ export type IGetApiOptionsBody =
     IAddPaymentRequest |
     IUpdatePaymentRequest |
     IDeletePaymentRequest |
+    ILineItemRequest |
+    ILineItemRequestWithSku |
+    ILineItemRequestWithPlatformId |
+    IDispatchAppHookEventRequest |
     Record<string, unknown>;
 
 export interface IShippingLine {
@@ -623,3 +633,25 @@ export interface IInventoryFailedItems {
     platform_variant_id: string,
     available_quantity: number
 }
+
+export interface ILineItemRequest {
+    line_item_key: string;
+    quantity: number;
+    platform_id?: string;
+    sku?: string;
+ }
+ 
+ export interface ILineItemRequestWithSku extends ILineItemRequest {
+     sku: string;
+ }
+ 
+ export interface ILineItemRequestWithPlatformId extends ILineItemRequest {
+     platform_id: string;
+ }
+
+ export interface IDispatchAppHookEventRequest {
+    uuid: string;
+    hook: string;
+    app_hook_data?: object;
+ }
+ 

@@ -164,6 +164,12 @@ export const apiTypes: IApiTypes = {
         useJwt: true,
         keysToTest: [keysToTestFromResponse.applicationState]
     },
+    dispatchAppHookEvent: {
+        path: '/app_hook',
+        method: methods.POST,
+        useJwt: true,
+        keysToTest: [...appStateKeysToTest]
+    },
     getApplicationState: {
         path: '/refresh',
         method: methods.GET,
@@ -199,6 +205,18 @@ export const apiTypes: IApiTypes = {
         method: methods.PUT,
         useJwt: true,
         keysToTest: [...appStateKeysToTest],
+    },
+    addLineItem: {
+        path: '/items',
+        method: methods.POST,
+        useJwt: true,
+        keysToTest: [...appStateKeysToTest]
+    },
+    deleteLineItem: {
+        path: '/items',
+        method: methods.DELETE,
+        useJwt: true,
+        keysToTest: [...appStateKeysToTest]
     },
     checkInventory: {
         path: '/check_inventory',
@@ -260,12 +278,15 @@ export const apiTypeKeys: IApiTypeKeys = {
     getPaymentIframe: 'getPaymentIframe',
     cssStylingPaymentIframe: 'cssStylingPaymentIframe',
     processOrder: 'processOrder',
+    dispatchAppHookEvent: 'dispatchAppHookEvent',
     getApplicationState: 'getApplicationState',
     deleteBillingAddress: 'deleteBillingAddress',
     deleteShippingAddress: 'deleteShippingAddress',
     updateShippingAddress: 'updateShippingAddress',
     updateBillingAddress: 'updateBillingAddress',
     updateItem: 'updateItem',
+    addLineItem: 'addLineItem',
+    deleteLineItem: 'deleteLineItem',
     checkInventory: 'checkInventory',
     getPaymentList: 'getPaymentList',
     addPayment: 'addPayment',
