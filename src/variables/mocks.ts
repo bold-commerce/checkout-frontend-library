@@ -141,7 +141,8 @@ export const discountMock: IDiscount = {
     code: 'test_code',
     text: 'test text',
     value: 1,
-    valid: true
+    valid: true,
+    source: '',
 };
 
 export const feeMock: IFee = {

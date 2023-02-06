@@ -179,8 +179,10 @@ export interface IApiErrorsResponse {
 
 export interface IApiTypes {
     addGuestCustomer: IApiTypesDetail;
+    addLineItem: IApiTypesDetail;
     updateCustomer: IApiTypesDetail;
     deleteCustomer: IApiTypesDetail;
+    deleteLineItem: IApiTypesDetail;
     validateEmail: IApiTypesDetail;
     getShippingLines: IApiTypesDetail;
     setShippingAddress: IApiTypesDetail;
@@ -213,8 +215,10 @@ export interface IApiTypes {
 
 export interface IApiTypeKeys {
     addGuestCustomer: keyof IApiTypes;
+    addLineItem: keyof IApiTypes;
     updateCustomer: keyof IApiTypes;
     deleteCustomer: keyof IApiTypes;
+    deleteLineItem: keyof IApiTypes;
     validateEmail: keyof IApiTypes;
     validateAddress: keyof IApiTypes;
     setShippingAddress: keyof IApiTypes;
@@ -246,6 +250,11 @@ export interface IApiTypeKeys {
 }
 
 export interface IValidateAddress {
+    first_name: string;
+    last_name: string;
+    address_line_1: string;
+    address_line_2: string;
+    city: string;
     postal_code: string;
     province: string;
     country_code: string;
@@ -254,6 +263,7 @@ export interface IValidateAddress {
     business_name?: string;
     phone_number?: string;
 }
+
 
 export interface IValidateEmail {
     email_address: string
@@ -468,6 +478,7 @@ export interface IDiscount {
     text: string;
     value: number;
     valid: boolean;
+    source?: string;
 }
 
 export interface IFee {
@@ -554,6 +565,21 @@ export interface IAddGuestCustomerRequest {
     accepts_marketing: boolean;
 }
 
+export interface ILineItemRequest {
+   line_item_key: string;
+   quantity: number;
+   platform_id?: string;
+   sku?: string;
+}
+
+export interface ILineItemRequestWithSku extends ILineItemRequest {
+    sku: string;
+}
+
+export interface ILineItemRequestWithPlatformId extends ILineItemRequest {
+    platform_id: string;
+}
+
 export interface IValidateEmailRequest {
     email_address: string;
 }
@@ -591,6 +617,9 @@ export type IDeletePaymentRequest = IAddPaymentRequest;
 export type IGetApiOptionsBody =
     ISessionStartRequest |
     IAddGuestCustomerRequest |
+    ILineItemRequest |
+    ILineItemRequestWithSku |
+    ILineItemRequestWithPlatformId |
     IValidateEmailRequest |
     ISetShippingAddressRequest |
     ISetBillingAddressRequest |

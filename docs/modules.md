@@ -63,6 +63,9 @@
 - [IInventoryCheck](interfaces/IInventoryCheck.md)
 - [IInventoryFailedItems](interfaces/IInventoryFailedItems.md)
 - [ILineItem](interfaces/ILineItem.md)
+- [ILineItemRequest](interfaces/ILineItemRequest.md)
+- [ILineItemRequestWithPlatformId](interfaces/ILineItemRequestWithPlatformId.md)
+- [ILineItemRequestWithSku](interfaces/ILineItemRequestWithSku.md)
 - [IMediaRule](interfaces/IMediaRule.md)
 - [IMethods](interfaces/IMethods.md)
 - [IOrderInitialData](interfaces/IOrderInitialData.md)
@@ -139,7 +142,7 @@ ___
 
 ### IGetApiOptionsBody
 
-Ƭ **IGetApiOptionsBody**: [`ISessionStartRequest`](interfaces/ISessionStartRequest.md) \| [`IAddGuestCustomerRequest`](interfaces/IAddGuestCustomerRequest.md) \| [`IValidateEmailRequest`](interfaces/IValidateEmailRequest.md) \| [`ISetShippingAddressRequest`](modules.md#isetshippingaddressrequest) \| [`ISetBillingAddressRequest`](modules.md#isetbillingaddressrequest) \| [`IValidateAddressRequest`](interfaces/IValidateAddressRequest.md) \| [`IChangeShippingLineRequest`](interfaces/IChangeShippingLineRequest.md) \| [`IDiscountRequest`](interfaces/IDiscountRequest.md) \| [`ICssStylingPaymentIframeRequest`](interfaces/ICssStylingPaymentIframeRequest.md) \| [`IAddPaymentRequest`](interfaces/IAddPaymentRequest.md) \| [`IUpdatePaymentRequest`](modules.md#iupdatepaymentrequest) \| [`IDeletePaymentRequest`](modules.md#ideletepaymentrequest) \| `Record`<`string`, `unknown`\>
+Ƭ **IGetApiOptionsBody**: [`ISessionStartRequest`](interfaces/ISessionStartRequest.md) \| [`IAddGuestCustomerRequest`](interfaces/IAddGuestCustomerRequest.md) \| [`ILineItemRequest`](interfaces/ILineItemRequest.md) \| [`ILineItemRequestWithSku`](interfaces/ILineItemRequestWithSku.md) \| [`ILineItemRequestWithPlatformId`](interfaces/ILineItemRequestWithPlatformId.md) \| [`IValidateEmailRequest`](interfaces/IValidateEmailRequest.md) \| [`ISetShippingAddressRequest`](modules.md#isetshippingaddressrequest) \| [`ISetBillingAddressRequest`](modules.md#isetbillingaddressrequest) \| [`IValidateAddressRequest`](interfaces/IValidateAddressRequest.md) \| [`IChangeShippingLineRequest`](interfaces/IChangeShippingLineRequest.md) \| [`IDiscountRequest`](interfaces/IDiscountRequest.md) \| [`ICssStylingPaymentIframeRequest`](interfaces/ICssStylingPaymentIframeRequest.md) \| [`IAddPaymentRequest`](interfaces/IAddPaymentRequest.md) \| [`IUpdatePaymentRequest`](modules.md#iupdatepaymentrequest) \| [`IDeletePaymentRequest`](modules.md#ideletepaymentrequest) \| `Record`<`string`, `unknown`\>
 
 ___
 

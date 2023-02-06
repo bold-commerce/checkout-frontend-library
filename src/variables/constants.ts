@@ -83,6 +83,12 @@ export const apiTypes: IApiTypes = {
         useJwt: true,
         keysToTest: [...appStateKeysToTest]
     },
+    addLineItem: {
+        path: '/items',
+        method: methods.POST,
+        useJwt: true,
+        keysToTest: [...appStateKeysToTest]
+    },
     updateCustomer: {
         path: '/customer',
         method: methods.PUT,
@@ -91,6 +97,12 @@ export const apiTypes: IApiTypes = {
     },
     deleteCustomer: {
         path: '/customer',
+        method: methods.DELETE,
+        useJwt: true,
+        keysToTest: [...appStateKeysToTest]
+    },
+    deleteLineItem: {
+        path: '/items',
         method: methods.DELETE,
         useJwt: true,
         keysToTest: [...appStateKeysToTest]
@@ -263,8 +275,10 @@ export const apiTypes: IApiTypes = {
 
 export const apiTypeKeys: IApiTypeKeys = {
     addGuestCustomer: 'addGuestCustomer',
+    addLineItem: 'addLineItem',
     updateCustomer: 'updateCustomer',
     deleteCustomer: 'deleteCustomer',
+    deleteLineItem: 'deleteLineItem',
     validateEmail: 'validateEmail',
     setShippingAddress: 'setShippingAddress',
     setBillingAddress: 'setBillingAddress',
