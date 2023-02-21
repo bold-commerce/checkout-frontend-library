@@ -487,7 +487,7 @@ export interface IProductData {
     title: string;
     image_url: string;
     product_title: string;
-    properties: Record<string, string>
+    properties: Array<IProperties>;
     description: string;
     quantity: number;
     price: number;
@@ -505,6 +505,13 @@ export interface IProductData {
     taxable: boolean;
     tags: string;
     vendor: string;
+}
+
+export interface IProperties {
+    name: string,
+    name_id: number,
+    value: string,
+    value_id: number,
 }
 
 export interface IAddressType {

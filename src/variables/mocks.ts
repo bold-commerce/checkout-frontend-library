@@ -164,7 +164,14 @@ export const productData: IProductData = {
     title: 'Product Title',
     product_title: 'title',
     image_url: '',
-    properties: {'test': 'test-value'},
+    properties: [
+        {
+            name: 'test',
+            name_id: 1,
+            value: 'some value',
+            value_id: 2
+        }
+    ],
     description: 'Product Description',
     quantity: 1,
     price: 1000,
