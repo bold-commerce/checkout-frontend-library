@@ -48,6 +48,6 @@ export function sendPigiActionAsync(action: IPigiActionType): Promise<IPigiRespo
         setTimeout(() => {
             window.removeEventListener('message', iframeListener);
             reject('Pigi response timeout');
-        }, 3000);
+        }, 20000);
     });
 }

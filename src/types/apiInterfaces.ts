@@ -58,6 +58,8 @@ export interface IPigiActionTypes {
     PIGI_UPDATE_HEIGHT: string;
     PIGI_HANDLE_SCA: string;
     PIGI_PAYMENT_ADDED: string;
+    PIGI_DISPLAY_IN_FULL_PAGE: string;
+    PIGI_DISPLAY_IN_FULL_PAGE_DONE: string;
 }
 
 export interface IAlternatePaymentMethodType {

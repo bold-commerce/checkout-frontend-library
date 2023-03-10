@@ -62,6 +62,8 @@ export const pigiActionTypes: IPigiActionTypes = {
     PIGI_UPDATE_HEIGHT: 'PIGI_UPDATE_HEIGHT',
     PIGI_HANDLE_SCA: 'PIGI_HANDLE_SCA',
     PIGI_PAYMENT_ADDED: 'PIGI_PAYMENT_ADDED',
+    PIGI_DISPLAY_IN_FULL_PAGE: 'PIGI_DISPLAY_IN_FULL_PAGE',
+    PIGI_DISPLAY_IN_FULL_PAGE_DONE: 'PIGI_DISPLAY_IN_FULL_PAGE_DONE',
 };
 
 export const alternatePaymentMethodType: IAlternatePaymentMethodType = {
