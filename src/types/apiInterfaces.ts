@@ -197,6 +197,7 @@ export interface IApiTypes {
     cssStylingPaymentIframe: IApiTypesDetail;
     deleteDiscount: IApiTypesDetail;
     processOrder: IApiTypesDetail;
+    preProcessOrder: IApiTypesDetail;
     getApplicationState: IApiTypesDetail;
     deleteBillingAddress: IApiTypesDetail;
     deleteShippingAddress: IApiTypesDetail;
@@ -231,6 +232,7 @@ export interface IApiTypeKeys {
     cssStylingPaymentIframe: keyof IApiTypes;
     deleteDiscount: keyof IApiTypes;
     processOrder: keyof IApiTypes;
+    preProcessOrder: keyof IApiTypes;
     getApplicationState: keyof IApiTypes;
     deleteBillingAddress: keyof IApiTypes;
     deleteShippingAddress: keyof IApiTypes;

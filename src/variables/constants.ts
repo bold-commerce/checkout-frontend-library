@@ -178,6 +178,12 @@ export const apiTypes: IApiTypes = {
         useJwt: true,
         keysToTest: [keysToTestFromResponse.applicationState]
     },
+    preProcessOrder: {
+        path: '/pre_process_order',
+        method: methods.POST,
+        useJwt: true,
+        keysToTest: [keysToTestFromResponse.applicationState]
+    },
     dispatchAppHookEvent: {
         path: '/app_hook',
         method: methods.POST,
@@ -282,6 +288,7 @@ export const apiTypeKeys: IApiTypeKeys = {
     getPaymentIframe: 'getPaymentIframe',
     cssStylingPaymentIframe: 'cssStylingPaymentIframe',
     processOrder: 'processOrder',
+    preProcessOrder: 'preProcessOrder',
     dispatchAppHookEvent: 'dispatchAppHookEvent',
     getApplicationState: 'getApplicationState',
     deleteBillingAddress: 'deleteBillingAddress',
