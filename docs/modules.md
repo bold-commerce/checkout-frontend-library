@@ -77,7 +77,6 @@
 - [IPigiActionTypes](interfaces/IPigiActionTypes.md)
 - [IPigiResponseType](interfaces/IPigiResponseType.md)
 - [IProductData](interfaces/IProductData.md)
-- [IProperties](interfaces/IProperties.md)
 - [IProvince](interfaces/IProvince.md)
 - [ISessionStartApiResponse](interfaces/ISessionStartApiResponse.md)
 - [ISessionStartRequest](interfaces/ISessionStartRequest.md)
