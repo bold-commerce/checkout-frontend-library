@@ -85,7 +85,7 @@ ___
 
 ### properties
 
-• **properties**: [`IProperties`](IProperties.md)[]
+• **properties**: `Record`<`string`, `string`\>
 
 ___
 
