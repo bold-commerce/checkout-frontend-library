@@ -287,6 +287,7 @@ export interface IApiTypesDetail {
 }
 
 export type IAlternativePaymentMethod = Array<IExpressPayStripe | IExpressPayPaypal | IExpressPayBraintreeGoogle | IExpressPayBraintreeApple>;
+export type IExternalPaymentMethod = Array<IExternalPayment>;
 
 export interface IOrderInitialData {
     shop_name: string;
@@ -294,6 +295,7 @@ export interface IOrderInitialData {
     supported_languages: Array<ISupportedLanguage>;
     general_settings: IGeneralSettings;
     alternative_payment_methods: IAlternativePaymentMethod
+    external_payment_gateways:  IExternalPaymentMethod
 }
 
 export interface ISupportedLanguage {
@@ -375,6 +377,13 @@ export interface IExpressPayBraintreeGoogle extends IExpressPayBraintree {
 
 export interface IExpressPayBraintreeApple extends IExpressPayBraintree {
     apple_pay_enabled: boolean;
+}
+
+export interface IExternalPayment {
+    is_test: boolean;
+    iframe_url: string;
+    target_div: string;
+    base_url: string;
 }
 
 export interface IProvince {
