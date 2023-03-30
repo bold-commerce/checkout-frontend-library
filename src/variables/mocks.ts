@@ -23,7 +23,8 @@ import {
     ICurrency,
     ISupportedLanguage,
     alternatePaymentMethodType,
-    IFees
+    IFees,
+    IPatchOrderMetaDataRequest
 } from 'src';
 
 export const shippingAddressMock: IAddress = {
@@ -200,6 +201,13 @@ export const orderMetaDataMock: IOrderMetaData ={
     note_attributes: {key: 'test_key'},
     notes: 'test notes',
     tags: ['test_tag_1', 'test_tag_2']
+};
+
+export const patchOrderMetaDataMock: IPatchOrderMetaDataRequest = {
+    cart_parameters: null,
+    note_attributes: {key: 'test_key'},
+    notes: null,
+    tags: null,
 };
 
 export const selectShippingLineMock: IShippingLine = {

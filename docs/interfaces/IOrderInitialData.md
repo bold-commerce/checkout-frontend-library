@@ -6,6 +6,7 @@
 
 - [alternative\_payment\_methods](IOrderInitialData.md#alternative_payment_methods)
 - [country\_info](IOrderInitialData.md#country_info)
+- [external\_payment\_gateways](IOrderInitialData.md#external_payment_gateways)
 - [general\_settings](IOrderInitialData.md#general_settings)
 - [shop\_name](IOrderInitialData.md#shop_name)
 - [supported\_languages](IOrderInitialData.md#supported_languages)
@@ -21,6 +22,12 @@ ___
 ### country\_info
 
 • **country\_info**: [`ICountryInformation`](ICountryInformation.md)[]
+
+___
+
+### external\_payment\_gateways
+
+• **external\_payment\_gateways**: [`IExternalPaymentMethod`](../modules.md#iexternalpaymentmethod)
 
 ___
 

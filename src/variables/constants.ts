@@ -47,6 +47,7 @@ export const methods: IMethods = {
     GET: 'GET',
     PUT: 'PUT',
     POST: 'POST',
+    PATCH: 'PATCH',
     DELETE: 'DELETE'
 };
 
@@ -256,6 +257,12 @@ export const apiTypes: IApiTypes = {
         useJwt: true,
         keysToTest: [...appStateKeysToTest]
     },
+    patchOrderMetaData: {
+        path: '/meta_data',
+        method: methods.PATCH,
+        useJwt: true,
+        keysToTest: [...appStateKeysToTest]
+    },
 };
 
 export const apiTypeKeys: IApiTypeKeys = {
@@ -289,6 +296,7 @@ export const apiTypeKeys: IApiTypeKeys = {
     updatePayment: 'updatePayment',
     deletePayment: 'deletePayment',
     deleteGiftCardPayment: 'deleteGiftCardPayment',
+    patchOrderMetaData: 'patchOrderMetaData',
 };
 
 export const baseReturnObject: IApiReturnObject = {

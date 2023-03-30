@@ -142,7 +142,8 @@ export const generalSettings: IGeneralSettings = {
     checkout_process: {
         company_name_option: 'required',
         phone_number_required: false,
-        accepts_marketing_checkbox_option: 'checked'
+        accepts_marketing_checkbox_option: 'checked',
+        tax_exempt_checkbox_enabled: undefined,
     },
     address_autocomplete: {
         provider: null,
