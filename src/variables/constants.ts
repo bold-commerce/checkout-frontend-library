@@ -70,7 +70,8 @@ export const alternatePaymentMethodType: IAlternatePaymentMethodType = {
     STRIPE: 'stripe',
     PAYPAL: 'paypal',
     BRAINTREE_GOOGLE: 'braintree',
-    BRAINTREE_APPLE: 'braintree-apple'
+    BRAINTREE_APPLE: 'braintree-apple',
+    PPCP_APPLE: 'paypal_commerce_platform-apple',
 };
 
 export const checkInventoryStage: ICheckInventoryStage = {
