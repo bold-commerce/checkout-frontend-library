@@ -67,6 +67,7 @@ export interface IAlternatePaymentMethodType {
     PAYPAL: string;
     BRAINTREE_GOOGLE: string;
     BRAINTREE_APPLE: string;
+    PPCP_APPLE: string;
 }
 
 export type IInventoryStage = 'initial' | 'final';
@@ -286,7 +287,7 @@ export interface IApiTypesDetail {
     keysToTest?: Array<string>;
 }
 
-export type IAlternativePaymentMethod = Array<IExpressPayStripe | IExpressPayPaypal | IExpressPayBraintreeGoogle | IExpressPayBraintreeApple>;
+export type IAlternativePaymentMethod = Array<IExpressPayStripe | IExpressPayPaypal | IExpressPayBraintreeGoogle | IExpressPayBraintreeApple | IExpressPayPaypalCommercePlatform> ;
 export type IExternalPaymentMethod = Array<IExternalPayment>;
 
 export interface IOrderInitialData {
@@ -356,6 +357,15 @@ export interface IExpressPayPaypal {
    client_id: string;
    button_style: Record<string, unknown>;
    public_id: string;
+}
+
+export interface IExpressPayPaypalCommercePlatform {
+    type: string;
+    is_test: boolean;
+    public_id: string;
+    apple_pay_enabled: boolean;
+    partner_id: string;
+    merchant_id: string;
 }
 
 export interface IExpressPayBraintree {
