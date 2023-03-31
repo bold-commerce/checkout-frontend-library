@@ -17,7 +17,8 @@ export interface IApiSuccessResponse {
         ICssStylingPaymentIframeResponse |
         ICheckInventoryResponse |
         IAddPaymentResponse |
-        IUpdateLineItemQuantityResponse;
+        IUpdateLineItemQuantityResponse |
+        IPatchOrderMetaDataResponse;
     application_state?: IApplicationState;
 }
 
@@ -43,6 +44,7 @@ export interface IMethods {
     GET: string;
     POST: string;
     PUT: string;
+    PATCH: string;
     DELETE: string;
 }
 
@@ -159,6 +161,11 @@ export interface ICheckInventoryResponse {
     application_state: IApplicationState | undefined;
 }
 
+export interface IPatchOrderMetaDataResponse {
+    order_meta_data: IOrderMetaData | undefined;
+    application_state: IApplicationState | undefined;
+}
+
 export interface IAddPaymentResponse {
     payment: IPayment;
     application_state: IApplicationState | undefined;
@@ -211,6 +218,7 @@ export interface IApiTypes {
     updatePayment: IApiTypesDetail;
     deletePayment: IApiTypesDetail;
     deleteGiftCardPayment: IApiTypesDetail;
+    patchOrderMetaData: IApiTypesDetail;
 }
 
 export interface IApiTypeKeys {
@@ -244,6 +252,7 @@ export interface IApiTypeKeys {
     updatePayment: keyof  IApiTypes;
     deletePayment: keyof  IApiTypes;
     deleteGiftCardPayment: keyof  IApiTypes;
+    patchOrderMetaData: keyof IApiTypes;
 }
 
 export interface IValidateAddress {
@@ -330,7 +339,8 @@ export interface ICountryInformation {
 export interface ICheckoutProcess{
     company_name_option: string,
     phone_number_required: boolean,
-    accepts_marketing_checkbox_option: string
+    accepts_marketing_checkbox_option: string,
+    tax_exempt_checkbox_enabled?: boolean,
 }
 
 export interface IAddressAutoComplete{
@@ -629,6 +639,13 @@ export type IUpdatePaymentRequest = IAddPaymentRequest;
 
 export type IDeletePaymentRequest = IAddPaymentRequest;
 
+export interface IPatchOrderMetaDataRequest {
+    cart_parameters: ICartParameters | null;
+    note_attributes: ICartParameters | null;
+    notes: string | null;
+    tags: Array<string> | null;
+}
+
 export type IGetApiOptionsBody =
     ISessionStartRequest |
     IAddGuestCustomerRequest |
@@ -645,6 +662,7 @@ export type IGetApiOptionsBody =
     IAddPaymentRequest |
     IUpdatePaymentRequest |
     IDeletePaymentRequest |
+    IPatchOrderMetaDataRequest |
     Record<string, unknown>;
 
 export interface IShippingLine {
