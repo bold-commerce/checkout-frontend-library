@@ -17,7 +17,8 @@ export interface IApiSuccessResponse {
         ICssStylingPaymentIframeResponse |
         ICheckInventoryResponse |
         IAddPaymentResponse |
-        IUpdateLineItemQuantityResponse;
+        IUpdateLineItemQuantityResponse |
+        IPatchOrderMetaDataResponse;
     application_state?: IApplicationState;
 }
 
@@ -43,6 +44,7 @@ export interface IMethods {
     GET: string;
     POST: string;
     PUT: string;
+    PATCH: string;
     DELETE: string;
 }
 
@@ -67,6 +69,7 @@ export interface IAlternatePaymentMethodType {
     PAYPAL: string;
     BRAINTREE_GOOGLE: string;
     BRAINTREE_APPLE: string;
+    PPCP_APPLE: string;
 }
 
 export type IInventoryStage = 'initial' | 'final';
@@ -158,6 +161,11 @@ export interface ICheckInventoryResponse {
     application_state: IApplicationState | undefined;
 }
 
+export interface IPatchOrderMetaDataResponse {
+    order_meta_data: IOrderMetaData | undefined;
+    application_state: IApplicationState | undefined;
+}
+
 export interface IAddPaymentResponse {
     payment: IPayment;
     application_state: IApplicationState | undefined;
@@ -210,6 +218,7 @@ export interface IApiTypes {
     updatePayment: IApiTypesDetail;
     deletePayment: IApiTypesDetail;
     deleteGiftCardPayment: IApiTypesDetail;
+    patchOrderMetaData: IApiTypesDetail;
 }
 
 export interface IApiTypeKeys {
@@ -243,6 +252,7 @@ export interface IApiTypeKeys {
     updatePayment: keyof  IApiTypes;
     deletePayment: keyof  IApiTypes;
     deleteGiftCardPayment: keyof  IApiTypes;
+    patchOrderMetaData: keyof IApiTypes;
 }
 
 export interface IValidateAddress {
@@ -286,8 +296,8 @@ export interface IApiTypesDetail {
     keysToTest?: Array<string>;
 }
 
-export type IAlternativePaymentMethod = Array<IExpressPayStripe | IExpressPayPaypal | IExpressPayBraintreeGoogle | IExpressPayBraintreeApple>;
-export type IExternalPaymentMethod = Array<IExternalPayment>;
+export type IAlternativePaymentMethod = Array<IExpressPayStripe | IExpressPayPaypal | IExpressPayBraintreeGoogle | IExpressPayBraintreeApple | IExpressPayPaypalCommercePlatform> ;
+export type IExternalPaymentGateways = Array<IExternalPaymentGateway>;
 
 export interface IOrderInitialData {
     shop_name: string;
@@ -295,7 +305,7 @@ export interface IOrderInitialData {
     supported_languages: Array<ISupportedLanguage>;
     general_settings: IGeneralSettings;
     alternative_payment_methods: IAlternativePaymentMethod
-    external_payment_gateways:  IExternalPaymentMethod
+    external_payment_gateways:  IExternalPaymentGateways
 }
 
 export interface ISupportedLanguage {
@@ -329,7 +339,8 @@ export interface ICountryInformation {
 export interface ICheckoutProcess{
     company_name_option: string,
     phone_number_required: boolean,
-    accepts_marketing_checkbox_option: string
+    accepts_marketing_checkbox_option: string,
+    tax_exempt_checkbox_enabled?: boolean,
 }
 
 export interface IAddressAutoComplete{
@@ -358,6 +369,15 @@ export interface IExpressPayPaypal {
    public_id: string;
 }
 
+export interface IExpressPayPaypalCommercePlatform {
+    type: string;
+    is_test: boolean;
+    public_id: string;
+    apple_pay_enabled: boolean;
+    partner_id: string;
+    merchant_id: string;
+}
+
 export interface IExpressPayBraintree {
     type: string;
     public_id: string;
@@ -379,11 +399,13 @@ export interface IExpressPayBraintreeApple extends IExpressPayBraintree {
     apple_pay_enabled: boolean;
 }
 
-export interface IExternalPayment {
+export interface IExternalPaymentGateway {
     is_test: boolean;
     iframe_url: string;
     target_div: string;
     base_url: string;
+    public_id: string;
+    location: string;
 }
 
 export interface IProvince {
@@ -619,6 +641,13 @@ export type IUpdatePaymentRequest = IAddPaymentRequest;
 
 export type IDeletePaymentRequest = IAddPaymentRequest;
 
+export interface IPatchOrderMetaDataRequest {
+    cart_parameters: ICartParameters | null;
+    note_attributes: ICartParameters | null;
+    notes: string | null;
+    tags: Array<string> | null;
+}
+
 export type IGetApiOptionsBody =
     ISessionStartRequest |
     IAddGuestCustomerRequest |
@@ -635,6 +664,7 @@ export type IGetApiOptionsBody =
     IAddPaymentRequest |
     IUpdatePaymentRequest |
     IDeletePaymentRequest |
+    IPatchOrderMetaDataRequest |
     Record<string, unknown>;
 
 export interface IShippingLine {

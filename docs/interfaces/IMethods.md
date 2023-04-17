@@ -6,6 +6,7 @@
 
 - [DELETE](IMethods.md#delete)
 - [GET](IMethods.md#get)
+- [PATCH](IMethods.md#patch)
 - [POST](IMethods.md#post)
 - [PUT](IMethods.md#put)
 
@@ -20,6 +21,12 @@ ___
 ### GET
 
 • **GET**: `string`
+
+___
+
+### PATCH
+
+• **PATCH**: `string`
 
 ___
 

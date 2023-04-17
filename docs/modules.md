@@ -49,7 +49,9 @@
 - [IExpressPayBraintreeApple](interfaces/IExpressPayBraintreeApple.md)
 - [IExpressPayBraintreeGoogle](interfaces/IExpressPayBraintreeGoogle.md)
 - [IExpressPayPaypal](interfaces/IExpressPayPaypal.md)
+- [IExpressPayPaypalCommercePlatform](interfaces/IExpressPayPaypalCommercePlatform.md)
 - [IExpressPayStripe](interfaces/IExpressPayStripe.md)
+- [IExternalPayment](interfaces/IExternalPayment.md)
 - [IFee](interfaces/IFee.md)
 - [IFees](interfaces/IFees.md)
 - [IFetchCallback](interfaces/IFetchCallback.md)
@@ -70,6 +72,8 @@
 - [IMethods](interfaces/IMethods.md)
 - [IOrderInitialData](interfaces/IOrderInitialData.md)
 - [IOrderMetaData](interfaces/IOrderMetaData.md)
+- [IPatchOrderMetaDataRequest](interfaces/IPatchOrderMetaDataRequest.md)
+- [IPatchOrderMetaDataResponse](interfaces/IPatchOrderMetaDataResponse.md)
 - [IPayment](interfaces/IPayment.md)
 - [IPaymentFrame](interfaces/IPaymentFrame.md)
 - [IPigi](interfaces/IPigi.md)
@@ -102,6 +106,7 @@
 - [IApiUrlQueryParams](modules.md#iapiurlqueryparams)
 - [IDeleteCustomerResponse](modules.md#ideletecustomerresponse)
 - [IDeletePaymentRequest](modules.md#ideletepaymentrequest)
+- [IExternalPaymentMethod](modules.md#iexternalpaymentmethod)
 - [IGetApiOptionsBody](modules.md#igetapioptionsbody)
 - [IInventoryStage](modules.md#iinventorystage)
 - [ISetBillingAddressRequest](modules.md#isetbillingaddressrequest)
@@ -112,7 +117,7 @@
 
 ### IAlternativePaymentMethod
 
-Ƭ **IAlternativePaymentMethod**: ([`IExpressPayStripe`](interfaces/IExpressPayStripe.md) \| [`IExpressPayPaypal`](interfaces/IExpressPayPaypal.md) \| [`IExpressPayBraintreeGoogle`](interfaces/IExpressPayBraintreeGoogle.md) \| [`IExpressPayBraintreeApple`](interfaces/IExpressPayBraintreeApple.md))[]
+Ƭ **IAlternativePaymentMethod**: ([`IExpressPayStripe`](interfaces/IExpressPayStripe.md) \| [`IExpressPayPaypal`](interfaces/IExpressPayPaypal.md) \| [`IExpressPayBraintreeGoogle`](interfaces/IExpressPayBraintreeGoogle.md) \| [`IExpressPayBraintreeApple`](interfaces/IExpressPayBraintreeApple.md) \| [`IExpressPayPaypalCommercePlatform`](interfaces/IExpressPayPaypalCommercePlatform.md))[]
 
 ___
 
@@ -140,9 +145,15 @@ ___
 
 ___
 
+### IExternalPaymentMethod
+
+Ƭ **IExternalPaymentMethod**: [`IExternalPayment`](interfaces/IExternalPayment.md)[]
+
+___
+
 ### IGetApiOptionsBody
 
-Ƭ **IGetApiOptionsBody**: [`ISessionStartRequest`](interfaces/ISessionStartRequest.md) \| [`IAddGuestCustomerRequest`](interfaces/IAddGuestCustomerRequest.md) \| [`ILineItemRequest`](interfaces/ILineItemRequest.md) \| [`ILineItemRequestWithSku`](interfaces/ILineItemRequestWithSku.md) \| [`ILineItemRequestWithPlatformId`](interfaces/ILineItemRequestWithPlatformId.md) \| [`IValidateEmailRequest`](interfaces/IValidateEmailRequest.md) \| [`ISetShippingAddressRequest`](modules.md#isetshippingaddressrequest) \| [`ISetBillingAddressRequest`](modules.md#isetbillingaddressrequest) \| [`IValidateAddressRequest`](interfaces/IValidateAddressRequest.md) \| [`IChangeShippingLineRequest`](interfaces/IChangeShippingLineRequest.md) \| [`IDiscountRequest`](interfaces/IDiscountRequest.md) \| [`ICssStylingPaymentIframeRequest`](interfaces/ICssStylingPaymentIframeRequest.md) \| [`IAddPaymentRequest`](interfaces/IAddPaymentRequest.md) \| [`IUpdatePaymentRequest`](modules.md#iupdatepaymentrequest) \| [`IDeletePaymentRequest`](modules.md#ideletepaymentrequest) \| `Record`<`string`, `unknown`\>
+Ƭ **IGetApiOptionsBody**: [`ISessionStartRequest`](interfaces/ISessionStartRequest.md) \| [`IAddGuestCustomerRequest`](interfaces/IAddGuestCustomerRequest.md) \| [`ILineItemRequest`](interfaces/ILineItemRequest.md) \| [`ILineItemRequestWithSku`](interfaces/ILineItemRequestWithSku.md) \| [`ILineItemRequestWithPlatformId`](interfaces/ILineItemRequestWithPlatformId.md) \| [`IValidateEmailRequest`](interfaces/IValidateEmailRequest.md) \| [`ISetShippingAddressRequest`](modules.md#isetshippingaddressrequest) \| [`ISetBillingAddressRequest`](modules.md#isetbillingaddressrequest) \| [`IValidateAddressRequest`](interfaces/IValidateAddressRequest.md) \| [`IChangeShippingLineRequest`](interfaces/IChangeShippingLineRequest.md) \| [`IDiscountRequest`](interfaces/IDiscountRequest.md) \| [`ICssStylingPaymentIframeRequest`](interfaces/ICssStylingPaymentIframeRequest.md) \| [`IAddPaymentRequest`](interfaces/IAddPaymentRequest.md) \| [`IUpdatePaymentRequest`](modules.md#iupdatepaymentrequest) \| [`IDeletePaymentRequest`](modules.md#ideletepaymentrequest) \| [`IPatchOrderMetaDataRequest`](interfaces/IPatchOrderMetaDataRequest.md) \| `Record`<`string`, `unknown`\>
 
 ___
 

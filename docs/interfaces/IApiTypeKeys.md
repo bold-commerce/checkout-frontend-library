@@ -22,6 +22,7 @@
 - [getPaymentIframe](IApiTypeKeys.md#getpaymentiframe)
 - [getPaymentList](IApiTypeKeys.md#getpaymentlist)
 - [getShippingLines](IApiTypeKeys.md#getshippinglines)
+- [patchOrderMetaData](IApiTypeKeys.md#patchordermetadata)
 - [processOrder](IApiTypeKeys.md#processorder)
 - [setBillingAddress](IApiTypeKeys.md#setbillingaddress)
 - [setShippingAddress](IApiTypeKeys.md#setshippingaddress)
@@ -142,6 +143,12 @@ ___
 ### getShippingLines
 
 • **getShippingLines**: keyof [`IApiTypes`](IApiTypes.md)
+
+___
+
+### patchOrderMetaData
+
+• **patchOrderMetaData**: keyof [`IApiTypes`](IApiTypes.md)
 
 ___
 
