@@ -24,5 +24,6 @@ export interface IHttpStatusCode {
     TOO_MANY_REQUEST: number,
     NOT_IMPLEMENTED: number,
     GATEWAY_TIMEOUT: number,
-    ORDER_LOCKED: number
+    ORDER_LOCKED: number,
+    ORDER_TIMEOUT_LOCK: number
 }

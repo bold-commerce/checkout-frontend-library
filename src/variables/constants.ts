@@ -350,5 +350,6 @@ export const httpStatusCode: IHttpStatusCode = {
     NOT_IMPLEMENTED: 501,
     SERVICE_UNAVAILABLE: 503,
     GATEWAY_TIMEOUT: 504,
-    ORDER_LOCKED: 530
+    ORDER_LOCKED: 530,
+    ORDER_TIMEOUT_LOCK: 544
 };
