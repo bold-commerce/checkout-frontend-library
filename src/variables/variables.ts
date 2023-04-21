@@ -21,7 +21,7 @@ import {
     IGeneralSettings,
     ISupportedLanguage,
     IFees,
-    httpStatusCode
+    httpStatusCode,
 } from 'src';
 
 export const environment: Required<IEnvironment> = {
