@@ -79,6 +79,7 @@ export interface IExternalPaymentGatewayToIframeActionTypes {
     EXTERNAL_PAYMENT_GATEWAY_BILLING_ADDRESS_CHANGED: string;
     EXTERNAL_PAYMENT_GATEWAY_SHIPPING_ADDRESS_CHANGED: string;
     EXTERNAL_PAYMENT_GATEWAY_HANDLE_SCA: string;
+    EXTERNAL_PAYMENT_GATEWAY_SET_CONFIG: string;
 }
 
 export interface IAlternatePaymentMethodType {
@@ -423,6 +424,7 @@ export interface IExternalPaymentGateway {
     base_url: string;
     public_id: string;
     location: string;
+    currency: string;
 }
 
 export interface IProvince {
@@ -697,7 +699,7 @@ export interface IPigiActionType {
 
 export interface IExternalPaymentGatewayActionType {
     type: string;
-    payload?: IInitializeOrderResponse;
+    payload?: IInitializeOrderResponse | IExternalPaymentGateway;
 }
 
 export interface IPigiResponseType {
