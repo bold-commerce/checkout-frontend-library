@@ -1,18 +1,19 @@
 import {
-    sendExternalPaymentGatewayUpdateStateAction,
-    IExternalPaymentGateway,
-    IInitializeOrderResponse
+    sendExternalPaymentGatewaySetConfigAction,
+    IExternalPaymentGateway, externalPaymentGatewayToIframeActionTypes,
 } from 'src';
 import * as sendExternalPaymentGatewayActionToIframe from 'src/externalPaymentGateway/actionsToIframe/sendExternalPaymentGatewayActionToIframe';
-import {initializeOrderResponseMock} from 'src/variables/mocks';
 
-describe('testing send external payment gateway update state Message Action', () => {
+describe('testing send external payment gateway set config action', () => {
     let sendExternalPaymentGatewayActionToIframeSpy: jest.SpyInstance;
-    const calledOnce = 1;
     const gateway: IExternalPaymentGateway = {
         base_url: '', iframe_url: '', is_test: false, location: '', public_id: '', target_div: '', currency: ''
     };
-    const state: IInitializeOrderResponse = initializeOrderResponseMock;
+
+    const actionMock = {
+        payload: gateway,
+        type: externalPaymentGatewayToIframeActionTypes.EXTERNAL_PAYMENT_GATEWAY_SET_CONFIG,
+    };
 
     beforeEach(() => {
         jest.restoreAllMocks();
@@ -20,10 +21,10 @@ describe('testing send external payment gateway update state Message Action', ()
         sendExternalPaymentGatewayActionToIframeSpy.mockImplementation(() => null);
     });
 
-    test('calling send external payment gatewy update state success', () => {
-        sendExternalPaymentGatewayUpdateStateAction(gateway, state);
+    test('calling send external payment gateway update state success', () => {
+        sendExternalPaymentGatewaySetConfigAction(gateway);
 
-        expect(sendExternalPaymentGatewayActionToIframeSpy).toHaveBeenCalledTimes(calledOnce);
+        expect(sendExternalPaymentGatewayActionToIframeSpy).toHaveBeenCalledTimes(1);
+        expect(sendExternalPaymentGatewayActionToIframeSpy).toHaveBeenCalledWith(gateway, actionMock);
     });
 });
-
