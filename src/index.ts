@@ -7,6 +7,8 @@ export {
     generalApiResponseParsingErrorType,
     methods,
     pigiActionTypes,
+    externalPaymentGatewayToParentActionTypes,
+    externalPaymentGatewayToIframeActionTypes,
     apiTypes,
     apiTypeKeys,
     apiErrors,
@@ -30,6 +32,7 @@ export * from './payment';
 export * from './orderMetaData';
 export * from './paymentIframe';
 export * from './order';
+export * from './externalPaymentGateway';
 export {
     getApplicationState,
     getAddresses,

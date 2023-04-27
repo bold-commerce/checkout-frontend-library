@@ -64,6 +64,24 @@ export interface IPigiActionTypes {
     PIGI_DISPLAY_IN_FULL_PAGE_DONE: string;
 }
 
+export interface IExternalPaymentGatewayToParentActionTypes {
+    EXTERNAL_PAYMENT_GATEWAY_ADD_PAYMENT: string;
+    EXTERNAL_PAYMENT_GATEWAY_REFRESH_ORDER: string;
+    EXTERNAL_PAYMENT_GATEWAY_UPDATE_MEDIA_MATCH: string;
+    EXTERNAL_PAYMENT_GATEWAY_UPDATE_HEIGHT: string;
+    EXTERNAL_PAYMENT_GATEWAY_INITIALIZED: string;
+}
+
+export interface IExternalPaymentGatewayToIframeActionTypes {
+    EXTERNAL_PAYMENT_GATEWAY_UPDATE_STATE: string;
+    EXTERNAL_PAYMENT_GATEWAY_UPDATE_LANGUAGE: string;
+    EXTERNAL_PAYMENT_GATEWAY_UPDATE_MEDIA_MATCH: string;
+    EXTERNAL_PAYMENT_GATEWAY_BILLING_ADDRESS_CHANGED: string;
+    EXTERNAL_PAYMENT_GATEWAY_SHIPPING_ADDRESS_CHANGED: string;
+    EXTERNAL_PAYMENT_GATEWAY_HANDLE_SCA: string;
+    EXTERNAL_PAYMENT_GATEWAY_SET_CONFIG: string;
+}
+
 export interface IAlternatePaymentMethodType {
     STRIPE: string;
     PAYPAL: string;
@@ -406,6 +424,7 @@ export interface IExternalPaymentGateway {
     base_url: string;
     public_id: string;
     location: string;
+    currency: string;
 }
 
 export interface IProvince {
@@ -676,6 +695,11 @@ export interface IShippingLine {
 export interface IPigiActionType {
     actionType: string;
     payload?: Record<string, unknown>;
+}
+
+export interface IExternalPaymentGatewayActionType {
+    type: string;
+    payload?: IInitializeOrderResponse | IExternalPaymentGateway;
 }
 
 export interface IPigiResponseType {

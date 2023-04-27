@@ -21,7 +21,7 @@ import {
     IGeneralSettings,
     ISupportedLanguage,
     IFees,
-    httpStatusCode
+    httpStatusCode,
 } from 'src';
 
 export const environment: Required<IEnvironment> = {
@@ -199,6 +199,8 @@ export const retryErrorCodeList: Array<number> = [
     httpStatusCode.TOO_MANY_REQUEST,
     httpStatusCode.SERVICE_UNAVAILABLE,
     httpStatusCode.GATEWAY_TIMEOUT,
-    httpStatusCode.ORDER_LOCKED];
+    httpStatusCode.ORDER_LOCKED,
+    httpStatusCode.ORDER_TIMEOUT_LOCK,
+];
 
 export const retryErrorCodeWaitTime: Array<number> = [300, 300, 600, 900, 1500];
