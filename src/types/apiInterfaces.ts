@@ -427,6 +427,10 @@ export interface IExternalPaymentGateway {
     currency: string;
 }
 
+export interface IExternalPaymentGatewayLanguage {
+    language: string;
+}
+
 export interface IProvince {
     iso_code: string;
     name: string;
@@ -699,7 +703,7 @@ export interface IPigiActionType {
 
 export interface IExternalPaymentGatewayActionType {
     type: string;
-    payload?: IInitializeOrderResponse | IExternalPaymentGateway;
+    payload?: IInitializeOrderResponse | IExternalPaymentGateway | IExternalPaymentGatewayLanguage;
 }
 
 export interface IPigiResponseType {
