@@ -1,4 +1,4 @@
-# @bold-commerce/checkout-frontend-library
+# @boldcommerce/checkout-frontend-library
 
 ## Table of contents
 

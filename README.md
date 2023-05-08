@@ -12,25 +12,25 @@ The Checkout Frontend Library is a Bold Javascript library, which contains reusa
 
 ### Install with Yarn
 ```
-yarn add "@bold-commerce/checkout-frontend-library"
+yarn add "@boldcommerce/checkout-frontend-library"
 ```
 
 #### Install a specific version
 
 ```
-yarn add "@bold-commerce/checkout-frontend-library"@1.0.0
+yarn add "@boldcommerce/checkout-frontend-library"@1.0.0
 ```
 _(replace "1.0.0" with the version number that you want)_
 
 ### Install with NPM
 ```
-npm install "@bold-commerce/checkout-frontend-library"
+npm install "@boldcommerce/checkout-frontend-library"
 ```
 
 #### Install a specific version
 
 ```
-npm install "@bold-commerce/checkout-frontend-library"@1.0.0
+npm install "@boldcommerce/checkout-frontend-library"@1.0.0
 ```
 _(replace "1.0.0" with the version number that you want)_
 

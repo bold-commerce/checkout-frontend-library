@@ -2,7 +2,6 @@ import {
     externalPaymentGatewayToIframeActionTypes,
     IExternalPaymentGateway,
     IExternalPaymentGatewayActionType,
-    IInitializeOrderResponse,
     sendExternalPaymentGatewayActionToIframe,
 } from 'src';
 
