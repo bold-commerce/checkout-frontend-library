@@ -703,7 +703,7 @@ export interface IPigiActionType {
 
 export interface IExternalPaymentGatewayActionType {
     type: string;
-    payload?: IInitializeOrderResponse | IExternalPaymentGateway | IExternalPaymentGatewayLanguage;
+    payload?: IInitializeOrderResponse | IExternalPaymentGateway | IExternalPaymentGatewayLanguage | IAddress;
 }
 
 export interface IPigiResponseType {
