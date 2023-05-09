@@ -5,10 +5,12 @@ import {
     sendExternalPaymentGatewayActionToIframe,
 } from 'src';
 
-export function sendExternalPaymentGatewaySetConfigAction(paymentGateway: IExternalPaymentGateway): void {
+export function sendExternalPaymentGatewayUpdateLanguageAction(paymentGateway: IExternalPaymentGateway, languageCode: string): void {
     const action: IExternalPaymentGatewayActionType = {
-        type: externalPaymentGatewayToIframeActionTypes.EXTERNAL_PAYMENT_GATEWAY_SET_CONFIG,
-        payload: paymentGateway,
+        type: externalPaymentGatewayToIframeActionTypes.EXTERNAL_PAYMENT_GATEWAY_UPDATE_LANGUAGE,
+        payload: {
+            language: languageCode
+        }
     };
     sendExternalPaymentGatewayActionToIframe(paymentGateway, action);
 }

@@ -5,10 +5,9 @@ import {
     sendExternalPaymentGatewayActionToIframe,
 } from 'src';
 
-export function sendExternalPaymentGatewaySetConfigAction(paymentGateway: IExternalPaymentGateway): void {
+export function sendExternalPaymentGatewayProcessOrderAction(paymentGateway: IExternalPaymentGateway): void {
     const action: IExternalPaymentGatewayActionType = {
-        type: externalPaymentGatewayToIframeActionTypes.EXTERNAL_PAYMENT_GATEWAY_SET_CONFIG,
-        payload: paymentGateway,
+        type: externalPaymentGatewayToIframeActionTypes.EXTERNAL_PAYMENT_GATEWAY_BILLING_ADDRESS_CHANGED,
     };
     sendExternalPaymentGatewayActionToIframe(paymentGateway, action);
 }
