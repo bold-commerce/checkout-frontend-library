@@ -144,6 +144,7 @@ export const generalSettings: IGeneralSettings = {
         phone_number_required: false,
         accepts_marketing_checkbox_option: 'checked',
         tax_exempt_checkbox_enabled: undefined,
+        tax_shipping: true,
     },
     address_autocomplete: {
         provider: null,

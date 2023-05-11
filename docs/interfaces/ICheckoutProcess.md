@@ -8,6 +8,7 @@
 - [company\_name\_option](ICheckoutProcess.md#company_name_option)
 - [phone\_number\_required](ICheckoutProcess.md#phone_number_required)
 - [tax\_exempt\_checkbox\_enabled](ICheckoutProcess.md#tax_exempt_checkbox_enabled)
+- [tax\_shipping](ICheckoutProcess.md#tax_shipping)
 
 ## Properties
 
@@ -29,6 +30,13 @@ ___
 
 ___
 
+### tax\_shipping
+
+• **tax\_shipping**: `boolean`
+
+___
+
 ### tax\_exempt\_checkbox\_enabled
 
 • `Optional` **tax\_exempt\_checkbox\_enabled**: `boolean`
+
