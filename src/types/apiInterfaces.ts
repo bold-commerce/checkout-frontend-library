@@ -70,6 +70,8 @@ export interface IExternalPaymentGatewayToParentActionTypes {
     EXTERNAL_PAYMENT_GATEWAY_UPDATE_MEDIA_MATCH: string;
     EXTERNAL_PAYMENT_GATEWAY_UPDATE_HEIGHT: string;
     EXTERNAL_PAYMENT_GATEWAY_INITIALIZED: string;
+    EXTERNAL_PAYMENT_GATEWAY_TOKENIZING_IN_PROGRESS: string;
+    EXTERNAL_PAYMENT_GATEWAY_TOKENIZING_COMPLETED: string;
 }
 
 export interface IExternalPaymentGatewayToIframeActionTypes {
