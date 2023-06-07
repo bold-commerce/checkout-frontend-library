@@ -453,9 +453,10 @@ export interface IApplicationState {
     order_meta_data: IOrderMetaData;
     currency: ICurrency;
     resumable_link: string | null;
+    link_to_cart: string | null;
     is_processed: boolean;
     created_via: string;
-    fees: Array<IFees> | undefined; // TODO remove undefined type once CASHINT-473 is enabled by default
+    fees: Array<IFees>;
 }
 
 export interface IOrderMetaData {

@@ -180,6 +180,7 @@ export const applicationState: IApplicationState = {
     shipping,
     order_total: 0,
     resumable_link: '',
+    link_to_cart: null,
     currency,
     created_via: '',
     is_processed: false,
