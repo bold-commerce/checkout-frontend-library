@@ -24,6 +24,7 @@ export * from './auth';
 export * from './utils';
 export * from './types';
 export * from './customer';
+export * from './batch';
 export * from './address';
 export * from './shipping';
 export * from './taxes';
