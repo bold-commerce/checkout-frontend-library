@@ -285,6 +285,12 @@ export const apiTypes: IApiTypes = {
         useJwt: true,
         keysToTest: [...appStateKeysToTest]
     },
+    batchRequest: {
+        path: '/batch',
+        method: methods.POST,
+        useJwt: true,
+        keysToTest: [...appStateKeysToTest]
+    }
 };
 
 export const apiTypeKeys: IApiTypeKeys = {
@@ -319,6 +325,7 @@ export const apiTypeKeys: IApiTypeKeys = {
     deletePayment: 'deletePayment',
     deleteGiftCardPayment: 'deleteGiftCardPayment',
     patchOrderMetaData: 'patchOrderMetaData',
+    batchRequest: 'batchRequest'
 };
 
 export const baseReturnObject: IApiReturnObject = {

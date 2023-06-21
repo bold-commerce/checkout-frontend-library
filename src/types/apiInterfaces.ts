@@ -239,6 +239,7 @@ export interface IApiTypes {
     deletePayment: IApiTypesDetail;
     deleteGiftCardPayment: IApiTypesDetail;
     patchOrderMetaData: IApiTypesDetail;
+    batchRequest: IApiTypesDetail;
 }
 
 export interface IApiTypeKeys {
@@ -273,6 +274,7 @@ export interface IApiTypeKeys {
     deletePayment: keyof  IApiTypes;
     deleteGiftCardPayment: keyof  IApiTypes;
     patchOrderMetaData: keyof IApiTypes;
+    batchRequest: keyof IApiTypes;
 }
 
 export interface IValidateAddress {
@@ -635,6 +637,17 @@ export interface ILineItemRequestWithPlatformId extends ILineItemRequest {
 
 export interface IValidateEmailRequest {
     email_address: string;
+}
+
+export interface IBatchableRequest {
+    apiType: keyof IApiTypes,
+    payload: IGetApiOptionsBody,
+}
+
+export interface IBatchSubrequest {
+    method: string,
+    endpoint: string,
+    payload: string | null
 }
 
 export interface IValidateAddressRequest {
