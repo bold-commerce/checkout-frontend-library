@@ -18,15 +18,15 @@ describe('testing batchRequest', () => {
     const lastName = 'Doe';
     const email = 'john.doe@example.com';
     const acceptsMarketing = true;
-    const subrequests = {'sub-requests': [
+    const subrequests = {'sub_requests': [
         {
             method: methods.GET,
-            endpoint: 'https://api.boldcommerce.com/checkout/storefront///validate_email_address',
+            endpoint: '/validate_email_address',
             payload: JSON.stringify({email})
         },
         {
             method: methods.POST,
-            endpoint: 'https://api.boldcommerce.com/checkout/storefront///customer/guest',
+            endpoint: '/customer/guest',
             payload: JSON.stringify({firstName, lastName, email, acceptsMarketing})
         }
     ]};

@@ -22,6 +22,17 @@ export interface IApiSuccessResponse {
     application_state?: IApplicationState;
 }
 
+export interface IApiSubrequestSuccessResponse extends IApiSuccessResponse {
+    endpoint: string,
+    method: string,
+    status_code: number
+}
+
+export interface IApiBatchResponse {
+    data: Array<IApiSubrequestResponse>
+    application_state?: IApplicationState;
+}
+
 export interface IApiAcceptedResponse {
     handleSCA?: boolean;
 }
@@ -103,7 +114,7 @@ export interface IApiReturnObject {
     status: number;
     success: boolean;
     error: null | IFetchError;
-    response: null | IApiResponse;
+    response: null | IApiResponse | IApiBatchResponse;
 }
 
 export interface IFetchCallback extends Function {
@@ -205,6 +216,12 @@ export interface IApiErrorResponse {
 
 export interface IApiErrorsResponse {
     errors: Array<IApiErrorResponse>
+}
+
+export interface IApiSubrequestErrorsResponse extends IApiErrorsResponse{
+    endpoint: string,
+    method: string,
+    status_code: number,
 }
 
 export interface IApiTypes {
@@ -364,6 +381,7 @@ export interface ICheckoutProcess{
     accepts_marketing_checkbox_option: string,
     tax_exempt_checkbox_enabled?: boolean,
     tax_shipping?: boolean,
+    batch_requests?: boolean,
 }
 
 export interface IAddressAutoComplete{
@@ -377,19 +395,19 @@ export interface IGeneralSettings{
 }
 
 export interface IExpressPayStripe {
-   type: string;
-   key: string;
-   stripe_user_id: string;
-   account_country: string;
-   public_id: string;
+    type: string;
+    key: string;
+    stripe_user_id: string;
+    account_country: string;
+    public_id: string;
 }
 
 export interface IExpressPayPaypal {
-   type: string;
-   is_test: boolean;
-   client_id: string;
-   button_style: Record<string, unknown>;
-   public_id: string;
+    type: string;
+    is_test: boolean;
+    client_id: string;
+    button_style: Record<string, unknown>;
+    public_id: string;
 }
 
 export interface IExpressPayPaypalCommercePlatform {
@@ -621,10 +639,10 @@ export interface IAddGuestCustomerRequest {
 }
 
 export interface ILineItemRequest {
-   line_item_key: string;
-   quantity: number;
-   platform_id?: string;
-   sku?: string;
+    line_item_key: string;
+    quantity: number;
+    platform_id?: string;
+    sku?: string;
 }
 
 export interface ILineItemRequestWithSku extends ILineItemRequest {
@@ -661,6 +679,8 @@ export interface IValidateAddressRequest {
 }
 
 export type IApiResponse = IApiErrorResponse | IApiErrorsResponse | IApiSuccessResponse | IApiAcceptedResponse;
+
+export type IApiSubrequestResponse = IApiSubrequestErrorsResponse  | IApiSubrequestSuccessResponse;
 
 export type ISetShippingAddressRequest = IAddress;
 

@@ -145,6 +145,7 @@ export const generalSettings: IGeneralSettings = {
         accepts_marketing_checkbox_option: 'checked',
         tax_exempt_checkbox_enabled: undefined,
         tax_shipping: true,
+        batch_requests: false
     },
     address_autocomplete: {
         provider: null,

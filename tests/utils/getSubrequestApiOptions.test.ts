@@ -9,7 +9,7 @@ describe('multiple getSubRequests tests - success', () => {
             type: '',
             body: {},
             expectedOptions: {
-                endpoint: 'https://api.boldcommerce.com/checkout/storefront//',
+                endpoint: '',
                 method: 'GET',
                 payload: null,
             },
@@ -19,7 +19,7 @@ describe('multiple getSubRequests tests - success', () => {
             type: 'updateCustomer',
             body: { token: '' },
             expectedOptions: {
-                endpoint: 'https://api.boldcommerce.com/checkout/storefront///customer',
+                endpoint: '/customer',
                 method: 'PUT',
                 payload: JSON.stringify({token: ''})
             },
@@ -39,7 +39,7 @@ describe('multiple getSubRequests tests - success', () => {
     test('Test with addGuestCustomer ', () => {
         const type = 'addGuestCustomer';
 
-        const expectedResult = { method: 'POST', endpoint: 'https://api.boldcommerce.com/checkout/storefront///customer/guest', payload: JSON.stringify({ test: '' })};
+        const expectedResult = { method: 'POST', endpoint: '/customer/guest', payload: JSON.stringify({ test: '' })};
 
         const response = getSubrequestApiOptions(type as keyof IApiTypes, JSON.parse(expectedResult.payload));
 
@@ -49,7 +49,7 @@ describe('multiple getSubRequests tests - success', () => {
     test('Test with validateEmail ', () => {
         const type = 'validateEmail';
 
-        const expectedResult = { method: 'GET', endpoint: 'https://api.boldcommerce.com/checkout/storefront///validate_email_address', payload: JSON.stringify({ test: 'someemail@boldcommerce.com' })};
+        const expectedResult = { method: 'GET', endpoint: '/validate_email_address', payload: JSON.stringify({ test: 'someemail@boldcommerce.com' })};
 
         const response = getSubrequestApiOptions(type as keyof IApiTypes, JSON.parse(expectedResult.payload));
 
@@ -58,7 +58,7 @@ describe('multiple getSubRequests tests - success', () => {
 
     test('Test with no body', () => {
         const type = 'getPaymentIframe';
-        const expectedResult = { method: 'GET', endpoint:'https://api.boldcommerce.com/checkout/storefront///payments/iframe', payload: null};
+        const expectedResult = { method: 'GET', endpoint:'/payments/iframe', payload: null};
 
         const response = getSubrequestApiOptions(type as keyof IApiTypes);
 
