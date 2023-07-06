@@ -10,6 +10,7 @@
 - [general\_settings](IOrderInitialData.md#general_settings)
 - [shop\_name](IOrderInitialData.md#shop_name)
 - [supported\_languages](IOrderInitialData.md#supported_languages)
+- [life\_fields](ILifeField.md#life_fields)
 
 ## Properties
 
@@ -46,3 +47,11 @@ ___
 ### supported\_languages
 
 • **supported\_languages**: [`ISupportedLanguage`](ISupportedLanguage.md)[]
+
+___
+
+### life\_fields
+
+• **life\_fields**: [`ILifeField`](ILifeField.md)[]
+
+___

@@ -338,7 +338,8 @@ export const orderInitialDataMock: IOrderInitialData = {
             account_country: ''
         }
     ],
-    external_payment_gateways: []
+    external_payment_gateways: [],
+    life_fields: [],
 };
 
 export const cssRuleMock: ICssRule = {

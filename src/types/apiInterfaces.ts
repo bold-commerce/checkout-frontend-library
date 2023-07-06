@@ -326,8 +326,9 @@ export interface IOrderInitialData {
     country_info: Array<ICountryInformation>;
     supported_languages: Array<ISupportedLanguage>;
     general_settings: IGeneralSettings;
-    alternative_payment_methods: IAlternativePaymentMethod
-    external_payment_gateways:  IExternalPaymentGateways
+    alternative_payment_methods: IAlternativePaymentMethod;
+    external_payment_gateways:  IExternalPaymentGateways;
+    life_fields: Array<ILifeField>;
 }
 
 export interface ISupportedLanguage {
@@ -430,6 +431,18 @@ export interface IExternalPaymentGateway {
     public_id: string;
     location: string;
     currency: string;
+}
+
+export interface ILifeField {
+    input_default: string | null;
+    input_label: string | null;
+    input_placeholder: string | null;
+    input_required: boolean;
+    input_type: string;
+    location: string;
+    meta_data_field: string;
+    order_asc: number;
+    public_id: string;
 }
 
 export interface IExternalPaymentGatewayLanguage {
