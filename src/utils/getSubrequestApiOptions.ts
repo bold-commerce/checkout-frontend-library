@@ -1,4 +1,4 @@
-import {apiTypes, methods, IApiTypes, IGetApiOptionsBody, getApiUrl, IBatchSubrequest} from 'src';
+import {apiTypes, methods, IApiTypes, IGetApiOptionsBody, IBatchSubrequest} from 'src';
 
 /** getSubrequestApiOptions
  *
@@ -10,7 +10,7 @@ import {apiTypes, methods, IApiTypes, IGetApiOptionsBody, getApiUrl, IBatchSubre
  */
 export function getSubrequestApiOptions(type: keyof IApiTypes, b: IGetApiOptionsBody = {}): IBatchSubrequest {
     const { method } = apiTypes[type] ?? {method: methods.GET};
-    const endpoint = getApiUrl(type);
+    const { path } = apiTypes[type] ?? {path: ''};
     const payload: BodyInit | null = b && Object.keys(b).length === 0 ? null : JSON.stringify(b);
-    return { method, endpoint, payload };
+    return { method, endpoint : path, payload };
 }

@@ -29,8 +29,8 @@ export async function batchRequest( requests: Array<IBatchableRequest>, numOfRet
     requests.forEach(batchRequest => {
         subRequests.push(getSubrequestApiOptions(batchRequest.apiType,batchRequest.payload));
     });
-    const options = getApiOptions(batchRequest, { 'sub-requests' : subRequests });
+    const options = getApiOptions(batchRequest, { 'sub_requests' : subRequests });
     const fetchRes = await fetchAPI(url, options, numOfRetries);
-    const {keysToTest} = apiTypes.addGuestCustomer;
+    const {keysToTest} = apiTypes.batchRequest;
     return checkApiResponse(fetchRes, keysToTest);
 }
