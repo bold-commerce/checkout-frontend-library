@@ -145,6 +145,7 @@ export const generalSettings: IGeneralSettings = {
         accepts_marketing_checkbox_option: 'checked',
         tax_exempt_checkbox_enabled: undefined,
         tax_shipping: true,
+        batch_requests: false
     },
     address_autocomplete: {
         provider: null,
@@ -180,6 +181,7 @@ export const applicationState: IApplicationState = {
     shipping,
     order_total: 0,
     resumable_link: '',
+    link_to_cart: null,
     currency,
     created_via: '',
     is_processed: false,
@@ -192,7 +194,8 @@ export const orderInitialData: IOrderInitialData = {
     general_settings: generalSettings,
     supported_languages: [supportedLanguages],
     alternative_payment_methods: [],
-    external_payment_gateways: []
+    external_payment_gateways: [],
+    life_fields: [],
 };
 
 export const retryErrorCodeList: Array<number> = [
