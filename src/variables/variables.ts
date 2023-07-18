@@ -195,7 +195,7 @@ export const orderInitialData: IOrderInitialData = {
     supported_languages: [supportedLanguages],
     alternative_payment_methods: [],
     external_payment_gateways: [],
-    life_fields: [],
+    life_elements: [],
 };
 
 export const retryErrorCodeList: Array<number> = [
