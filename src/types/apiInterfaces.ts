@@ -346,6 +346,7 @@ export interface IOrderInitialData {
     alternative_payment_methods: IAlternativePaymentMethod;
     external_payment_gateways:  IExternalPaymentGateways;
     life_elements: Array<ILifeField>;
+    flow_settings: Record<string, unknown>;
 }
 
 export interface ISupportedLanguage {
