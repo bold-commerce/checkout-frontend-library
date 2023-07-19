@@ -52,6 +52,6 @@ ___
 
 ### life\_fields
 
-• **life\_fields**: [`ILifeField`](ILifeField.md)[]
+• **life\_elements**: [`ILifeField`](ILifeField.md)[]
 
 ___

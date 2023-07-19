@@ -340,7 +340,7 @@ export const orderInitialDataMock: IOrderInitialData = {
         }
     ],
     external_payment_gateways: [],
-    life_fields: [],
+    life_elements: [],
 };
 
 export const cssRuleMock: ICssRule = {
