@@ -708,7 +708,8 @@ export interface IAddPaymentRequest {
     type?: string;
     display_string?: string;
     token: string;
-    retain?: boolean
+    retain?: boolean;
+    custom_attributes?: Record<string, string|number|boolean>;
 }
 
 export type IUpdatePaymentRequest = IAddPaymentRequest;
