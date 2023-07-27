@@ -2,6 +2,8 @@ import {apiErrors, baseReturnObject, FetchError, IPigiActionType, sendPigiAction
 import {pigi} from 'src/variables';
 import * as getPigiFrameWindow from 'src/pigi/getPigiFrameWindow';
 
+const flushPromises = () => new Promise(jest.requireActual('timers').setImmediate);
+
 describe('testing send pigi Action', () => {
     pigi.iFrameId = 'PIGI';
     const action: IPigiActionType = { actionType: 'TEST_ACTION' };
@@ -117,6 +119,7 @@ describe('testing send pigi Action', () => {
     });
 
     test('calling sendPigiActionAsync invalid data', async () => {
+        jest.useFakeTimers();
         const iFrame = document.createElement('iframe');
         iFrame.setAttribute('id', pigi.iFrameId);
         iFrame.src = src;
@@ -136,8 +139,11 @@ describe('testing send pigi Action', () => {
             removeEventListener: removeEventListenerMock
         });
 
+        sendPigiActionAsync(action).catch(error => {expect(error).toBe('Pigi response timeout');});
 
-        await sendPigiActionAsync(action).catch(error => {expect(error).toBe('Pigi response timeout');});
+        jest.advanceTimersByTime(10_001);
+
+        await flushPromises();
 
         expect(getPigiFrameWindowSpy).toHaveBeenCalledTimes(calledOnce);
         expect(postMessageSpy).toHaveBeenCalledTimes(calledOnce);
