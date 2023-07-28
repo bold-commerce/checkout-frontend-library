@@ -18,6 +18,7 @@ export interface IApiSuccessResponse {
         ICheckInventoryResponse |
         IAddPaymentResponse |
         IUpdateLineItemQuantityResponse |
+        IProcessOrderResponse |
         IPatchOrderMetaDataResponse;
     application_state?: IApplicationState;
 }
@@ -159,6 +160,10 @@ export interface IAddDiscountResponse {
 }
 
 export interface IDeleteDiscountResponse {
+    application_state: IApplicationState | undefined;
+}
+
+export interface IProcessOrderResponse {
     application_state: IApplicationState | undefined;
 }
 
@@ -709,6 +714,8 @@ export interface IAddPaymentRequest {
     display_string?: string;
     token: string;
     retain?: boolean;
+    nonce?: string;
+    extra_payment_data?: Record<string, unknown>;
     custom_attributes?: Record<string, string|number|boolean>;
 }
 
