@@ -352,6 +352,7 @@ export interface IOrderInitialData {
     external_payment_gateways:  IExternalPaymentGateways;
     life_elements: Array<ILifeField>;
     flow_settings: Record<string, unknown>;
+    requires_shipping: boolean;
 }
 
 export interface ISupportedLanguage {
