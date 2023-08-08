@@ -197,6 +197,7 @@ export const orderInitialData: IOrderInitialData = {
     external_payment_gateways: [],
     life_elements: [],
     flow_settings: {},
+    requires_shipping: true,
 };
 
 export const retryErrorCodeList: Array<number> = [
