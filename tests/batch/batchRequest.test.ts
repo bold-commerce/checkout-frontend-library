@@ -75,7 +75,7 @@ describe('testing batchRequest', () => {
         expect(getApiOptionsSpy).toHaveBeenCalledWith(apiTypeKeys.batchRequest, subrequests);
         expect(getApiUrlSpy).toHaveBeenCalledWith(apiTypeKeys.batchRequest);
         expect(fetchApiSpy).toHaveBeenCalledWith('https://api.boldcommerce.com/checkout/storefront///batch', optionsMock, 0);
-        expect(checkApiResponseSpy).toHaveBeenCalledWith(returnObject, keysToTest);
+        expect(checkApiResponseSpy).toHaveBeenCalledWith(returnObject, keysToTest, true);
         expect(res).toStrictEqual(returnObject);
     });
 

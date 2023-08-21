@@ -13,7 +13,7 @@ import {
 import {setApplicationState} from 'src/state';
 import {setOrderInitialData} from 'src/state/setOrderInitialData';
 
-export function checkApiResponse(fetchRes: IApiReturnObject, keysToCheck?: Array<string>): IApiReturnObject {
+export function checkApiResponse(fetchRes: IApiReturnObject, keysToCheck?: Array<string>, checkOnFail = false): IApiReturnObject {
     const success = fetchRes.success;
     const response = fetchRes.response as IApiResponse;
     const errorMessages: Array<string> = [];
@@ -23,7 +23,7 @@ export function checkApiResponse(fetchRes: IApiReturnObject, keysToCheck?: Array
         fetchRes.error = new FetchError(apiErrors.emptyKeysToCheck.status, apiErrors.emptyKeysToCheck.message);
         return fetchRes;
     }
-    if(success) {
+    if(checkOnFail || success) {
         keysToCheck.map((key: string) => {
             const parentElement = findKeyInObject(response, key);
             if (parentElement || parentElement === '') {

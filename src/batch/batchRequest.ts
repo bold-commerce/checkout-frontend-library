@@ -32,5 +32,5 @@ export async function batchRequest( requests: Array<IBatchableRequest>, numOfRet
     const options = getApiOptions(batchRequest, { 'sub_requests' : subRequests });
     const fetchRes = await fetchAPI(url, options, numOfRetries);
     const {keysToTest} = apiTypes.batchRequest;
-    return checkApiResponse(fetchRes, keysToTest);
+    return checkApiResponse(fetchRes, keysToTest, true);
 }
