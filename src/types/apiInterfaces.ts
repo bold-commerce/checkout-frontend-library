@@ -464,6 +464,7 @@ export interface ILifeField {
     input_placeholder: string | null;
     input_required: boolean;
     input_type: string;
+    input_regex: string | null;
     location: string;
     meta_data_field: string;
     order_asc: number;
