@@ -9,6 +9,7 @@
 - [input\_placeholder](ILifeField.md#input_placeholder)
 - [input\_required](ILifeField.md#input_required)
 - [input\_type](ILifeField.md#input_type)
+- [input\_regex](ILifeField.md#input_regex)
 - [location](ILifeField.md#location)
 - [meta\_data\_field](ILifeField.md#meta_data_field)
 - [order\_asc](ILifeField.md#order_asc)
@@ -42,6 +43,11 @@ ___
 ### input\_type
 
 • **input\_type**: `string`
+___
+
+### input\_regex
+
+• **input\_regex**: ``null`` \| `string`
 ___
 
 ### location
