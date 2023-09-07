@@ -8,7 +8,7 @@ describe('testing send external payment gateway process order action', () => {
     let sendExternalPaymentGatewayActionToIframeSpy: jest.SpyInstance;
     const calledOnce = 1;
     const gateway: IExternalPaymentGateway = {
-        base_url: '', iframe_url: '', is_test: false, location: '', public_id: '', target_div: '', currency: ''
+        base_url: '', iframe_url: '', is_test: false, location: '', public_id: '', currency: ''
     };
 
     beforeEach(() => {

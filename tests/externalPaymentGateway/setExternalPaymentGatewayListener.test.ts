@@ -21,7 +21,7 @@ describe('setExternalPaymentGatewayListener', () => {
     });
 
     const gateway: IExternalPaymentGateway = {
-        base_url: '', iframe_url: '', is_test: false, location: '', public_id: '', target_div: '', currency: ''
+        base_url: '', iframe_url: '', is_test: false, location: '', public_id: '', currency: ''
     };
 
     test('successful initialize', async () => {

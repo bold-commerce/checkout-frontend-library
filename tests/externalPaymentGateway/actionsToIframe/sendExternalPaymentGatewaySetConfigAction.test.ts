@@ -7,7 +7,7 @@ import * as sendExternalPaymentGatewayActionToIframe from 'src/externalPaymentGa
 describe('testing send external payment gateway set config action', () => {
     let sendExternalPaymentGatewayActionToIframeSpy: jest.SpyInstance;
     const gateway: IExternalPaymentGateway = {
-        base_url: '', iframe_url: '', is_test: false, location: '', public_id: '', target_div: '', currency: ''
+        base_url: '', iframe_url: '', is_test: false, location: '', public_id: '', currency: ''
     };
 
     const actionMock = {

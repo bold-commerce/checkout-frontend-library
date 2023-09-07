@@ -7,7 +7,6 @@
 - [base\_url](IExternalPayment.md#base_url)
 - [iframe\_url](IExternalPayment.md#iframe_url)
 - [is\_test](IExternalPayment.md#is_test)
-- [target\_div](IExternalPayment.md#target_div)
 
 ## Properties
 
