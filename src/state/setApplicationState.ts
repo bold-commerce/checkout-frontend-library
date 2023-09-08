@@ -12,6 +12,7 @@ import {
     setTaxes
 } from 'src/state';
 import {applicationState} from 'src/variables';
+import {setDisplayCurrency} from 'src/state/setDisplayCurrency';
 
 export function setApplicationState({
     customer,
@@ -27,7 +28,9 @@ export function setApplicationState({
     created_via,
     is_processed,
     fees,
-    currency
+    currency,
+    display_currency,
+    display_exchange_rate,
 }: IApplicationState): void {
     setCustomer(customer);
     setAddresses(addresses);
@@ -39,6 +42,10 @@ export function setApplicationState({
     setShipping(shipping);
     setFees(fees);
     setCurrency(currency);
+    if (display_currency) {
+        setDisplayCurrency(display_currency);
+        applicationState.display_exchange_rate = display_exchange_rate;
+    }
     applicationState.order_total = order_total;
     applicationState.resumable_link = resumable_link;
     applicationState.created_via = created_via;

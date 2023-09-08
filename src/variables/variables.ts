@@ -127,6 +127,15 @@ export const currency: ICurrency = {
     show_iso_code: true
 };
 
+export const display_currency: ICurrency = {
+    iso_code: 'cad',
+    iso_numeric_code: 124,
+    symbol: '$',
+    format: '${amount}',
+    has_decimal: false,
+    show_iso_code: true
+};
+
 export const countryInfo: ICountryInformation = {
     iso_code: 'CA',
     name: 'Canada',
@@ -183,6 +192,8 @@ export const applicationState: IApplicationState = {
     resumable_link: '',
     link_to_cart: null,
     currency,
+    display_currency,
+    display_exchange_rate: 1,
     created_via: '',
     is_processed: false,
     fees,
