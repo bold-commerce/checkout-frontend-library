@@ -7,6 +7,8 @@
 - [addresses](IApplicationState.md#addresses)
 - [created\_via](IApplicationState.md#created_via)
 - [currency](IApplicationState.md#currency)
+- [display_currency](IApplicationState.md#display_currency)
+- [display_exchange_rate](IApplicationState.md#display_exchange_rate)
 - [customer](IApplicationState.md#customer)
 - [discounts](IApplicationState.md#discounts)
 - [fees](IApplicationState.md#fees)
@@ -39,6 +41,18 @@ ___
 
 ___
 
+### display_currency
+
+• **display_currency**: [`ICurrency`](ICurrency.md) | ``undefined``
+
+___
+
+### display_exchange_rate
+
+• **display_exchange_rate**: ``number`` | ``undefined``
+
+___
+
 ### customer
 
 • **customer**: [`ICustomer`](ICustomer.md)
@@ -53,7 +67,7 @@ ___
 
 ### fees
 
-• **fees**: `undefined` \| [`IFees`](IFees.md)[]
+• **fees**: `undefined` | [`IFees`](IFees.md)[]
 
 ___
 
@@ -89,7 +103,7 @@ ___
 
 ### resumable\_link
 
-• **resumable\_link**: ``null`` \| `string`
+• **resumable\_link**: ``null`` | `string`
 
 ___
 

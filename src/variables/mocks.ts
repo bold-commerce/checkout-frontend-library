@@ -230,6 +230,14 @@ export const currency: ICurrency = {
     show_iso_code: true
 };
 
+export const display_currency: ICurrency = {
+    iso_code: 'cad',
+    iso_numeric_code: 124,
+    symbol: '$',
+    format: '${amount}',
+    has_decimal: false,
+    show_iso_code: true
+};
 
 export const shippingMock: IShipping = {
     selected_shipping: selectShippingLineMock,
@@ -263,6 +271,8 @@ export const applicationStateMock: IApplicationState = {
     resumable_link: null,
     link_to_cart: null,
     currency: currency,
+    display_currency: display_currency,
+    display_exchange_rate: 1,
     is_processed: false,
     created_via: 'checkout',
     fees: [feesMock]
