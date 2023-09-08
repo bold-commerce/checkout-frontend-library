@@ -451,7 +451,6 @@ export interface IExpressPayBraintreeApple extends IExpressPayBraintree {
 export interface IExternalPaymentGateway {
     is_test: boolean;
     iframe_url: string;
-    target_div: string;
     base_url: string;
     public_id: string;
     location: string;

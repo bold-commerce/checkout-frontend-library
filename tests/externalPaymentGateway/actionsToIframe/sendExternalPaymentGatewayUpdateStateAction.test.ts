@@ -10,7 +10,7 @@ describe('testing send external payment gateway update state Message Action', ()
     let sendExternalPaymentGatewayActionToIframeSpy: jest.SpyInstance;
     const calledOnce = 1;
     const gateway: IExternalPaymentGateway = {
-        base_url: '', iframe_url: '', is_test: false, location: '', public_id: '', target_div: '', currency: ''
+        base_url: '', iframe_url: '', is_test: false, location: '', public_id: '', currency: ''
     };
     const state: IInitializeOrderResponse = initializeOrderResponseMock;
 
