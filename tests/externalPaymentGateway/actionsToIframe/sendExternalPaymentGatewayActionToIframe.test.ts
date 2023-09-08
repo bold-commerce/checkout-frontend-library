@@ -7,7 +7,7 @@ import * as getExternalPaymentGatewayIframeWindow from 'src/externalPaymentGatew
 
 describe('testing send external payment gateway action to iframe', () => {
     const gateway: IExternalPaymentGateway = {
-        base_url: '', iframe_url: '', is_test: false, location: '', public_id: '', target_div: '', currency: ''
+        base_url: '', iframe_url: '', is_test: false, location: '', public_id: '', currency: ''
     };
 
     const html_string = '<html><body>test</body></html>';
