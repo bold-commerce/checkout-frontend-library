@@ -127,14 +127,7 @@ export const currency: ICurrency = {
     show_iso_code: true
 };
 
-export const display_currency: ICurrency = {
-    iso_code: 'cad',
-    iso_numeric_code: 124,
-    symbol: '$',
-    format: '${amount}',
-    has_decimal: false,
-    show_iso_code: true
-};
+export const display_currency: ICurrency | null = null;
 
 export const countryInfo: ICountryInformation = {
     iso_code: 'CA',
@@ -193,7 +186,7 @@ export const applicationState: IApplicationState = {
     link_to_cart: null,
     currency,
     display_currency,
-    display_exchange_rate: 1,
+    display_exchange_rate: null,
     created_via: '',
     is_processed: false,
     fees,

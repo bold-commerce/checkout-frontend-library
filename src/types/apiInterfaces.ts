@@ -493,8 +493,8 @@ export interface IApplicationState {
     order_total: number;
     order_meta_data: IOrderMetaData;
     currency: ICurrency;
-    display_currency: ICurrency | undefined;
-    display_exchange_rate: number | undefined;
+    display_currency: ICurrency | null;
+    display_exchange_rate: number | null;
     resumable_link: string | null;
     link_to_cart: string | null;
     is_processed: boolean;

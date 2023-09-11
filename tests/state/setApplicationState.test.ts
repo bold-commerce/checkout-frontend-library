@@ -45,6 +45,15 @@ describe('setApplicationState', () => {
     });
 
     test('Set application state', () => {
+        applicationStateMock.display_currency = {
+            iso_code: 'cad',
+            iso_numeric_code: 124,
+            symbol: '$',
+            format: '${amount}',
+            has_decimal: false,
+            show_iso_code: true
+        };
+        applicationStateMock.display_exchange_rate = 1;
 
         setApplicationState(applicationStateMock);
 
@@ -79,11 +88,11 @@ describe('setApplicationState', () => {
         expect(applicationState).toStrictEqual(applicationStateMock);
     });
 
-    test('Set application state no display currency', () => {
+    test('Set application state with no display currency', () => {
 
         const applicationStateMock2 = applicationState;
-        delete applicationStateMock2.display_currency;
-        delete applicationStateMock2.display_exchange_rate;
+        applicationStateMock2.display_exchange_rate = null;
+        applicationStateMock2.display_currency = null;
         setApplicationState(applicationStateMock2);
 
         expect(setCustomerSpy).toHaveBeenCalledTimes(1);
