@@ -290,6 +290,12 @@ export const apiTypes: IApiTypes = {
         method: methods.POST,
         useJwt: true,
         keysToTest: [...appStateKeysToTest]
+    },
+    addLog: {
+        path: '/log',
+        method: methods.POST,
+        useJwt: true,
+        keysToTest: [keysToTestFromResponse.data]
     }
 };
 
@@ -325,7 +331,8 @@ export const apiTypeKeys: IApiTypeKeys = {
     deletePayment: 'deletePayment',
     deleteGiftCardPayment: 'deleteGiftCardPayment',
     patchOrderMetaData: 'patchOrderMetaData',
-    batchRequest: 'batchRequest'
+    batchRequest: 'batchRequest',
+    addLog: 'addLog'
 };
 
 export const baseReturnObject: IApiReturnObject = {

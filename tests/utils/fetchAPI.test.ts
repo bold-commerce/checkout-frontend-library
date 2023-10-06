@@ -63,13 +63,27 @@ describe('test fetchAPI functionality', () => {
 
             expect(result.error).toBeInstanceOf(FetchError);
             expect((result.error as FetchError).status).toBe(status);
-            expect((result.error as FetchError).message).toContain('TypeError');
+            expect((result.error as FetchError).message).toContain('General error thrown');
         });
 
         test('callFetch fails: handles exception with message', async () => {
             // eslint-disable-next-line @typescript-eslint/ban-ts-comment
             // @ts-ignore
             fetchMock.mockImplementationOnce(() => {throw new Error('Test exception was thrown');});
+            const { status } = apiErrors.general;
+
+            const result = await callFetch(url, 0, 0, options);
+
+            expect(result.error).toBeInstanceOf(FetchError);
+            expect((result.error as FetchError).status).toBe(status);
+            expect((result.error as FetchError).message).toContain('Test exception');
+            expect(fetchMock).toHaveBeenCalledWith(url, options);
+        });
+
+        test('callFetch fails: handles non Error instance exception', async () => {
+            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+            // @ts-ignore
+            fetchMock.mockImplementationOnce(() => {throw 'Test exception was thrown';});
             const { status } = apiErrors.general;
 
             const result = await callFetch(url, 0, 0, options);

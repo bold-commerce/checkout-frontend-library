@@ -69,6 +69,22 @@ describe('checkApiResponse', () => {
         expect(getErrorFromFieldNameSpy).not.toHaveBeenCalled();
     });
 
+    test('Call with success false, check on fail, no keys to check and error metadata', () => {
+        const errorSuccessFalse = new FetchError(apiErrors.general.status, apiErrors.general.message);
+        const expected = new FetchError(apiErrors.errorsInResponse.status, apiErrors.errorsInResponse.message, undefined, undefined,
+            {
+                error: errorSuccessFalse,
+                fields: [apiErrors.emptyResData.message, apiErrors.noAppState.message]
+            });
+
+        const resultCheckApiResponse = checkApiResponse(fetchResponseProvider.successFalseFetchResponseWithMetaData, keyToTest, true);
+        expect(resultCheckApiResponse.success).toBe(false);
+        expect(resultCheckApiResponse.error).toStrictEqual(expected);
+        expect(findKeyInObjectSpy).toHaveBeenCalled();
+        expect(setApplicationStateSpy).not.toHaveBeenCalled();
+        expect(getErrorFromFieldNameSpy).toHaveBeenCalled();
+    });
+
     test.each(fetchResponseProvider.populatedFetchResponse)('Call with Shipping Address / Shipping Lines populated data', (data) => {
         const resultCheckApiResponse = checkApiResponse(data, [keysToTestFromResponse.data, keysToTestFromResponse.applicationState, keysToTestFromResponse.initial_data]);
         expect(resultCheckApiResponse.success).toBe(true);
@@ -199,6 +215,7 @@ describe('checkApiResponse', () => {
 
 function initializeFetchResponseProvider() {
     const errorSuccessFalse = new FetchError(apiErrors.general.status, apiErrors.general.message);
+    const errorSuccessFalseWithMetaData = new FetchError(apiErrors.general.status, apiErrors.general.message, undefined, null, {error: errorSuccessFalse});
     return {
         emptyFetchResponse: {
             status: 200,
@@ -219,6 +236,14 @@ function initializeFetchResponseProvider() {
             success: false,
             error: errorSuccessFalse,
             response: null,
+        },
+        successFalseFetchResponseWithMetaData: {
+            status: 500,
+            success: false,
+            error: errorSuccessFalseWithMetaData,
+            response: {
+                data: undefined,
+            },
         },
         undefinedApplicationStateFetchResponse: {
             status: 200,

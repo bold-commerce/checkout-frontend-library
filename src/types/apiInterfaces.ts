@@ -19,7 +19,8 @@ export interface IApiSuccessResponse {
         IAddPaymentResponse |
         IUpdateLineItemQuantityResponse |
         IProcessOrderResponse |
-        IPatchOrderMetaDataResponse;
+        IPatchOrderMetaDataResponse |
+        IAddLogResponse;
     application_state?: IApplicationState;
 }
 
@@ -202,6 +203,10 @@ export interface IPatchOrderMetaDataResponse {
     application_state: IApplicationState | undefined;
 }
 
+export interface IAddLogResponse {
+    success: boolean;
+}
+
 export interface IAddPaymentResponse {
     payment: IPayment;
     application_state: IApplicationState | undefined;
@@ -262,6 +267,7 @@ export interface IApiTypes {
     deleteGiftCardPayment: IApiTypesDetail;
     patchOrderMetaData: IApiTypesDetail;
     batchRequest: IApiTypesDetail;
+    addLog: IApiTypesDetail;
 }
 
 export interface IApiTypeKeys {
@@ -297,6 +303,7 @@ export interface IApiTypeKeys {
     deleteGiftCardPayment: keyof  IApiTypes;
     patchOrderMetaData: keyof IApiTypes;
     batchRequest: keyof IApiTypes;
+    addLog: keyof IApiTypes;
 }
 
 export interface IValidateAddress {
