@@ -51,3 +51,4 @@ export {
     getCurrency
 } from './state';
 export * from './pigi';
+export * from './log';

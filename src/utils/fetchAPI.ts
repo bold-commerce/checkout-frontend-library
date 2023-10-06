@@ -5,7 +5,7 @@ const sleep = (time: number) => new Promise(func => setTimeout(func, time));
 /**
  * # FetchAPI
  *
- * This function takes in a url and optional parameters, fetches data from the specified api and returns the data
+ * This function takes in an url and optional parameters, fetches data from the specified api and returns the data
  *
  * @param url URL to fetch data from
  * @param numOfRetries
@@ -38,7 +38,11 @@ export async function callFetch(url: RequestInfo, numOfRetries: number, totalNum
         }
     } catch(e) {
         const { status, message } = apiErrors.general;
-        returnObject.error = new FetchError(status, `${message} - ${e}`);
+        if (e instanceof Error) {
+            returnObject.error = new FetchError(status, `${message} - ${e.message}`, message, null, {error: e});
+        } else {
+            returnObject.error = new FetchError(status, `${message} - ${e}`);
+        }
         returnObject.success = false;
         return returnObject;
     }

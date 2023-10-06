@@ -16,6 +16,7 @@ import {setOrderInitialData} from 'src/state/setOrderInitialData';
 export function checkApiResponse(fetchRes: IApiReturnObject, keysToCheck?: Array<string>, checkOnFail = false): IApiReturnObject {
     const success = fetchRes.success;
     const response = fetchRes.response as IApiResponse;
+    const originalError = fetchRes.error;
     const errorMessages: Array<string> = [];
 
     if (!keysToCheck || (Array.isArray(keysToCheck) && keysToCheck.length <= 0)) {
@@ -57,8 +58,9 @@ export function checkApiResponse(fetchRes: IApiReturnObject, keysToCheck?: Array
         });
 
         if (errorMessages.length > 0) {
+            const metaData = originalError?.metaData ? {...originalError.metaData, fields: errorMessages} : {fields: errorMessages};
             fetchRes.success = false;
-            fetchRes.error = new FetchError(apiErrors.errorsInResponse.status, apiErrors.errorsInResponse.message, undefined, undefined, {fields: errorMessages});
+            fetchRes.error = new FetchError(apiErrors.errorsInResponse.status, apiErrors.errorsInResponse.message, undefined, undefined, metaData);
         }
     }
     return fetchRes;
