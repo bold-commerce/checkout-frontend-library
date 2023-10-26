@@ -95,6 +95,7 @@ export const alternatePaymentMethodType: IAlternatePaymentMethodType = {
     BRAINTREE_GOOGLE: 'braintree',
     BRAINTREE_APPLE: 'braintree-apple',
     PPCP_APPLE: 'paypal_commerce_platform-apple',
+    PPCP: 'paypal_commerce_platform',
 };
 
 export const checkInventoryStage: ICheckInventoryStage = {
@@ -255,6 +256,12 @@ export const apiTypes: IApiTypes = {
         useJwt: true,
         keysToTest: [...appStateKeysToTest]
     },
+    createPaymentGatewayOrder: {
+        path: '/payment_gateway_order',
+        method: methods.POST,
+        useJwt: true,
+        keysToTest: [...appStateKeysToTest]
+    },
     addPayment: {
         path: '/payments',
         method: methods.POST,
@@ -326,6 +333,7 @@ export const apiTypeKeys: IApiTypeKeys = {
     updateItem: 'updateItem',
     checkInventory: 'checkInventory',
     getPaymentList: 'getPaymentList',
+    createPaymentGatewayOrder: 'createPaymentGatewayOrder',
     addPayment: 'addPayment',
     updatePayment: 'updatePayment',
     deletePayment: 'deletePayment',
