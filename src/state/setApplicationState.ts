@@ -24,6 +24,7 @@ export function setApplicationState({
     order_meta_data,
     shipping,
     order_total,
+    order_balance,
     resumable_link,
     created_via,
     is_processed,
@@ -47,6 +48,7 @@ export function setApplicationState({
         applicationState.display_exchange_rate = display_exchange_rate;
     }
     applicationState.order_total = order_total;
+    applicationState.order_balance = order_balance;
     applicationState.resumable_link = resumable_link;
     applicationState.created_via = created_via;
     applicationState.is_processed = is_processed;

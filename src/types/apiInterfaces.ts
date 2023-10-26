@@ -523,6 +523,7 @@ export interface IApplicationState {
     discounts: Array<IDiscount>;
     payments: Array<IPayment>;
     order_total: number;
+    order_balance: number;
     order_meta_data: IOrderMetaData;
     currency: ICurrency;
     display_currency: ICurrency | null;
