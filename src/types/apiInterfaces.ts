@@ -17,6 +17,7 @@ export interface IApiSuccessResponse {
         ICssStylingPaymentIframeResponse |
         ICheckInventoryResponse |
         IAddPaymentResponse |
+        ICreatePaymentGatewayOrderResponse |
         IUpdateLineItemQuantityResponse |
         IProcessOrderResponse |
         IPatchOrderMetaDataResponse |
@@ -103,6 +104,7 @@ export interface IAlternatePaymentMethodType {
     BRAINTREE_GOOGLE: string;
     BRAINTREE_APPLE: string;
     PPCP_APPLE: string;
+    PPCP: string;
 }
 
 export type IInventoryStage = 'initial' | 'final';
@@ -212,6 +214,15 @@ export interface IAddPaymentResponse {
     application_state: IApplicationState | undefined;
 }
 
+export interface ICreatePaymentGatewayOrderPaypalResponse {
+    id: string
+}
+
+export interface ICreatePaymentGatewayOrderResponse {
+    data: ICreatePaymentGatewayOrderPaypalResponse | Record<string, unknown>;
+    application_state: IApplicationState | undefined;
+}
+
 export interface IGetPaymentIframeUrl {
     url: string | undefined;
 }
@@ -261,6 +272,7 @@ export interface IApiTypes {
     checkInventory: IApiTypesDetail;
     validateDiscount: IApiTypesDetail;
     getPaymentList: IApiTypesDetail;
+    createPaymentGatewayOrder: IApiTypesDetail;
     addPayment: IApiTypesDetail;
     updatePayment: IApiTypesDetail;
     deletePayment: IApiTypesDetail;
@@ -298,6 +310,7 @@ export interface IApiTypeKeys {
     validateDiscount: keyof  IApiTypes;
     getPaymentList: keyof  IApiTypes;
     addPayment: keyof  IApiTypes;
+    createPaymentGatewayOrder: keyof  IApiTypes;
     updatePayment: keyof  IApiTypes;
     deletePayment: keyof  IApiTypes;
     deleteGiftCardPayment: keyof  IApiTypes;
@@ -347,7 +360,7 @@ export interface IApiTypesDetail {
     keysToTest?: Array<string>;
 }
 
-export type IAlternativePaymentMethod = Array<IExpressPayStripe | IExpressPayPaypal | IExpressPayBraintreeGoogle | IExpressPayBraintreeApple | IExpressPayPaypalCommercePlatform> ;
+export type IAlternativePaymentMethod = Array<IExpressPayStripe | IExpressPayPaypal | IExpressPayBraintreeGoogle | IExpressPayBraintreeApple | IExpressPayPaypalCommercePlatform | IExpressPayPaypalCommercePlatformButton> ;
 export type IExternalPaymentGateways = Array<IExternalPaymentGateway>;
 
 export interface IOrderInitialData {
@@ -434,6 +447,19 @@ export interface IExpressPayPaypalCommercePlatform {
     merchant_id: string;
 }
 
+export interface IExpressPayPaypalCommercePlatformButton {
+    'public_id': string,
+    'merchant_id': string,
+    'partner_id': string,
+    'is_3ds_enabled': boolean,
+    'style': Record<string, unknown>,
+    'apple_pay_enabled': boolean,
+    'type': string,
+    'merchant_country': string,
+    'payment_types': Record<string, unknown>,
+    'is_dev': boolean
+}
+
 export interface IExpressPayBraintree {
     type: string;
     public_id: string;
@@ -497,6 +523,7 @@ export interface IApplicationState {
     discounts: Array<IDiscount>;
     payments: Array<IPayment>;
     order_total: number;
+    order_balance: number;
     order_meta_data: IOrderMetaData;
     currency: ICurrency;
     display_currency: ICurrency | null;
@@ -729,6 +756,16 @@ export interface IAddPaymentRequest {
     custom_attributes?: Record<string, string|number|boolean>;
 }
 
+export interface ICreatePaymentGatewayOrderPaypalPayload {
+    payment_type: string;
+    locale: string;
+}
+
+export interface ICreatePaymentGatewayOrderRequest{
+    gateway_type: string;
+    payment_data: ICreatePaymentGatewayOrderPaypalPayload | Record<string, unknown>
+}
+
 export type IUpdatePaymentRequest = IAddPaymentRequest;
 
 export type IDeletePaymentRequest = IAddPaymentRequest;
@@ -757,6 +794,7 @@ export type IGetApiOptionsBody =
     IUpdatePaymentRequest |
     IDeletePaymentRequest |
     IPatchOrderMetaDataRequest |
+    ICreatePaymentGatewayOrderRequest |
     Record<string, unknown>;
 
 export interface IShippingLine {

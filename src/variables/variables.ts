@@ -182,6 +182,7 @@ export const applicationState: IApplicationState = {
     order_meta_data,
     shipping,
     order_total: 0,
+    order_balance: 0,
     resumable_link: '',
     link_to_cart: null,
     currency,

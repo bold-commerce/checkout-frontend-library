@@ -268,6 +268,7 @@ export const applicationStateMock: IApplicationState = {
     order_meta_data: orderMetaDataMock,
     shipping: shippingMock,
     order_total: 10000,
+    order_balance: 10000,
     resumable_link: null,
     link_to_cart: null,
     currency: currency,
