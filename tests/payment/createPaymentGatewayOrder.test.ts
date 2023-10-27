@@ -30,7 +30,7 @@ describe('testing create payment gateway order ', () => {
     };
 
     const response: ICreatePaymentGatewayOrderResponse = {
-        data: {id: '1234'},
+        payment_data: {id: '1234'},
         application_state: applicationStateMock
     };
 
