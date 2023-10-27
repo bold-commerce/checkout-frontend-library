@@ -219,7 +219,7 @@ export interface ICreatePaymentGatewayOrderPaypalResponse {
 }
 
 export interface ICreatePaymentGatewayOrderResponse {
-    data: ICreatePaymentGatewayOrderPaypalResponse | Record<string, unknown>;
+    payment_data: ICreatePaymentGatewayOrderPaypalResponse | Record<string, unknown>;
     application_state: IApplicationState | undefined;
 }
 
