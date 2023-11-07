@@ -754,6 +754,7 @@ export interface IAddPaymentRequest {
     nonce?: string;
     extra_payment_data?: Record<string, unknown>;
     custom_attributes?: Record<string, string|number|boolean>;
+    wallet_pay_type?: 'applepay'|'paywithgoogle'|'paypal',
 }
 
 export interface ICreatePaymentGatewayOrderPaypalPayload {
