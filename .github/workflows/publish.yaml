@@ -1,0 +1,100 @@
+name: Publish Package
+run-name: Publish a ${{ inputs.releaseType }} change by ${{ github.actor }}
+
+on:
+    workflow_dispatch:
+      inputs:
+        releaseType:
+          description: 'Type of Change'
+          required: true
+          default: 'patch'
+          type: choice
+          options:
+            - minor
+            - major
+            - patch
+
+jobs:
+  publish:
+    name: Publish Package
+    runs-on: ubuntu-latest
+    permissions:
+        contents: write
+    env:
+      GH_TOKEN: ${{ github.token }}
+    outputs:
+      new_version: ${{ steps.set_new_version.outputs.new_version }}
+    steps:
+    - uses: actions/checkout@v4
+
+    - uses: actions/setup-node@v3
+      with:
+        node-version: '12.x'
+        registry-url: 'https://registry.npmjs.org'
+        scope: '@boldcommerce'
+        cache: 'yarn'
+
+    - name: Yarn install and build
+      run: |
+        yarn install --immutable --no-progress
+        yarn lint-ci
+        yarn test-ci
+        yarn build
+
+    - name: Get and set version number
+      id: set_new_version
+      run: |
+        last_release="$( git tag --sort=committerdate | sort -nr | head -n1 | sed 's/v//g' )"
+        release_type=${{ inputs.releaseType }}
+        echo "Creating new ${release_type} release after ${last_release}"
+        major=$(echo ${last_release} | cut -d v -f 2 | cut -d . -f 1)
+        minor=$(echo ${last_release} | cut -d . -f 2)
+        patch=$(echo ${last_release} | cut -d . -f 3)
+        case ${release_type} in
+            "major")
+                major="$(( $major + 1 ))"
+                minor=0
+                patch=0
+                ;;
+            "minor")
+                minor="$(( $minor + 1 ))"
+                patch=0
+                ;;
+            "patch")
+                patch="$(( $patch + 1 ))"
+                ;;
+        esac
+        new_version="${major}.${minor}.${patch}"
+        echo "New release is ${new_version}"
+        echo "new_version=${new_version}" >> "$GITHUB_OUTPUT"
+
+    - name: Bump package.json version
+      env:
+        new_version: ${{ steps.set_new_version.outputs.new_version }}
+      run: |
+        echo "New version: $new_version"
+        jq '.version = $version' --arg version $new_version package.json > package.new.json
+        # Test if the new package file has less lines inside it than the previous one
+        if [ $(wc -l < package.new.json) -lt $(wc -l < package.json) ]; then
+          echo "Something went wrong. Aborting..."
+          exit 1
+        fi
+        mv package.new.json package.json
+
+    - run: yarn publish
+      env:
+        NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+    - name: Commit the changes
+      run: | 
+        git config --global user.email 'github-ci@boldcommerce.com'
+        git config --global user.name 'bold-github-ci'
+        git add package.json
+        git commit -m 'Bump version number for release'
+        git push origin
+
+    - name: Create github release
+      env:
+        new_version: v${{ steps.set_new_version.outputs.new_version }}
+      run: |
+        gh release create ${new_version} --generate-notes --latest
