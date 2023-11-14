@@ -1,6 +1,6 @@
 {
   "name": "@boldcommerce/checkout-frontend-library",
-  "version": "0.51.2",
+  "version": "0.52.0",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "license": "MIT",
