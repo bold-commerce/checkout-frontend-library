@@ -26,6 +26,8 @@ jobs:
       new_version: ${{ steps.set_new_version.outputs.new_version }}
     steps:
     - uses: actions/checkout@v4
+      with:
+        fetch-tags: 'true'
 
     - uses: actions/setup-node@v3
       with:
