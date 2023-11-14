@@ -9,6 +9,7 @@ describe('testing add log api', () => {
     const timesWhenCalled = 1;
     const message = 'some test message';
     const key = 'test_key';
+    const details = JSON.stringify({test: 'test_value'});
     const apiUrlMock = 'https://api.com/checkout/storefront/123/123/log';
     const {keysToTest} = apiTypes.addLog;
     let optionsMock: RequestInit;
@@ -35,13 +36,13 @@ describe('testing add log api', () => {
     });
 
     test('calling add log', async () => {
-        const res = await addLog(message, key);
+        const res = await addLog(message, key, details);
 
         expect(getApiOptionsSpy).toHaveBeenCalledTimes(timesWhenCalled);
         expect(getApiUrlSpy).toHaveBeenCalledTimes(timesWhenCalled);
         expect(fetchApiSpy).toHaveBeenCalledTimes(timesWhenCalled);
         expect(checkApiResponseSpy).toHaveBeenCalledTimes(timesWhenCalled);
-        expect(getApiOptionsSpy).toHaveBeenCalledWith(apiTypeKeys.addLog, {message, key});
+        expect(getApiOptionsSpy).toHaveBeenCalledWith(apiTypeKeys.addLog, {message, key, details});
         expect(getApiUrlSpy).toHaveBeenCalledWith(apiTypeKeys.addLog);
         expect(fetchApiSpy).toHaveBeenCalledWith(apiUrlMock, optionsMock, 0);
         expect(checkApiResponseSpy).toHaveBeenCalledWith(returnObject, keysToTest);
@@ -54,13 +55,13 @@ describe('testing add log api', () => {
         fetchApiSpy.mockReturnValueOnce(Promise.resolve(tempReturnObject));
         checkApiResponseSpy.mockReturnValueOnce(tempReturnObject);
 
-        const res = await addLog(message, key, 1);
+        const res = await addLog(message, key, details, 1);
 
         expect(getApiOptionsSpy).toHaveBeenCalledTimes(timesWhenCalled);
         expect(getApiUrlSpy).toHaveBeenCalledTimes(timesWhenCalled);
         expect(fetchApiSpy).toHaveBeenCalledTimes(timesWhenCalled);
         expect(checkApiResponseSpy).toHaveBeenCalledTimes(timesWhenCalled);
-        expect(getApiOptionsSpy).toHaveBeenCalledWith(apiTypeKeys.addLog, {message, key});
+        expect(getApiOptionsSpy).toHaveBeenCalledWith(apiTypeKeys.addLog, {message, key, details});
         expect(getApiUrlSpy).toHaveBeenCalledWith(apiTypeKeys.addLog);
         expect(fetchApiSpy).toHaveBeenCalledWith(apiUrlMock, optionsMock, 1);
         expect(checkApiResponseSpy).toHaveBeenCalledWith(tempReturnObject, keysToTest);
