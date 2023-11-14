@@ -1,0 +1,34 @@
+name: Yarn Lint Test
+run-name: Deploy by ${{ github.actor }}
+
+on:
+  workflow_dispatch:
+  merge_group:
+  pull_request:
+    branches:
+      - develop
+      - main
+      - rc
+    paths-ignore:
+      - '**.md'
+    
+jobs:
+  yarn:
+    name: Yarn Build
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: read
+      statuses: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '12.x'
+          cache: 'yarn'
+
+      - name: Install dependencies
+        run: yarn install --immutable --no-progress
+      - run: yarn lint-ci
+      - run: yarn test-ci
+      
