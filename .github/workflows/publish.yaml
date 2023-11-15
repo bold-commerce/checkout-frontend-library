@@ -26,6 +26,8 @@ jobs:
       new_version: ${{ steps.set_new_version.outputs.new_version }}
     steps:
     - uses: actions/checkout@v4
+      with:
+        fetch-tags: 'true'
 
     - uses: actions/setup-node@v3
       with:
@@ -44,7 +46,8 @@ jobs:
     - name: Get and set version number
       id: set_new_version
       run: |
-        last_release=$( jq '.version' package.json | cut -f2 -d\" )
+        git fetch --tags
+        last_release=$( git tag --sort=committerdate | sort -nr | head -n1 | sed 's/v//g' )
         release_type=${{ inputs.releaseType }}
         echo "Creating new ${release_type} release after ${last_release}"
         major=$(echo ${last_release} | cut -d v -f 2 | cut -d . -f 1)
