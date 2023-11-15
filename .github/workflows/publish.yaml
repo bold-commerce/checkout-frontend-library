@@ -70,7 +70,8 @@ jobs:
         new_version="${major}.${minor}.${patch}"
         echo "New release is ${new_version}"
         echo "new_version=${new_version}" >> "$GITHUB_OUTPUT"
-        npm version --no-git-tag-version $new_version
+        git pull --rebase
+        npm version --no-git-tag-version --allow-same-version $new_version
 
     - name: Commit the changes
       run: | 
