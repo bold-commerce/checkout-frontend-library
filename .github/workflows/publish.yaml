@@ -1,3 +1,4 @@
+---
 name: Publish Package
 run-name: Publish a ${{ inputs.releaseType }} change by ${{ github.actor }}
 
@@ -31,17 +32,19 @@ jobs:
 
     - uses: actions/setup-node@v3
       with:
-        node-version: '12.x'
+        node-version-file: '.nvmrc'
         registry-url: 'https://registry.npmjs.org'
         scope: '@boldcommerce'
         cache: 'yarn'
 
-    - name: Yarn install and build
-      run: |
-        yarn install --immutable --no-progress
-        yarn lint-ci
-        yarn test-ci
-        yarn build
+    - name: Yarn install
+      run: yarn install --immutable --no-progress
+    - name: Lint
+      run: yarn lint-ci
+    - name: Test
+      run: yarn test-ci
+    - name: Build
+      run: yarn build
 
     - name: Get and set version number
       id: set_new_version

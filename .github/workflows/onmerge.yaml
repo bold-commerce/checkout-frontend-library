@@ -1,5 +1,6 @@
-name: Yarn Lint Test
-run-name: Deploy by ${{ github.actor }}
+---
+name: Lint and Test Code
+run-name: Triggered by ${{ github.actor }}
 
 on:
   workflow_dispatch:
@@ -14,7 +15,7 @@ on:
     
 jobs:
   yarn:
-    name: Yarn Build
+    name: Yarn Lint and Test
     runs-on: ubuntu-latest
     permissions:
       contents: read
@@ -22,13 +23,34 @@ jobs:
       statuses: write
     steps:
       - uses: actions/checkout@v4
+        with:
+          # Full git history is needed to get a proper
+          # list of changed files within `super-linter`
+          fetch-depth: 0
+
       - uses: actions/setup-node@v3
         with:
-          node-version: '12.x'
+          node-version-file: '.nvmrc'
           cache: 'yarn'
+
+      - name: Super-Lint Code Base
+        uses: super-linter/super-linter/slim@v5
+        # Super-linter/Slim does not support:
+        # rust linters
+        # dotenv linters
+        # armttk linters
+        # pwsh linters
+        # c# linters
+        env:
+          VALIDATE_ALL_CODEBASE: false
+          VALIDATE_GITLEAKS: true
+          DEFAULT_BRANCH: main
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Install dependencies
         run: yarn install --immutable --no-progress
-      - run: yarn lint-ci
-      - run: yarn test-ci
+      - name: Default linter
+        run: yarn lint-ci
+      - name: Test code
+        run: yarn test-ci
       
