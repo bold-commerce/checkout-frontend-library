@@ -82,7 +82,7 @@ jobs:
 
     - name: Create github release
       env:
-        new_version: v${{ steps.set_new_version.outputs.new_version }}
+        new_version: ${{ steps.set_new_version.outputs.new_version }}
       run: |
         gh release create ${new_version} --generate-notes --latest
 
