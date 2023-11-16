@@ -233,6 +233,7 @@ export interface IApiErrorResponse {
     field: string; // Todo - Check with PAPI the list of possible fields to declare const and types
     severity: string; // Todo - Check with PAPI the list of possible severities to declare const and types
     sub_type: string; // Todo - Check with PAPI the list of possible sub_types to declare const and types
+    address_type?: string;
 }
 
 export interface IApiErrorsResponse {
