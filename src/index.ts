@@ -34,6 +34,7 @@ export * from './orderMetaData';
 export * from './paymentIframe';
 export * from './order';
 export * from './externalPaymentGateway';
+export * from './walletPay';
 export {
     getApplicationState,
     getAddresses,

@@ -256,12 +256,6 @@ export const apiTypes: IApiTypes = {
         useJwt: true,
         keysToTest: [...appStateKeysToTest]
     },
-    createPaymentGatewayOrder: {
-        path: '/payment_gateway_order',
-        method: methods.POST,
-        useJwt: true,
-        keysToTest: [...appStateKeysToTest]
-    },
     addPayment: {
         path: '/payments',
         method: methods.POST,
@@ -303,7 +297,25 @@ export const apiTypes: IApiTypes = {
         method: methods.POST,
         useJwt: true,
         keysToTest: [keysToTestFromResponse.data]
-    }
+    },
+    walletPayCreateOrder: {
+        path: '/wallet_pay/create_order',
+        method: methods.POST,
+        useJwt: true,
+        keysToTest: [...appStateKeysToTest]
+    },
+    walletPayOnShipping: {
+        path: '/wallet_pay/on_shipping',
+        method: methods.POST,
+        useJwt: true,
+        keysToTest: [...appStateKeysToTest]
+    },
+    walletPayOnApprove: {
+        path: '/wallet_pay/on_approve',
+        method: methods.POST,
+        useJwt: true,
+        keysToTest: [...appStateKeysToTest]
+    },
 };
 
 export const apiTypeKeys: IApiTypeKeys = {
@@ -333,14 +345,16 @@ export const apiTypeKeys: IApiTypeKeys = {
     updateItem: 'updateItem',
     checkInventory: 'checkInventory',
     getPaymentList: 'getPaymentList',
-    createPaymentGatewayOrder: 'createPaymentGatewayOrder',
     addPayment: 'addPayment',
     updatePayment: 'updatePayment',
     deletePayment: 'deletePayment',
     deleteGiftCardPayment: 'deleteGiftCardPayment',
     patchOrderMetaData: 'patchOrderMetaData',
     batchRequest: 'batchRequest',
-    addLog: 'addLog'
+    addLog: 'addLog',
+    walletPayCreateOrder: 'walletPayCreateOrder',
+    walletPayOnShipping: 'walletPayOnShipping',
+    walletPayOnApprove: 'walletPayOnApprove',
 };
 
 export const baseReturnObject: IApiReturnObject = {

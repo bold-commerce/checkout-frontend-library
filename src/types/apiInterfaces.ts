@@ -17,7 +17,9 @@ export interface IApiSuccessResponse {
         ICssStylingPaymentIframeResponse |
         ICheckInventoryResponse |
         IAddPaymentResponse |
-        ICreatePaymentGatewayOrderResponse |
+        IWalletPayCreateOrderResponse |
+        IWalletPayOnShippingResponse |
+        IWalletPayOnApproveResponse |
         IUpdateLineItemQuantityResponse |
         IProcessOrderResponse |
         IPatchOrderMetaDataResponse |
@@ -214,12 +216,22 @@ export interface IAddPaymentResponse {
     application_state: IApplicationState | undefined;
 }
 
-export interface ICreatePaymentGatewayOrderPaypalResponse {
+export interface IWalletPayCreateOrderPaypalResponse {
     id: string
 }
 
-export interface ICreatePaymentGatewayOrderResponse {
-    payment_data: ICreatePaymentGatewayOrderPaypalResponse | Record<string, unknown>;
+export interface IWalletPayCreateOrderResponse {
+    payment_data: IWalletPayCreateOrderPaypalResponse | Record<string, unknown>;
+    application_state: IApplicationState | undefined;
+}
+
+export interface IWalletPayOnShippingResponse {
+    payment_data: Record<string, unknown>;
+    application_state: IApplicationState | undefined;
+}
+
+export interface IWalletPayOnApproveResponse {
+    payment_data: Record<string, unknown>;
     application_state: IApplicationState | undefined;
 }
 
@@ -233,7 +245,6 @@ export interface IApiErrorResponse {
     field: string; // Todo - Check with PAPI the list of possible fields to declare const and types
     severity: string; // Todo - Check with PAPI the list of possible severities to declare const and types
     sub_type: string; // Todo - Check with PAPI the list of possible sub_types to declare const and types
-    address_type?: string;
 }
 
 export interface IApiErrorsResponse {
@@ -273,7 +284,6 @@ export interface IApiTypes {
     checkInventory: IApiTypesDetail;
     validateDiscount: IApiTypesDetail;
     getPaymentList: IApiTypesDetail;
-    createPaymentGatewayOrder: IApiTypesDetail;
     addPayment: IApiTypesDetail;
     updatePayment: IApiTypesDetail;
     deletePayment: IApiTypesDetail;
@@ -281,6 +291,9 @@ export interface IApiTypes {
     patchOrderMetaData: IApiTypesDetail;
     batchRequest: IApiTypesDetail;
     addLog: IApiTypesDetail;
+    walletPayCreateOrder: IApiTypesDetail,
+    walletPayOnShipping: IApiTypesDetail,
+    walletPayOnApprove: IApiTypesDetail,
 }
 
 export interface IApiTypeKeys {
@@ -311,13 +324,15 @@ export interface IApiTypeKeys {
     validateDiscount: keyof  IApiTypes;
     getPaymentList: keyof  IApiTypes;
     addPayment: keyof  IApiTypes;
-    createPaymentGatewayOrder: keyof  IApiTypes;
     updatePayment: keyof  IApiTypes;
     deletePayment: keyof  IApiTypes;
     deleteGiftCardPayment: keyof  IApiTypes;
     patchOrderMetaData: keyof IApiTypes;
     batchRequest: keyof IApiTypes;
     addLog: keyof IApiTypes;
+    walletPayCreateOrder: keyof  IApiTypes;
+    walletPayOnShipping: keyof  IApiTypes;
+    walletPayOnApprove: keyof  IApiTypes;
 }
 
 export interface IValidateAddress {
@@ -758,14 +773,38 @@ export interface IAddPaymentRequest {
     wallet_pay_type?: 'applepay'|'paywithgoogle'|'paypal',
 }
 
-export interface ICreatePaymentGatewayOrderPaypalPayload {
+export interface IWalletPayCreateOrderPaypalPayload {
     payment_type: string;
     locale: string;
 }
 
-export interface ICreatePaymentGatewayOrderRequest{
+export interface IWalletPayOnShippingPaypalPayload {
+    payment_action_type: string;
+    locale: string;
+    paypal_order_id: string;
+    shipping_address?: Record<string, unknown>;
+    shipping_options?: Record<string, unknown>;
+}
+
+export interface IWalletPayOnApprovePaypalPayload {
+    payment_action_type: string;
+    locale: string;
+    paypal_order_id: string;
+}
+
+export interface IWalletPayCreateOrderRequest{
     gateway_type: string;
-    payment_data: ICreatePaymentGatewayOrderPaypalPayload | Record<string, unknown>
+    payment_data: IWalletPayCreateOrderPaypalPayload | Record<string, unknown>
+}
+
+export interface IWalletPayOnShippingRequest{
+    gateway_type: string;
+    payment_data: IWalletPayOnShippingPaypalPayload | Record<string, unknown>
+}
+
+export interface IWalletPayOnApproveRequest{
+    gateway_type: string;
+    payment_data: IWalletPayOnApprovePaypalPayload | Record<string, unknown>
 }
 
 export type IUpdatePaymentRequest = IAddPaymentRequest;
@@ -796,7 +835,9 @@ export type IGetApiOptionsBody =
     IUpdatePaymentRequest |
     IDeletePaymentRequest |
     IPatchOrderMetaDataRequest |
-    ICreatePaymentGatewayOrderRequest |
+    IWalletPayOnApproveRequest |
+    IWalletPayCreateOrderRequest |
+    IWalletPayOnShippingRequest |
     Record<string, unknown>;
 
 export interface IShippingLine {
