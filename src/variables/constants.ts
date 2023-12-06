@@ -316,6 +316,18 @@ export const apiTypes: IApiTypes = {
         useJwt: true,
         keysToTest: [...appStateKeysToTest]
     },
+    estimateTaxes: {
+        path: '/taxes/estimate',
+        method: methods.POST,
+        useJwt: true,
+        keysToTest: [...appStateKeysToTest]
+    },
+    estimateShippingLines: {
+        path: '/shipping_lines/estimate',
+        method: methods.POST,
+        useJwt: true,
+        keysToTest: [...appStateKeysToTest]
+    },
 };
 
 export const apiTypeKeys: IApiTypeKeys = {
@@ -355,6 +367,8 @@ export const apiTypeKeys: IApiTypeKeys = {
     walletPayCreateOrder: 'walletPayCreateOrder',
     walletPayOnShipping: 'walletPayOnShipping',
     walletPayOnApprove: 'walletPayOnApprove',
+    estimateShippingLines: 'estimateShippingLines',
+    estimateTaxes: 'estimateTaxes',
 };
 
 export const baseReturnObject: IApiReturnObject = {

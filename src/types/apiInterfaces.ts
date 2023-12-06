@@ -295,6 +295,8 @@ export interface IApiTypes {
     walletPayCreateOrder: IApiTypesDetail,
     walletPayOnShipping: IApiTypesDetail,
     walletPayOnApprove: IApiTypesDetail,
+    estimateShippingLines: IApiTypesDetail,
+    estimateTaxes: IApiTypesDetail,
 }
 
 export interface IApiTypeKeys {
@@ -334,6 +336,8 @@ export interface IApiTypeKeys {
     walletPayCreateOrder: keyof  IApiTypes;
     walletPayOnShipping: keyof  IApiTypes;
     walletPayOnApprove: keyof  IApiTypes;
+    estimateShippingLines: keyof  IApiTypes;
+    estimateTaxes: keyof  IApiTypes;
 }
 
 export interface IValidateAddress {
@@ -812,6 +816,9 @@ export type IUpdatePaymentRequest = IAddPaymentRequest;
 
 export type IDeletePaymentRequest = IAddPaymentRequest;
 
+export type IEstimateTaxRequest = IAddress;
+export type IEstimateShippingLinesRequest = IAddress;
+
 export interface IPatchOrderMetaDataRequest {
     cart_parameters: ICartParameters | null;
     note_attributes: ICartParameters | null;
@@ -839,6 +846,8 @@ export type IGetApiOptionsBody =
     IWalletPayOnApproveRequest |
     IWalletPayCreateOrderRequest |
     IWalletPayOnShippingRequest |
+    IEstimateTaxRequest |
+    IEstimateShippingLinesRequest |
     Record<string, unknown>;
 
 export interface IShippingLine {
