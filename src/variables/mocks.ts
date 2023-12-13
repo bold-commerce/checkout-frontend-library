@@ -334,7 +334,8 @@ export const orderInitialDataMock: IOrderInitialData = {
         checkout_process: {
             company_name_option: 'required',
             phone_number_required: false,
-            accepts_marketing_checkbox_option: 'checked'
+            accepts_marketing_checkbox_option: 'checked',
+            rsa_enabled: false,
         },
         address_autocomplete: {
             provider: null,

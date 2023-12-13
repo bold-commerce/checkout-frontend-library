@@ -431,6 +431,7 @@ export interface ICheckoutProcess{
     tax_exempt_checkbox_enabled?: boolean,
     tax_shipping?: boolean,
     batch_requests?: boolean,
+    rsa_enabled?: boolean,
 }
 
 export interface IAddressAutoComplete{
