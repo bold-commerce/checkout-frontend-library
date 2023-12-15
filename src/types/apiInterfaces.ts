@@ -394,6 +394,7 @@ export interface IOrderInitialData {
     life_elements: Array<ILifeField>;
     flow_settings: Record<string, unknown>;
     requires_shipping: boolean;
+    rsa_enabled: boolean;
 }
 
 export interface ISupportedLanguage {

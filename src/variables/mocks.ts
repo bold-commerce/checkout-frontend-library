@@ -355,6 +355,7 @@ export const orderInitialDataMock: IOrderInitialData = {
     life_elements: [],
     flow_settings: {},
     requires_shipping: true,
+    rsa_enabled: false,
 };
 
 export const cssRuleMock: ICssRule = {

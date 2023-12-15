@@ -204,6 +204,7 @@ export const orderInitialData: IOrderInitialData = {
     life_elements: [],
     flow_settings: {},
     requires_shipping: true,
+    rsa_enabled: false,
 };
 
 export const retryErrorCodeList: Array<number> = [
