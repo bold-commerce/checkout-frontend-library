@@ -9,7 +9,6 @@
 - [phone\_number\_required](ICheckoutProcess.md#phone_number_required)
 - [tax\_exempt\_checkbox\_enabled](ICheckoutProcess.md#tax_exempt_checkbox_enabled)
 - [tax\_shipping](ICheckoutProcess.md#tax_shipping)
-- [batch\_requests](ICheckoutProcess.md#batch_requests)
 
 
 ## Properties
@@ -42,8 +41,3 @@ ___
 
 • `Optional` **tax\_exempt\_checkbox\_enabled**: `boolean`
 
-___
-
-### batch\_requests
-
-• `Optional` **batch\_requests**: `boolean`
