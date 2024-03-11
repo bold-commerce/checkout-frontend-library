@@ -32,6 +32,7 @@ export function setApplicationState({
     currency,
     display_currency,
     display_exchange_rate,
+    flow_id,
 }: IApplicationState): void {
     setCustomer(customer);
     setAddresses(addresses);
@@ -52,4 +53,5 @@ export function setApplicationState({
     applicationState.resumable_link = resumable_link;
     applicationState.created_via = created_via;
     applicationState.is_processed = is_processed;
+    applicationState.flow_id = flow_id;
 }
