@@ -276,8 +276,7 @@ export const applicationStateMock: IApplicationState = {
     display_exchange_rate: 1,
     is_processed: false,
     created_via: 'checkout',
-    fees: [feesMock],
-    flow_id: 'mock_flow',
+    fees: [feesMock]
 };
 
 export const selectShippingLineArrayMock: Array<IShippingLine> = [

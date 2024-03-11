@@ -191,7 +191,6 @@ export const applicationState: IApplicationState = {
     created_via: '',
     is_processed: false,
     fees,
-    flow_id: null
 };
 
 export const orderInitialData: IOrderInitialData = {

@@ -554,7 +554,6 @@ export interface IApplicationState {
     is_processed: boolean;
     created_via: string;
     fees: Array<IFees>;
-    flow_id: string | null;
 }
 
 export interface IOrderMetaData {
