@@ -292,6 +292,7 @@ export interface IApiTypes {
     patchOrderMetaData: IApiTypesDetail;
     batchRequest: IApiTypesDetail;
     addLog: IApiTypesDetail;
+    addMetric: IApiTypesDetail;
     walletPayCreateOrder: IApiTypesDetail,
     walletPayOnShipping: IApiTypesDetail,
     walletPayOnApprove: IApiTypesDetail,
@@ -333,6 +334,7 @@ export interface IApiTypeKeys {
     patchOrderMetaData: keyof IApiTypes;
     batchRequest: keyof IApiTypes;
     addLog: keyof IApiTypes;
+    addMetric: keyof IApiTypes;
     walletPayCreateOrder: keyof  IApiTypes;
     walletPayOnShipping: keyof  IApiTypes;
     walletPayOnApprove: keyof  IApiTypes;
