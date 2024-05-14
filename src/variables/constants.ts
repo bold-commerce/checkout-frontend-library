@@ -67,6 +67,7 @@ export const pigiActionTypes: IPigiActionTypes = {
     PIGI_PAYMENT_ADDED: 'PIGI_PAYMENT_ADDED',
     PIGI_DISPLAY_IN_FULL_PAGE: 'PIGI_DISPLAY_IN_FULL_PAGE',
     PIGI_DISPLAY_IN_FULL_PAGE_DONE: 'PIGI_DISPLAY_IN_FULL_PAGE_DONE',
+    PIGI_HIDE_CREDIT_CARD_OPTION: 'PIGI_HIDE_CREDIT_CARD_OPTION',
 };
 
 export const externalPaymentGatewayToParentActionTypes: IExternalPaymentGatewayToParentActionTypes = {
