@@ -78,6 +78,7 @@ export interface IPigiActionTypes {
     PIGI_PAYMENT_ADDED: string;
     PIGI_DISPLAY_IN_FULL_PAGE: string;
     PIGI_DISPLAY_IN_FULL_PAGE_DONE: string;
+    PIGI_HIDE_CREDIT_CARD_OPTION: string;
 }
 
 export interface IExternalPaymentGatewayToParentActionTypes {

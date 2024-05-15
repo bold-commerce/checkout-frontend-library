@@ -4,6 +4,7 @@ export * from './sendAddPaymentAction';
 export * from './sendClearErrorMessageAction';
 export * from './sendDisplayErrorMessageAction';
 export * from './sendHandleScaAction';
+export * from './sendHideCreditCardOptionAction';
 export * from './sendRefreshOrderAction';
 export * from './sendSelectPaymentMethodAction';
 export * from './sendUpdateLanguageAction';
