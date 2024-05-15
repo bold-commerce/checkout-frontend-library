@@ -14,6 +14,7 @@ export interface IApiSuccessResponse {
         IDeleteDiscountResponse |
         IGetPaymentIframeUrl |
         IInitializeOrderResponse |
+        IInitializeSimpleOrderResponse |
         ICssStylingPaymentIframeResponse |
         ICheckInventoryResponse |
         IAddPaymentResponse |
@@ -121,7 +122,7 @@ export interface IApiReturnObject {
     status: number;
     success: boolean;
     error: null | IFetchError;
-    response: null | IApiResponse | IApiBatchResponse;
+    response: null | IApiResponse | IApiBatchResponse | IInitializeSimpleOrderResponse;
 }
 
 export interface IFetchCallback extends Function {
@@ -133,6 +134,12 @@ export interface IInitializeOrderResponse {
     application_state: IApplicationState,
     jwt_token: string,
     public_order_id: string
+}
+
+export interface IInitializeSimpleOrderResponse {
+    flow_settings: Record<string, unknown>;
+    jwt_token: string;
+    public_order_id: string;
 }
 
 export interface ICssStylingPaymentIframeResponse {
