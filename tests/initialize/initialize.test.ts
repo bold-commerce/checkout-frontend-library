@@ -1,4 +1,13 @@
-import {environmentTypes, apiErrors, baseReturnObject, initialize, IApiReturnObject, IFetchError, FetchError} from 'src';
+import {
+    environmentTypes,
+    apiErrors,
+    baseReturnObject,
+    initialize,
+    IApiReturnObject,
+    IFetchError,
+    FetchError,
+    IInitializeSimpleOrderResponse
+} from 'src';
 import {initializeOrderResponseMock} from 'src/variables/mocks';
 import * as checkApiResponse from 'src/utils/apiResponse';
 
@@ -25,6 +34,17 @@ describe('testing initialize function', () => {
     test('successful initialize', async () => {
         checkApiResponseSpy.mockReturnValueOnce(successReturn);
         const response = await initialize(initData, 'shopIdentifier', { type: environmentTypes.staging });
+
+        expect((response as IApiReturnObject).success).toBe(true);
+        expect((response as IApiReturnObject).error).toBeNull();
+        expect((response as IApiReturnObject).response).toEqual(successReturn.response);
+        expect(checkApiResponseSpy).toHaveBeenCalledTimes(timesCalled);
+    });
+
+    test('successful initialize with simple order', async () => {
+        const simpleOrder: IInitializeSimpleOrderResponse = {jwt_token: initData.jwt_token, public_order_id: initData.public_order_id, flow_settings: initData.initial_data.flow_settings};
+        checkApiResponseSpy.mockReturnValueOnce(successReturn);
+        const response = await initialize(simpleOrder, 'shopIdentifier', { type: environmentTypes.staging });
 
         expect((response as IApiReturnObject).success).toBe(true);
         expect((response as IApiReturnObject).error).toBeNull();

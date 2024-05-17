@@ -26,7 +26,12 @@ export async function initialize(initData: IInitializeOrderResponse | IInitializ
     const returnObject = {...baseReturnObject};
     returnObject.success = true;
     returnObject.response = initData;
-    const keysToCheck = [keysToTestFromResponse.jwt_token, keysToTestFromResponse.public_order_id];
+    let keysToCheck = [keysToTestFromResponse.applicationState, keysToTestFromResponse.initial_data, keysToTestFromResponse.jwt_token, keysToTestFromResponse.public_order_id];
+
+    if (!('initial_data' in initData)) {
+        keysToCheck = [keysToTestFromResponse.jwt_token, keysToTestFromResponse.public_order_id];
+    }
+
     const returnValue = checkApiResponse(returnObject, keysToCheck);
     if(!returnValue.success) {
         return returnValue;
