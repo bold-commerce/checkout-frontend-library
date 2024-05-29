@@ -389,7 +389,7 @@ export interface IApiTypesDetail {
     keysToTest?: Array<string>;
 }
 
-export type IAlternativePaymentMethod = Array<IExpressPayStripe | IExpressPayPaypal | IExpressPayBraintreeGoogle | IExpressPayBraintreeApple | IExpressPayPaypalCommercePlatform | IExpressPayPaypalCommercePlatformButton> ;
+export type IAlternativePaymentMethod = Array<IExpressPayStripe | IExpressPayPaypal | IExpressPayBraintreeGoogle | IExpressPayBraintreeApple | IExpressPayPaypalCommercePlatform | IExpressPayPaypalCommercePlatformButton | IExpressPayBraintreePayPal | IExpressPayBraintreeFastlane> ;
 export type IExternalPaymentGateways = Array<IExternalPaymentGateway>;
 
 export interface IOrderInitialData {
@@ -474,6 +474,7 @@ export interface IExpressPayPaypalCommercePlatform {
     apple_pay_enabled: boolean;
     partner_id: string;
     merchant_id: string;
+    fastlane_styles: Record<string, unknown>
 }
 
 export interface IExpressPayPaypalCommercePlatformButton {
@@ -509,6 +510,16 @@ export interface IExpressPayBraintreeGoogle extends IExpressPayBraintree {
 export interface IExpressPayBraintreeApple extends IExpressPayBraintree {
     apple_pay_enabled: boolean;
 }
+
+export interface IExpressPayBraintreePayPal extends IExpressPayBraintree {
+    is_paylater_enabled: boolean;
+    properties: Record<string, unknown>
+}
+
+export interface IExpressPayBraintreeFastlane extends IExpressPayBraintree {
+    fastlane_styles: Record<string, unknown>
+}
+
 
 export interface IExternalPaymentGateway {
     is_test: boolean;
