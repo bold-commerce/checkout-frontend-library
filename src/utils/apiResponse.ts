@@ -24,7 +24,7 @@ export function checkApiResponse(fetchRes: IApiReturnObject, keysToCheck?: Array
         fetchRes.error = new FetchError(apiErrors.emptyKeysToCheck.status, apiErrors.emptyKeysToCheck.message);
         return fetchRes;
     }
-    if(checkOnFail || success) {
+    if (checkOnFail || success) {
         keysToCheck.map((key: string) => {
             const parentElement = findKeyInObject(response, key);
             if (parentElement || parentElement === '') {
