@@ -293,6 +293,12 @@ export const apiTypes: IApiTypes = {
         useJwt: true,
         keysToTest: [...appStateKeysToTest]
     },
+    addMetric: {
+        path: '/metric',
+        method: methods.POST,
+        useJwt: true,
+        keysToTest: [keysToTestFromResponse.data]
+    },
     addLog: {
         path: '/log',
         method: methods.POST,
@@ -365,6 +371,7 @@ export const apiTypeKeys: IApiTypeKeys = {
     patchOrderMetaData: 'patchOrderMetaData',
     batchRequest: 'batchRequest',
     addLog: 'addLog',
+    addMetric: 'addMetric',
     walletPayCreateOrder: 'walletPayCreateOrder',
     walletPayOnShipping: 'walletPayOnShipping',
     walletPayOnApprove: 'walletPayOnApprove',

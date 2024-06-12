@@ -53,3 +53,4 @@ export {
 } from './state';
 export * from './pigi';
 export * from './log';
+export * from './metric';
