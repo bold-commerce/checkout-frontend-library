@@ -96,6 +96,7 @@ export const alternatePaymentMethodType: IAlternatePaymentMethodType = {
     BRAINTREE_GOOGLE: 'braintree',
     BRAINTREE_APPLE: 'braintree-apple',
     PPCP_APPLE: 'paypal_commerce_platform-apple',
+    PPCP_GOOGLE: 'paypal_commerce_platform-google',
     PPCP: 'paypal_commerce_platform',
 };
 

@@ -108,6 +108,7 @@ export interface IAlternatePaymentMethodType {
     BRAINTREE_GOOGLE: string;
     BRAINTREE_APPLE: string;
     PPCP_APPLE: string;
+    PPCP_GOOGLE: string;
     PPCP: string;
 }
 
@@ -481,6 +482,7 @@ export interface IExpressPayPaypalCommercePlatform {
     is_test: boolean;
     public_id: string;
     apple_pay_enabled: boolean;
+    google_pay_enabled: boolean;
     partner_id: string;
     merchant_id: string;
     fastlane_styles: Record<string, unknown>
@@ -493,6 +495,7 @@ export interface IExpressPayPaypalCommercePlatformButton {
     'is_3ds_enabled': boolean,
     'style': Record<string, unknown>,
     'apple_pay_enabled': boolean,
+    'google_pay_enabled': boolean;
     'type': string,
     'merchant_country': string,
     'payment_types': Record<string, unknown>,
