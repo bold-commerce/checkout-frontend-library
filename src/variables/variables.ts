@@ -111,7 +111,8 @@ export const shipping: IShipping = {
     selected_shipping: {
         id: '',
         description: '',
-        amount: 0
+        amount: 0,
+        code: '',
     },
     available_shipping_lines: [],
     taxes: [],
