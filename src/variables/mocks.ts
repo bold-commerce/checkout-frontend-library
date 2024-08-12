@@ -213,7 +213,8 @@ export const patchOrderMetaDataMock: IPatchOrderMetaDataRequest = {
 export const selectShippingLineMock: IShippingLine = {
     id: 'test_select_shipping_line_id',
     description: 'Test Description',
-    amount: 100
+    amount: 100,
+    code: '',
 };
 
 export const availableShippingLineMock: IAvailableShippingLine = {
@@ -284,11 +285,13 @@ export const selectShippingLineArrayMock: Array<IShippingLine> = [
     {
         id: '1',
         description: 'First shipping line Option',
-        amount: 999
+        amount: 999,
+        code: '111',
     }, {
         id: '2',
         description: 'Second shipping line Option',
-        amount: 1500
+        amount: 1500,
+        code: '222'
     }
 ];
 

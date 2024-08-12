@@ -874,6 +874,7 @@ export interface IShippingLine {
     id: string;
     description: string;
     amount: number;
+    code: string;
 }
 
 export interface IPigiActionType {
