@@ -27,7 +27,7 @@ import {
 export const environment: Required<IEnvironment> = {
     type: environmentTypes.production,
     url: environmentUrls.production,
-    path: environmentPath
+    path: environmentPath,
 };
 
 export const auth: IAuth = {
@@ -192,7 +192,7 @@ export const applicationState: IApplicationState = {
     created_via: '',
     is_processed: false,
     fees,
-    flow_id: null
+    flow_id: null,
 };
 
 export const orderInitialData: IOrderInitialData = {
@@ -205,6 +205,7 @@ export const orderInitialData: IOrderInitialData = {
     life_elements: [],
     flow_settings: {},
     requires_shipping: true,
+    eps_gateways: {},
 };
 
 export const retryErrorCodeList: Array<number> = [

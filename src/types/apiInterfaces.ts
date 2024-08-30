@@ -402,6 +402,7 @@ export interface IOrderInitialData {
     life_elements: Array<ILifeField>;
     flow_settings: Record<string, unknown>;
     requires_shipping: boolean;
+    eps_gateways: IEpsGateways;
 }
 
 export interface ISupportedLanguage {
@@ -430,6 +431,14 @@ export interface ICountryInformation {
     provinces:        Array<IProvince>;
     valid_for_shipping: boolean;
     valid_for_billing:  boolean;
+}
+
+export interface IEpsGateways {
+    [gateway_id: string]: IEpsGateway,
+}
+export interface IEpsGateway {
+    auth_token: string;
+    currency: string;
 }
 
 export interface ICheckoutProcess{
