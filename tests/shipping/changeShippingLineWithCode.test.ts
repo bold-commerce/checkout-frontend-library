@@ -1,4 +1,4 @@
-import {apiTypeKeys, baseReturnObject, methods, apiTypes, changeShippingLineWithCode, changeShippingLine} from 'src';
+import {apiTypeKeys, baseReturnObject, methods, apiTypes, changeShippingLineWithCode} from 'src';
 import {applicationStateMock, selectShippingLineMock} from 'src/variables/mocks';
 import * as fetchAPI from 'src/utils/fetchAPI';
 import * as getApiOptions from 'src/utils/getApiOptions';
@@ -10,7 +10,6 @@ describe('testing set shipping address api', () => {
     const timesWhenCalled = 1;
     const index = '1';
     const code = 'code';
-    const code1 = '';
     const apiUrlMock = 'https://api.com/checkout/storefront/123/123/addresses/shipping';
     const {keysToTest} = apiTypes.changeShippingLines;
     let optionsMock: RequestInit;
