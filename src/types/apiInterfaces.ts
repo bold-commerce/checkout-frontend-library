@@ -828,16 +828,19 @@ export interface IWalletPayOnApprovePaypalPayload {
 
 export interface IWalletPayCreateOrderRequest{
     gateway_type: string;
+    gateway_id?: number;
     payment_data: IWalletPayCreateOrderPaypalPayload | Record<string, unknown>
 }
 
 export interface IWalletPayOnShippingRequest{
     gateway_type: string;
+    gateway_id?: number;
     payment_data: IWalletPayOnShippingPaypalPayload | Record<string, unknown>
 }
 
 export interface IWalletPayOnApproveRequest{
     gateway_type: string;
+    gateway_id?: number;
     payment_data: IWalletPayOnApprovePaypalPayload | Record<string, unknown>
 }
 
