@@ -26,6 +26,7 @@ export interface IApiSuccessResponse {
         IPatchOrderMetaDataResponse |
         IAddLogResponse;
     application_state?: IApplicationState;
+    clientSecretToken?: string;
 }
 
 export interface IApiSubrequestSuccessResponse extends IApiSuccessResponse {
