@@ -441,6 +441,7 @@ export interface IEpsGateways {
 export interface IEpsGateway {
     auth_token: string;
     currency: string;
+    group_label?: string;
 }
 
 export interface ICheckoutProcess{
