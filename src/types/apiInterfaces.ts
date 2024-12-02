@@ -402,6 +402,7 @@ export interface IOrderInitialData {
     alternative_payment_methods: IAlternativePaymentMethod;
     external_payment_gateways:  IExternalPaymentGateways;
     life_elements: Array<ILifeField>;
+    fraud_tools: Array<IFraudTool>;
     flow_settings: Record<string, unknown>;
     requires_shipping: boolean;
     eps_gateways: IEpsGateways;
@@ -542,6 +543,12 @@ export interface IExternalPaymentGateway {
     public_id: string;
     location: string;
     currency: string;
+}
+
+export interface IFraudTool {
+    id: string;
+    type: string;
+    credentials: Record<string, unknown>;
 }
 
 export interface ILifeField {
