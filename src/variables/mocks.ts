@@ -357,6 +357,7 @@ export const orderInitialDataMock: IOrderInitialData = {
     ],
     external_payment_gateways: [],
     life_elements: [],
+    fraud_tools: [],
     flow_settings: {},
     requires_shipping: true,
     eps_gateways: {},
