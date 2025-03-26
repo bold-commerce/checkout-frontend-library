@@ -442,7 +442,22 @@ export interface IEpsGateways {
 export interface IEpsGateway {
     auth_token: string;
     currency: string;
+    vaulted_payment_methods?: Array<IVaultedPaymentMethod>;
     group_label?: string;
+}
+
+export interface IVaultedPaymentMethod {
+    public_id: string;
+    eps_token: string;
+    tender_type: string;
+    tender: ITender;
+}
+
+export interface ITender {
+    brand: string;
+    last4: string;
+    exp_month: number;
+    exp_year: number;
 }
 
 export interface ICheckoutProcess{
