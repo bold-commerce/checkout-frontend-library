@@ -66,23 +66,6 @@ export interface IMethods {
     DELETE: string;
 }
 
-export interface IPigiActionTypes {
-    PIGI_ADD_PAYMENT: string;
-    PIGI_REFRESH_ORDER: string;
-    PIGI_UPDATE_LANGUAGE: string;
-    PIGI_UPDATE_MEDIA_MATCH: string;
-    PIGI_DISPLAY_ERROR_MESSAGE: string;
-    PIGI_CLEAR_ERROR_MESSAGES: string;
-    PIGI_SELECT_PAYMENT_METHOD: string;
-    PIGI_INITIALIZED: string;
-    PIGI_UPDATE_HEIGHT: string;
-    PIGI_HANDLE_SCA: string;
-    PIGI_PAYMENT_ADDED: string;
-    PIGI_DISPLAY_IN_FULL_PAGE: string;
-    PIGI_DISPLAY_IN_FULL_PAGE_DONE: string;
-    PIGI_HIDE_CREDIT_CARD_OPTION: string;
-}
-
 export interface IExternalPaymentGatewayToParentActionTypes {
     EXTERNAL_PAYMENT_GATEWAY_ADD_PAYMENT: string;
     EXTERNAL_PAYMENT_GATEWAY_REFRESH_ORDER: string;
@@ -916,19 +899,9 @@ export interface IShippingLine {
     code: string;
 }
 
-export interface IPigiActionType {
-    actionType: string;
-    payload?: Record<string, unknown>;
-}
-
 export interface IExternalPaymentGatewayActionType {
     type: string;
     payload?: IInitializeOrderResponse | IExternalPaymentGateway | IExternalPaymentGatewayLanguage | IAddress;
-}
-
-export interface IPigiResponseType {
-    responseType: string;
-    payload: Record<string, unknown>;
 }
 
 export interface IInventoryCheck {

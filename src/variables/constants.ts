@@ -9,8 +9,6 @@ import {
     IHttpStatusCode,
     ICheckInventoryStage,
     IMethods,
-    IPigiActionTypes,
-    IPigiResponseType,
     IAlternatePaymentMethodType,
     IExternalPaymentGatewayToParentActionTypes,
     IExternalPaymentGatewayToIframeActionTypes
@@ -51,23 +49,6 @@ export const methods: IMethods = {
     POST: 'POST',
     PATCH: 'PATCH',
     DELETE: 'DELETE'
-};
-
-export const pigiActionTypes: IPigiActionTypes = {
-    PIGI_ADD_PAYMENT: 'PIGI_ADD_PAYMENT',
-    PIGI_REFRESH_ORDER: 'PIGI_REFRESH_ORDER',
-    PIGI_UPDATE_LANGUAGE: 'PIGI_UPDATE_LANGUAGE',
-    PIGI_UPDATE_MEDIA_MATCH: 'PIGI_UPDATE_MEDIA_MATCH',
-    PIGI_DISPLAY_ERROR_MESSAGE: 'PIGI_DISPLAY_ERROR_MESSAGE',
-    PIGI_CLEAR_ERROR_MESSAGES: 'PIGI_CLEAR_ERROR_MESSAGES',
-    PIGI_SELECT_PAYMENT_METHOD: 'PIGI_SELECT_PAYMENT_METHOD',
-    PIGI_INITIALIZED: 'PIGI_INITIALIZED',
-    PIGI_UPDATE_HEIGHT: 'PIGI_UPDATE_HEIGHT',
-    PIGI_HANDLE_SCA: 'PIGI_HANDLE_SCA',
-    PIGI_PAYMENT_ADDED: 'PIGI_PAYMENT_ADDED',
-    PIGI_DISPLAY_IN_FULL_PAGE: 'PIGI_DISPLAY_IN_FULL_PAGE',
-    PIGI_DISPLAY_IN_FULL_PAGE_DONE: 'PIGI_DISPLAY_IN_FULL_PAGE_DONE',
-    PIGI_HIDE_CREDIT_CARD_OPTION: 'PIGI_HIDE_CREDIT_CARD_OPTION',
 };
 
 export const externalPaymentGatewayToParentActionTypes: IExternalPaymentGatewayToParentActionTypes = {
@@ -383,7 +364,6 @@ export const baseReturnObject: IApiReturnObject = {
 export const apiErrors: IApiErrors = {
     general: {status: 1000, message: 'General error thrown'},
     noCsrf: {status: 1001, message: 'CSRF Token not found'},
-    noPigiIframe: {status: 1002, message: 'PIGI iframe not found or empty'},
     /*
      * API RESPONSE - checkApiResponse function ERRORS
      *
@@ -399,14 +379,6 @@ export const apiErrors: IApiErrors = {
     emptyAppState: {status: 1101, message: 'Application state is empty in response'},
     noResData: {status: 1200, message: 'Data not found in response'},
     emptyResData: {status: 1201, message: 'Data is empty in response'},
-};
-
-export const basePigiResponseType: IPigiResponseType = {
-    responseType: '',
-    payload: {
-        success: false,
-        height: 0
-    }
 };
 
 export const httpStatusCode: IHttpStatusCode = {

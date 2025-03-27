@@ -30,7 +30,6 @@ export interface IApiErrors {
     emptyFieldInResponse: IErrorFormat;
     errorsInResponse: IErrorFormat;
     emptyKeysToCheck: IErrorFormat;
-    noPigiIframe: IErrorFormat;
 }
 
 export interface IGeneralApiResponseParsingErrorType {
