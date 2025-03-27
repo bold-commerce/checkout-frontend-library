@@ -6,7 +6,6 @@ export {
     environmentPath,
     generalApiResponseParsingErrorType,
     methods,
-    pigiActionTypes,
     externalPaymentGatewayToParentActionTypes,
     externalPaymentGatewayToIframeActionTypes,
     apiTypes,
@@ -31,7 +30,6 @@ export * from './taxes';
 export * from './discounts';
 export * from './payment';
 export * from './orderMetaData';
-export * from './paymentIframe';
 export * from './order';
 export * from './externalPaymentGateway';
 export * from './walletPay';
@@ -51,5 +49,4 @@ export {
     getOrderInitialData,
     getCurrency
 } from './state';
-export * from './pigi';
 export * from './log';

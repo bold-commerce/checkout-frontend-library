@@ -12,7 +12,6 @@ import {
     ITax,
     IDiscount,
     IPayment,
-    IPigi,
     IOrderMetaData,
     IShipping,
     ICurrency,
@@ -35,10 +34,6 @@ export const auth: IAuth = {
     publicOrderId: '',
     csrfToken: '',
     jwtToken: ''
-};
-
-export const pigi: IPigi = {
-    iFrameId: ''
 };
 
 export const customer: ICustomer =  {

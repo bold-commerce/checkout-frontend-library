@@ -13,7 +13,6 @@
 - [noAppState](IApiErrors.md#noappstate)
 - [noCsrf](IApiErrors.md#nocsrf)
 - [noFieldInResponse](IApiErrors.md#nofieldinresponse)
-- [noPigiIframe](IApiErrors.md#nopigiiframe)
 - [noResData](IApiErrors.md#noresdata)
 
 ## Properties
@@ -69,12 +68,6 @@ ___
 ### noFieldInResponse
 
 • **noFieldInResponse**: [`IErrorFormat`](IErrorFormat.md)
-
-___
-
-### noPigiIframe
-
-• **noPigiIframe**: [`IErrorFormat`](IErrorFormat.md)
 
 ___
 
