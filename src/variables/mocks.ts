@@ -22,7 +22,6 @@ import {
     ICssStylingPaymentIframeRequest,
     ICurrency,
     ISupportedLanguage,
-    alternatePaymentMethodType,
     IFees,
     IPatchOrderMetaDataRequest
 } from 'src';
@@ -346,15 +345,6 @@ export const orderInitialDataMock: IOrderInitialData = {
             api_key: null
         }
     },
-    alternative_payment_methods: [
-        {
-            type: alternatePaymentMethodType.STRIPE,
-            key: '',
-            stripe_user_id: '',
-            public_id: '',
-            account_country: ''
-        }
-    ],
     external_payment_gateways: [],
     life_elements: [],
     fraud_tools: [],

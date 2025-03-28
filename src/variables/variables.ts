@@ -195,7 +195,6 @@ export const orderInitialData: IOrderInitialData = {
     country_info: [countryInfo],
     general_settings: generalSettings,
     supported_languages: [supportedLanguages],
-    alternative_payment_methods: [],
     external_payment_gateways: [],
     life_elements: [],
     fraud_tools: [],
