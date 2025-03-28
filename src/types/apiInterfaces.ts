@@ -86,16 +86,6 @@ export interface IExternalPaymentGatewayToIframeActionTypes {
     EXTERNAL_PAYMENT_GATEWAY_SET_CONFIG: string;
 }
 
-export interface IAlternatePaymentMethodType {
-    STRIPE: string;
-    PAYPAL: string;
-    BRAINTREE_GOOGLE: string;
-    BRAINTREE_APPLE: string;
-    PPCP_APPLE: string;
-    PPCP_GOOGLE: string;
-    PPCP: string;
-}
-
 export type IInventoryStage = 'initial' | 'final';
 
 export interface ICheckInventoryStage {
@@ -374,7 +364,6 @@ export interface IApiTypesDetail {
     keysToTest?: Array<string>;
 }
 
-export type IAlternativePaymentMethod = Array<IExpressPayStripe | IExpressPayPaypal | IExpressPayBraintreeGoogle | IExpressPayBraintreeApple | IExpressPayPaypalCommercePlatform | IExpressPayPaypalCommercePlatformButton | IExpressPayBraintreePayPal | IExpressPayBraintreeFastlane> ;
 export type IExternalPaymentGateways = Array<IExternalPaymentGateway>;
 
 export interface IOrderInitialData {
@@ -382,7 +371,6 @@ export interface IOrderInitialData {
     country_info: Array<ICountryInformation>;
     supported_languages: Array<ISupportedLanguage>;
     general_settings: IGeneralSettings;
-    alternative_payment_methods: IAlternativePaymentMethod;
     external_payment_gateways:  IExternalPaymentGateways;
     life_elements: Array<ILifeField>;
     fraud_tools: Array<IFraudTool>;
@@ -461,78 +449,6 @@ export interface IGeneralSettings{
     checkout_process: ICheckoutProcess,
     address_autocomplete: IAddressAutoComplete,
 }
-
-export interface IExpressPayStripe {
-    type: string;
-    key: string;
-    stripe_user_id: string;
-    account_country: string;
-    public_id: string;
-}
-
-export interface IExpressPayPaypal {
-    type: string;
-    is_test: boolean;
-    client_id: string;
-    button_style: Record<string, unknown>;
-    public_id: string;
-}
-
-export interface IExpressPayPaypalCommercePlatform {
-    type: string;
-    is_test: boolean;
-    public_id: string;
-    apple_pay_enabled: boolean;
-    google_pay_enabled: boolean;
-    partner_id: string;
-    merchant_id: string;
-    fastlane_styles: Record<string, unknown>
-}
-
-export interface IExpressPayPaypalCommercePlatformButton {
-    'public_id': string,
-    'merchant_id': string,
-    'partner_id': string,
-    'is_3ds_enabled': boolean,
-    'style': Record<string, unknown>,
-    'apple_pay_enabled': boolean,
-    'google_pay_enabled': boolean;
-    'type': string,
-    'merchant_country': string,
-    'payment_types': Record<string, unknown>,
-    'is_dev': boolean
-}
-
-export interface IExpressPayBraintree {
-    type: string;
-    public_id: string;
-    is_test: boolean;
-    merchant_account: string;
-    tokenization_key: string;
-    button_style: Record<string, unknown>;
-}
-
-export interface IExpressPayBraintreeGoogle extends IExpressPayBraintree {
-    google_pay_enabled: boolean;
-    google_pay_merchant_identifier: string;
-    apiVersion: string;
-    sdkVersion: string;
-    merchantId: string;
-}
-
-export interface IExpressPayBraintreeApple extends IExpressPayBraintree {
-    apple_pay_enabled: boolean;
-}
-
-export interface IExpressPayBraintreePayPal extends IExpressPayBraintree {
-    is_paylater_enabled: boolean;
-    properties: Record<string, unknown>
-}
-
-export interface IExpressPayBraintreeFastlane extends IExpressPayBraintree {
-    fastlane_styles: Record<string, unknown>
-}
-
 
 export interface IExternalPaymentGateway {
     is_test: boolean;

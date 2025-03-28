@@ -9,7 +9,6 @@ import {
     IHttpStatusCode,
     ICheckInventoryStage,
     IMethods,
-    IAlternatePaymentMethodType,
     IExternalPaymentGatewayToParentActionTypes,
     IExternalPaymentGatewayToIframeActionTypes
 } from 'src';
@@ -69,16 +68,6 @@ export const externalPaymentGatewayToIframeActionTypes: IExternalPaymentGatewayT
     EXTERNAL_PAYMENT_GATEWAY_SHIPPING_ADDRESS_CHANGED: 'EXTERNAL_PAYMENT_GATEWAY_SHIPPING_ADDRESS_CHANGED',
     EXTERNAL_PAYMENT_GATEWAY_UPDATE_STATE: 'EXTERNAL_PAYMENT_GATEWAY_UPDATE_STATE',
     EXTERNAL_PAYMENT_GATEWAY_SET_CONFIG: 'EXTERNAL_PAYMENT_GATEWAY_SET_CONFIG',
-};
-
-export const alternatePaymentMethodType: IAlternatePaymentMethodType = {
-    STRIPE: 'stripe',
-    PAYPAL: 'paypal',
-    BRAINTREE_GOOGLE: 'braintree',
-    BRAINTREE_APPLE: 'braintree-apple',
-    PPCP_APPLE: 'paypal_commerce_platform-apple',
-    PPCP_GOOGLE: 'paypal_commerce_platform-google',
-    PPCP: 'paypal_commerce_platform',
 };
 
 export const checkInventoryStage: ICheckInventoryStage = {

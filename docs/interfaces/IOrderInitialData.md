@@ -4,7 +4,6 @@
 
 ### Properties
 
-- [alternative\_payment\_methods](IOrderInitialData.md#alternative_payment_methods)
 - [country\_info](IOrderInitialData.md#country_info)
 - [external\_payment\_gateways](IOrderInitialData.md#external_payment_gateways)
 - [general\_settings](IOrderInitialData.md#general_settings)

@@ -14,7 +14,6 @@ export {
     httpStatusCode,
     baseReturnObject,
     checkInventoryStage,
-    alternatePaymentMethodType
 } from './variables/constants';
 export * from './initialize';
 export * from './items';
