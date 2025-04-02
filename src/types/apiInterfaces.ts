@@ -272,6 +272,7 @@ export interface IApiTypes {
     updatePayment: IApiTypesDetail;
     deletePayment: IApiTypesDetail;
     deleteGiftCardPayment: IApiTypesDetail;
+    deletePaymentMethod: IApiTypesDetail;
     patchOrderMetaData: IApiTypesDetail;
     batchRequest: IApiTypesDetail;
     addLog: IApiTypesDetail;
@@ -313,6 +314,7 @@ export interface IApiTypeKeys {
     updatePayment: keyof  IApiTypes;
     deletePayment: keyof  IApiTypes;
     deleteGiftCardPayment: keyof  IApiTypes;
+    deletePaymentMethod: keyof IApiTypes;
     patchOrderMetaData: keyof IApiTypes;
     batchRequest: keyof IApiTypes;
     addLog: keyof IApiTypes;
