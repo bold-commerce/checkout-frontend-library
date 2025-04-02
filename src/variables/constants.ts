@@ -252,6 +252,12 @@ export const apiTypes: IApiTypes = {
         useJwt: true,
         keysToTest: [...appStateKeysToTest]
     },
+    deletePaymentMethod: {
+        path: '/payments/saved',
+        method: methods.DELETE,
+        useJwt: true,
+        keysToTest: [...appStateKeysToTest]
+    },
     patchOrderMetaData: {
         path: '/meta_data',
         method: methods.PATCH,
@@ -333,6 +339,7 @@ export const apiTypeKeys: IApiTypeKeys = {
     updatePayment: 'updatePayment',
     deletePayment: 'deletePayment',
     deleteGiftCardPayment: 'deleteGiftCardPayment',
+    deletePaymentMethod: 'deletePaymentMethod',
     patchOrderMetaData: 'patchOrderMetaData',
     batchRequest: 'batchRequest',
     addLog: 'addLog',

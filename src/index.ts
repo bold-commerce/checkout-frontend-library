@@ -28,6 +28,7 @@ export * from './shipping';
 export * from './taxes';
 export * from './discounts';
 export * from './payment';
+export * from './paymentMethod';
 export * from './orderMetaData';
 export * from './order';
 export * from './externalPaymentGateway';
