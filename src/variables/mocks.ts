@@ -372,4 +372,5 @@ export const initializeOrderResponseMock: IInitializeOrderResponse = {
     application_state: applicationStateMock,
     jwt_token: 'test_jwt_token',
     public_order_id: 'test_public_order_id',
+    vaulting_enabled: false,
 };
