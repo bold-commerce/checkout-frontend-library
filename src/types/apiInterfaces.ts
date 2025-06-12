@@ -108,7 +108,8 @@ export interface IInitializeOrderResponse {
     initial_data: IOrderInitialData,
     application_state: IApplicationState,
     jwt_token: string,
-    public_order_id: string
+    public_order_id: string,
+    vaulting_enabled: boolean,
 }
 
 export interface IInitializeSimpleOrderResponse {
